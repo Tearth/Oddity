@@ -1,7 +1,9 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Oddity.API.Models;
+using Oddity.API.Models.Company;
 
 namespace Oddity.API
 {
@@ -10,6 +12,7 @@ namespace Oddity.API
         private HttpClient _httpClient;
 
         private const string CompanyInfoEndpoint = "/v2/info";
+        private const string CompanyHistoryEndpoint = "/v2/info/history";
 
         public Company(HttpClient httpClient)
         {
@@ -19,9 +22,17 @@ namespace Oddity.API
         public async Task<CompanyInfo> GetInfo()
         {
             var json = await _httpClient.GetStringAsync(ApiConfiguration.ApiEndpoint + CompanyInfoEndpoint);
-            var deserialized = JsonConvert.DeserializeObject<CompanyInfo>(json);
+            return JsonConvert.DeserializeObject<CompanyInfo>(json);
+        }
 
-            return deserialized;
+        public async Task<List<HistoryEvent>> GetHistory()
+        {
+            var json = await _httpClient.GetStringAsync(ApiConfiguration.ApiEndpoint + CompanyHistoryEndpoint);
+
+            // Temporary workaround for invalid date returned from API (day 00 doesn't exist so DateTime was throwing exception during parsing).
+            json = json.Replace("00T", "01T");
+
+            return JsonConvert.DeserializeObject<List<HistoryEvent>>(json);
         }
     }
 }
