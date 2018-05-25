@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Oddity.API.Models.Capsule.Thrusters
+namespace Oddity.API.Models.Common
 {
     public class ThrustInfo
     {
