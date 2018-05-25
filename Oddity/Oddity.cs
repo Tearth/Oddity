@@ -6,6 +6,7 @@ namespace Oddity
     public class Oddity
     {
         public Company Company { get; }
+        public Rocket Rocket { get; }
 
         private HttpClient _httpClient;
 
@@ -14,6 +15,7 @@ namespace Oddity
             _httpClient = new HttpClient();
 
             Company = new Company(_httpClient);
+            Rocket = new Rocket(_httpClient);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Oddity.API.Models.Rocket.Engines;
 using Oddity.API.Models.Rocket.LandingLegs;
@@ -11,7 +12,8 @@ namespace Oddity.API.Models.Rocket
         public string Id { get; set; }
         public string Name { get; set; }
         public RocketType Type { get; set; }
-        public bool Activate { get; set; }
+        public bool Active { get; set; }
+
         public int Stages { get; set; }
         public int Boosters { get; set; }
 
@@ -22,7 +24,7 @@ namespace Oddity.API.Models.Rocket
         public int SuccessRate { get; set; }
 
         [JsonProperty("first_flight")]
-        public DateTimeZoneHandling FirstFlight { get; set; }
+        public DateTime FirstFlight { get; set; }
 
         public string Country { get; set; }
         public string Company { get; set; }
@@ -39,4 +41,5 @@ namespace Oddity.API.Models.Rocket
         public LandingLegsInfo LandingLegs { get; set; }
 
         public string Description { get; set; }
+    }
 }

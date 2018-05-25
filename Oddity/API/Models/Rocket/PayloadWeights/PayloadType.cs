@@ -8,6 +8,7 @@ namespace Oddity.API.Models.Rocket.Payload
     {
         LEO,
         GTO,
-        Mars
+        Mars,
+        Pluto
     }
 }

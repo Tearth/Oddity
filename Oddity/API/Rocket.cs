@@ -1,0 +1,21 @@
+﻿using System.Net.Http;
+using Oddity.API.Builders.Company;
+using Oddity.API.Builders.Rocket;
+
+namespace Oddity.API
+{
+    public class Rocket
+    {
+        private HttpClient _httpClient;
+
+        public Rocket(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
+        public RocketBuilder GetInfo()
+        {
+            return new RocketBuilder(_httpClient);
+        }
+    }
+}

@@ -7,6 +7,6 @@ namespace Oddity.API.Models.Rocket.LandingLegs
     public class LandingLegsInfo
     {
         public int Number { get; set; }
-        public LegMaterialType? Material { get; set; }
+        public string Material { get; set; }
     }
 }
