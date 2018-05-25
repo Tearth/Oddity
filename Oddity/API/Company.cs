@@ -1,11 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Oddity.API.Builders;
+﻿using System.Net.Http;
 using Oddity.API.Builders.Company;
-using Oddity.API.Models;
-using Oddity.API.Models.Company;
 
 namespace Oddity.API
 {
