@@ -1,6 +1,6 @@
 ﻿namespace Oddity.API.Models.Capsule
 {
-    public enum CapsuleType
+    public enum CapsuleId
     {
         Dragon1,
         Dragon2,

@@ -8,8 +8,7 @@ namespace Oddity.API.Models.Capsule
 {
     public class CapsuleInfo
     {
-        [JsonProperty("id")]
-        public CapsuleType Type { get; set; }
+        public CapsuleId Id { get; set; }
 
         public string Name { get; set; }
         public bool Active { get; set; }

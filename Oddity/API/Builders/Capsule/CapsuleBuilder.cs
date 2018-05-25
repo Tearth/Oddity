@@ -11,7 +11,7 @@ namespace Oddity.API.Builders.Capsule
     /// </summary>
     public class CapsuleBuilder : BuilderBase
     {
-        private CapsuleType? _capsuleType;
+        private CapsuleId? _capsuleType;
         private const string CapsuleInfoEndpoint = "capsules";
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Oddity.API.Builders.Capsule
         /// </summary>
         /// <param name="type">The capsule type (Dragon1, Dragon2, etc).</param>
         /// <returns>The capsule information.</returns>
-        public CapsuleBuilder WithType(CapsuleType type)
+        public CapsuleBuilder WithType(CapsuleId type)
         {
             _capsuleType = type;
             return this;

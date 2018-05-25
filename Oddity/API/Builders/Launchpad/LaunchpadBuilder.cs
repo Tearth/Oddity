@@ -12,7 +12,7 @@ namespace Oddity.API.Builders.Launchpad
     /// </summary>
     public class LaunchpadBuilder : BuilderBase
     {
-        private LaunchpadType? _launchpadType;
+        private LaunchpadId? _launchpadType;
         private const string RocketInfoEndpoint = "launchpads";
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Oddity.API.Builders.Launchpad
         /// </summary>
         /// <param name="type">The launchpad type (CcafsLc13, Stls, etc).</param>
         /// <returns>The launchpad information.</returns>
-        public LaunchpadBuilder WithType(LaunchpadType type)
+        public LaunchpadBuilder WithType(LaunchpadId type)
         {
             _launchpadType = type;
             return this;

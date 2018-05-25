@@ -1,6 +1,6 @@
 ﻿namespace Oddity.API.Models.Rocket
 {
-    public enum RocketType
+    public enum RocketId
     {
         Falcon1,
         Falcon9,

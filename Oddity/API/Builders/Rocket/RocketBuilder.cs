@@ -10,7 +10,7 @@ namespace Oddity.API.Builders.Rocket
     /// </summary>
     public class RocketBuilder : BuilderBase
     {
-        private RocketType? _rocketType;
+        private RocketId? _rocketType;
         private const string RocketInfoEndpoint = "rockets";
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Oddity.API.Builders.Rocket
         /// </summary>
         /// <param name="type">The rocket type (Falcon1, Falcon9, etc).</param>
         /// <returns>The rocket information.</returns>
-        public RocketBuilder WithType(RocketType type)
+        public RocketBuilder WithType(RocketId type)
         {
             _rocketType = type;
             return this;

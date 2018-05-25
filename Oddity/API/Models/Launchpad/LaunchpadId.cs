@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Launchpad
 {
-    public enum LaunchpadType
+    public enum LaunchpadId
     {
         [EnumMember(Value = "kwajalein_atoll")]
         KwajaleinAtoll,
