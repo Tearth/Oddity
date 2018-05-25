@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Oddity.API.Models.Rocket.Stages.Payloads
+﻿namespace Oddity.API.Models.Rocket.Stages.Payloads
 {
     public class FairingInfo
     {
