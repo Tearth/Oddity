@@ -8,6 +8,7 @@ namespace Oddity
         public Company Company { get; }
         public Rocket Rocket { get; }
         public Capsule Capsule { get; }
+        public Launchpad Launchpad { get; }
 
         private HttpClient _httpClient;
 
@@ -18,6 +19,7 @@ namespace Oddity
             Company = new Company(_httpClient);
             Rocket = new Rocket(_httpClient);
             Capsule = new Capsule(_httpClient);
+            Launchpad = new Launchpad(_httpClient);
         }
     }
 }
