@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Oddity.API.Models.Company;
 
-namespace Oddity.API.Builders
+namespace Oddity.API.Builders.Company
 {
     public class HistoryBuilder : BuilderBase
     {
-        private HttpClient _httpClient;
         private const string CompanyHistoryEndpoint = "info/history";
 
-        public HistoryBuilder(HttpClient httpClient)
+        public HistoryBuilder(HttpClient httpClient) : base(httpClient)
         {
-            _httpClient = httpClient;
+
         }
 
         public HistoryBuilder WithRange(DateTime from, DateTime to)
@@ -42,10 +41,15 @@ namespace Oddity.API.Builders
             return this;
         }
 
-        public async Task<List<HistoryEvent>> Execute()
+        public List<HistoryEvent> Execute()
+        {
+            return ExecuteAsync().Result;
+        }
+
+        public async Task<List<HistoryEvent>> ExecuteAsync()
         {
             var link = BuildLink(CompanyHistoryEndpoint);
-            var json = await _httpClient.GetStringAsync(link);
+            var json = await HttpClient.GetStringAsync(link);
 
             // Temporary workaround for invalid date returned from API (day 00 doesn't exist so DateTime was throwing exception during parsing).
             json = json.Replace("00T", "01T");

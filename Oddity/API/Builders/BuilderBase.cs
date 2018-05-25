@@ -1,31 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 
 namespace Oddity.API.Builders
 {
     public abstract class BuilderBase
     {
-        private Dictionary<string, string> Filters;
+        protected HttpClient HttpClient;
+        private Dictionary<string, string> _filters;
 
-        protected BuilderBase()
+        protected BuilderBase(HttpClient httpClient)
         {
-            Filters = new Dictionary<string, string>();
+            HttpClient = httpClient;
+            _filters = new Dictionary<string, string>();
         }
 
         protected void AddFilter(string name, int value)
         {
-            Filters[name] = value.ToString();
+            _filters[name] = value.ToString();
         }
 
         protected void AddFilter(string name, string value)
         {
-            Filters[name] = value;
+            _filters[name] = value;
         }
 
         protected void AddFilter(string name, DateTime value)
         {
-            Filters[name] = value.ToString("yyyy-MM-dd");
+            _filters[name] = value.ToString("yyyy-MM-dd");
         }
 
         protected string BuildLink(string endpoint)
@@ -38,7 +41,7 @@ namespace Oddity.API.Builders
             var stringBuilder = new StringBuilder();
             var first = true;
 
-            foreach (var filter in Filters)
+            foreach (var filter in _filters)
             {
                 if (!first)
                 {
