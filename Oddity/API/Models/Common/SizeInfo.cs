@@ -1,4 +1,4 @@
-﻿namespace Oddity.API.Models.Rocket
+﻿namespace Oddity.API.Models.Common
 {
     public class SizeInfo
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Oddity.API.Models.Capsule.Payload
+namespace Oddity.API.Models.Common
 {
-    public class PayloadVolumeInfo
+    public class VolumeInfo
     {
         public int CubicMeters { get; set; }
         public int CubicFeet { get; set; }

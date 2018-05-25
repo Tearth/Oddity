@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Oddity.API.Models.Capsule.Heatshield;
 using Oddity.API.Models.Capsule.Payload;
+using Oddity.API.Models.Common;
 using Oddity.API.Models.Rocket;
 
 namespace Oddity.API.Models.Capsule
@@ -26,16 +27,16 @@ namespace Oddity.API.Models.Capsule
         public HeatshieldInfo Heatshield { get; set; }
 
         [JsonProperty("launch_payload_mass")]
-        public PayloadMassInfo LaunchPayloadMass { get; set; }
+        public MassInfo LaunchPayloadMass { get; set; }
 
         [JsonProperty("launch_payload_vol")]
-        public PayloadVolumeInfo LaunchPayloadVolume { get; set; }
+        public VolumeInfo LaunchPayloadVolume { get; set; }
 
         [JsonProperty("return_payload_mass")]
-        public PayloadMassInfo ReturnPayloadMass { get; set; }
+        public MassInfo ReturnPayloadMass { get; set; }
 
         [JsonProperty("return_payload_vol")]
-        public PayloadVolumeInfo ReturnPayloadVolume { get; set; }
+        public VolumeInfo ReturnPayloadVolume { get; set; }
 
         [JsonProperty("pressurized_capsule")]
         public PressurizedCapsuleInfo PressurizedCapsule { get; set; }

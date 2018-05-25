@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Rocket.Stages.Payloads
+﻿using Oddity.API.Models.Common;
+
+namespace Oddity.API.Models.Rocket.Stages.Payloads
 {
     public class FairingInfo
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Oddity.API.Models.Common;
 using Oddity.API.Models.Rocket.Engines;
 using Oddity.API.Models.Rocket.LandingLegs;
 using Oddity.API.Models.Rocket.Payload;
