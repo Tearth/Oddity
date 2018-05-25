@@ -33,7 +33,19 @@ namespace Oddity.API.Builders
 
         protected string BuildLink(string endpoint)
         {
-            return $"{ApiConfiguration.ApiEndpoint}/{endpoint}?{SerializeFilters()}";
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append(ApiConfiguration.ApiEndpoint);
+            stringBuilder.Append("/");
+            stringBuilder.Append(endpoint);
+
+            var filters = SerializeFilters();
+            if (!string.IsNullOrEmpty(filters))
+            {
+                stringBuilder.Append("?");
+                stringBuilder.Append(endpoint);
+            }
+
+            return stringBuilder.ToString();
         }
 
         private string SerializeFilters()

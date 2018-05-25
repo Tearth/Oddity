@@ -10,6 +10,7 @@ namespace Oddity.API.Builders.Rocket
 {
     public class RocketBuilder : BuilderBase
     {
+        private RocketType? _rocketType;
         private const string RocketInfoEndpoint = "rockets";
 
         public RocketBuilder(HttpClient httpClient) : base(httpClient)
@@ -17,17 +18,28 @@ namespace Oddity.API.Builders.Rocket
 
         }
 
-        public List<RocketInfo> Execute()
+        public RocketBuilder WithType(RocketType type)
+        {
+            _rocketType = type;
+            return this;
+        }
+
+        public RocketInfo Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        public async Task<List<RocketInfo>> ExecuteAsync()
+        public async Task<RocketInfo> ExecuteAsync()
         {
             var link = BuildLink(RocketInfoEndpoint);
+            if (_rocketType.HasValue)
+            {
+                link += $"/{_rocketType.ToString().ToLower()}";
+            }
+
             var json = await HttpClient.GetStringAsync(link);
 
-            return JsonConvert.DeserializeObject<List<RocketInfo>>(json);
+            return JsonConvert.DeserializeObject<RocketInfo>(json);
         }
     }
 }

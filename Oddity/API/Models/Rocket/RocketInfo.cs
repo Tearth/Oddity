@@ -9,9 +9,10 @@ namespace Oddity.API.Models.Rocket
 {
     public class RocketInfo
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        [JsonProperty("id")]
         public RocketType Type { get; set; }
+
+        public string Name { get; set; }
         public bool Active { get; set; }
 
         public int Stages { get; set; }

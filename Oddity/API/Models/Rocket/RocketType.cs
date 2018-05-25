@@ -2,6 +2,8 @@
 {
     public enum RocketType
     {
-        Rocket
+        Falcon1,
+        Falcon9,
+        FalconHeavy
     }
 }

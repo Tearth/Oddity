@@ -17,5 +17,10 @@ namespace Oddity.API
         {
             return new RocketBuilder(_httpClient);
         }
+
+        public AllRocketsBuilder GetInfoAboutAll()
+        {
+            return new AllRocketsBuilder(_httpClient);
+        }
     }
 }
