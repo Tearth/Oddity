@@ -7,10 +7,17 @@ using Oddity.API.Models.Company;
 
 namespace Oddity.API.Builders.Company
 {
+    /// <summary>
+    /// Represents a set of methods to filter history events and download them from API.
+    /// </summary>
     public class HistoryBuilder : BuilderBase
     {
         private const string CompanyHistoryEndpoint = "info/history";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HistoryBuilder"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client.</param>
         public HistoryBuilder(HttpClient httpClient) : base(httpClient)
         {
 

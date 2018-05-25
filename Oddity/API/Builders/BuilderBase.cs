@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Oddity.API.Builders
 {
+    /// <summary>
+    /// Represents an abstract base class for all builders.
+    /// </summary>
     public abstract class BuilderBase
     {
         protected HttpClient HttpClient;
