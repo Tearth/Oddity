@@ -18,5 +18,10 @@ namespace Oddity.API
         {
             return new AllLaunchesBuilder(_httpClient);
         }
+
+        public LatestLaunchesBuilder GetLatest()
+        {
+            return new LatestLaunchesBuilder(_httpClient);
+        }
     }
 }
