@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
-namespace Oddity.API.Models.Launch.Rocket
+namespace Oddity.API.Models.Launch.Rocket.FirstStage
 {
     public enum LandingVehicleType
     {

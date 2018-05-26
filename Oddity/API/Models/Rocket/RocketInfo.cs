@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Oddity.API.Models.Common;
 using Oddity.API.Models.Rocket.Engines;
 using Oddity.API.Models.Rocket.LandingLegs;
-using Oddity.API.Models.Rocket.Payload;
+using Oddity.API.Models.Rocket.PayloadWeights;
 
 namespace Oddity.API.Models.Rocket
 {

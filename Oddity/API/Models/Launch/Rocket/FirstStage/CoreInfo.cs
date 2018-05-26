@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace Oddity.API.Models.Launch.Rocket
+namespace Oddity.API.Models.Launch.Rocket.FirstStage
 {
     public class CoreInfo
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oddity.API.Models.Rocket.Payload
+namespace Oddity.API.Models.Rocket.PayloadWeights
 {
     public class PayloadWeightInfo
     {

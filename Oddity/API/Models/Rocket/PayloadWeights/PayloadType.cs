@@ -1,4 +1,4 @@
-﻿namespace Oddity.API.Models.Rocket.Payload
+﻿namespace Oddity.API.Models.Rocket.PayloadWeights
 {
     public enum PayloadType
     {

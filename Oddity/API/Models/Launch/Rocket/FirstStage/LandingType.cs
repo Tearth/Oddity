@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Oddity.API.Models.Launch.Rocket
+﻿namespace Oddity.API.Models.Launch.Rocket.FirstStage
 {
     public enum LandingType
     {
