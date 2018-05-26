@@ -91,9 +91,6 @@ namespace Oddity.API.Builders.Company
             var link = BuildLink(CompanyHistoryEndpoint);
             var json = await HttpClient.GetStringAsync(link);
 
-            // Temporary workaround for invalid date returned from API (day 00 doesn't exist so DateTime was throwing exception during parsing).
-            json = json.Replace("00T", "01T");
-
             return JsonConvert.DeserializeObject<List<HistoryEvent>>(json);
         }
     }
