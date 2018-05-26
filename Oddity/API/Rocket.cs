@@ -12,12 +12,12 @@ namespace Oddity.API
             _httpClient = httpClient;
         }
 
-        public RocketBuilder GetInfo()
+        public RocketBuilder GetAbout()
         {
             return new RocketBuilder(_httpClient);
         }
 
-        public AllRocketsBuilder GetInfoAboutAll()
+        public AllRocketsBuilder GetAll()
         {
             return new AllRocketsBuilder(_httpClient);
         }

@@ -12,12 +12,12 @@ namespace Oddity.API
             _httpClient = httpClient;
         }
 
-        public LaunchpadBuilder GetInfo()
+        public LaunchpadBuilder GetAbout()
         {
             return new LaunchpadBuilder(_httpClient);
         }
 
-        public AllLaunchpadsBuilder GetInfoAboutAll()
+        public AllLaunchpadsBuilder GetAll()
         {
             return new AllLaunchpadsBuilder(_httpClient);
         }

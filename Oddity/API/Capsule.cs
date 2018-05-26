@@ -12,12 +12,12 @@ namespace Oddity.API
             _httpClient = httpClient;
         }
 
-        public CapsuleBuilder GetInfo()
+        public CapsuleBuilder GetAbout()
         {
             return new CapsuleBuilder(_httpClient);
         }
 
-        public AllCapsulesBuilder GetInfoAboutAll()
+        public AllCapsulesBuilder GetAll()
         {
             return new AllCapsulesBuilder(_httpClient);
         }
