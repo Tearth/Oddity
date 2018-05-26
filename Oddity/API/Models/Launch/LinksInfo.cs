@@ -32,7 +32,7 @@ namespace Oddity.API.Models.Launch
 
         public string Wikipedia { get; set; }
 
-        [JsonProperty("launch_date_local")]
+        [JsonProperty("video_link")]
         public string VideoLink { get; set; }
     }
 }

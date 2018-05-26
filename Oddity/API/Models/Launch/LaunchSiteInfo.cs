@@ -14,7 +14,7 @@ namespace Oddity.API.Models.Launch
         [JsonProperty("site_name")]
         public string SiteName { get; set; }
 
-        [JsonProperty("site_long_name")]
+        [JsonProperty("site_name_long")]
         public string SiteLongName { get; set; }
     }
 }
