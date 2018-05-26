@@ -14,6 +14,10 @@ namespace Oddity.API.Models.Launchpad
 
         public LaunchpadStatus Status { get; set; }
         public LaunchpadLocation Location { get; set; }
+
+        [JsonProperty("vehicles_launched")]
+        public List<String> VehiclesLaunched { get; set; }
+
         public string Details { get; set; }
     }
 }
