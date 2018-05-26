@@ -11,7 +11,7 @@ namespace Oddity.API.Builders.Launches
     /// <summary>
     /// Represents a set of methods to filter all launches information and download them from API.
     /// </summary>
-    public class AllLaunchesBuilder : BuilderBase
+    public class AllLaunchesBuilder : LaunchBuilderBase<AllLaunchesBuilder>
     {
         private const string LaunchpadInfoEndpoint = "launches";
 

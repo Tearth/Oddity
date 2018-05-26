@@ -29,6 +29,11 @@ namespace Oddity.API.Builders
             _filters[name] = value;
         }
 
+        protected void AddFilter(string name, bool value)
+        {
+            _filters[name] = value.ToString().ToLower();
+        }
+
         protected void AddFilter(string name, DateTime value)
         {
             _filters[name] = value.ToString("yyyy-MM-dd");
@@ -45,7 +50,7 @@ namespace Oddity.API.Builders
             if (!string.IsNullOrEmpty(filters))
             {
                 stringBuilder.Append("?");
-                stringBuilder.Append(endpoint);
+                stringBuilder.Append(filters);
             }
 
             return stringBuilder.ToString();
