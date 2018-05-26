@@ -34,7 +34,7 @@ namespace Oddity.API.Models.Launch
         public LaunchSiteInfo LaunchSite { get; set; }
 
         [JsonProperty("launch_success")]
-        public bool LaunchSuccess { get; set; }
+        public bool? LaunchSuccess { get; set; }
 
         public LinksInfo Links { get; set; }
         public string Details { get; set; }
