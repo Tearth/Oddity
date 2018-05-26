@@ -7,9 +7,9 @@ namespace Oddity.API.Models.Launch.Rocket.FirstStage
         [JsonProperty("core_serial")]
         public string CoreSerial { get; set; }
 
-        public int Flight { get; set; }
+        public int? Flight { get; set; }
         public int? Block { get; set; }
-        public bool Reused { get; set; }
+        public bool? Reused { get; set; }
 
         [JsonProperty("land_success")]
         public bool? LandSuccess { get; set; }

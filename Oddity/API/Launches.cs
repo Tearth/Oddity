@@ -14,7 +14,7 @@ namespace Oddity.API
             _httpClient = httpClient;
         }
 
-        public AllLaunchesBuilder GetInfoAboutAll()
+        public AllLaunchesBuilder GetAll()
         {
             return new AllLaunchesBuilder(_httpClient);
         }
@@ -27,6 +27,11 @@ namespace Oddity.API
         public NextLaunchesBuilder GetNext()
         {
             return new NextLaunchesBuilder(_httpClient);
+        }
+
+        public UpcomingLaunchesBuilder GetUpcoming()
+        {
+            return new UpcomingLaunchesBuilder(_httpClient);
         }
     }
 }
