@@ -31,7 +31,7 @@ namespace Oddity.API.Models.Rocket
         public string Company { get; set; }
         public SizeInfo Height { get; set; }
         public SizeInfo Diameter { get; set; }
-        public RocketMass Mass { get; set; }
+        public MassInfo Mass { get; set; }
 
         [JsonProperty("payload_weights")]
         public List<PayloadWeightInfo> PayloadWeights { get; set; }

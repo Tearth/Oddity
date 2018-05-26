@@ -10,7 +10,7 @@ namespace Oddity.API.Models.Capsule.Heatshield
         public float SizeMeters { get; set; }
 
         [JsonProperty("temp_degrees")]
-        public int MaxTempDegrees { get; set; }
+        public int MaxTemperatureDegrees { get; set; }
 
         [JsonProperty("dev_partner")]
         public string DevPartner { get; set; }

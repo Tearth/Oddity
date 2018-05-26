@@ -54,7 +54,7 @@ namespace Oddity.API.Builders.Launchpad
             var link = BuildLink(RocketInfoEndpoint);
             if (_launchpadType.HasValue)
             {
-                var launchpadName = _launchpadType.GetEnumMemberAttrValue(_launchpadType);
+                var launchpadName = _launchpadType.GetEnumMemberAttributeValue(_launchpadType);
                 link += $"/{launchpadName.ToLower()}";
             }
 

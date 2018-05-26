@@ -2,6 +2,7 @@
 {
     public enum ThrusterType
     {
-        Draco
+        Draco,
+        SuperDraco
     }
 }

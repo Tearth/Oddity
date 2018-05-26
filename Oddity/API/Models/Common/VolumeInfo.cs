@@ -5,9 +5,9 @@ namespace Oddity.API.Models.Common
     public class VolumeInfo
     {
         [JsonProperty("cubic_meters")]
-        public int CubicMeters { get; set; }
+        public float CubicMeters { get; set; }
 
         [JsonProperty("cubic_feet")]
-        public int CubicFeet { get; set; }
+        public float CubicFeet { get; set; }
     }
 }

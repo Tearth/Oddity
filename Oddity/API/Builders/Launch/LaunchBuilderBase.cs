@@ -48,7 +48,7 @@ namespace Oddity.API.Builders.Launch
 
         public T WithRocketId(RocketId rocketId)
         {
-            AddFilter("rocket_id", rocketId.GetEnumMemberAttrValue(rocketId));
+            AddFilter("rocket_id", rocketId.GetEnumMemberAttributeValue(rocketId));
             return (T)this;
         }
 
@@ -120,7 +120,7 @@ namespace Oddity.API.Builders.Launch
 
         public T WithSiteId(LaunchpadId siteId)
         {
-            AddFilter("site_id", siteId.GetEnumMemberAttrValue(siteId));
+            AddFilter("site_id", siteId.GetEnumMemberAttributeValue(siteId));
             return (T)this;
         }
 
@@ -156,7 +156,7 @@ namespace Oddity.API.Builders.Launch
 
         public T WithOrbit(OrbitType orbit)
         {
-            AddFilter("orbit", orbit.GetEnumMemberAttrValue(orbit));
+            AddFilter("orbit", orbit.GetEnumMemberAttributeValue(orbit));
             return (T)this;
         }
 
@@ -180,13 +180,13 @@ namespace Oddity.API.Builders.Launch
 
         public T WithLandingType(LandingType landingType)
         {
-            AddFilter("landing_type", landingType.GetEnumMemberAttrValue(landingType));
+            AddFilter("landing_type", landingType.GetEnumMemberAttributeValue(landingType));
             return (T)this;
         }
 
         public T WithLandingVehicle(LandingVehicleType landingVehicle)
         {
-            AddFilter("landing_vehicle", landingVehicle.GetEnumMemberAttrValue(landingVehicle));
+            AddFilter("landing_vehicle", landingVehicle.GetEnumMemberAttributeValue(landingVehicle));
             return (T)this;
         }
     }

@@ -6,7 +6,7 @@ namespace Oddity.Helpers
 {
     public static class EnumExtensions
     {
-        public static string GetEnumMemberAttrValue(this Enum enumObject, object enumValue)
+        public static string GetEnumMemberAttributeValue(this Enum enumObject, object enumValue)
         {
             var enumType = enumObject.GetType();
 

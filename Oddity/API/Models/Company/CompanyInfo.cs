@@ -6,7 +6,10 @@ namespace Oddity.API.Models.Company
     {
         public string Name { get; set; }
         public string Founder { get; set; }
-        public uint Founded { get; set; }
+
+        [JsonProperty("founded")]
+        public uint FoundedYear { get; set; }
+
         public uint Employees { get; set; }
         public uint Vehicles { get; set; }
 

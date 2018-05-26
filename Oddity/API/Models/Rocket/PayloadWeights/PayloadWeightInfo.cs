@@ -8,7 +8,11 @@ namespace Oddity.API.Models.Rocket.PayloadWeights
         public PayloadType Type { get; set; }
 
         public string Name { get; set; }
-        public int Kg { get; set; }
-        public int Lb { get; set; }
+
+        [JsonProperty("kg")]
+        public int Kilograms { get; set; }
+
+        [JsonProperty("lb")]
+        public int Pounds { get; set; }
     }
 }

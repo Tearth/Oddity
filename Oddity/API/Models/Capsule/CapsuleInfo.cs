@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Oddity.API.Models.Capsule.Heatshield;
 using Oddity.API.Models.Capsule.Payload;
+using Oddity.API.Models.Capsule.Thrusters;
 using Oddity.API.Models.Common;
 
 namespace Oddity.API.Models.Capsule
@@ -23,6 +25,8 @@ namespace Oddity.API.Models.Capsule
 
         [JsonProperty("heat_shield")]
         public HeatshieldInfo Heatshield { get; set; }
+
+        public List<ThrustersInfo> Thrusters { get; set; }
 
         [JsonProperty("launch_payload_mass")]
         public MassInfo LaunchPayloadMass { get; set; }

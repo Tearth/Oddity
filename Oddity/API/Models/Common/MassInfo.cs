@@ -1,8 +1,13 @@
-﻿namespace Oddity.API.Models.Common
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Common
 {
     public class MassInfo
     {
-        public int Kg { get; set; }
-        public int Lb { get; set; }
+        [JsonProperty("kg")]
+        public float Kilograms { get; set; }
+
+        [JsonProperty("lb")]
+        public float Pounds { get; set; }
     }
 }
