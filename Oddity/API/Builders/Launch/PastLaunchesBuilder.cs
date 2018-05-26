@@ -11,15 +11,15 @@ namespace Oddity.API.Builders.Launches
     /// <summary>
     /// Represents a set of methods to filter all launches information and download them from API.
     /// </summary>
-    public class AllLaunchesBuilder : LaunchBuilderBase<AllLaunchesBuilder>
+    public class PastLaunchesBuilder : LaunchBuilderBase<PastLaunchesBuilder>
     {
-        private const string LaunchpadInfoEndpoint = "launches/all";
+        private const string LaunchpadInfoEndpoint = "launches";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AllLaunchesBuilder"/> class.
+        /// Initializes a new instance of the <see cref="PastLaunchesBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public AllLaunchesBuilder(HttpClient httpClient) : base(httpClient)
+        public PastLaunchesBuilder(HttpClient httpClient) : base(httpClient)
         {
 
         }
@@ -27,7 +27,7 @@ namespace Oddity.API.Builders.Launches
         /// <summary>
         /// Executes all filters and downloads result from API.
         /// </summary>
-        /// <returns>The all launches information.</returns>
+        /// <returns>The all upcoming launches information.</returns>
         public List<LaunchInfo> Execute()
         {
             return ExecuteAsync().Result;
@@ -36,7 +36,7 @@ namespace Oddity.API.Builders.Launches
         /// <summary>
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
-        /// <returns>The all launches information.</returns>
+        /// <returns>The all upcoming launches information.</returns>
         public async Task<List<LaunchInfo>> ExecuteAsync()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);

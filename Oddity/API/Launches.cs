@@ -33,5 +33,10 @@ namespace Oddity.API
         {
             return new UpcomingLaunchesBuilder(_httpClient);
         }
+
+        public PastLaunchesBuilder GetPast()
+        {
+            return new PastLaunchesBuilder(_httpClient);
+        }
     }
 }

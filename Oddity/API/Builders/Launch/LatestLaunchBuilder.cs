@@ -9,7 +9,7 @@ using Oddity.API.Models.Rocket;
 namespace Oddity.API.Builders.Launches
 {
     /// <summary>
-    /// Represents a set of methods to filter latest launch information and download them from API.
+    /// Represents a set of methods to filter past launch information and download them from API.
     /// </summary>
     public class LatestLaunchesBuilder : BuilderBase
     {
@@ -27,7 +27,7 @@ namespace Oddity.API.Builders.Launches
         /// <summary>
         /// Executes all filters and downloads result from API.
         /// </summary>
-        /// <returns>The latest launch information.</returns>
+        /// <returns>The past launch information.</returns>
         public LaunchInfo Execute()
         {
             return ExecuteAsync().Result;
@@ -36,7 +36,7 @@ namespace Oddity.API.Builders.Launches
         /// <summary>
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
-        /// <returns>The latest launch information.</returns>
+        /// <returns>The past launch information.</returns>
         public async Task<LaunchInfo> ExecuteAsync()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
