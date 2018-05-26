@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Oddity.API.Models.Launch.Rocket.FirstStage
+﻿namespace Oddity.API.Models.Launch.Rocket.FirstStage
 {
     public class CoreInfo
     {

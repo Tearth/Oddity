@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Launch.Rocket.SecondStage
 {

@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Oddity.API.Models.Launch;
-using Oddity.API.Models.Launchpad;
-using Oddity.API.Models.Rocket;
 
-namespace Oddity.API.Builders.Launches
+namespace Oddity.API.Builders.Launch
 {
     /// <summary>
     /// Represents a set of methods to filter all launches information and download them from API.

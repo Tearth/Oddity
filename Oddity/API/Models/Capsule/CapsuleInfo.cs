@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using Oddity.API.Models.Capsule.Heatshield;
+﻿using Oddity.API.Models.Capsule.Heatshield;
 using Oddity.API.Models.Capsule.Payload;
 using Oddity.API.Models.Common;
-using Oddity.API.Models.Rocket;
 
 namespace Oddity.API.Models.Capsule
 {

@@ -1,8 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Oddity.API.Models.Launchpad;
-using Oddity.API.Models.Rocket;
 using Oddity.Helpers;
 
 namespace Oddity.API.Builders.Launchpad

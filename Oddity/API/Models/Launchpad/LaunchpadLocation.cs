@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Oddity.API.Models.Launchpad
+﻿namespace Oddity.API.Models.Launchpad
 {
     public class LaunchpadLocation
     {

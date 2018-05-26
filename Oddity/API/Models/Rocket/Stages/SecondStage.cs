@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Oddity.API.Models.Common;
+﻿using Oddity.API.Models.Common;
 using Oddity.API.Models.Rocket.Stages.Payloads;
 
 namespace Oddity.API.Models.Rocket.Stages

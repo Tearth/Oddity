@@ -1,7 +1,5 @@
 ﻿using System.Net.Http;
-using Oddity.API.Builders.Launches;
-using Oddity.API.Builders.Launchpad;
-using Oddity.API.Builders.Rocket;
+using Oddity.API.Builders.Launch;
 
 namespace Oddity.API
 {

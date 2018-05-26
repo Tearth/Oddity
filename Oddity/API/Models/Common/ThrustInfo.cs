@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Oddity.API.Models.Common
+﻿namespace Oddity.API.Models.Common
 {
     public class ThrustInfo
     {

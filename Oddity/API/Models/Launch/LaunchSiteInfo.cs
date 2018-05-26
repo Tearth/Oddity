@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
-using Oddity.API.Models.Launchpad;
+﻿using Oddity.API.Models.Launchpad;
 
 namespace Oddity.API.Models.Launch
 {

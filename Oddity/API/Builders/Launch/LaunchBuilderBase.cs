@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using Oddity.API.Models.Launch.Rocket.FirstStage;
 using Oddity.API.Models.Launch.Rocket.SecondStage;
 using Oddity.API.Models.Launchpad;
 using Oddity.API.Models.Rocket;
 using Oddity.Helpers;
 
-namespace Oddity.API.Builders.Launches
+namespace Oddity.API.Builders.Launch
 {
     public abstract class LaunchBuilderBase<T> : BuilderBase where T: LaunchBuilderBase<T>
     {
