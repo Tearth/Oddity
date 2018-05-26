@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Launchpad
 {
@@ -14,7 +15,7 @@ namespace Oddity.API.Models.Launchpad
         public LaunchpadLocation Location { get; set; }
 
         [JsonProperty("vehicles_launched")]
-        public List<String> VehiclesLaunched { get; set; }
+        public List<string> VehiclesLaunched { get; set; }
 
         public string Details { get; set; }
     }

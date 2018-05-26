@@ -1,4 +1,5 @@
-﻿using Oddity.API.Models.Launchpad;
+﻿using Newtonsoft.Json;
+using Oddity.API.Models.Launchpad;
 
 namespace Oddity.API.Models.Launch
 {

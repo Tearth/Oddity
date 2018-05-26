@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Company
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Company
 {
     public class CompanyInfo
     {

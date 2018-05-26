@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Capsule.Heatshield
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Capsule.Heatshield
 {
     public class HeatshieldInfo
     {

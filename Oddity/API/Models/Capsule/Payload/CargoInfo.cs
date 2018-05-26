@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Capsule.Payload
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Capsule.Payload
 {
     public class CargoInfo
     {

@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Rocket.Stages.Payloads
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Rocket.Stages.Payloads
 {
     public class PayloadInfo
     {

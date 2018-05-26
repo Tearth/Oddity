@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Common
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Common
 {
     public class VolumeInfo
     {

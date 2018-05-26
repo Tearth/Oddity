@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using Oddity.API.Models.Launch.Rocket;
 
 namespace Oddity.API.Models.Launch

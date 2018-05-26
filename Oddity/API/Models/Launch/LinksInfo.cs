@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Launch
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Launch
 {
     public class LinksInfo
     {

@@ -10,7 +10,7 @@ namespace Oddity.API.Builders.Launch
 {
     public abstract class LaunchBuilderBase<T> : BuilderBase where T: LaunchBuilderBase<T>
     {
-        public LaunchBuilderBase(HttpClient httpClient) : base(httpClient)
+        protected LaunchBuilderBase(HttpClient httpClient) : base(httpClient)
         {
 
         }

@@ -1,4 +1,6 @@
-﻿namespace Oddity.API.Models.Rocket.LandingLegs
+﻿using Newtonsoft.Json;
+
+namespace Oddity.API.Models.Rocket.LandingLegs
 {
     public class LandingLegsInfo
     {
