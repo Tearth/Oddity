@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oddity", "Oddity\Oddity.csproj", "{700BB803-0731-47F0-BDA2-548866F9BABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oddity", "Oddity\Oddity.csproj", "{700BB803-0731-47F0-BDA2-548866F9BABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{236D7C81-534C-4AE1-93F5-B8FFB01B92F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{236D7C81-534C-4AE1-93F5-B8FFB01B92F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
