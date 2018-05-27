@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Oddity.API.Builders.Launchpad.Exceptions;
 using Oddity.API.Exceptions;
 using Oddity.API.Models.Launchpad;
 using Oddity.Helpers;
@@ -46,6 +47,11 @@ namespace Oddity.API.Builders.Launchpad
         /// <inheritdoc />
         public override async Task<LaunchpadInfo> ExecuteAsync()
         {
+            if (!_launchpadType.HasValue)
+            {
+                throw new LaunchpadTypeNotSelectedException();
+            }
+
             var link = BuildLink(RocketInfoEndpoint);
             if (_launchpadType.HasValue)
             {
