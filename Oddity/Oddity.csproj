@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
+    <Title>Oddity</Title>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Copyright>Copyright 2018</Copyright>
+    <Description>SpaceX API wrapper for .NET</Description>
+    <Authors>Tearth</Authors>
+    <Company>Tearth</Company>
+    <PackageLicenseUrl>https://github.com/Tearth/Oddity/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Tearth/Oddity</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Tearth/Oddity</RepositoryUrl>
+    <PackageTags>spacex api dotnet csharp dotnetstandard standard code framework</PackageTags>
+    <PackageReleaseNotes>initial version</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
