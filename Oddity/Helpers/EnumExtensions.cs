@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Oddity.Helpers
 {
-    public static class EnumExtensions
+    internal static class EnumExtensions
     {
         public static string GetEnumMemberAttributeValue(this Enum enumObject, object enumValue)
         {
