@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using Oddity.API;
 
 namespace Oddity
@@ -6,7 +7,7 @@ namespace Oddity
     /// <summary>
     /// Represents an core of the library. Use it to retrieve data from the SpaceX API.
     /// </summary>
-    public class Oddity
+    public class Oddity : IDisposable
     {
         /// <summary>
         /// Gets the company information.
@@ -41,12 +42,31 @@ namespace Oddity
         public Oddity()
         {
             _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
+            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Oddity/1.0 (https://github.com/Tearth/Oddity)");
+
+            SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
             Company = new Company(_httpClient);
             Rocket = new Rocket(_httpClient);
             Capsule = new Capsule(_httpClient);
             Launchpad = new Launchpad(_httpClient);
             Launches = new Launches(_httpClient);
+        }
+
+        /// <summary>
+        /// Sets the timeout for all API requests.
+        /// </summary>
+        /// <param name="timeoutSeconds">Timeout in seconds.</param>
+        public void SetTimeout(int timeoutSeconds)
+        {
+            _httpClient.Timeout = new TimeSpan(0, 0, 0, timeoutSeconds);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            _httpClient?.Dispose();
         }
     }
 }

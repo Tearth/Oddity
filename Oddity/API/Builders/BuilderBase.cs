@@ -93,8 +93,6 @@ namespace Oddity.API.Builders
         protected string BuildLink(string endpoint)
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.Append(ApiConfiguration.ApiEndpoint);
-            stringBuilder.Append("/");
             stringBuilder.Append(endpoint);
 
             var filters = SerializeFilters();
