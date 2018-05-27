@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using Oddity.API.Builders.Capsule.Exceptions;
+using Oddity.API.Exceptions;
 using Oddity.API.Models.Capsule;
 
 namespace Oddity.API.Builders.Capsule
@@ -39,6 +40,7 @@ namespace Oddity.API.Builders.Capsule
         /// Executes all filters and downloads result from API.
         /// </summary>
         /// <returns>The capsule information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public CapsuleInfo Execute()
         {
             return ExecuteAsync().Result;
@@ -48,17 +50,23 @@ namespace Oddity.API.Builders.Capsule
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
         /// <returns>The capsule information.</returns>
+        /// <exception cref="CapsuleTypeNotSelectedException">Thrown when user tries to call <see cref="Execute"/>
+        /// or <see cref="ExecuteAsync"/> without selected capsule type through <see cref="WithType"/>.</exception>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public async Task<CapsuleInfo> ExecuteAsync()
         {
+            if (!_capsuleType.HasValue)
+            {
+                throw new CapsuleTypeNotSelectedException();
+            }
+
             var link = BuildLink(CapsuleInfoEndpoint);
             if (_capsuleType.HasValue)
             {
                 link += $"/{_capsuleType.ToString().ToLower()}";
             }
 
-            var json = await HttpClient.GetStringAsync(link);
-
-            return JsonConvert.DeserializeObject<CapsuleInfo>(json);
+            return await RequestForObject<CapsuleInfo>(link);
         }
     }
 }

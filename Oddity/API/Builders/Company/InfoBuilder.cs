@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using Oddity.API.Exceptions;
 using Oddity.API.Models.Company;
 
 namespace Oddity.API.Builders.Company
@@ -25,6 +25,7 @@ namespace Oddity.API.Builders.Company
         /// Executes all filters and downloads result from API.
         /// </summary>
         /// <returns>The company information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public CompanyInfo Execute()
         {
             return ExecuteAsync().Result;
@@ -34,12 +35,11 @@ namespace Oddity.API.Builders.Company
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
         /// <returns>The company information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public async Task<CompanyInfo> ExecuteAsync()
         {
             var link = BuildLink(CompanyInfoEndpoint);
-            var json = await HttpClient.GetStringAsync(link);
-
-            return JsonConvert.DeserializeObject<CompanyInfo>(json);
+            return await RequestForObject<CompanyInfo>(link);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Oddity.API.Exceptions;
 using Oddity.API.Models.Capsule;
 
 namespace Oddity.API.Builders.Capsule
@@ -26,6 +27,7 @@ namespace Oddity.API.Builders.Capsule
         /// Executes all filters and downloads result from API.
         /// </summary>
         /// <returns>The all capsules information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public List<CapsuleInfo> Execute()
         {
             return ExecuteAsync().Result;
@@ -35,12 +37,11 @@ namespace Oddity.API.Builders.Capsule
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
         /// <returns>The all capsules information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public async Task<List<CapsuleInfo>> ExecuteAsync()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            var json = await HttpClient.GetStringAsync(link);
-
-            return JsonConvert.DeserializeObject<List<CapsuleInfo>>(json);
+            return await RequestForObject<List<CapsuleInfo>>(link);
         }
     }
 }

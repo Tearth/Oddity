@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using Oddity.API.Exceptions;
 using Oddity.API.Models.Company;
 
 namespace Oddity.API.Builders.Company
@@ -77,6 +77,7 @@ namespace Oddity.API.Builders.Company
         /// Executes all filters and downloads result from API.
         /// </summary>
         /// <returns>The list of history events.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public List<HistoryEvent> Execute()
         {
             return ExecuteAsync().Result;
@@ -86,12 +87,11 @@ namespace Oddity.API.Builders.Company
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
         /// <returns>The list of history events.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public async Task<List<HistoryEvent>> ExecuteAsync()
         {
             var link = BuildLink(CompanyHistoryEndpoint);
-            var json = await HttpClient.GetStringAsync(link);
-
-            return JsonConvert.DeserializeObject<List<HistoryEvent>>(json);
+            return await RequestForObject<List<HistoryEvent>>(link);
         }
     }
 }

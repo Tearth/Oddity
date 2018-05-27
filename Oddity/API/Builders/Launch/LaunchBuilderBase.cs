@@ -8,8 +8,17 @@ using Oddity.Helpers;
 
 namespace Oddity.API.Builders.Launch
 {
+    /// <summary>
+    /// Represents an abstract class for all launch builders. Contains methods to the detailed filters that aren't present
+    /// in other builders.
+    /// </summary>
+    /// <typeparam name="T">The launch builder type.</typeparam>
     public abstract class LaunchBuilderBase<T> : BuilderBase where T: LaunchBuilderBase<T>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LaunchBuilderBase"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client.</param>
         protected LaunchBuilderBase(HttpClient httpClient) : base(httpClient)
         {
 

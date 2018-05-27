@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Oddity.API.Exceptions;
 
 namespace Oddity.API.Builders
 {
@@ -54,6 +58,18 @@ namespace Oddity.API.Builders
             }
 
             return stringBuilder.ToString();
+        }
+
+        protected async Task<T> RequestForObject<T>(string link)
+        {
+            var response = await HttpClient.GetAsync(link);
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new APIUnavailableException($"Status code: {(int)response.StatusCode}");
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(content);
         }
 
         private string SerializeFilters()

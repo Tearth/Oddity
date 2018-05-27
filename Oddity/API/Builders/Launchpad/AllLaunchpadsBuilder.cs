@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Oddity.API.Exceptions;
 using Oddity.API.Models.Launchpad;
 
 namespace Oddity.API.Builders.Launchpad
@@ -26,6 +27,7 @@ namespace Oddity.API.Builders.Launchpad
         /// Executes all filters and downloads result from API.
         /// </summary>
         /// <returns>The all launchpads information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public List<LaunchpadInfo> Execute()
         {
             return ExecuteAsync().Result;
@@ -35,12 +37,11 @@ namespace Oddity.API.Builders.Launchpad
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
         /// <returns>The all launchpads information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public async Task<List<LaunchpadInfo>> ExecuteAsync()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
-            var json = await HttpClient.GetStringAsync(link);
-
-            return JsonConvert.DeserializeObject<List<LaunchpadInfo>>(json);
+            return await RequestForObject<List<LaunchpadInfo>>(link);
         }
     }
 }
