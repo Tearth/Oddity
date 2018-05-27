@@ -13,10 +13,10 @@ namespace Oddity.API.Builders.Launch
     /// in other builders.
     /// </summary>
     /// <typeparam name="T">The launch builder type.</typeparam>
-    public abstract class LaunchBuilderBase<T> : BuilderBase where T: LaunchBuilderBase<T>
+    public abstract class LaunchBuilderBase<T, R> : BuilderBase<R> where T: LaunchBuilderBase<T, R> where R: class
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LaunchBuilderBase"/> class.
+        /// Initializes a new instance of the <see cref="LaunchBuilderBase{T}"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         protected LaunchBuilderBase(HttpClient httpClient) : base(httpClient)

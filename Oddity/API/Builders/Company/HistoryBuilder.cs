@@ -10,7 +10,7 @@ namespace Oddity.API.Builders.Company
     /// <summary>
     /// Represents a set of methods to filter history events and download them from API.
     /// </summary>
-    public class HistoryBuilder : BuilderBase
+    public class HistoryBuilder : BuilderBase<List<HistoryEvent>>
     {
         private const string CompanyHistoryEndpoint = "info/history";
 
@@ -73,22 +73,14 @@ namespace Oddity.API.Builders.Company
             return this;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The list of history events.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public List<HistoryEvent> Execute()
+        /// <inheritdoc />
+        public override List<HistoryEvent> Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The list of history events.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<List<HistoryEvent>> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<List<HistoryEvent>> ExecuteAsync()
         {
             var link = BuildLink(CompanyHistoryEndpoint);
             return await RequestForObject<List<HistoryEvent>>(link);

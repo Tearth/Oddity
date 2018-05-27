@@ -8,7 +8,7 @@ namespace Oddity.API.Builders.Launch
     /// <summary>
     /// Represents a set of methods to filter past launch information and download them from API.
     /// </summary>
-    public class LatestLaunchesBuilder : BuilderBase
+    public class LatestLaunchesBuilder : BuilderBase<LaunchInfo>
     {
         private const string LaunchpadInfoEndpoint = "launches/latest";
 
@@ -21,22 +21,14 @@ namespace Oddity.API.Builders.Launch
 
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The past launch information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public LaunchInfo Execute()
+        /// <inheritdoc />
+        public override LaunchInfo Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The past launch information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<LaunchInfo> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<LaunchInfo> ExecuteAsync()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
             return await RequestForObject<LaunchInfo>(link);

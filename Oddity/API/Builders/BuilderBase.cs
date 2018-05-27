@@ -12,7 +12,7 @@ namespace Oddity.API.Builders
     /// <summary>
     /// Represents an abstract base class for all builders.
     /// </summary>
-    public abstract class BuilderBase
+    public abstract class BuilderBase<T>
     {
         protected HttpClient HttpClient;
         private Dictionary<string, string> _filters;
@@ -22,6 +22,20 @@ namespace Oddity.API.Builders
             HttpClient = httpClient;
             _filters = new Dictionary<string, string>();
         }
+
+        /// <summary>
+        /// Executes all filters and downloads result from API.
+        /// </summary>
+        /// <returns>The all capsules information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
+        public abstract T Execute();
+
+        /// <summary>
+        /// Executes all filters and downloads result from API asynchronously.
+        /// </summary>
+        /// <returns>The all capsules information.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
+        public abstract Task<T> ExecuteAsync();
 
         protected void AddFilter(string name, int value)
         {

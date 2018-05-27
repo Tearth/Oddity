@@ -10,7 +10,7 @@ namespace Oddity.API.Builders.Capsule
     /// <summary>
     /// Represents a set of methods to filter all capsules information and download them from API.
     /// </summary>
-    public class AllCapsulesBuilder : BuilderBase
+    public class AllCapsulesBuilder : BuilderBase<List<CapsuleInfo>>
     {
         private const string CapsuleInfoEndpoint = "capsules";
 
@@ -23,22 +23,14 @@ namespace Oddity.API.Builders.Capsule
 
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The all capsules information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public List<CapsuleInfo> Execute()
+        /// <inheritdoc />
+        public override List<CapsuleInfo> Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The all capsules information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<List<CapsuleInfo>> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<List<CapsuleInfo>> ExecuteAsync()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
             return await RequestForObject<List<CapsuleInfo>>(link);

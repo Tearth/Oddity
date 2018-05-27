@@ -9,7 +9,7 @@ namespace Oddity.API.Builders.Launch
     /// <summary>
     /// Represents a set of methods to filter all launches information and download them from API.
     /// </summary>
-    public class UpcomingLaunchesBuilder : LaunchBuilderBase<UpcomingLaunchesBuilder>
+    public class UpcomingLaunchesBuilder : LaunchBuilderBase<UpcomingLaunchesBuilder, List<LaunchInfo>>
     {
         private const string LaunchpadInfoEndpoint = "launches/upcoming";
 
@@ -22,22 +22,14 @@ namespace Oddity.API.Builders.Launch
 
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The all upcoming launches information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public List<LaunchInfo> Execute()
+        /// <inheritdoc />
+        public override List<LaunchInfo> Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The all upcoming launches information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<List<LaunchInfo>> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<List<LaunchInfo>> ExecuteAsync()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
             return await RequestForObject<List<LaunchInfo>>(link);

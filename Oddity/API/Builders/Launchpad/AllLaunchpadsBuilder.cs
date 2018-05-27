@@ -10,7 +10,7 @@ namespace Oddity.API.Builders.Launchpad
     /// <summary>
     /// Represents a set of methods to filter all launchpads information and download them from API.
     /// </summary>
-    public class AllLaunchpadsBuilder : BuilderBase
+    public class AllLaunchpadsBuilder : BuilderBase<List<LaunchpadInfo>>
     {
         private const string LaunchpadInfoEndpoint = "launchpads";
 
@@ -23,22 +23,14 @@ namespace Oddity.API.Builders.Launchpad
 
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The all launchpads information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public List<LaunchpadInfo> Execute()
+        /// <inheritdoc />
+        public override List<LaunchpadInfo> Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The all launchpads information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<List<LaunchpadInfo>> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<List<LaunchpadInfo>> ExecuteAsync()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
             return await RequestForObject<List<LaunchpadInfo>>(link);

@@ -8,7 +8,7 @@ namespace Oddity.API.Builders.Company
     /// <summary>
     /// Represents a set of methods to filter company information and download them from API.
     /// </summary>
-    public class InfoBuilder : BuilderBase
+    public class InfoBuilder : BuilderBase<CompanyInfo>
     {
         private const string CompanyInfoEndpoint = "info";
 
@@ -21,22 +21,14 @@ namespace Oddity.API.Builders.Company
 
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The company information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public CompanyInfo Execute()
+        /// <inheritdoc />
+        public override CompanyInfo Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The company information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<CompanyInfo> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<CompanyInfo> ExecuteAsync()
         {
             var link = BuildLink(CompanyInfoEndpoint);
             return await RequestForObject<CompanyInfo>(link);

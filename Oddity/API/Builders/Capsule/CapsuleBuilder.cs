@@ -9,7 +9,7 @@ namespace Oddity.API.Builders.Capsule
     /// <summary>
     /// Represents a set of methods to filter capsule information and download them from API.
     /// </summary>
-    public class CapsuleBuilder : BuilderBase
+    public class CapsuleBuilder : BuilderBase<CapsuleInfo>
     {
         private CapsuleId? _capsuleType;
         private const string CapsuleInfoEndpoint = "capsules";
@@ -36,24 +36,14 @@ namespace Oddity.API.Builders.Capsule
             return this;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The capsule information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public CapsuleInfo Execute()
+        /// <inheritdoc />
+        public override CapsuleInfo Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The capsule information.</returns>
-        /// <exception cref="CapsuleTypeNotSelectedException">Thrown when user tries to call <see cref="Execute"/>
-        /// or <see cref="ExecuteAsync"/> without selected capsule type through <see cref="WithType"/>.</exception>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<CapsuleInfo> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<CapsuleInfo> ExecuteAsync()
         {
             if (!_capsuleType.HasValue)
             {

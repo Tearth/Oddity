@@ -10,7 +10,7 @@ namespace Oddity.API.Builders.Rocket
     /// <summary>
     /// Represents a set of methods to filter all rockets information and download them from API.
     /// </summary>
-    public class AllRocketsBuilder : BuilderBase
+    public class AllRocketsBuilder : BuilderBase<List<RocketInfo>>
     {
         private const string RocketInfoEndpoint = "rockets";
 
@@ -23,22 +23,14 @@ namespace Oddity.API.Builders.Rocket
 
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API.
-        /// </summary>
-        /// <returns>The all rockets information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public List<RocketInfo> Execute()
+        /// <inheritdoc />
+        public override List<RocketInfo> Execute()
         {
             return ExecuteAsync().Result;
         }
 
-        /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
-        /// </summary>
-        /// <returns>The all rockets information.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public async Task<List<RocketInfo>> ExecuteAsync()
+        /// <inheritdoc />
+        public override async Task<List<RocketInfo>> ExecuteAsync()
         {
             var link = BuildLink(RocketInfoEndpoint);
             return await RequestForObject<List<RocketInfo>>(link);
