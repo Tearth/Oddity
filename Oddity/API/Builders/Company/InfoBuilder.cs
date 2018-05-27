@@ -31,7 +31,7 @@ namespace Oddity.API.Builders.Company
         public override async Task<CompanyInfo> ExecuteAsync()
         {
             var link = BuildLink(CompanyInfoEndpoint);
-            return await RequestForObject<CompanyInfo>(link);
+            return await RequestForObject(link);
         }
     }
 }

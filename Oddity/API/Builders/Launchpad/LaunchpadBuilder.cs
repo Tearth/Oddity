@@ -45,6 +45,7 @@ namespace Oddity.API.Builders.Launchpad
         }
 
         /// <inheritdoc />
+        /// <exception cref="LaunchpadTypeNotSelectedException">Thrown when user tries to get API data without selected launchpad type.</exception>
         public override async Task<LaunchpadInfo> ExecuteAsync()
         {
             if (!_launchpadType.HasValue)
@@ -59,7 +60,7 @@ namespace Oddity.API.Builders.Launchpad
                 link += $"/{launchpadName.ToLower()}";
             }
 
-            return await RequestForObject<LaunchpadInfo>(link);
+            return await RequestForObject(link);
         }
     }
 }

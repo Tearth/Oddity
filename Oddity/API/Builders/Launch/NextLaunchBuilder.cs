@@ -31,7 +31,7 @@ namespace Oddity.API.Builders.Launch
         public override async Task<LaunchInfo> ExecuteAsync()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
-            return await RequestForObject<LaunchInfo>(link);
+            return await RequestForObject(link);
         }
     }
 }

@@ -14,9 +14,17 @@ namespace Oddity.API.Builders
     /// </summary>
     public abstract class BuilderBase<T>
     {
-        protected HttpClient HttpClient;
+        /// <summary>
+        /// Gets or sets the http client which sends requests to the SpaceX API.
+        /// </summary>
+        protected HttpClient HttpClient { get; }
+
         private Dictionary<string, string> _filters;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuilderBase{T}"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client.</param>
         protected BuilderBase(HttpClient httpClient)
         {
             HttpClient = httpClient;
@@ -37,26 +45,51 @@ namespace Oddity.API.Builders
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract Task<T> ExecuteAsync();
 
+        /// <summary>
+        /// Adds or overrides filter with the specified name and integer value.
+        /// </summary>
+        /// <param name="name">The filter name.</param>
+        /// <param name="value">The filter integer value.</param>
         protected void AddFilter(string name, int value)
         {
             _filters[name] = value.ToString();
         }
 
+        /// <summary>
+        /// Adds or overrides filter with the specified name and string value.
+        /// </summary>
+        /// <param name="name">The filter name.</param>
+        /// <param name="value">The filter string value.</param>
         protected void AddFilter(string name, string value)
         {
             _filters[name] = value;
         }
 
+        /// <summary>
+        /// Adds or overrides filter with the specified name and boolean value.
+        /// </summary>
+        /// <param name="name">The filter name.</param>
+        /// <param name="value">The filter boolean value.</param>
         protected void AddFilter(string name, bool value)
         {
             _filters[name] = value.ToString().ToLower();
         }
 
+        /// <summary>
+        /// Adds or overrides filter with the specified name and DateTime value.
+        /// </summary>
+        /// <param name="name">The filter name.</param>
+        /// <param name="value">The filter DateTime value.</param>
         protected void AddFilter(string name, DateTime value)
         {
             _filters[name] = value.ToString("yyyy-MM-dd");
         }
 
+        /// <summary>
+        /// Build an link to the API with the specified endpoint and applied filters.
+        /// </summary>
+        /// <param name="endpoint">The API endpoint.</param>
+        /// <returns>The link to the API ready to call.</returns>
         protected string BuildLink(string endpoint)
         {
             var stringBuilder = new StringBuilder();
@@ -74,7 +107,12 @@ namespace Oddity.API.Builders
             return stringBuilder.ToString();
         }
 
-        protected async Task<T> RequestForObject<T>(string link)
+        /// <summary>
+        /// Sends an request to the SpaceX API with the specified link.
+        /// </summary>
+        /// <param name="link">The request link.</param>
+        /// <returns>The deserialized object returned from API.</returns>
+        protected async Task<T> RequestForObject(string link)
         {
             var response = await HttpClient.GetAsync(link);
             if (response.StatusCode != HttpStatusCode.OK)

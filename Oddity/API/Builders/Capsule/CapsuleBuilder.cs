@@ -43,6 +43,7 @@ namespace Oddity.API.Builders.Capsule
         }
 
         /// <inheritdoc />
+        /// <exception cref="CapsuleTypeNotSelectedException">Thrown when user tries to get API data without selected capsule type.</exception>
         public override async Task<CapsuleInfo> ExecuteAsync()
         {
             if (!_capsuleType.HasValue)
@@ -56,7 +57,7 @@ namespace Oddity.API.Builders.Capsule
                 link += $"/{_capsuleType.ToString().ToLower()}";
             }
 
-            return await RequestForObject<CapsuleInfo>(link);
+            return await RequestForObject(link);
         }
     }
 }

@@ -24,9 +24,8 @@ namespace Oddity.API.Builders.Company
         }
 
         /// <summary>
-        /// Filters history events by date range (both "from" and "to" dates have to be present). Note that you have to call
-        /// <see cref="Execute"/> or <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will
-        /// override previously saved date range filter.
+        /// Filters history events by date range. Note that you have to call <see cref="Execute"/> or <see cref="ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved date range filter.
         /// </summary>
         /// <param name="from">Filter from the specified date.</param>
         /// <param name="to">Filter to the specified date.</param>
@@ -83,7 +82,7 @@ namespace Oddity.API.Builders.Company
         public override async Task<List<HistoryEvent>> ExecuteAsync()
         {
             var link = BuildLink(CompanyHistoryEndpoint);
-            return await RequestForObject<List<HistoryEvent>>(link);
+            return await RequestForObject(link);
         }
     }
 }

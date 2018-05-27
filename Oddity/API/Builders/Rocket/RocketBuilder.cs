@@ -44,6 +44,7 @@ namespace Oddity.API.Builders.Rocket
         }
 
         /// <inheritdoc />
+        /// <exception cref="RocketTypeNotSelectedException">Thrown when user tries to get API data without selected rocket type.</exception>
         public override async Task<RocketInfo> ExecuteAsync()
         {
             if (!_rocketType.HasValue)
@@ -57,7 +58,7 @@ namespace Oddity.API.Builders.Rocket
                 link += $"/{_rocketType.ToString().ToLower()}";
             }
 
-            return await RequestForObject<RocketInfo>(link);
+            return await RequestForObject(link);
         }
     }
 }
