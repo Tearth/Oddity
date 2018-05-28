@@ -27,6 +27,7 @@ namespace Oddity.API.Builders
         /// Initializes a new instance of the <see cref="BuilderBase{TReturn}"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="deserializationError">The deserialization error delegate.</param>
         protected BuilderBase(HttpClient httpClient, DeserializationError deserializationError)
         {
             HttpClient = httpClient;

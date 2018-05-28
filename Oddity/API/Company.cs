@@ -15,6 +15,7 @@ namespace Oddity.API
         /// Initializes a new instance of the <see cref="Company"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="deserializationError">The deserialization error delegate.</param>
         public Company(HttpClient httpClient, DeserializationError deserializationError)
         {
             _httpClient = httpClient;
