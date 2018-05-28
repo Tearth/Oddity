@@ -2,6 +2,7 @@
 {
     public enum EngineType
     {
-        Merlin
+        Merlin,
+        Raptor
     }
 }

@@ -8,7 +8,7 @@ namespace Oddity.API.Models.Launch.Rocket
     public class RocketInfo
     {
         [JsonProperty("rocket_id")]
-        public RocketId Id { get; set; }
+        public RocketId? Id { get; set; }
 
         [JsonProperty("rocket_name")]
         public string RocketName { get; set; }

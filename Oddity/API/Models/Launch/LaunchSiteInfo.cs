@@ -6,7 +6,7 @@ namespace Oddity.API.Models.Launch
     public class LaunchSiteInfo
     {
         [JsonProperty("site_id")]
-        public LaunchpadId SiteId { get; set; }
+        public LaunchpadId? SiteId { get; set; }
 
         [JsonProperty("site_name")]
         public string SiteName { get; set; }

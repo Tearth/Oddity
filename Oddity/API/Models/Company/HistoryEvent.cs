@@ -8,7 +8,7 @@ namespace Oddity.API.Models.Company
         public string Title { get; set; }
 
         [JsonProperty("event_date_utc")]
-        public DateTime EventDate { get; set; }
+        public DateTime? EventDate { get; set; }
 
         [JsonProperty("flight_number")]
         public int? FlightNumber { get; set; }

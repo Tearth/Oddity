@@ -7,22 +7,22 @@ namespace Oddity.API.Models.Launch
     public class LaunchInfo
     {
         [JsonProperty("flight_number")]
-        public int FlightNumber { get; set; }
+        public int? FlightNumber { get; set; }
 
         [JsonProperty("mission_name")]
         public string MissionName { get; set; }
 
         [JsonProperty("launch_year")]
-        public int LaunchYear { get; set; }
+        public int? LaunchYear { get; set; }
 
         [JsonProperty("launch_date_unix")]
-        public ulong LaunchDateUnix { get; set; }
+        public ulong? LaunchDateUnix { get; set; }
 
         [JsonProperty("launch_date_utc")]
-        public DateTime LaunchDateUtc { get; set; }
+        public DateTime? LaunchDateUtc { get; set; }
 
         [JsonProperty("launch_date_local")]
-        public DateTime LaunchDateLocal { get; set; }
+        public DateTime? LaunchDateLocal { get; set; }
 
         public RocketInfo Rocket { get; set; }
         public ReuseInfo Reuse { get; set; }

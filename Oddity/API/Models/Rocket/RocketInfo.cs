@@ -13,16 +13,16 @@ namespace Oddity.API.Models.Rocket
         public RocketId Id { get; set; }
 
         public string Name { get; set; }
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
-        public int Stages { get; set; }
-        public int Boosters { get; set; }
+        public int? Stages { get; set; }
+        public int? Boosters { get; set; }
 
         [JsonProperty("cost_per_launch")]
-        public uint CostPerLaunch { get; set; }
+        public uint? CostPerLaunch { get; set; }
 
         [JsonProperty("success_rate_pct")]
-        public int SuccessRate { get; set; }
+        public int? SuccessRate { get; set; }
 
         [JsonProperty("first_flight")]
         public DateTime FirstFlight { get; set; }

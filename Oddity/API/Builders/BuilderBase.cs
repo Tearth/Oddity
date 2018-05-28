@@ -130,7 +130,6 @@ namespace Oddity.API.Builders
 
         private void JsonDeserializationError(object sender, ErrorEventArgs errorEventArgs)
         {
-            errorEventArgs.ErrorContext.Handled = true;
             _deserializationError(errorEventArgs);
         }
 

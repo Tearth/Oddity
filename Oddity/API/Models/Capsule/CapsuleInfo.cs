@@ -9,19 +9,19 @@ namespace Oddity.API.Models.Capsule
 {
     public class CapsuleInfo
     {
-        public CapsuleId Id { get; set; }
+        public CapsuleId? Id { get; set; }
 
         public string Name { get; set; }
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
         [JsonProperty("crew_capacity")]
-        public int CrewCapacity { get; set; }
+        public int? CrewCapacity { get; set; }
 
         [JsonProperty("sidewall_angle_deg")]
-        public int SidewallAngleDegrees { get; set; }
+        public int? SidewallAngleDegrees { get; set; }
 
         [JsonProperty("orbit_duration_yr")]
-        public int OrbitDurationYears { get; set; }
+        public int? OrbitDurationYears { get; set; }
 
         [JsonProperty("heat_shield")]
         public HeatshieldInfo Heatshield { get; set; }
