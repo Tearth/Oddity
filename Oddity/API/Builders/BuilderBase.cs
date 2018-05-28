@@ -12,7 +12,7 @@ namespace Oddity.API.Builders
     /// <summary>
     /// Represents an abstract base class for all builders.
     /// </summary>
-    public abstract class BuilderBase<T>
+    public abstract class BuilderBase<TReturn>
     {
         /// <summary>
         /// Gets or sets the http client which sends requests to the SpaceX API.
@@ -22,7 +22,7 @@ namespace Oddity.API.Builders
         private Dictionary<string, string> _filters;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BuilderBase{T}"/> class.
+        /// Initializes a new instance of the <see cref="BuilderBase{TReturn}"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         protected BuilderBase(HttpClient httpClient)
@@ -36,14 +36,14 @@ namespace Oddity.API.Builders
         /// </summary>
         /// <returns>The all capsules information.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public abstract T Execute();
+        public abstract TReturn Execute();
 
         /// <summary>
         /// Executes all filters and downloads result from API asynchronously.
         /// </summary>
         /// <returns>The all capsules information.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public abstract Task<T> ExecuteAsync();
+        public abstract Task<TReturn> ExecuteAsync();
 
         /// <summary>
         /// Adds or overrides filter with the specified name and integer value.
@@ -110,7 +110,7 @@ namespace Oddity.API.Builders
         /// </summary>
         /// <param name="link">The request link.</param>
         /// <returns>The deserialized object returned from API.</returns>
-        protected async Task<T> RequestForObject(string link)
+        protected async Task<TReturn> RequestForObject(string link)
         {
             var response = await HttpClient.GetAsync(link);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -119,7 +119,7 @@ namespace Oddity.API.Builders
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(content);
+            return JsonConvert.DeserializeObject<TReturn>(content);
         }
 
         private string SerializeFilters()
