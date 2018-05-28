@@ -37,6 +37,9 @@ namespace Oddity
         /// </summary>
         public Launches Launches { get; }
 
+        /// <summary>
+        /// Event triggered when an error occured during JSON deserialization.
+        /// </summary>
         public event EventHandler<ErrorEventArgs> OnDeserializationError;
 
         private HttpClient _httpClient;
