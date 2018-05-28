@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Exceptions;
 using Oddity.API.Models.Launch;
 
 namespace Oddity.API.Builders.Launch

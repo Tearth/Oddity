@@ -1,8 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Oddity.API.Builders.Rocket.Exceptions;
-using Oddity.API.Exceptions;
 using Oddity.API.Models.Rocket;
 
 namespace Oddity.API.Builders.Rocket

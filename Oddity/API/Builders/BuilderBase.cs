@@ -115,6 +115,7 @@ namespace Oddity.API.Builders
         /// </summary>
         /// <param name="link">The request link.</param>
         /// <returns>The deserialized object returned from API.</returns>
+        /// <exception cref="APIUnavailableException">Thrown when SpaceX is unavailable and data can't be retrieved.</exception>
         protected async Task<TReturn> RequestForObject(string link)
         {
             var response = await HttpClient.GetAsync(link);

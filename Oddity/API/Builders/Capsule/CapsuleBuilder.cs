@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.API.Builders.Capsule.Exceptions;
-using Oddity.API.Exceptions;
 using Oddity.API.Models.Capsule;
 
 namespace Oddity.API.Builders.Capsule

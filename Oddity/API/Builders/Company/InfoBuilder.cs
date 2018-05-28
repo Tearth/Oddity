@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Exceptions;
 using Oddity.API.Models.Company;
 
 namespace Oddity.API.Builders.Company
