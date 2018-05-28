@@ -9,14 +9,16 @@ namespace Oddity.API
     public class Launches
     {
         private HttpClient _httpClient;
+        private DeserializationError _deserializationError;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Launches"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public Launches(HttpClient httpClient)
+        public Launches(HttpClient httpClient, DeserializationError deserializationError)
         {
             _httpClient = httpClient;
+            _deserializationError = deserializationError;
         }
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace Oddity.API
         /// <returns>The all launches builder.</returns>
         public AllLaunchesBuilder GetAll()
         {
-            return new AllLaunchesBuilder(_httpClient);
+            return new AllLaunchesBuilder(_httpClient, _deserializationError);
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace Oddity.API
         /// <returns>The latest launch builder.</returns>
         public LatestLaunchesBuilder GetLatest()
         {
-            return new LatestLaunchesBuilder(_httpClient);
+            return new LatestLaunchesBuilder(_httpClient, _deserializationError);
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace Oddity.API
         /// <returns>The next launch builder.</returns>
         public NextLaunchesBuilder GetNext()
         {
-            return new NextLaunchesBuilder(_httpClient);
+            return new NextLaunchesBuilder(_httpClient, _deserializationError);
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace Oddity.API
         /// <returns>The all upcoming launches builder.</returns>
         public UpcomingLaunchesBuilder GetUpcoming()
         {
-            return new UpcomingLaunchesBuilder(_httpClient);
+            return new UpcomingLaunchesBuilder(_httpClient, _deserializationError);
         }
 
 
@@ -72,7 +74,7 @@ namespace Oddity.API
         /// <returns>The past launches builder.</returns>
         public PastLaunchesBuilder GetPast()
         {
-            return new PastLaunchesBuilder(_httpClient);
+            return new PastLaunchesBuilder(_httpClient, _deserializationError);
         }
     }
 }

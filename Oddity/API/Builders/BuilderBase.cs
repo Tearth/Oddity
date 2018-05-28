@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Oddity.API.Exceptions;
 
 namespace Oddity.API.Builders
@@ -19,15 +20,18 @@ namespace Oddity.API.Builders
         /// </summary>
         protected HttpClient HttpClient { get; }
 
+        private DeserializationError _deserializationError;
         private Dictionary<string, string> _filters;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BuilderBase{TReturn}"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        protected BuilderBase(HttpClient httpClient)
+        protected BuilderBase(HttpClient httpClient, DeserializationError deserializationError)
         {
             HttpClient = httpClient;
+
+            _deserializationError = deserializationError;
             _filters = new Dictionary<string, string>();
         }
 
@@ -119,7 +123,15 @@ namespace Oddity.API.Builders
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<TReturn>(content);
+            var deserializationSettings = new JsonSerializerSettings {Error = JsonDeserializationError};
+
+            return JsonConvert.DeserializeObject<TReturn>(content, deserializationSettings);
+        }
+
+        private void JsonDeserializationError(object sender, ErrorEventArgs errorEventArgs)
+        {
+            errorEventArgs.ErrorContext.Handled = true;
+            _deserializationError(errorEventArgs);
         }
 
         private string SerializeFilters()

@@ -16,7 +16,7 @@ namespace Oddity.API.Builders.Company
         /// Initializes a new instance of the <see cref="InfoBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public InfoBuilder(HttpClient httpClient) : base(httpClient)
+        public InfoBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
         {
 
         }

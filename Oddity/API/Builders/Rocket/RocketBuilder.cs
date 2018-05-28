@@ -19,7 +19,7 @@ namespace Oddity.API.Builders.Rocket
         /// Initializes a new instance of the <see cref="RocketBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public RocketBuilder(HttpClient httpClient) : base(httpClient)
+        public RocketBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
         {
 
         }

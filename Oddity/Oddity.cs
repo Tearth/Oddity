@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Net.Http;
+using Newtonsoft.Json.Serialization;
 using Oddity.API;
 
 namespace Oddity
 {
+    public delegate void DeserializationError(ErrorEventArgs args);
+
     /// <summary>
     /// Represents an core of the library. Use it to retrieve data from the SpaceX API.
     /// </summary>
@@ -34,6 +37,8 @@ namespace Oddity
         /// </summary>
         public Launches Launches { get; }
 
+        public event EventHandler<ErrorEventArgs> OnDeserializationError;
+
         private HttpClient _httpClient;
 
         /// <summary>
@@ -47,11 +52,11 @@ namespace Oddity
 
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
-            Company = new Company(_httpClient);
-            Rocket = new Rocket(_httpClient);
-            Capsule = new Capsule(_httpClient);
-            Launchpad = new Launchpad(_httpClient);
-            Launches = new Launches(_httpClient);
+            Company = new Company(_httpClient, DeserializationError);
+            Rocket = new Rocket(_httpClient, DeserializationError);
+            Capsule = new Capsule(_httpClient, DeserializationError);
+            Launchpad = new Launchpad(_httpClient, DeserializationError);
+            Launches = new Launches(_httpClient, DeserializationError);
         }
 
         /// <summary>
@@ -67,6 +72,11 @@ namespace Oddity
         public void Dispose()
         {
             _httpClient?.Dispose();
+        }
+
+        private void DeserializationError(ErrorEventArgs args)
+        {
+            OnDeserializationError(this, args);
         }
     }
 }

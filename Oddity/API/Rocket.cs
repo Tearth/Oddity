@@ -9,14 +9,16 @@ namespace Oddity.API
     public class Rocket
     {
         private HttpClient _httpClient;
+        private DeserializationError _deserializationError;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Rocket"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public Rocket(HttpClient httpClient)
+        public Rocket(HttpClient httpClient, DeserializationError deserializationError)
         {
             _httpClient = httpClient;
+            _deserializationError = deserializationError;
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace Oddity.API
         /// <returns>The rocket builder.</returns>
         public RocketBuilder GetAbout()
         {
-            return new RocketBuilder(_httpClient);
+            return new RocketBuilder(_httpClient, _deserializationError);
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace Oddity.API
         /// <returns>The all rockets builder.</returns>
         public AllRocketsBuilder GetAll()
         {
-            return new AllRocketsBuilder(_httpClient);
+            return new AllRocketsBuilder(_httpClient, _deserializationError);
         }
     }
 }

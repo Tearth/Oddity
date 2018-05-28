@@ -9,14 +9,16 @@ namespace Oddity.API
     public class Launchpad
     {
         private HttpClient _httpClient;
+        private DeserializationError _deserializationError;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Launchpad"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public Launchpad(HttpClient httpClient)
+        public Launchpad(HttpClient httpClient, DeserializationError deserializationError)
         {
             _httpClient = httpClient;
+            _deserializationError = deserializationError;
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace Oddity.API
         /// <returns>The launchpad builder.</returns>
         public LaunchpadBuilder GetAbout()
         {
-            return new LaunchpadBuilder(_httpClient);
+            return new LaunchpadBuilder(_httpClient, _deserializationError);
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace Oddity.API
         /// <returns>The all launchpads builder.</returns>
         public AllLaunchpadsBuilder GetAll()
         {
-            return new AllLaunchpadsBuilder(_httpClient);
+            return new AllLaunchpadsBuilder(_httpClient, _deserializationError);
         }
     }
 }

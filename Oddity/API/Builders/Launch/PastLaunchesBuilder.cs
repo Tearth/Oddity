@@ -17,7 +17,7 @@ namespace Oddity.API.Builders.Launch
         /// Initializes a new instance of the <see cref="PastLaunchesBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public PastLaunchesBuilder(HttpClient httpClient) : base(httpClient)
+        public PastLaunchesBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
         {
 
         }

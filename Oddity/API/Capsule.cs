@@ -9,14 +9,16 @@ namespace Oddity.API
     public class Capsule
     {
         private HttpClient _httpClient;
+        private DeserializationError _deserializationError;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Capsule"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public Capsule(HttpClient httpClient)
+        public Capsule(HttpClient httpClient, DeserializationError deserializationError)
         {
             _httpClient = httpClient;
+            _deserializationError = deserializationError;
         }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace Oddity.API
         /// <returns>The capsule builder.</returns>
         public CapsuleBuilder GetAbout()
         {
-            return new CapsuleBuilder(_httpClient);
+            return new CapsuleBuilder(_httpClient, _deserializationError);
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace Oddity.API
         /// <returns>The all capsules builder.</returns>
         public AllCapsulesBuilder GetAll()
         {
-            return new AllCapsulesBuilder(_httpClient);
+            return new AllCapsulesBuilder(_httpClient, _deserializationError);
         }
     }
 }

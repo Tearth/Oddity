@@ -20,7 +20,7 @@ namespace Oddity.API.Builders.Launchpad
         /// Initializes a new instance of the <see cref="LaunchpadBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public LaunchpadBuilder(HttpClient httpClient) : base(httpClient)
+        public LaunchpadBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
         {
 
         }

@@ -18,7 +18,7 @@ namespace Oddity.API.Builders.Capsule
         /// Initializes a new instance of the <see cref="CapsuleBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        public CapsuleBuilder(HttpClient httpClient) : base(httpClient)
+        public CapsuleBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
         {
 
         }
