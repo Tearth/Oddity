@@ -12,15 +12,15 @@ namespace Oddity.API.Models.DetailedCapsule
         public string CapsuleSerial { get; set; }
 
         [JsonProperty("capsule_id")]
-        public CapsuleId CapsuleId { get; set; }
+        public CapsuleId? CapsuleId { get; set; }
 
-        public string Status { get; set; }
+        public DetailedCapsuleStatus? Status { get; set; }
 
         [JsonProperty("original_launch")]
-        public DateTime OriginalLaunch { get; set; }
+        public string OriginalLaunch { get; set; }
 
         public List<String> Missions { get; set; }
-        public int Landings { get; set; }
+        public int? Landings { get; set; }
         public string Type { get; set; }
         public string Details { get; set; }
     }

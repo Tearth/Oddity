@@ -28,6 +28,11 @@ namespace Oddity
         public Capsule Capsule { get; }
 
         /// <summary>
+        /// Gets the detailed capsules information.
+        /// </summary>
+        public DetailedCapsules DetailedCapsules { get; }
+
+        /// <summary>
         /// Gets the launchpads information.
         /// </summary>
         public Launchpad Launchpad { get; }
@@ -58,6 +63,7 @@ namespace Oddity
             Company = new Company(_httpClient, DeserializationError);
             Rocket = new Rocket(_httpClient, DeserializationError);
             Capsule = new Capsule(_httpClient, DeserializationError);
+            DetailedCapsules = new DetailedCapsules(_httpClient, DeserializationError);
             Launchpad = new Launchpad(_httpClient, DeserializationError);
             Launches = new Launches(_httpClient, DeserializationError);
         }
