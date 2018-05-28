@@ -330,3 +330,5 @@ ASALocalRun/
 .mfractor/
 /TestApp
 /Documentation
+/cloc.exe
+/cloc.bat
