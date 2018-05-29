@@ -100,9 +100,9 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved RTLS landing filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithRtlsLanding(bool rtlsLanding)
+        public AllDetailedCoreBuilder WithRtlsLanding(int landings)
         {
-            AddFilter("rtls_landing", rtlsLanding);
+            AddFilter("rtls_landings", landings);
             return this;
         }
 
@@ -122,9 +122,9 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved ASDS landing filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithAsdsLanding(bool asdsLanding)
+        public AllDetailedCoreBuilder WithAsdsLanding(int landings)
         {
-            AddFilter("asds_landing", asdsLanding);
+            AddFilter("asds_landings", landings);
             return this;
         }
 

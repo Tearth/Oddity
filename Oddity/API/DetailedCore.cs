@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders.Capsule;
 using Oddity.API.Builders.DetailedCapsule;
+using Oddity.API.Builders.DetailedCore;
 
 namespace Oddity.API
 {
@@ -28,10 +29,10 @@ namespace Oddity.API
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The capsule builder.</returns>
-        /*public DetailedCapsuleBuilder GetAbout()
+        public DetailedCoreBuilder GetAbout()
         {
-            return new DetailedCapsuleBuilder(_httpClient, _deserializationError);
-        }*/
+            return new DetailedCoreBuilder(_httpClient, _deserializationError);
+        }
 
         /// <summary>
         /// Gets detailed information about all cores. This method returns only builder which doesn't retrieve data from API itself, so after apply
