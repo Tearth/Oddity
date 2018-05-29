@@ -1,22 +1,21 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders.Capsule;
+using Oddity.API.Builders.DetailedCapsule;
+using Oddity.API.Builders.DetailedCore;
 
 namespace Oddity.API
 {
-    /// <summary>
-    /// Represents a set of methods to get capsules information.
-    /// </summary>
-    public class Capsule
+    public class DetailedCores
     {
         private HttpClient _httpClient;
         private DeserializationError _deserializationError;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Capsule"/> class.
+        /// Initializes a new instance of the <see cref="DetailedCores"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="deserializationError">The deserialization error delegate.</param>
-        public Capsule(HttpClient httpClient, DeserializationError deserializationError)
+        public DetailedCores(HttpClient httpClient, DeserializationError deserializationError)
         {
             _httpClient = httpClient;
             _deserializationError = deserializationError;
@@ -30,20 +29,20 @@ namespace Oddity.API
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The capsule builder.</returns>
-        public CapsuleBuilder GetAbout()
+        public DetailedCoreBuilder GetAbout()
         {
-            return new CapsuleBuilder(_httpClient, _deserializationError);
+            return new DetailedCoreBuilder(_httpClient, _deserializationError);
         }
 
         /// <summary>
-        /// Gets information about all capsules. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="AllCapsulesBuilder.Execute"/> or <see cref="AllCapsulesBuilder.ExecuteAsync"/> to
+        /// Gets detailed information about all cores. This method returns only builder which doesn't retrieve data from API itself, so after apply
+        /// all necessary filters you should call <see cref="AllDetailedCapsulesBuilder.Execute"/> or <see cref="AllDetailedCapsulesBuilder.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
-        /// <returns>The all capsules builder.</returns>
-        public AllCapsulesBuilder GetAll()
+        /// <returns>The all detailed core builder.</returns>
+        public AllDetailedCoresBuilder GetAll()
         {
-            return new AllCapsulesBuilder(_httpClient, _deserializationError);
+            return new AllDetailedCoresBuilder(_httpClient, _deserializationError);
         }
     }
 }

@@ -6,17 +6,17 @@ namespace Oddity.API
     /// <summary>
     /// Represents a set of methods to get launchpad information.
     /// </summary>
-    public class Launchpad
+    public class Launchpads
     {
         private HttpClient _httpClient;
         private DeserializationError _deserializationError;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Launchpad"/> class.
+        /// Initializes a new instance of the <see cref="Launchpads"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="deserializationError">The deserialization error delegate.</param>
-        public Launchpad(HttpClient httpClient, DeserializationError deserializationError)
+        public Launchpads(HttpClient httpClient, DeserializationError deserializationError)
         {
             _httpClient = httpClient;
             _deserializationError = deserializationError;

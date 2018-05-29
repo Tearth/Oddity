@@ -10,16 +10,16 @@ namespace Oddity.API.Builders.DetailedCapsule
     /// <summary>
     /// Represents a set of methods to filter detailed core information and download them from API.
     /// </summary>
-    public class AllDetailedCoreBuilder : BuilderBase<List<DetailedCoreInfo>>
+    public class AllDetailedCoresBuilder : BuilderBase<List<DetailedCoreInfo>>
     {
         private const string CapsuleInfoEndpoint = "parts/cores";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AllDetailedCoreBuilder"/> class.
+        /// Initializes a new instance of the <see cref="AllDetailedCoresBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="deserializationError">The deserialization error delegate.</param>
-        public AllDetailedCoreBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
+        public AllDetailedCoresBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
         {
 
         }
@@ -29,7 +29,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved core serial filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithCoreSerial(string coreSerial)
+        public AllDetailedCoresBuilder WithCoreSerial(string coreSerial)
         {
             AddFilter("core_serial", coreSerial);
             return this;
@@ -40,7 +40,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved core block number filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithBlock(int block)
+        public AllDetailedCoresBuilder WithBlock(int block)
         {
             AddFilter("block", block);
             return this;
@@ -51,7 +51,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved core status filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithStatus(DetailedCoreStatus status)
+        public AllDetailedCoresBuilder WithStatus(DetailedCoreStatus status)
         {
             AddFilter("status", status.GetEnumMemberAttributeValue(status));
             return this;
@@ -62,7 +62,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved original launch filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithOriginalLaunch(DateTime originalLaunch)
+        public AllDetailedCoresBuilder WithOriginalLaunch(DateTime originalLaunch)
         {
             AddFilter("original_launch", originalLaunch);
             return this;
@@ -73,7 +73,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved missions filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithMission(string mission)
+        public AllDetailedCoresBuilder WithMission(string mission)
         {
             AddFilter("missions", mission);
             return this;
@@ -84,7 +84,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved RTLS attempt filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithRtlsAttempt(bool rtlsAttempt)
+        public AllDetailedCoresBuilder WithRtlsAttempt(bool rtlsAttempt)
         {
             AddFilter("rtls_attempt", rtlsAttempt);
             return this;
@@ -95,7 +95,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved RTLS landing filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithRtlsLanding(int landings)
+        public AllDetailedCoresBuilder WithRtlsLanding(int landings)
         {
             AddFilter("rtls_landings", landings);
             return this;
@@ -106,7 +106,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved ASDS attempt filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithAsdsAttempt(bool asdsAttempt)
+        public AllDetailedCoresBuilder WithAsdsAttempt(bool asdsAttempt)
         {
             AddFilter("asds_attempt", asdsAttempt);
             return this;
@@ -117,7 +117,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved ASDS landing filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithAsdsLanding(int landings)
+        public AllDetailedCoresBuilder WithAsdsLanding(int landings)
         {
             AddFilter("asds_landings", landings);
             return this;
@@ -128,7 +128,7 @@ namespace Oddity.API.Builders.DetailedCapsule
         /// to get result from the API. Every next call of this method will override previously saved water landing filter.
         /// </summary>
         /// <returns>The builder.</returns>
-        public AllDetailedCoreBuilder WithWaterLanding(bool waterLanding)
+        public AllDetailedCoresBuilder WithWaterLanding(bool waterLanding)
         {
             AddFilter("water_landing", waterLanding);
             return this;

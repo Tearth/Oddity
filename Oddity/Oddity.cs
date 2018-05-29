@@ -20,12 +20,12 @@ namespace Oddity
         /// <summary>
         /// Gets the rockets information.
         /// </summary>
-        public Rocket Rocket { get; }
+        public Rockets Rockets { get; }
 
         /// <summary>
         /// Gets the capsules information.
         /// </summary>
-        public Capsule Capsule { get; }
+        public Capsules Capsules { get; }
 
         /// <summary>
         /// Gets the detailed capsules information.
@@ -35,12 +35,12 @@ namespace Oddity
         /// <summary>
         /// Gets the detailed core information.
         /// </summary>
-        public DetailedCore DetailedCore { get; }
+        public DetailedCores DetailedCores { get; }
 
         /// <summary>
         /// Gets the launchpads information.
         /// </summary>
-        public Launchpad Launchpad { get; }
+        public Launchpads Launchpads { get; }
 
         /// <summary>
         /// Gets the launches information.
@@ -66,11 +66,11 @@ namespace Oddity
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
             Company = new Company(_httpClient, DeserializationError);
-            Rocket = new Rocket(_httpClient, DeserializationError);
-            Capsule = new Capsule(_httpClient, DeserializationError);
+            Rockets = new Rockets(_httpClient, DeserializationError);
+            Capsules = new Capsules(_httpClient, DeserializationError);
             DetailedCapsules = new DetailedCapsules(_httpClient, DeserializationError);
-            DetailedCore = new DetailedCore(_httpClient, DeserializationError);
-            Launchpad = new Launchpad(_httpClient, DeserializationError);
+            DetailedCores = new DetailedCores(_httpClient, DeserializationError);
+            Launchpads = new Launchpads(_httpClient, DeserializationError);
             Launches = new Launches(_httpClient, DeserializationError);
         }
 
