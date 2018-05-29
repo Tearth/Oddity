@@ -91,7 +91,7 @@ namespace Oddity
 
         private void DeserializationError(ErrorEventArgs args)
         {
-            OnDeserializationError(this, args);
+            OnDeserializationError?.Invoke(this, args);
         }
     }
 }
