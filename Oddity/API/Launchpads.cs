@@ -1,5 +1,5 @@
 ﻿using System.Net.Http;
-using Oddity.API.Builders.Launchpad;
+using Oddity.API.Builders.Launchpads;
 
 namespace Oddity.API
 {

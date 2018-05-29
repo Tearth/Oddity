@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.DetailedCapsule.Exceptions;
+using Oddity.API.Builders.DetailedCapsules.Exceptions;
 using Oddity.API.Models.DetailedCapsule;
 
-namespace Oddity.API.Builders.DetailedCapsule
+namespace Oddity.API.Builders.DetailedCapsules
 {
     /// <summary>
     /// Represents a set of methods to filter detailed capsule information and download them from API.

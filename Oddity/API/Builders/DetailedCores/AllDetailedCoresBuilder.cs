@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Oddity.API.Models.DetailedCore;
 using Oddity.Helpers;
 
-namespace Oddity.API.Builders.DetailedCapsule
+namespace Oddity.API.Builders.DetailedCores
 {
     /// <summary>
     /// Represents a set of methods to filter detailed core information and download them from API.

@@ -1,10 +1,10 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.Launchpad.Exceptions;
+using Oddity.API.Builders.Launchpads.Exceptions;
 using Oddity.API.Models.Launchpad;
 using Oddity.Helpers;
 
-namespace Oddity.API.Builders.Launchpad
+namespace Oddity.API.Builders.Launchpads
 {
     /// <summary>
     /// Represents a set of methods to filter launchpad information and download them from API.

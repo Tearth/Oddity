@@ -6,7 +6,7 @@ using Oddity.API.Models.Capsule;
 using Oddity.API.Models.DetailedCapsule;
 using Oddity.Helpers;
 
-namespace Oddity.API.Builders.DetailedCapsule
+namespace Oddity.API.Builders.DetailedCapsules
 {
     /// <summary>
     /// Represents a set of methods to filter detailed capsule information and download them from API.

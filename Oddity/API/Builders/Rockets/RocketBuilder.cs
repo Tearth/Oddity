@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.Rocket.Exceptions;
+using Oddity.API.Builders.Rockets.Exceptions;
 using Oddity.API.Models.Rocket;
 
-namespace Oddity.API.Builders.Rocket
+namespace Oddity.API.Builders.Rockets
 {
     /// <summary>
     /// Represents a set of methods to filter rocket information and download them from API.

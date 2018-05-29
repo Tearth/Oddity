@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Oddity.API.Builders.Launchpad.Exceptions
+namespace Oddity.API.Builders.Launchpads.Exceptions
 {
     /// <summary>
     /// The exception that is thrown when user tries to get API data without selected launchpad type.

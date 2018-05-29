@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Oddity.API.Models.Launch;
 
-namespace Oddity.API.Builders.Launch
+namespace Oddity.API.Builders.Launches
 {
     /// <summary>
     /// Represents a set of methods to filter latest launch information and download them from API.

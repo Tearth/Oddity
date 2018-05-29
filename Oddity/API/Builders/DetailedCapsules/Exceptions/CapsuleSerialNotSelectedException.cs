@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Oddity.API.Builders.DetailedCapsule.Exceptions
+namespace Oddity.API.Builders.DetailedCapsules.Exceptions
 {
     /// <summary>
     /// The exception that is thrown when user tries to get API data without selected capsule serial.

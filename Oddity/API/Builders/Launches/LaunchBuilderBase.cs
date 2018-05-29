@@ -6,7 +6,7 @@ using Oddity.API.Models.Launchpad;
 using Oddity.API.Models.Rocket;
 using Oddity.Helpers;
 
-namespace Oddity.API.Builders.Launch
+namespace Oddity.API.Builders.Launches
 {
     /// <summary>
     /// Represents an abstract class for all launch builders. Contains methods to the detailed filters that aren't present

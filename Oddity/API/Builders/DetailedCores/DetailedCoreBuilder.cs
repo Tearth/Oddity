@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.DetailedCore.Exceptions;
+using Oddity.API.Builders.DetailedCores.Exceptions;
 using Oddity.API.Models.DetailedCore;
 
-namespace Oddity.API.Builders.DetailedCore
+namespace Oddity.API.Builders.DetailedCores
 {
     public class DetailedCoreBuilder : BuilderBase<DetailedCoreInfo>
     {

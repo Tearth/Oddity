@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.API.Models.Launchpad;
 
-namespace Oddity.API.Builders.Launchpad
+namespace Oddity.API.Builders.Launchpads
 {
     /// <summary>
     /// Represents a set of methods to filter all launchpads information and download them from API.

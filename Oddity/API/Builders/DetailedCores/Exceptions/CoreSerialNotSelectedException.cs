@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Oddity.API.Builders.DetailedCore.Exceptions
+namespace Oddity.API.Builders.DetailedCores.Exceptions
 {
     /// <summary>
     /// The exception that is thrown when user tries to get API data without selected core serial.

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Oddity.API.Builders.Rocket.Exceptions
+namespace Oddity.API.Builders.Rockets.Exceptions
 {
     /// <summary>
     /// The exception that is thrown when user tries to get API data without selected rocket type.

@@ -1,5 +1,5 @@
 ﻿using System.Net.Http;
-using Oddity.API.Builders.Launch;
+using Oddity.API.Builders.Launches;
 
 namespace Oddity.API
 {
