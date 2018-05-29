@@ -18,7 +18,7 @@ namespace Oddity.API.Models.DetailedCapsule
         [JsonProperty("original_launch")]
         public string OriginalLaunch { get; set; }
 
-        public List<String> Missions { get; set; }
+        public List<string> Missions { get; set; }
         public int? Landings { get; set; }
         public string Type { get; set; }
         public string Details { get; set; }

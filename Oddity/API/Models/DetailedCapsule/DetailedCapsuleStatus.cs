@@ -14,6 +14,6 @@ namespace Oddity.API.Models.DetailedCapsule
         Retired,
 
         [EnumMember(Value = "unknown")]
-        Unknown,
+        Unknown
     }
 }
