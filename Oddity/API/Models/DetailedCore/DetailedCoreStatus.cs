@@ -13,6 +13,9 @@ namespace Oddity.API.Models.DetailedCore
         [EnumMember(Value = "destroyed")]
         Destroyed,
 
+        [EnumMember(Value = "expended")]
+        Expended,
+
         [EnumMember(Value = "retired")]
         Retired,
 
