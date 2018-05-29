@@ -45,7 +45,7 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithCapsuleId(CapsuleId capsuleId)
         {
-            AddFilter("capsule_serial", capsuleId.GetEnumMemberAttributeValue(capsuleId));
+            AddFilter("capsule_id", capsuleId.GetEnumMemberAttributeValue(capsuleId));
             return this;
         }
 
@@ -69,7 +69,7 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithOriginalLaunch(DateTime originalLaunch)
         {
-            AddFilter("original_launch", originalLaunch);
+            AddFilter("original_launch", originalLaunch, DateFormatType.Long);
             return this;
         }
 

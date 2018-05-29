@@ -32,8 +32,8 @@ namespace Oddity.API.Builders.Company
         /// <returns>The history builder.</returns>
         public HistoryBuilder WithRange(DateTime from, DateTime to)
         {
-            AddFilter("start", from);
-            AddFilter("end", to);
+            AddFilter("start", from, DateFormatType.Short);
+            AddFilter("end", to, DateFormatType.Short);
             return this;
         }
 

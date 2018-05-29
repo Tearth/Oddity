@@ -85,9 +85,23 @@ namespace Oddity.API.Builders
         /// </summary>
         /// <param name="name">The filter name.</param>
         /// <param name="value">The filter DateTime value.</param>
-        protected void AddFilter(string name, DateTime value)
+        /// <param name="formatType">Short (only date) and long (date and time).</param>
+        protected void AddFilter(string name, DateTime value, DateFormatType formatType)
         {
-            _filters[name] = value.ToString("yyyy-MM-dd");
+            switch (formatType)
+            {
+                case DateFormatType.Short:
+                {
+                    _filters[name] = value.ToString("yyyy-MM-dd");
+                    break;
+                }
+
+                case DateFormatType.Long:
+                {
+                    _filters[name] = value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                    break;
+                }
+            }
         }
 
         /// <summary>

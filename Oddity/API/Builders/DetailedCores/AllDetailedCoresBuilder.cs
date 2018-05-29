@@ -68,7 +68,7 @@ namespace Oddity.API.Builders.DetailedCores
         /// <returns>vThe all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithOriginalLaunch(DateTime originalLaunch)
         {
-            AddFilter("original_launch", originalLaunch);
+            AddFilter("original_launch", originalLaunch, DateFormatType.Long);
             return this;
         }
 

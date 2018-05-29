@@ -57,8 +57,8 @@ namespace Oddity.API.Builders.Launches
         /// <returns>The launch builder.</returns>
         public TBuilder WithRange(DateTime from, DateTime to)
         {
-            AddFilter("start", from);
-            AddFilter("end", to);
+            AddFilter("start", from, DateFormatType.Short);
+            AddFilter("end", to, DateFormatType.Short);
             return (TBuilder)this;
         }
 
