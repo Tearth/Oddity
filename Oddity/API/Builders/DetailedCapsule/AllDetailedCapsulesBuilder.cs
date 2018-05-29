@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Oddity.API.Builders.Capsule;
-using Oddity.API.Builders.Capsule.Exceptions;
 using Oddity.API.Models.Capsule;
 using Oddity.API.Models.DetailedCapsule;
 using Oddity.Helpers;

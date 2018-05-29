@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.DetailedCapsule;
-using Oddity.API.Builders.DetailedCapsule.Exceptions;
 using Oddity.API.Builders.DetailedCore.Exceptions;
-using Oddity.API.Models.DetailedCapsule;
 using Oddity.API.Models.DetailedCore;
 
 namespace Oddity.API.Builders.DetailedCore
