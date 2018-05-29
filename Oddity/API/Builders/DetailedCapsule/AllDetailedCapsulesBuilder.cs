@@ -12,7 +12,7 @@ using Oddity.Helpers;
 namespace Oddity.API.Builders.DetailedCapsule
 {
     /// <summary>
-    /// Represents a set of methods to filter capsule information and download them from API.
+    /// Represents a set of methods to filter detailed capsule information and download them from API.
     /// </summary>
     public class AllDetailedCapsulesBuilder : BuilderBase<List<DetailedCapsuleInfo>>
     {
@@ -112,7 +112,6 @@ namespace Oddity.API.Builders.DetailedCapsule
         }
 
         /// <inheritdoc />
-        /// <exception cref="CapsuleTypeNotSelectedException">Thrown when user tries to get API data without selected capsule type.</exception>
         public override async Task<List<DetailedCapsuleInfo>> ExecuteAsync()
         {
             var link = BuildLink(CapsuleInfoEndpoint);

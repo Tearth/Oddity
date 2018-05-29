@@ -121,6 +121,11 @@ namespace Oddity.API.Builders
             var response = await HttpClient.GetAsync(link);
             if (response.StatusCode != HttpStatusCode.OK)
             {
+                if (response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    return default(TReturn);
+                }
+
                 throw new APIUnavailableException($"Status code: {(int)response.StatusCode}");
             }
 
