@@ -87,6 +87,18 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
+        /// Filters launches by UTC launch date. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved launch date filter.
+        /// </summary>
+        /// <param name="launchDateUTC">The UTC launch date.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLaunchDateUtc(DateTime launchDateUTC)
+        {
+            AddFilter("launch_date_utc", launchDateUTC, DateFormatType.Long);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
         /// Filters launches by rocket id. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved rocket id filter.
         /// </summary>
@@ -342,7 +354,7 @@ namespace Oddity.API.Builders.Launches
         /// Filters launches by success lands. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved success lands filter.
         /// </summary>
-        /// <param name="reused">The land success.</param>
+        /// <param name="landSuccess">The land success.</param>
         /// <returns>The launch builder.</returns>
         public TBuilder WithLandSuccess(bool landSuccess)
         {
