@@ -28,7 +28,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by core serial. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved core serial filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="coreSerial">The core serial (B0005, B1012, etc).</param>
+        /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithCoreSerial(string coreSerial)
         {
             AddFilter("core_serial", coreSerial);
@@ -39,7 +40,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by core block number. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved core block number filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="block">The block number.</param>
+        /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithBlock(int block)
         {
             AddFilter("block", block);
@@ -50,7 +52,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by core status. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved core status filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="status">The core status (active, destroyed, etc).</param>
+        /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithStatus(DetailedCoreStatus status)
         {
             AddFilter("status", status.GetEnumMemberAttributeValue(status));
@@ -61,7 +64,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by original launch. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved original launch filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="originalLaunch">The core original launch.</param>
+        /// <returns>vThe all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithOriginalLaunch(DateTime originalLaunch)
         {
             AddFilter("original_launch", originalLaunch);
@@ -72,7 +76,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by missions. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved missions filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="mission">The core mission.</param>
+        /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithMission(string mission)
         {
             AddFilter("missions", mission);
@@ -83,7 +88,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by RTLS attempt. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved RTLS attempt filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="rtlsAttempt">The core RTLS (return to launch site) attempt.</param>
+        /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithRtlsAttempt(bool rtlsAttempt)
         {
             AddFilter("rtls_attempt", rtlsAttempt);
@@ -94,10 +100,11 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by RTLS landing. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved RTLS landing filter.
         /// </summary>
-        /// <returns>The builder.</returns>
-        public AllDetailedCoresBuilder WithRtlsLanding(int landings)
+        /// <param name="rtlsLandings">The core RTLS (return to launch site) landings count.</param>
+        /// <returns>The all detailed cores builder.</returns>
+        public AllDetailedCoresBuilder WithRtlsLanding(int rtlsLandings)
         {
-            AddFilter("rtls_landings", landings);
+            AddFilter("rtls_landings", rtlsLandings);
             return this;
         }
 
@@ -105,7 +112,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by ASDS attempt. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved ASDS attempt filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="asdsAttempt">The core ASDS (autonomous spaceport drone ship) attempt.</param>
+        /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithAsdsAttempt(bool asdsAttempt)
         {
             AddFilter("asds_attempt", asdsAttempt);
@@ -116,10 +124,11 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by ASDS landing. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved ASDS landing filter.
         /// </summary>
-        /// <returns>The builder.</returns>
-        public AllDetailedCoresBuilder WithAsdsLanding(int landings)
+        /// <param name="asdsLandings">The core ASDS (autonomous spaceport drone ship) landings count.</param>
+        /// <returns>The all detailed cores builder.</returns>
+        public AllDetailedCoresBuilder WithAsdsLanding(int asdsLandings)
         {
-            AddFilter("asds_landings", landings);
+            AddFilter("asds_landings", asdsLandings);
             return this;
         }
 
@@ -127,7 +136,8 @@ namespace Oddity.API.Builders.DetailedCores
         /// Filters launches by water landing. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved water landing filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="waterLanding">The core water landing.</param>
+        /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithWaterLanding(bool waterLanding)
         {
             AddFilter("water_landing", waterLanding);

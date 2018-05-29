@@ -38,9 +38,8 @@ namespace Oddity.API.Builders.Company
         }
 
         /// <summary>
-        /// Filters history events by flight number. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will
-        /// override previously saved flight number filter.
+        /// Filters history events by flight number. Note that you have to call <see cref="Execute"/> or <see cref="ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved flight number filter.
         /// </summary>
         /// <param name="flightNumber">The flight number.</param>
         /// <returns>The history builder.</returns>

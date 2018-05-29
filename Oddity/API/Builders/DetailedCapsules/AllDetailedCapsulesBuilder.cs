@@ -9,7 +9,7 @@ using Oddity.Helpers;
 namespace Oddity.API.Builders.DetailedCapsules
 {
     /// <summary>
-    /// Represents a set of methods to filter detailed capsule information and download them from API.
+    /// Represents a set of methods to filter all detailed capsules information and download them from API.
     /// </summary>
     public class AllDetailedCapsulesBuilder : BuilderBase<List<DetailedCapsuleInfo>>
     {
@@ -29,7 +29,8 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// Filters launches by capsule serial. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved capsule serial filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="capsuleSerial">The capsule serial (C101, C102, etc).</param>
+        /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithCapsuleSerial(string capsuleSerial)
         {
             AddFilter("capsule_serial", capsuleSerial);
@@ -40,7 +41,8 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// Filters launches by capsule id. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved capsule id filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="capsuleId">The capsule id (Dragon 1, Dragon 2 etc).</param>
+        /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithCapsuleId(CapsuleId capsuleId)
         {
             AddFilter("capsule_serial", capsuleId.GetEnumMemberAttributeValue(capsuleId));
@@ -51,7 +53,8 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// Filters launches by capsule status. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved capsule status filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="status">The capsule status (active, retired etc).</param>
+        /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithStatus(DetailedCapsuleStatus status)
         {
             AddFilter("status", status.GetEnumMemberAttributeValue(status));
@@ -62,7 +65,8 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// Filters launches by original launch. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved original launch filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="originalLaunch">The capsule original launch.</param>
+        /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithOriginalLaunch(DateTime originalLaunch)
         {
             AddFilter("original_launch", originalLaunch);
@@ -73,7 +77,8 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// Filters launches by missions. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved missions filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="mission">The capsule mission (SpaceX CRS-8, ZUMA, etc).</param>
+        /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithMission(string mission)
         {
             AddFilter("missions", mission);
@@ -84,7 +89,8 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// Filters launches by landings count. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved landings count filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="landingsCount">The capsule mission (SpaceX CRS-8, ZUMA, etc).</param>
+        /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithLandingsCount(int landingsCount)
         {
             AddFilter("landings", landingsCount);
@@ -95,7 +101,8 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// Filters launches by capsule type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved capsule type filter.
         /// </summary>
-        /// <returns>The builder.</returns>
+        /// <param name="capsuleType">The capsule type (Dragon 1.1, Dragon 2.0, etc).</param>
+        /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithCapsuleType(string capsuleType)
         {
             AddFilter("type", capsuleType);

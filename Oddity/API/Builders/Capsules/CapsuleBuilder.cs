@@ -24,9 +24,8 @@ namespace Oddity.API.Builders.Capsules
         }
 
         /// <summary>
-        /// Filters capsule information by the specified rocket type. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will
-        /// override previously saved capsule type filter.
+        /// Filters capsule information by the specified capsule type. Note that you have to call <see cref="Execute"/> or
+        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved capsule type filter.
         /// </summary>
         /// <param name="type">The capsule type (Dragon1, Dragon2, etc).</param>
         /// <returns>The capsule information.</returns>

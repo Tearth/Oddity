@@ -25,7 +25,7 @@ namespace Oddity.API.Builders.DetailedCores
         /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will
         /// override previously saved capsule type filter.
         /// </summary>
-        /// <param name="type">The capsule type (Dragon1, Dragon2, etc).</param>
+        /// <param name="capsuleSerial">The capsule serial (C101, C113, etc).</param>
         /// <returns>The capsule information.</returns>
         public DetailedCoreBuilder WithSerial(string capsuleSerial)
         {
