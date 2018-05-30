@@ -11,7 +11,7 @@ namespace Oddity
     /// <summary>
     /// Represents an core of the library. Use it to retrieve data from the SpaceX API.
     /// </summary>
-    public class Oddity : IDisposable
+    public class OddityCore : IDisposable
     {
         /// <summary>
         /// Gets the company information.
@@ -56,9 +56,9 @@ namespace Oddity
         private HttpClient _httpClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Oddity"/> class.
+        /// Initializes a new instance of the <see cref="OddityCore"/> class.
         /// </summary>
-        public Oddity()
+        public OddityCore()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
