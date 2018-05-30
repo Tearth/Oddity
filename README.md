@@ -19,9 +19,9 @@ Most of the endpoints contains a lot of filters which are applied on the API sid
 
 # Minimal requirements
 Library is build on .NET Standard 1.1 which contains support for:
- * .NET Framework 4.5 or highter
- * .NET Core 1.0 or highter
- * Mono 4.6 or highter
+ * .NET Framework 4.5 or higher
+ * .NET Core 1.0 or higher
+ * Mono 4.6 or higher
  
 External dependencies:
  * Newtonsoft.Json
