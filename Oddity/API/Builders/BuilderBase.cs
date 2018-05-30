@@ -37,16 +37,18 @@ namespace Oddity.API.Builders
         }
 
         /// <summary>
-        /// Executes all filters and downloads result from API.
+        /// Executes all filters and downloads result from API. If object with the specified filters is not available,
+        /// returns null or empty list (depends on which data is requested).
         /// </summary>
-        /// <returns>The all capsules information.</returns>
+        /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract TReturn Execute();
 
         /// <summary>
-        /// Executes all filters and downloads result from API asynchronously.
+        /// Executes all filters and downloads result from API asynchronously. If object with the specified filters is not available,
+        /// returns null or empty list (depends on which data is requested).
         /// </summary>
-        /// <returns>The all capsules information.</returns>
+        /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract Task<TReturn> ExecuteAsync();
 

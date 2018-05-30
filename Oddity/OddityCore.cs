@@ -49,7 +49,7 @@ namespace Oddity
         public Launches Launches { get; }
 
         /// <summary>
-        /// Event triggered when an error occured during JSON deserialization.
+        /// Event triggered when an error occurred during JSON deserialization.
         /// </summary>
         public event EventHandler<ErrorEventArgs> OnDeserializationError;
 

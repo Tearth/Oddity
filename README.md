@@ -1,7 +1,7 @@
 # Oddity
 Version 1.0.0
 
-SpaceX API wrapper for .NET based on https://github.com/r-spacex/SpaceX-API project. Method names are very familiar with API endpoints so you can just use API wiki documents:
+SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project. Method names are very familiar with API endpoints so you can just use API wiki documents:
 
 https://github.com/r-spacex/SpaceX-API/wiki
 
@@ -19,10 +19,12 @@ Library is build on .NET Standard 1.1 which contains support for:
  * .NET Framework 4.5 or highter
  * .NET Core 1.0 or highter
  * Mono 4.6 or highter
+ 
+External dependencies:
+ * Newtonsoft.Json
 
 # Installation
  * download from NuGet: X
- * manually get last release and add reference to your project
  
 # Example usage
 ```csharp
