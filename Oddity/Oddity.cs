@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Reflection;
 using Newtonsoft.Json.Serialization;
 using Oddity.API;
 
@@ -61,7 +62,7 @@ namespace Oddity
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
-            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Oddity/1.0 (https://github.com/Tearth/Oddity)");
+            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"{ApiConfiguration.LibraryName}/{GetVersion()} ({ApiConfiguration.GitHubLink})");
 
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
@@ -81,6 +82,15 @@ namespace Oddity
         public void SetTimeout(int timeoutSeconds)
         {
             _httpClient.Timeout = new TimeSpan(0, 0, 0, timeoutSeconds);
+        }
+
+        /// <summary>
+        /// Gets the current version of library.
+        /// </summary>
+        /// <returns>The library version.</returns>
+        public string GetVersion()
+        {
+            return GetType().GetTypeInfo().Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
         }
 
         /// <inheritdoc />
