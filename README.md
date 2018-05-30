@@ -5,7 +5,7 @@ SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API 
 
 https://github.com/r-spacex/SpaceX-API/wiki
 
-Available data overview:
+**Available data overview:**
  * company data, history with most important events
  * detailed information about rockets (Falcon 1, Falcon 9, Falcon Heavy, BFR) and capsules (Dragon 1, Dragon 2, crew Dragon)
  * launchpads data
@@ -24,7 +24,7 @@ External dependencies:
  * Newtonsoft.Json
 
 # Installation
- * download from NuGet: X
+ * download from NuGet: https://www.nuget.org/packages/Oddity/
  
 # Example usage
 ```csharp
