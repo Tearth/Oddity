@@ -9,11 +9,10 @@ using Oddity.Helpers;
 namespace Oddity.API.Builders.Launches
 {
     /// <summary>
-    /// Represents an abstract class for all launch builders. Contains methods to the detailed filters that aren't present
-    /// in other builders.
+    /// Represents an abstract class for all launch builders. Contains methods to the detailed filters that aren't present in other builders.
     /// </summary>
     /// <typeparam name="TBuilder">The launch builder type.</typeparam>
-    /// <typeparam name="TReturn">The returned object type."/>.</typeparam>
+    /// <typeparam name="TReturn">The returned object type.</typeparam>
     public abstract class LaunchBuilderBase<TBuilder, TReturn> : BuilderBase<TReturn> where TBuilder: LaunchBuilderBase<TBuilder, TReturn> where TReturn: class
     {
         /// <summary>
@@ -90,11 +89,11 @@ namespace Oddity.API.Builders.Launches
         /// Filters launches by UTC launch date. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved launch date filter.
         /// </summary>
-        /// <param name="launchDateUTC">The UTC launch date.</param>
+        /// <param name="launchDateUtc">The UTC launch date.</param>
         /// <returns>The launch builder.</returns>
-        public TBuilder WithLaunchDateUtc(DateTime launchDateUTC)
+        public TBuilder WithLaunchDateUtc(DateTime launchDateUtc)
         {
-            AddFilter("launch_date_utc", launchDateUTC, DateFormatType.Long);
+            AddFilter("launch_date_utc", launchDateUtc, DateFormatType.Long);
             return (TBuilder)this;
         }
 
@@ -351,8 +350,8 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
-        /// Filters launches by success lands. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved success lands filter.
+        /// Filters launches by success land. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved success land filter.
         /// </summary>
         /// <param name="landSuccess">The land success.</param>
         /// <returns>The launch builder.</returns>

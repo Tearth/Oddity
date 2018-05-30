@@ -5,6 +5,9 @@ using Oddity.API.Builders.DetailedCores;
 
 namespace Oddity.API
 {
+    /// <summary>
+    /// Represents a set of methods to get detailed cores information.
+    /// </summary>
     public class DetailedCores
     {
         private HttpClient _httpClient;
@@ -22,10 +25,10 @@ namespace Oddity.API
         }
 
         /// <summary>
-        /// Gets information about the specified capsule. Note that you have to call <see cref="CapsuleBuilder.WithType"/>
-        /// before <see cref="CapsuleBuilder.Execute"/> or <see cref="CapsuleBuilder.ExecuteAsync"/> because otherwise there will
+        /// Gets information about the specified capsule. Note that you have to call <see cref="DetailedCoreBuilder.WithSerial"/>
+        /// before <see cref="DetailedCoreBuilder.Execute"/> or <see cref="DetailedCoreBuilder.ExecuteAsync"/> because otherwise there will
         /// be thrown an exception. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="CapsuleBuilder.Execute"/> or <see cref="CapsuleBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="DetailedCoreBuilder.Execute"/> or <see cref="DetailedCoreBuilder.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The capsule builder.</returns>
@@ -36,7 +39,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets detailed information about all cores. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="AllDetailedCapsulesBuilder.Execute"/> or <see cref="AllDetailedCapsulesBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="AllDetailedCoresBuilder.Execute"/> or <see cref="AllDetailedCoresBuilder.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The all detailed core builder.</returns>

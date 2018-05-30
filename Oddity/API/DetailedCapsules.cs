@@ -4,6 +4,9 @@ using Oddity.API.Builders.DetailedCapsules;
 
 namespace Oddity.API
 {
+    /// <summary>
+    /// Represents a set of methods to get detailed capsules information.
+    /// </summary>
     public class DetailedCapsules
     {
         private HttpClient _httpClient;
@@ -21,10 +24,10 @@ namespace Oddity.API
         }
 
         /// <summary>
-        /// Gets information about the specified capsule. Note that you have to call <see cref="CapsuleBuilder.WithType"/>
-        /// before <see cref="CapsuleBuilder.Execute"/> or <see cref="CapsuleBuilder.ExecuteAsync"/> because otherwise there will
+        /// Gets information about the specified capsule. Note that you have to call <see cref="DetailedCapsuleBuilder.WithSerial"/>
+        /// before <see cref="DetailedCapsuleBuilder.Execute"/> or <see cref="DetailedCapsuleBuilder.ExecuteAsync"/> because otherwise there will
         /// be thrown an exception. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="CapsuleBuilder.Execute"/> or <see cref="CapsuleBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="DetailedCapsuleBuilder.Execute"/> or <see cref="DetailedCapsuleBuilder.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The capsule builder.</returns>

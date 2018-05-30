@@ -36,6 +36,7 @@ namespace Oddity.API.Builders.Capsules
         }
 
         /// <inheritdoc />
+        /// <exception cref="CapsuleTypeNotSelectedException">Thrown when user tries to get API data without selected capsule type.</exception>
         public override CapsuleInfo Execute()
         {
             return ExecuteAsync().Result;

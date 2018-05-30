@@ -5,10 +5,13 @@ using Oddity.API.Models.DetailedCore;
 
 namespace Oddity.API.Builders.DetailedCores
 {
+    /// <summary>
+    /// Represents a set of methods to filter detailed core information and download them from API.
+    /// </summary>
     public class DetailedCoreBuilder : BuilderBase<DetailedCoreInfo>
     {
-        private string _capsuleSerial;
-        private const string CapsuleInfoEndpoint = "parts/caps";
+        private string _coreSerial;
+        private const string CapsuleInfoEndpoint = "parts/cores";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DetailedCoreBuilder"/> class.
@@ -21,19 +24,19 @@ namespace Oddity.API.Builders.DetailedCores
         }
 
         /// <summary>
-        /// Filters capsule information by the specified rocket type. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will
-        /// override previously saved capsule type filter.
+        /// Filters capsule information by the specified core serial. Note that you have to call <see cref="Execute"/> or
+        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved core serial filter.
         /// </summary>
-        /// <param name="capsuleSerial">The capsule serial (C101, C113, etc).</param>
+        /// <param name="coreSerial">The capsule serial (C101, C113, etc).</param>
         /// <returns>The capsule information.</returns>
-        public DetailedCoreBuilder WithSerial(string capsuleSerial)
+        public DetailedCoreBuilder WithSerial(string coreSerial)
         {
-            _capsuleSerial = capsuleSerial;
+            _coreSerial = coreSerial;
             return this;
         }
 
         /// <inheritdoc />
+        /// <exception cref="CoreSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
         public override DetailedCoreInfo Execute()
         {
             return ExecuteAsync().Result;
@@ -43,15 +46,15 @@ namespace Oddity.API.Builders.DetailedCores
         /// <exception cref="CoreSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
         public override async Task<DetailedCoreInfo> ExecuteAsync()
         {
-            if (_capsuleSerial == null)
+            if (_coreSerial == null)
             {
                 throw new CoreSerialNotSelectedException();
             }
 
             var link = BuildLink(CapsuleInfoEndpoint);
-            if (_capsuleSerial != null)
+            if (_coreSerial != null)
             {
-                link += $"/{_capsuleSerial.ToUpper()}";
+                link += $"/{_coreSerial.ToUpper()}";
             }
 
             return await RequestForObject(link);

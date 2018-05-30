@@ -26,11 +26,10 @@ namespace Oddity.API.Builders.Launchpads
 
         /// <summary>
         /// Filters launchpad information by the specified launchpad type. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will
-        /// override previously saved launchpad type filter.
+        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved launchpad type filter.
         /// </summary>
         /// <param name="type">The launchpad type (CcafsLc13, Stls, etc).</param>
-        /// <returns>The launchpad information.</returns>
+        /// <returns>The launchpad builder.</returns>
         public LaunchpadBuilder WithType(LaunchpadId type)
         {
             _launchpadType = type;
