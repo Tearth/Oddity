@@ -19,7 +19,7 @@ namespace Oddity.API.Models.DetailedCapsule
         public string OriginalLaunch { get; set; }
 
         public List<string> Missions { get; set; }
-        public int? Landings { get; set; }
+        public uint? Landings { get; set; }
         public string Type { get; set; }
         public string Details { get; set; }
     }

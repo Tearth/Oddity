@@ -7,13 +7,13 @@ namespace Oddity.API.Models.Launch
     public class LaunchInfo
     {
         [JsonProperty("flight_number")]
-        public int? FlightNumber { get; set; }
+        public uint? FlightNumber { get; set; }
 
         [JsonProperty("mission_name")]
         public string MissionName { get; set; }
 
         [JsonProperty("launch_year")]
-        public int? LaunchYear { get; set; }
+        public uint? LaunchYear { get; set; }
 
         [JsonProperty("launch_date_unix")]
         public ulong? LaunchDateUnix { get; set; }

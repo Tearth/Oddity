@@ -15,13 +15,13 @@ namespace Oddity.API.Models.Capsule
         public bool? Active { get; set; }
 
         [JsonProperty("crew_capacity")]
-        public int? CrewCapacity { get; set; }
+        public uint? CrewCapacity { get; set; }
 
         [JsonProperty("sidewall_angle_deg")]
-        public int? SidewallAngleDegrees { get; set; }
+        public uint? SidewallAngleDegrees { get; set; }
 
         [JsonProperty("orbit_duration_yr")]
-        public int? OrbitDurationYears { get; set; }
+        public uint? OrbitDurationYears { get; set; }
 
         [JsonProperty("heat_shield")]
         public HeatshieldInfo Heatshield { get; set; }

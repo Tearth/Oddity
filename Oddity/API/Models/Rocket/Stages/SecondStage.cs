@@ -6,13 +6,13 @@ namespace Oddity.API.Models.Rocket.Stages
 {
     public class SecondStage
     {
-        public int? Engines { get; set; }
+        public uint? Engines { get; set; }
 
         [JsonProperty("fuel_amount_tons")]
-        public int? FuelAmountTons { get; set; }
+        public uint? FuelAmountTons { get; set; }
 
         [JsonProperty("burn_time_sec")]
-        public int? BurnTimeSeconds { get; set; }
+        public uint? BurnTimeSeconds { get; set; }
 
         public ThrustInfo Thrust { get; set; }
         public PayloadInfo Payloads { get; set; }

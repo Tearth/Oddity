@@ -8,7 +8,7 @@ namespace Oddity.API.Models.DetailedCore
         [JsonProperty("core_serial")]
         public string CoreSerial { get; set; }
 
-        public int? Block { get; set; }
+        public uint? Block { get; set; }
         public DetailedCoreStatus? Status { get; set; }
 
         [JsonProperty("original_launch")]
@@ -20,13 +20,13 @@ namespace Oddity.API.Models.DetailedCore
         public bool? RtlsAttempt { get; set; }
 
         [JsonProperty("rtls_landings")]
-        public int? RtlsLandings { get; set; }
+        public uint? RtlsLandings { get; set; }
 
         [JsonProperty("asds_attempt")]
         public bool? AsdsAttempt { get; set; }
 
         [JsonProperty("asds_landings")]
-        public int? AsdsLandings { get; set; }
+        public uint? AsdsLandings { get; set; }
 
         [JsonProperty("water_landing")]
         public bool? WaterLanding { get; set; }

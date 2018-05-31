@@ -5,13 +5,13 @@ namespace Oddity.API.Models.Rocket.Engines
 {
     public class EnginesInfo
     {
-        public int? Number { get; set; }
+        public uint? Number { get; set; }
         public EngineType Type { get; set; }
         public string Version { get; set; }
         public string Layout { get; set; }
 
         [JsonProperty("engine_loss_max")]
-        public int? EngineLossMax { get; set; }
+        public uint? EngineLossMax { get; set; }
 
         [JsonProperty("propellant_1")]
         public string FirstPropellant { get; set; }
