@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oddity", "Oddity\Oddity.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{236D7C81-534C-4AE1-93F5-B8FFB01B92F1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{61A58620-C814-4639-81F5-99BDCAAA9F37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpcomingLaunchesApp", "Examples\UpcomingLaunchesApp\UpcomingLaunchesApp.csproj", "{5A98F1DA-75D2-45B9-876A-D2827EA7697A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{236D7C81-534C-4AE1-93F5-B8FFB01B92F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{236D7C81-534C-4AE1-93F5-B8FFB01B92F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{236D7C81-534C-4AE1-93F5-B8FFB01B92F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A98F1DA-75D2-45B9-876A-D2827EA7697A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A98F1DA-75D2-45B9-876A-D2827EA7697A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A98F1DA-75D2-45B9-876A-D2827EA7697A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A98F1DA-75D2-45B9-876A-D2827EA7697A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A98F1DA-75D2-45B9-876A-D2827EA7697A} = {61A58620-C814-4639-81F5-99BDCAAA9F37}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D04DC6E-0A9B-46C0-A9B2-379C21BE1DF7}
