@@ -58,7 +58,7 @@ namespace OverviewApp
             var historyWithFilter = oddity.Company.GetHistory().WithRange(DateTime.Now.AddYears(-2), DateTime.Now).Descending().Execute();
 
             // Get data about Falcon Heavy.
-            var falconHeavy = oddity.Rockets.GetAbout().WithType(RocketId.FalconHeavy).Execute();
+            var falconHeavy = oddity.Rockets.GetAbout(RocketId.FalconHeavy).Execute();
 
             // Get list of all launchpads.
             var allLaunchpads = oddity.Launchpads.GetAll().Execute();
