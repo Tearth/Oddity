@@ -1,37 +1,4 @@
-# Oddity
-[![GitHub release](https://img.shields.io/github/release/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/releases)
-[![GitHub issues](https://img.shields.io/github/issues/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/issues)
-[![GitHub stars](https://img.shields.io/github/stars/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/stargazers)
-[![GitHub license](https://img.shields.io/github/license/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity)
-
-SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project. Method names are very familiar with API endpoints so you can just use API wiki documents:
-
-https://github.com/r-spacex/SpaceX-API/wiki
-
-**Available data overview:**
- * company data, history with most important events
- * detailed information about rockets (Falcon 1, Falcon 9, Falcon Heavy, BFR) and capsules (Dragon 1, Dragon 2, crew Dragon)
- * launchpads data
- * launches: latest, next, all past, all upcoming
- * information about the specified cores and capsules
- 
-Most of the endpoints contains a lot of filters which are applied on the API side to save bandwidth. Look at the example for more information.
-
-# Minimal requirements
-Library is build on .NET Standard 1.1 which contains support for:
- * .NET Framework 4.5 or higher
- * .NET Core 1.0 or higher
- * Mono 4.6 or higher
- 
-External dependencies:
- * Newtonsoft.Json
-
-# Installation
- * download from NuGet: https://www.nuget.org/packages/Oddity/
- 
-# Example usage
-```csharp
-using System;
+﻿using System;
 using Newtonsoft.Json.Serialization;
 using Oddity;
 using Oddity.API.Models.Launch.Rocket.SecondStage;
@@ -85,4 +52,3 @@ namespace OverviewApp
         }
     }
 }
-```
