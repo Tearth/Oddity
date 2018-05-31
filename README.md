@@ -66,10 +66,10 @@ namespace TestApp
             // Get information about the next launch.
             var nextLaunch = oddity.Launches.GetNext().Execute();
 
-            // Get data about all launches of Falcon 9 witch has been launched to ISS and landeded with success. Next, sort it ascending.
+            // Get data about all launches of Falcon 9 which has been launched to ISS and landed with success. Next, sort it ascending.
             var launchWithFilters = oddity.Launches.GetAll().WithRocketName("Falcon 9").WithOrbit(OrbitType.ISS).WithLandSuccess(true).Ascending().Execute();
 
-            // Get capsule witch has been launched 2015-04-14 at 20:10.
+            // Get capsule which has been launched 2015-04-14 at 20:10.
             var capsuleWithFilters = oddity.DetailedCapsules.GetAll().WithOriginalLaunch(new DateTime(2015, 4, 14, 20, 10, 0)).Execute();
 
             // Get all cores.
