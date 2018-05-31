@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders.Capsules;
+using Oddity.API.Models.Capsule;
 
 namespace Oddity.API
 {
@@ -23,16 +24,15 @@ namespace Oddity.API
         }
 
         /// <summary>
-        /// Gets information about the specified capsule. Note that you have to call <see cref="CapsuleBuilder.WithType"/>
-        /// before <see cref="CapsuleBuilder.Execute"/> or <see cref="CapsuleBuilder.ExecuteAsync"/> because otherwise there will
-        /// be thrown an exception. This method returns only builder which doesn't retrieve data from API itself, so after apply
+        /// Gets information about the specified capsule. This method returns only builder which doesn't retrieve data from API itself, so after apply
         /// all necessary filters you should call <see cref="CapsuleBuilder.Execute"/> or <see cref="CapsuleBuilder.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
+        /// <param name="capsuleType">The capsule type.</param>
         /// <returns>The capsule builder.</returns>
-        public CapsuleBuilder GetAbout()
+        public CapsuleBuilder GetAbout(CapsuleId capsuleType)
         {
-            return new CapsuleBuilder(_httpClient, _deserializationError);
+            return new CapsuleBuilder(_httpClient, _deserializationError).WithType(capsuleType);
         }
 
         /// <summary>

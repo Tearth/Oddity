@@ -25,16 +25,15 @@ namespace Oddity.API
         }
 
         /// <summary>
-        /// Gets information about the specified capsule. Note that you have to call <see cref="DetailedCoreBuilder.WithSerial"/>
-        /// before <see cref="DetailedCoreBuilder.Execute"/> or <see cref="DetailedCoreBuilder.ExecuteAsync"/> because otherwise there will
-        /// be thrown an exception. This method returns only builder which doesn't retrieve data from API itself, so after apply
+        /// Gets information about the specified capsule. This method returns only builder which doesn't retrieve data from API itself, so after apply
         /// all necessary filters you should call <see cref="DetailedCoreBuilder.Execute"/> or <see cref="DetailedCoreBuilder.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
+        /// <param name="coreSerial">The core serial.</param>
         /// <returns>The capsule builder.</returns>
-        public DetailedCoreBuilder GetAbout()
+        public DetailedCoreBuilder GetAbout(string coreSerial)
         {
-            return new DetailedCoreBuilder(_httpClient, _deserializationError);
+            return new DetailedCoreBuilder(_httpClient, _deserializationError).WithSerial(coreSerial);
         }
 
         /// <summary>
