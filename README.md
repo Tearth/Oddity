@@ -1,5 +1,6 @@
 # Oddity
 [![GitHub release](https://img.shields.io/github/release/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/releases)
+[![NuGet downloads](https://img.shields.io/nuget/dt/Oddity.svg)](https://img.shields.io/nuget/dt/Oddity.svg)
 [![GitHub issues](https://img.shields.io/github/issues/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/issues)
 [![GitHub stars](https://img.shields.io/github/stars/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity)
@@ -15,19 +16,31 @@ https://github.com/r-spacex/SpaceX-API/wiki
  * launches: latest, next, all past, all upcoming
  * information about the specified cores and capsules
  
-Most of the endpoints contains a lot of filters which are applied on the API side to save bandwidth. Look at the example for more information.
+Most of the endpoints contains a lot of filters which are applied on the API side to save bandwidth. Look at the example and [wiki](https://github.com/Tearth/Oddity/wiki) for more information.
 
 # Minimal requirements
-Library is build on .NET Standard 1.1 which contains support for:
+Library is build on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which contains support for:
  * .NET Framework 4.5 or higher
  * .NET Core 1.0 or higher
  * Mono 4.6 or higher
+ * Xamarin.iOS 10.0 or higher
+ * Xamarin.Mac 3.0 or higher
+ * Xamarin.Android 7.0 or higher
+ * Universal Windows Platform 10.0 or higher
  
-External dependencies:
+**External dependencies:**
  * Newtonsoft.Json
 
 # Installation
  * download from NuGet: https://www.nuget.org/packages/Oddity/
+
+or
+
+ * search "Oddity" in Package Manager
+
+or
+
+ * run `Install-Package Oddity` in the Package Manager Console
  
 # Example usage
 ```csharp
@@ -47,6 +60,8 @@ namespace OverviewApp
 
             // Optional.
             oddity.OnDeserializationError += OddityOnOnDeserializationError;
+
+            // Note that every request must be done with Execute() or ExecuteAsync() call to retrieve data from the SpaceX API.
 
             // Get company information.
             var company = oddity.Company.GetInfo().Execute();
