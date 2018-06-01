@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.DetailedCores.Exceptions;
 using Oddity.API.Models.DetailedCore;
 
 namespace Oddity.API.Builders.DetailedCores
@@ -39,11 +38,6 @@ namespace Oddity.API.Builders.DetailedCores
         /// <exception cref="CoreSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
         protected override async Task<DetailedCoreInfo> ExecuteBuilder()
         {
-            if (_coreSerial == null)
-            {
-                throw new CoreSerialNotSelectedException();
-            }
-
             var link = BuildLink(CapsuleInfoEndpoint);
             if (_coreSerial != null)
             {

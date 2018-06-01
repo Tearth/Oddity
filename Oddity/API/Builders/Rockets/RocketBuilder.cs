@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.Rockets.Exceptions;
 using Oddity.API.Models.Rocket;
 
 namespace Oddity.API.Builders.Rockets
@@ -39,11 +38,6 @@ namespace Oddity.API.Builders.Rockets
         /// <exception cref="RocketTypeNotSelectedException">Thrown when user tries to get API data without selected rocket type.</exception>
         protected override async Task<RocketInfo> ExecuteBuilder()
         {
-            if (!_rocketType.HasValue)
-            {
-                throw new RocketTypeNotSelectedException();
-            }
-
             var link = BuildLink(RocketInfoEndpoint);
             if (_rocketType.HasValue)
             {

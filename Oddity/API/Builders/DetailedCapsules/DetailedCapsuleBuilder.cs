@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.DetailedCapsules.Exceptions;
 using Oddity.API.Models.DetailedCapsule;
 
 namespace Oddity.API.Builders.DetailedCapsules
@@ -39,11 +38,6 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// <exception cref="CapsuleSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
         protected override async Task<DetailedCapsuleInfo> ExecuteBuilder()
         {
-            if (_capsuleSerial == null)
-            {
-                throw new CapsuleSerialNotSelectedException();
-            }
-
             var link = BuildLink(CapsuleInfoEndpoint);
             if (_capsuleSerial != null)
             {

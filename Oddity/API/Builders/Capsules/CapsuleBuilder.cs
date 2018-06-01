@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Builders.Capsules.Exceptions;
 using Oddity.API.Models.Capsule;
 
 namespace Oddity.API.Builders.Capsules
@@ -39,11 +38,6 @@ namespace Oddity.API.Builders.Capsules
         /// <exception cref="CapsuleTypeNotSelectedException">Thrown when user tries to get API data without selected capsule type.</exception>
         protected override async Task<CapsuleInfo> ExecuteBuilder()
         {
-            if (!_capsuleType.HasValue)
-            {
-                throw new CapsuleTypeNotSelectedException();
-            }
-
             var link = BuildLink(CapsuleInfoEndpoint);
             if (_capsuleType.HasValue)
             {
