@@ -37,14 +37,7 @@ namespace Oddity.API.Builders.DetailedCores
 
         /// <inheritdoc />
         /// <exception cref="CoreSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
-        public override DetailedCoreInfo Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        /// <exception cref="CoreSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
-        public override async Task<DetailedCoreInfo> ExecuteAsync()
+        protected override async Task<DetailedCoreInfo> ExecuteBuilder()
         {
             if (_coreSerial == null)
             {
@@ -57,7 +50,7 @@ namespace Oddity.API.Builders.DetailedCores
                 link += $"/{_coreSerial.ToUpper()}";
             }
 
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

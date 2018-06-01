@@ -23,16 +23,10 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <inheritdoc />
-        public override List<LaunchInfo> Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        public override async Task<List<LaunchInfo>> ExecuteAsync()
+        protected override async Task<List<LaunchInfo>> ExecuteBuilder()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

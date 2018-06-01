@@ -145,16 +145,10 @@ namespace Oddity.API.Builders.DetailedCores
         }
 
         /// <inheritdoc />
-        public override List<DetailedCoreInfo> Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        public override async Task<List<DetailedCoreInfo>> ExecuteAsync()
+        protected override async Task<List<DetailedCoreInfo>> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

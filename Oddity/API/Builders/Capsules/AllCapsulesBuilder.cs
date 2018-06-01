@@ -23,16 +23,10 @@ namespace Oddity.API.Builders.Capsules
         }
 
         /// <inheritdoc />
-        public override List<CapsuleInfo> Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        public override async Task<List<CapsuleInfo>> ExecuteAsync()
+        protected override async Task<List<CapsuleInfo>> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

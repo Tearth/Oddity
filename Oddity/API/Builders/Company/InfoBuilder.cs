@@ -22,16 +22,10 @@ namespace Oddity.API.Builders.Company
         }
 
         /// <inheritdoc />
-        public override CompanyInfo Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        public override async Task<CompanyInfo> ExecuteAsync()
+        protected override async Task<CompanyInfo> ExecuteBuilder()
         {
             var link = BuildLink(CompanyInfoEndpoint);
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

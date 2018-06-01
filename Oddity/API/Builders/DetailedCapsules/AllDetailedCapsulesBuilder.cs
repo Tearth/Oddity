@@ -110,16 +110,10 @@ namespace Oddity.API.Builders.DetailedCapsules
         }
 
         /// <inheritdoc />
-        public override List<DetailedCapsuleInfo> Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        public override async Task<List<DetailedCapsuleInfo>> ExecuteAsync()
+        protected override async Task<List<DetailedCapsuleInfo>> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

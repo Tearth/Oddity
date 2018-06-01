@@ -70,18 +70,11 @@ namespace Oddity.API.Builders.Company
             AddFilter("order", "desc");
             return this;
         }
-
         /// <inheritdoc />
-        public override List<HistoryEvent> Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        public override async Task<List<HistoryEvent>> ExecuteAsync()
+        protected override async Task<List<HistoryEvent>> ExecuteBuilder()
         {
             var link = BuildLink(CompanyHistoryEndpoint);
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

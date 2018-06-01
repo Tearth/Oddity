@@ -37,14 +37,7 @@ namespace Oddity.API.Builders.DetailedCapsules
 
         /// <inheritdoc />
         /// <exception cref="CapsuleSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
-        public override DetailedCapsuleInfo Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        /// <exception cref="CapsuleSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
-        public override async Task<DetailedCapsuleInfo> ExecuteAsync()
+        protected override async Task<DetailedCapsuleInfo> ExecuteBuilder()
         {
             if (_capsuleSerial == null)
             {
@@ -57,7 +50,7 @@ namespace Oddity.API.Builders.DetailedCapsules
                 link += $"/{_capsuleSerial.ToUpper()}";
             }
 
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

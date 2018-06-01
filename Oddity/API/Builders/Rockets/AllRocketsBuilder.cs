@@ -23,16 +23,10 @@ namespace Oddity.API.Builders.Rockets
         }
 
         /// <inheritdoc />
-        public override List<RocketInfo> Execute()
-        {
-            return ExecuteAsync().Result;
-        }
-
-        /// <inheritdoc />
-        public override async Task<List<RocketInfo>> ExecuteAsync()
+        protected override async Task<List<RocketInfo>> ExecuteBuilder()
         {
             var link = BuildLink(RocketInfoEndpoint);
-            return await SendRequestToAPI(link);
+            return await SendRequestToApi(link);
         }
     }
 }

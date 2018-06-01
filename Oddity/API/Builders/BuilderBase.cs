@@ -42,7 +42,10 @@ namespace Oddity.API.Builders
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public abstract TReturn Execute();
+        public TReturn Execute()
+        {
+            return ExecuteBuilder().GetAwaiter().GetResult();
+        }
 
         /// <summary>
         /// Executes all filters and downloads result from API asynchronously. If object with the specified filters is not available,
@@ -50,7 +53,12 @@ namespace Oddity.API.Builders
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        public abstract Task<TReturn> ExecuteAsync();
+        public async Task<TReturn> ExecuteAsync()
+        {
+            return await ExecuteBuilder();
+        }
+
+        protected abstract Task<TReturn> ExecuteBuilder();
 
         /// <summary>
         /// Adds or overrides filter with the specified name and integer value.
