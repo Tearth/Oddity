@@ -81,7 +81,7 @@ namespace Oddity.API.Builders.Company
         public override async Task<List<HistoryEvent>> ExecuteAsync()
         {
             var link = BuildLink(CompanyHistoryEndpoint);
-            return await RequestForObject(link);
+            return await SendRequestToAPI(link);
         }
     }
 }

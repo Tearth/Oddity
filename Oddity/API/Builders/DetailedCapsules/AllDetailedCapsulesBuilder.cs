@@ -119,7 +119,7 @@ namespace Oddity.API.Builders.DetailedCapsules
         public override async Task<List<DetailedCapsuleInfo>> ExecuteAsync()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            return await RequestForObject(link);
+            return await SendRequestToAPI(link);
         }
     }
 }

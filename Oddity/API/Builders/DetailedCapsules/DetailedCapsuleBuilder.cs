@@ -57,7 +57,7 @@ namespace Oddity.API.Builders.DetailedCapsules
                 link += $"/{_capsuleSerial.ToUpper()}";
             }
 
-            return await RequestForObject(link);
+            return await SendRequestToAPI(link);
         }
     }
 }

@@ -154,7 +154,7 @@ namespace Oddity.API.Builders.DetailedCores
         public override async Task<List<DetailedCoreInfo>> ExecuteAsync()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            return await RequestForObject(link);
+            return await SendRequestToAPI(link);
         }
     }
 }

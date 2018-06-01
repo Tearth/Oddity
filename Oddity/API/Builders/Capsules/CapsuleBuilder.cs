@@ -57,7 +57,7 @@ namespace Oddity.API.Builders.Capsules
                 link += $"/{_capsuleType.ToString().ToLower()}";
             }
 
-            return await RequestForObject(link);
+            return await SendRequestToAPI(link);
         }
     }
 }
