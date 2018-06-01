@@ -132,7 +132,7 @@ namespace Oddity.API.Builders
         /// <param name="link">The request link.</param>
         /// <returns>The deserialized object returned from API.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX is unavailable and data can't be retrieved.</exception>
-        protected async Task<TReturn> SendRequestToAPI(string link)
+        protected async Task<TReturn> SendRequestToApi(string link)
         {
             var response = await HttpClient.GetAsync(link);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -146,8 +146,12 @@ namespace Oddity.API.Builders
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            var deserializationSettings = new JsonSerializerSettings {Error = JsonDeserializationError};
+            return DeserializeJson(content);
+        }
 
+        private TReturn DeserializeJson(string content)
+        {
+            var deserializationSettings = new JsonSerializerSettings { Error = JsonDeserializationError };
             return JsonConvert.DeserializeObject<TReturn>(content, deserializationSettings);
         }
 
