@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using Oddity.API.Builders;
 using Oddity.API.Builders.Company;
 
 namespace Oddity.API
@@ -24,7 +25,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets information about the company. This method returns only builder which doesn't retrieve data from API itself,
-        /// you should call <see cref="InfoBuilder.Execute"/> or <see cref="InfoBuilder.ExecuteAsync"/> to get the data from SpaceX API.
+        /// you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get the data from SpaceX API.
         /// </summary>
         /// <returns>The company information builder.</returns>
         public InfoBuilder GetInfo()
@@ -34,7 +35,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets company history events. This method returns only builder which doesn't retrieve data from API itself,
-        /// you should call <see cref="HistoryBuilder.Execute"/> or <see cref="HistoryBuilder.ExecuteAsync"/> to get the data from SpaceX API.
+        /// you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get the data from SpaceX API.
         /// </summary>
         /// <returns>The company history events builder.</returns>
         public HistoryBuilder GetHistory()

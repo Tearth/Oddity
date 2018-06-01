@@ -23,8 +23,8 @@ namespace Oddity.API.Builders.DetailedCores
         }
 
         /// <summary>
-        /// Filters capsule information by the specified core serial. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved core serial filter.
+        /// Filters capsule information by the specified core serial. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or
+        /// <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved core serial filter.
         /// </summary>
         /// <param name="coreSerial">The capsule serial (C101, C113, etc).</param>
         /// <returns>The capsule information.</returns>
@@ -35,7 +35,6 @@ namespace Oddity.API.Builders.DetailedCores
         }
 
         /// <inheritdoc />
-        /// <exception cref="CoreSerialNotSelectedException">Thrown when user tries to get API data without selected capsule serial.</exception>
         protected override async Task<DetailedCoreInfo> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);

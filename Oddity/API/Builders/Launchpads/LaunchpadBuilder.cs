@@ -24,8 +24,8 @@ namespace Oddity.API.Builders.Launchpads
         }
 
         /// <summary>
-        /// Filters launchpad information by the specified launchpad type. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved launchpad type filter.
+        /// Filters launchpad information by the specified launchpad type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or
+        /// <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved launchpad type filter.
         /// </summary>
         /// <param name="type">The launchpad type (CcafsLc13, Stls, etc).</param>
         /// <returns>The launchpad builder.</returns>
@@ -36,7 +36,6 @@ namespace Oddity.API.Builders.Launchpads
         }
 
         /// <inheritdoc />
-        /// <exception cref="LaunchpadTypeNotSelectedException">Thrown when user tries to get API data without selected launchpad type.</exception>
         protected override async Task<LaunchpadInfo> ExecuteBuilder()
         {
             var link = BuildLink(RocketInfoEndpoint);

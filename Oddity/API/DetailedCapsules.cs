@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using Oddity.API.Builders;
 using Oddity.API.Builders.Capsules;
 using Oddity.API.Builders.DetailedCapsules;
 
@@ -25,7 +26,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets information about the specified capsule. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="DetailedCapsuleBuilder.Execute"/> or <see cref="DetailedCapsuleBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <param name="capsuleSerial">The capsule serial.</param>
@@ -37,7 +38,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets detailed information about all capsules. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="AllDetailedCapsulesBuilder.Execute"/> or <see cref="AllDetailedCapsulesBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The all detailed capsules builder.</returns>

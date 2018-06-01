@@ -23,8 +23,8 @@ namespace Oddity.API.Builders.Rockets
         }
 
         /// <summary>
-        /// Filters rocket information by the specified rocket type. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved rocket type filter.
+        /// Filters rocket information by the specified rocket type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or
+        /// <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved rocket type filter.
         /// </summary>
         /// <param name="type">The rocket type (Falcon1, Falcon9, etc).</param>
         /// <returns>The rocket builder.</returns>
@@ -35,7 +35,6 @@ namespace Oddity.API.Builders.Rockets
         }
 
         /// <inheritdoc />
-        /// <exception cref="RocketTypeNotSelectedException">Thrown when user tries to get API data without selected rocket type.</exception>
         protected override async Task<RocketInfo> ExecuteBuilder()
         {
             var link = BuildLink(RocketInfoEndpoint);

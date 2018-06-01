@@ -23,8 +23,8 @@ namespace Oddity.API.Builders.Capsules
         }
 
         /// <summary>
-        /// Filters capsule information by the specified capsule type. Note that you have to call <see cref="Execute"/> or
-        /// <see cref="ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved capsule type filter.
+        /// Filters capsule information by the specified capsule type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or
+        /// <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved capsule type filter.
         /// </summary>
         /// <param name="type">The capsule type (Dragon1, Dragon2, etc).</param>
         /// <returns>The capsule information.</returns>
@@ -35,7 +35,6 @@ namespace Oddity.API.Builders.Capsules
         }
 
         /// <inheritdoc />
-        /// <exception cref="CapsuleTypeNotSelectedException">Thrown when user tries to get API data without selected capsule type.</exception>
         protected override async Task<CapsuleInfo> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);

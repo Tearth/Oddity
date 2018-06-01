@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using Oddity.API.Builders;
 using Oddity.API.Builders.Rockets;
 using Oddity.API.Models.Rocket;
 
@@ -25,7 +26,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets information about the specified rocket. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="RocketBuilder.Execute"/> or <see cref="RocketBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <param name="rocketType">The rocket type.</param>
@@ -37,7 +38,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets information about all rockets. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="AllRocketsBuilder.Execute"/> or <see cref="AllRocketsBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The all rockets builder.</returns>

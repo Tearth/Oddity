@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using Oddity.API.Builders;
 using Oddity.API.Builders.Launchpads;
 using Oddity.API.Models.Launchpad;
 
@@ -25,7 +26,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets information about the specified launchpad. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="LaunchpadBuilder.Execute"/> or <see cref="LaunchpadBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <param name="launchpadType">The launchpad type.</param>
@@ -37,7 +38,7 @@ namespace Oddity.API
 
         /// <summary>
         /// Gets information about all launchpads. This method returns only builder which doesn't retrieve data from API itself, so after apply
-        /// all necessary filters you should call <see cref="AllLaunchpadsBuilder.Execute"/> or <see cref="AllLaunchpadsBuilder.ExecuteAsync"/> to
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
         /// <returns>The all launchpads builder.</returns>
