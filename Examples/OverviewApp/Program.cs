@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Serialization;
 using Oddity;
-using Oddity.API.Models.Launch.Rocket.SecondStage;
+using Oddity.API.Models.Launch.Rocket.SecondStage.Orbit;
 using Oddity.API.Models.Rocket;
 
 namespace OverviewApp
