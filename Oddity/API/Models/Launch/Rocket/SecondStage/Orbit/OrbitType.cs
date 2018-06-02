@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Oddity.API.Models.Launch.Rocket.SecondStage
+namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
 {
     public enum OrbitType
     {

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using Oddity.API.Models.Launch.Rocket.FirstStage;
 using Oddity.API.Models.Launch.Rocket.SecondStage;
+using Oddity.API.Models.Launch.Rocket.SecondStage.Orbit;
 using Oddity.API.Models.Launchpad;
 using Oddity.API.Models.Rocket;
 using Oddity.Helpers;

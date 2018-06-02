@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Oddity.API.Models.Launch.Rocket.SecondStage.Orbit;
 
 namespace Oddity.API.Models.Launch.Rocket.SecondStage
 {
@@ -21,5 +22,8 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage
         public float? PayloadMassPounds { get; set; }
 
         public OrbitType? Orbit { get; set; }
+
+        [JsonProperty("orbit_params")]
+        public OrbitParameters OrbitParameters { get; set; }
     }
 }
