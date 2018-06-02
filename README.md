@@ -101,3 +101,6 @@ namespace OverviewApp
     }
 }
 ```
+
+# Why Oddity?
+https://www.youtube.com/watch?v=iYYRH4apXDo
