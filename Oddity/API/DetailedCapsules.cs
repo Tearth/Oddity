@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders;
-using Oddity.API.Builders.Capsules;
 using Oddity.API.Builders.DetailedCapsules;
 
 namespace Oddity.API
