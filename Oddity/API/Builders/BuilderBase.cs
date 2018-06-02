@@ -58,6 +58,10 @@ namespace Oddity.API.Builders
             return await ExecuteBuilder();
         }
 
+        /// <summary>
+        /// The main method of every builder. Builds request, retrieves data from API and deserializes JSON.
+        /// </summary>
+        /// <returns>The deserialized JSON.</returns>
         protected abstract Task<TReturn> ExecuteBuilder();
 
         /// <summary>
