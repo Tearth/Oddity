@@ -70,6 +70,7 @@ namespace Oddity.API.Builders.Company
             AddFilter("order", "desc");
             return this;
         }
+
         /// <inheritdoc />
         protected override async Task<List<HistoryEvent>> ExecuteBuilder()
         {
