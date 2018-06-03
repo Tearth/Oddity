@@ -16,8 +16,8 @@ namespace Oddity.API.Builders.Rockets
         /// Initializes a new instance of the <see cref="AllRocketsBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public AllRocketsBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public AllRocketsBuilder(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
         {
 
         }

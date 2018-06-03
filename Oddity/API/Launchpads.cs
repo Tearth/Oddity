@@ -11,17 +11,17 @@ namespace Oddity.API
     public class Launchpads
     {
         private HttpClient _httpClient;
-        private DeserializationError _deserializationError;
+        private BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Launchpads"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public Launchpads(HttpClient httpClient, DeserializationError deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public Launchpads(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
-            _deserializationError = deserializationError;
+            _builderDelegatesContainer = builderDelegatesContainer;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Oddity.API
         /// <returns>The launchpad builder.</returns>
         public LaunchpadBuilder GetAbout(LaunchpadId launchpadType)
         {
-            return new LaunchpadBuilder(_httpClient, _deserializationError).WithType(launchpadType);
+            return new LaunchpadBuilder(_httpClient, _builderDelegatesContainer).WithType(launchpadType);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Oddity.API
         /// <returns>The all launchpads builder.</returns>
         public AllLaunchpadsBuilder GetAll()
         {
-            return new AllLaunchpadsBuilder(_httpClient, _deserializationError);
+            return new AllLaunchpadsBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }

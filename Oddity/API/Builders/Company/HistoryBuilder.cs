@@ -17,8 +17,8 @@ namespace Oddity.API.Builders.Company
         /// Initializes a new instance of the <see cref="HistoryBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public HistoryBuilder(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public HistoryBuilder(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
         {
 
         }

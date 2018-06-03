@@ -19,8 +19,8 @@ namespace Oddity.API.Builders.Launches
         /// Initializes a new instance of the <see cref="LaunchBuilderBase{TBuilder,TReturn}"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        protected LaunchBuilderBase(HttpClient httpClient, DeserializationError deserializationError) : base(httpClient, deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        protected LaunchBuilderBase(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
         {
 
         }

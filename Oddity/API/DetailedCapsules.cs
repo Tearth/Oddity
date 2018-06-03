@@ -10,17 +10,17 @@ namespace Oddity.API
     public class DetailedCapsules
     {
         private HttpClient _httpClient;
-        private DeserializationError _deserializationError;
+        private BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DetailedCapsules"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public DetailedCapsules(HttpClient httpClient, DeserializationError deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public DetailedCapsules(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
-            _deserializationError = deserializationError;
+            _builderDelegatesContainer = builderDelegatesContainer;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Oddity.API
         /// <returns>The capsule builder.</returns>
         public DetailedCapsuleBuilder GetAbout(string capsuleSerial)
         {
-            return new DetailedCapsuleBuilder(_httpClient, _deserializationError).WithSerial(capsuleSerial);
+            return new DetailedCapsuleBuilder(_httpClient, _builderDelegatesContainer).WithSerial(capsuleSerial);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Oddity.API
         /// <returns>The all detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder GetAll()
         {
-            return new AllDetailedCapsulesBuilder(_httpClient, _deserializationError);
+            return new AllDetailedCapsulesBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }

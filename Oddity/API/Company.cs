@@ -10,17 +10,17 @@ namespace Oddity.API
     public class Company
     {
         private HttpClient _httpClient;
-        private DeserializationError _deserializationError;
+        private BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Company"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public Company(HttpClient httpClient, DeserializationError deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public Company(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
-            _deserializationError = deserializationError;
+            _builderDelegatesContainer = builderDelegatesContainer;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Oddity.API
         /// <returns>The company information builder.</returns>
         public InfoBuilder GetInfo()
         {
-            return new InfoBuilder(_httpClient, _deserializationError);
+            return new InfoBuilder(_httpClient, _builderDelegatesContainer);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Oddity.API
         /// <returns>The company history events builder.</returns>
         public HistoryBuilder GetHistory()
         {
-            return new HistoryBuilder(_httpClient, _deserializationError);
+            return new HistoryBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }

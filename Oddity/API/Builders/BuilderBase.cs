@@ -20,19 +20,19 @@ namespace Oddity.API.Builders
         /// </summary>
         protected HttpClient HttpClient { get; }
 
-        private DeserializationError _deserializationError;
+        private BuilderDelegatesContainer _builderDelegatesContainer;
         private Dictionary<string, string> _filters;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BuilderBase{TReturn}"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        protected BuilderBase(HttpClient httpClient, DeserializationError deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        protected BuilderBase(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             HttpClient = httpClient;
 
-            _deserializationError = deserializationError;
+            _builderDelegatesContainer = builderDelegatesContainer;
             _filters = new Dictionary<string, string>();
         }
 
@@ -169,7 +169,7 @@ namespace Oddity.API.Builders
 
         private void JsonDeserializationError(object sender, ErrorEventArgs errorEventArgs)
         {
-            _deserializationError(errorEventArgs);
+            _builderDelegatesContainer.DeserializationError(errorEventArgs);
         }
 
         private string SerializeFilters()

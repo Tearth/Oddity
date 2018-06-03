@@ -11,17 +11,17 @@ namespace Oddity.API
     public class Rockets
     {
         private HttpClient _httpClient;
-        private DeserializationError _deserializationError;
+        private BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Rockets"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public Rockets(HttpClient httpClient, DeserializationError deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public Rockets(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
-            _deserializationError = deserializationError;
+            _builderDelegatesContainer = builderDelegatesContainer;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Oddity.API
         /// <returns>The rocket builder.</returns>
         public RocketBuilder GetAbout(RocketId rocketType)
         {
-            return new RocketBuilder(_httpClient, _deserializationError).WithType(rocketType);
+            return new RocketBuilder(_httpClient, _builderDelegatesContainer).WithType(rocketType);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Oddity.API
         /// <returns>The all rockets builder.</returns>
         public AllRocketsBuilder GetAll()
         {
-            return new AllRocketsBuilder(_httpClient, _deserializationError);
+            return new AllRocketsBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }

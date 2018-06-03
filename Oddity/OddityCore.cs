@@ -3,11 +3,10 @@ using System.Net.Http;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
 using Oddity.API;
+using Oddity.API.Builders;
 
 namespace Oddity
 {
-    public delegate void DeserializationError(ErrorEventArgs args);
-
     /// <summary>
     /// Represents an core of the library. Use it to retrieve data from the SpaceX API.
     /// </summary>
@@ -66,13 +65,18 @@ namespace Oddity
 
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
-            Company = new Company(_httpClient, DeserializationError);
-            Rockets = new Rockets(_httpClient, DeserializationError);
-            Capsules = new Capsules(_httpClient, DeserializationError);
-            DetailedCapsules = new DetailedCapsules(_httpClient, DeserializationError);
-            DetailedCores = new DetailedCores(_httpClient, DeserializationError);
-            Launchpads = new Launchpads(_httpClient, DeserializationError);
-            Launches = new Launches(_httpClient, DeserializationError);
+            var builderDelegatesContainer = new BuilderDelegatesContainer
+            {
+                DeserializationError = DeserializationError
+            };
+
+            Company = new Company(_httpClient, builderDelegatesContainer);
+            Rockets = new Rockets(_httpClient, builderDelegatesContainer);
+            Capsules = new Capsules(_httpClient, builderDelegatesContainer);
+            DetailedCapsules = new DetailedCapsules(_httpClient, builderDelegatesContainer);
+            DetailedCores = new DetailedCores(_httpClient, builderDelegatesContainer);
+            Launchpads = new Launchpads(_httpClient, builderDelegatesContainer);
+            Launches = new Launches(_httpClient, builderDelegatesContainer);
         }
 
         /// <summary>

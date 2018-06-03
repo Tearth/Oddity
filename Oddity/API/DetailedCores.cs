@@ -10,17 +10,17 @@ namespace Oddity.API
     public class DetailedCores
     {
         private HttpClient _httpClient;
-        private DeserializationError _deserializationError;
+        private BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DetailedCores"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public DetailedCores(HttpClient httpClient, DeserializationError deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public DetailedCores(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
-            _deserializationError = deserializationError;
+            _builderDelegatesContainer = builderDelegatesContainer;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Oddity.API
         /// <returns>The capsule builder.</returns>
         public DetailedCoreBuilder GetAbout(string coreSerial)
         {
-            return new DetailedCoreBuilder(_httpClient, _deserializationError).WithSerial(coreSerial);
+            return new DetailedCoreBuilder(_httpClient, _builderDelegatesContainer).WithSerial(coreSerial);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Oddity.API
         /// <returns>The all detailed core builder.</returns>
         public AllDetailedCoresBuilder GetAll()
         {
-            return new AllDetailedCoresBuilder(_httpClient, _deserializationError);
+            return new AllDetailedCoresBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }

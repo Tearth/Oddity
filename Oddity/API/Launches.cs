@@ -10,17 +10,17 @@ namespace Oddity.API
     public class Launches
     {
         private HttpClient _httpClient;
-        private DeserializationError _deserializationError;
+        private BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Launches"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="deserializationError">The deserialization error delegate.</param>
-        public Launches(HttpClient httpClient, DeserializationError deserializationError)
+        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
+        public Launches(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
-            _deserializationError = deserializationError;
+            _builderDelegatesContainer = builderDelegatesContainer;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Oddity.API
         /// <returns>The all launches builder.</returns>
         public AllLaunchesBuilder GetAll()
         {
-            return new AllLaunchesBuilder(_httpClient, _deserializationError);
+            return new AllLaunchesBuilder(_httpClient, _builderDelegatesContainer);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Oddity.API
         /// <returns>The latest launch builder.</returns>
         public LatestLaunchesBuilder GetLatest()
         {
-            return new LatestLaunchesBuilder(_httpClient, _deserializationError);
+            return new LatestLaunchesBuilder(_httpClient, _builderDelegatesContainer);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Oddity.API
         /// <returns>The next launch builder.</returns>
         public NextLaunchesBuilder GetNext()
         {
-            return new NextLaunchesBuilder(_httpClient, _deserializationError);
+            return new NextLaunchesBuilder(_httpClient, _builderDelegatesContainer);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Oddity.API
         /// <returns>The all upcoming launches builder.</returns>
         public UpcomingLaunchesBuilder GetUpcoming()
         {
-            return new UpcomingLaunchesBuilder(_httpClient, _deserializationError);
+            return new UpcomingLaunchesBuilder(_httpClient, _builderDelegatesContainer);
         }
 
 
@@ -76,7 +76,7 @@ namespace Oddity.API
         /// <returns>The past launches builder.</returns>
         public PastLaunchesBuilder GetPast()
         {
-            return new PastLaunchesBuilder(_httpClient, _deserializationError);
+            return new PastLaunchesBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }
