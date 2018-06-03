@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Net;
 
 namespace Oddity.API.Builders
 {
     /// <summary>
     /// Contains OnResponseReceive event arguments.
     /// </summary>
-    public class ReponseReceiveEventArgs : EventArgs
+    public class ResponseReceiveEventArgs : EventArgs
     {
         /// <summary>
         /// Gets the raw response from the SpaceX API server.
@@ -15,7 +16,7 @@ namespace Oddity.API.Builders
         /// <summary>
         /// Gets the response status code (200 = OK).
         /// </summary>
-        public int StatusCode { get; }
+        public HttpStatusCode StatusCode { get; }
 
         /// <summary>
         /// Gets the reason phrase (useful when error has occurred).
@@ -23,12 +24,12 @@ namespace Oddity.API.Builders
         public string ReasonPhrase { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReponseReceiveEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="ResponseReceiveEventArgs"/> class.
         /// </summary>
         /// <param name="response">The raw response from the SpaceX API server.</param>
         /// <param name="statusCode">The response status code.</param>
         /// <param name="reasonPhrase">The reason phrase.</param>
-        public ReponseReceiveEventArgs(string response, int statusCode, string reasonPhrase)
+        public ResponseReceiveEventArgs(string response, HttpStatusCode statusCode, string reasonPhrase)
         {
             Response = response;
             StatusCode = statusCode;

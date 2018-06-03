@@ -52,6 +52,16 @@ namespace Oddity
         /// </summary>
         public event EventHandler<ErrorEventArgs> OnDeserializationError;
 
+        /// <summary>
+        /// Event triggered when a request is just before send to the server.
+        /// </summary>
+        public event EventHandler<RequestSendEventArgs> OnRequestSend;
+
+        /// <summary>
+        /// Event triggered when a response has been received.
+        /// </summary>
+        public event EventHandler<ResponseReceiveEventArgs> OnResponseReceive;
+
         private HttpClient _httpClient;
 
         /// <summary>
@@ -67,7 +77,9 @@ namespace Oddity
 
             var builderDelegatesContainer = new BuilderDelegatesContainer
             {
-                DeserializationError = DeserializationError
+                DeserializationError = DeserializationError,
+                RequestSend = RequestSend,
+                ResponseReceived = ResponseReceived
             };
 
             Company = new Company(_httpClient, builderDelegatesContainer);
@@ -106,6 +118,16 @@ namespace Oddity
         private void DeserializationError(ErrorEventArgs args)
         {
             OnDeserializationError?.Invoke(this, args);
+        }
+
+        private void RequestSend(RequestSendEventArgs args)
+        {
+            OnRequestSend?.Invoke(this, args);
+        }
+
+        private void ResponseReceived(ResponseReceiveEventArgs args)
+        {
+            OnResponseReceive?.Invoke(this, args);
         }
     }
 }
