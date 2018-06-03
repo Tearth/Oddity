@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Serialization;
 using Oddity;
+using Oddity.API.Builders;
 using Oddity.API.Models.Launch.Rocket.SecondStage.Orbit;
 using Oddity.API.Models.Rocket;
 
@@ -14,6 +15,8 @@ namespace OverviewApp
 
             // Optional.
             oddity.OnDeserializationError += OddityOnOnDeserializationError;
+            oddity.OnRequestSend += Oddity_OnRequestSend;
+            oddity.OnResponseReceive += OddityOnOnResponseReceive;
 
             // Get company information.
             var company = oddity.Company.GetInfo().Execute();
@@ -41,6 +44,8 @@ namespace OverviewApp
 
             // Get all cores.
             var allCores = oddity.DetailedCores.GetAll().Execute();
+
+            Console.Read();
         }
 
         private static void OddityOnOnDeserializationError(object sender, ErrorEventArgs errorEventArgs)
@@ -49,6 +54,18 @@ namespace OverviewApp
 
             // We don't want to stop all program, just leave problematic field as null.
             errorEventArgs.ErrorContext.Handled = true;
+        }
+
+        private static void Oddity_OnRequestSend(object sender, RequestSendEventArgs e)
+        {
+            Console.WriteLine($"Sending request... URL: {e.Url}");
+        }
+
+        private static void OddityOnOnResponseReceive(object sender, ResponseReceiveEventArgs e)
+        {
+            Console.WriteLine($"Response received! Status code: {e.StatusCode}");
+            Console.WriteLine($"Raw content: {e.Response}");
+            Console.WriteLine();
         }
     }
 }
