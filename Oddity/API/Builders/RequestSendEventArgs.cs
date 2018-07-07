@@ -16,7 +16,7 @@ namespace Oddity.API.Builders
         /// <summary>
         /// Gets the dictionary of filters which has been applied.
         /// </summary>
-        public Dictionary<string, string> Filteres { get; }
+        public Dictionary<string, string> Filters { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequestSendEventArgs"/> class.
@@ -26,7 +26,7 @@ namespace Oddity.API.Builders
         public RequestSendEventArgs(string url, Dictionary<string, string> filters)
         {
             Url = url;
-            Filteres = filters;
+            Filters = filters;
         }
     }
 }
