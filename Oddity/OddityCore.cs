@@ -48,6 +48,11 @@ namespace Oddity
         public Launches Launches { get; }
 
         /// <summary>
+        /// Gets the Tesla Roadster information.
+        /// </summary>
+        public Roadster Roadster { get; }
+
+        /// <summary>
         /// Event triggered when an error occurred during JSON deserialization.
         /// </summary>
         public event EventHandler<ErrorEventArgs> OnDeserializationError;
@@ -89,6 +94,7 @@ namespace Oddity
             DetailedCores = new DetailedCores(_httpClient, builderDelegatesContainer);
             Launchpads = new Launchpads(_httpClient, builderDelegatesContainer);
             Launches = new Launches(_httpClient, builderDelegatesContainer);
+            Roadster = new Roadster(_httpClient, builderDelegatesContainer);
         }
 
         /// <summary>
