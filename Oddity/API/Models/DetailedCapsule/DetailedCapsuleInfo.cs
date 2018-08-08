@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Oddity.API.Models.Capsule;
 
@@ -15,7 +16,7 @@ namespace Oddity.API.Models.DetailedCapsule
         public DetailedCapsuleStatus? Status { get; set; }
 
         [JsonProperty("original_launch")]
-        public string OriginalLaunch { get; set; }
+        public DateTime? OriginalLaunch { get; set; }
 
         public List<string> Missions { get; set; }
         public uint? Landings { get; set; }

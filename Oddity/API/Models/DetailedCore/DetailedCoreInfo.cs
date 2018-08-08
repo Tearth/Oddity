@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Oddity.API.Models.DetailedCore
@@ -12,7 +13,7 @@ namespace Oddity.API.Models.DetailedCore
         public DetailedCoreStatus? Status { get; set; }
 
         [JsonProperty("original_launch")]
-        public string OriginalLaunch { get; set; }
+        public DateTime? OriginalLaunch { get; set; }
 
         public List<string> Missions { get; set; }
 
