@@ -1,10 +1,29 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Roadster
 {
     public class RoadsterInfo
     {
         public string Name { get; set; }
+
+        [JsonProperty("launch_date_utc")]
+        public DateTime? DateTimeUtc { get; set; }
+
+        [JsonProperty("launch_date_unix")]
+        public ulong DateTimeUnix { get; set; }
+
+        [JsonProperty("launch_mass_kg")]
+        public uint LaunchMassKg { get; set; }
+
+        [JsonProperty("launch_mass_lbs")]
+        public uint LaunchMassLbs { get; set; }
+
+        [JsonProperty("norad_id")]
+        public uint NoradId { get; set; }
+
+        [JsonProperty("epoch_jd")]
+        public float EpochJs { get; set; }
 
         [JsonProperty("apoapsis_au")]
         public float ApoapsisAu { get; set; }
@@ -32,15 +51,18 @@ namespace Oddity.API.Models.Roadster
         public float SpeedMph { get; set; }
 
         [JsonProperty("earth_distance_km")]
-        public int EarthDistanceKm { get; set; }
+        public float EarthDistanceKm { get; set; }
 
         [JsonProperty("earth_distance_mi")]
-        public int EarthDistanceMi { get; set; }
+        public float EarthDistanceMi { get; set; }
 
         [JsonProperty("mars_distance_km")]
-        public int MarsDistanceKm { get; set; }
+        public float MarsDistanceKm { get; set; }
 
         [JsonProperty("mars_distance_mi")]
-        public int MarsDistanceMi { get; set; }
+        public float MarsDistanceMi { get; set; }
+
+        public string Wikipedia { get; set; }
+        public string Details { get; set; }
     }
 }
