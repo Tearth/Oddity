@@ -59,7 +59,7 @@ namespace OverviewApp
             var oddity = new OddityCore();
 
             // Optional.
-            oddity.OnDeserializationError += OddityOnOnDeserializationError;
+            oddity.OnDeserializationError += OddityOnDeserializationError;
 
             // Note that every request must be done with Execute() or ExecuteAsync() call to retrieve data from the SpaceX API.
 
@@ -91,7 +91,7 @@ namespace OverviewApp
             var allCores = oddity.DetailedCores.GetAll().Execute();
         }
 
-        private static void OddityOnOnDeserializationError(object sender, ErrorEventArgs errorEventArgs)
+        private static void OddityOnDeserializationError(object sender, ErrorEventArgs errorEventArgs)
         {
             Console.WriteLine("Something went wrong.");
 

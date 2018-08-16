@@ -14,9 +14,9 @@ namespace OverviewApp
             var oddity = new OddityCore();
 
             // Optional.
-            oddity.OnDeserializationError += OddityOnOnDeserializationError;
+            oddity.OnDeserializationError += OddityOnDeserializationError;
             oddity.OnRequestSend += Oddity_OnRequestSend;
-            oddity.OnResponseReceive += OddityOnOnResponseReceive;
+            oddity.OnResponseReceive += OddityOnResponseReceive;
 
             // Get company information.
             var company = oddity.Company.GetInfo().Execute();
@@ -48,7 +48,7 @@ namespace OverviewApp
             Console.Read();
         }
 
-        private static void OddityOnOnDeserializationError(object sender, ErrorEventArgs errorEventArgs)
+        private static void OddityOnDeserializationError(object sender, ErrorEventArgs errorEventArgs)
         {
             Console.WriteLine("Something went wrong.");
 
@@ -61,7 +61,7 @@ namespace OverviewApp
             Console.WriteLine($"Sending request... URL: {e.Url}");
         }
 
-        private static void OddityOnOnResponseReceive(object sender, ResponseReceiveEventArgs e)
+        private static void OddityOnResponseReceive(object sender, ResponseReceiveEventArgs e)
         {
             Console.WriteLine($"Response received! Status code: {e.StatusCode}");
             Console.WriteLine($"Raw content: {e.Response}");
