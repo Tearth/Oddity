@@ -1,3 +1,9 @@
+# Version 1.0.3 (03-08-2018)
+ * Add OnResponseReceive and OnRequestSend events
+ * Add Roadster endpoint
+ * Fix exception related with new landing zone (LZ-3)
+ * Some minor changes and fixes
+
 # Version 1.0.2 (02-06-2018)
  * Added orbit parameters to the second stage data
  * Removed unused exceptions
