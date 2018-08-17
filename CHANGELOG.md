@@ -1,4 +1,4 @@
-# Version 1.0.3 (03-08-2018)
+# Version 1.0.3 (16-08-2018)
  * Add OnResponseReceive and OnRequestSend events
  * Add Roadster endpoint
  * Fix exception related with new landing zone (LZ-3)
