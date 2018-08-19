@@ -12,6 +12,8 @@ namespace Oddity.API.Models.Launch
         [JsonProperty("mission_name")]
         public string MissionName { get; set; }
 
+        public bool? Upcoming { get; set; }
+
         [JsonProperty("launch_year")]
         public uint? LaunchYear { get; set; }
 
@@ -36,5 +38,8 @@ namespace Oddity.API.Models.Launch
 
         public LinksInfo Links { get; set; }
         public string Details { get; set; }
+
+        [JsonProperty("static_fire_date_utc")]
+        public DateTime? StaticFireDateUtc { get; set; }
     }
 }

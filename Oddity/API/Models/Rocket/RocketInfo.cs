@@ -5,6 +5,7 @@ using Oddity.API.Models.Common;
 using Oddity.API.Models.Rocket.Engines;
 using Oddity.API.Models.Rocket.LandingLegs;
 using Oddity.API.Models.Rocket.PayloadWeights;
+using Oddity.API.Models.Rocket.Stages;
 
 namespace Oddity.API.Models.Rocket
 {
@@ -25,7 +26,7 @@ namespace Oddity.API.Models.Rocket
         public uint? SuccessRate { get; set; }
 
         [JsonProperty("first_flight")]
-        public DateTime FirstFlight { get; set; }
+        public DateTime? FirstFlight { get; set; }
 
         public string Country { get; set; }
         public string Company { get; set; }
@@ -35,6 +36,12 @@ namespace Oddity.API.Models.Rocket
 
         [JsonProperty("payload_weights")]
         public List<PayloadWeightInfo> PayloadWeights { get; set; }
+
+        [JsonProperty("first_stage")]
+        public FirstStageInfo FirstStage { get; set; }
+
+        [JsonProperty("second_stage")]
+        public SecondStageInfo SecondStage { get; set; }
 
         public EnginesInfo Engines { get; set; }
 

@@ -10,6 +10,9 @@ namespace Oddity.API.Models.Company
         [JsonProperty("event_date_utc")]
         public DateTime? EventDate { get; set; }
 
+        [JsonProperty("event_date_unix")]
+        public ulong? EventDataUnix { get; set; }
+
         [JsonProperty("flight_number")]
         public uint? FlightNumber { get; set; }
 

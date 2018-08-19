@@ -8,22 +8,25 @@ namespace Oddity.API.Models.Roadster
         public string Name { get; set; }
 
         [JsonProperty("launch_date_utc")]
-        public DateTime? DateTimeUtc { get; set; }
+        public DateTime DateTimeUtc { get; set; }
 
         [JsonProperty("launch_date_unix")]
         public ulong DateTimeUnix { get; set; }
 
         [JsonProperty("launch_mass_kg")]
-        public uint LaunchMassKg { get; set; }
+        public uint LaunchMassKilograms { get; set; }
 
         [JsonProperty("launch_mass_lbs")]
-        public uint LaunchMassLbs { get; set; }
+        public uint LaunchMassPounds { get; set; }
 
         [JsonProperty("norad_id")]
         public uint NoradId { get; set; }
 
         [JsonProperty("epoch_jd")]
-        public float EpochJs { get; set; }
+        public float EpochJd { get; set; }
+
+        [JsonProperty("orbit_type")]
+        public string OrbitType { get; set; }
 
         [JsonProperty("apoapsis_au")]
         public float ApoapsisAu { get; set; }
@@ -51,16 +54,16 @@ namespace Oddity.API.Models.Roadster
         public float SpeedMph { get; set; }
 
         [JsonProperty("earth_distance_km")]
-        public float EarthDistanceKm { get; set; }
+        public float EarthDistanceKilometers { get; set; }
 
         [JsonProperty("earth_distance_mi")]
-        public float EarthDistanceMi { get; set; }
+        public float EarthDistanceMiles { get; set; }
 
         [JsonProperty("mars_distance_km")]
-        public float MarsDistanceKm { get; set; }
+        public float MarsDistanceKilometers { get; set; }
 
         [JsonProperty("mars_distance_mi")]
-        public float MarsDistanceMi { get; set; }
+        public float MarsDistanceMiles { get; set; }
 
         public string Wikipedia { get; set; }
         public string Details { get; set; }

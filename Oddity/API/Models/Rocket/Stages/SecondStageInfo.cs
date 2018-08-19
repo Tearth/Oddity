@@ -4,7 +4,7 @@ using Oddity.API.Models.Rocket.Stages.Payloads;
 
 namespace Oddity.API.Models.Rocket.Stages
 {
-    public class SecondStage
+    public class SecondStageInfo
     {
         public uint? Engines { get; set; }
 

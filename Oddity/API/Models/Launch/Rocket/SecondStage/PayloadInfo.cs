@@ -11,6 +11,8 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage
 
         public bool? Reused { get; set; }
         public List<string> Customers { get; set; }
+        public string Nationality { get; set; }
+        public string Manufacturer { get; set; }
 
         [JsonProperty("payload_type")]
         public string PayloadType { get; set; }
