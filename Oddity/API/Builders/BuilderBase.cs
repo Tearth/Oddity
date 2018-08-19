@@ -112,7 +112,7 @@ namespace Oddity.API.Builders
 
                 case DateFormatType.Long:
                 {
-                    _filters[name] = value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                    _filters[name] = value.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'");
                     break;
                 }
             }
