@@ -39,11 +39,17 @@ namespace OverviewApp
             // Get data about all launches of Falcon 9 which has been launched to ISS and landed with success. Next, sort it ascending.
             var launchWithFilters = oddity.Launches.GetAll().WithRocketName("Falcon 9").WithOrbit(OrbitType.ISS).WithLandSuccess(true).Ascending().Execute();
 
+            // Get all capsule types.
+            var capsuleTypes = oddity.Capsules.GetAll().Execute();
+
             // Get capsule which has been launched 2015-04-14 at 20:10.
             var capsuleWithFilters = oddity.DetailedCapsules.GetAll().WithOriginalLaunch(new DateTime(2015, 4, 14, 20, 10, 0)).Execute();
 
             // Get all cores.
             var allCores = oddity.DetailedCores.GetAll().Execute();
+
+            // Get Roadster info.
+            var roadster = oddity.Roadster.Get().Execute();
 
             Console.Read();
         }
@@ -52,7 +58,7 @@ namespace OverviewApp
         {
             Console.WriteLine("Something went wrong.");
 
-            // We don't want to stop all program, just leave problematic field as null.
+            // We don't want to stop program, just leave problematic field as null.
             errorEventArgs.ErrorContext.Handled = true;
         }
 
