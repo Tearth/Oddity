@@ -33,6 +33,9 @@ namespace OverviewApp
             // Get list of all launchpads.
             var allLaunchpads = oddity.Launchpads.GetAll().Execute();
 
+            // Get all launches.
+            var allLaunches = oddity.Launches.GetAll().Execute();
+
             // Get information about the next launch.
             var nextLaunch = oddity.Launches.GetNext().Execute();
 
