@@ -49,5 +49,11 @@ namespace Oddity.API.Models.Capsule
         public SizeInfo HeightWithTrunk { get; set; }
 
         public SizeInfo Diameter { get; set; }
+
+        [JsonProperty("wikipedia")]
+        public string Wikipedia { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }
