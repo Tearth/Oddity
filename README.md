@@ -7,7 +7,7 @@
 
 SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project. Method names are very familiar with API endpoints so you can just use API wiki documents:
 
-https://github.com/r-spacex/SpaceX-API/wiki
+https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md
 
 **Available data overview:**
  * company data, history with most important events
