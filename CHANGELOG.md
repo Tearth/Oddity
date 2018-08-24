@@ -1,3 +1,6 @@
+# Version 1.0.4 (24-08-2018)
+ * Add a lot of new data to models
+
 # Version 1.0.3 (16-08-2018)
  * Add OnResponseReceive and OnRequestSend events
  * Add Roadster endpoint

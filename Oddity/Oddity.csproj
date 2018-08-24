@@ -7,18 +7,15 @@
     <RepositoryUrl>https://github.com/Tearth/Oddity</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Tearth/Oddity</PackageProjectUrl>
     <PackageTags>oddity spacex api wrapper dotnet .net csharp dotnetstandard .netstandard standard core framework</PackageTags>
-    <PackageReleaseNotes>* Add OnResponseReceive and OnRequestSend events
-* Add Roadster endpoint
-* Fix exception related with new landing zone (LZ-3)
-* Some minor changes and fixes</PackageReleaseNotes>
+    <PackageReleaseNotes>* Add a lot of new data to models</PackageReleaseNotes>
     <Description>SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project.</Description>
     <Copyright>Tearth 2018</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NeutralLanguage></NeutralLanguage>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
-    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
