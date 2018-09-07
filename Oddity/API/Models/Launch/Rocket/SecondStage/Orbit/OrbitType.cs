@@ -25,6 +25,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         [EnumMember(Value = "HEO")]
         HEO,
 
+        [EnumMember(Value = "MEO")]
+        MEO,
+
         [EnumMember(Value = "ES-L1")]
         ESL1
     }
