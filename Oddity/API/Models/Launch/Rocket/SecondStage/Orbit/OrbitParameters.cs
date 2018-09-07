@@ -28,6 +28,6 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         public float? PeriodMinutes { get; set; }
 
         [JsonProperty("lifespan_years")]
-        public int? LifespanYears { get; set; }
+        public float? LifespanYears { get; set; }
     }
 }
