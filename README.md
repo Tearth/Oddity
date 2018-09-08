@@ -5,9 +5,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/blob/master/LICENSE)
 
-SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project. Method names are very familiar with API endpoints so you can just use API wiki documents:
+SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project. Method names are very familiar with API endpoints so you can just use API documents:
 
-https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md
+https://github.com/r-spacex/SpaceX-API/tree/master/docs
 
 **Available data overview:**
  * company data, history with most important events
@@ -15,7 +15,8 @@ https://github.com/r-spacex/SpaceX-API/blob/master/docs/home.md
  * launchpads data
  * launches: latest, next, all past, all upcoming
  * information about the specified cores and capsules
- 
+ * Elon's Roadster data 
+
 Most of the endpoints contains a lot of filters which are applied on the API side to save bandwidth. Look at the example and [wiki](https://github.com/Tearth/Oddity/wiki) for more information.
 
 # Minimal requirements
