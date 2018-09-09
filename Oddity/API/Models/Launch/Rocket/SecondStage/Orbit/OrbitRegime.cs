@@ -20,6 +20,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         L1Point,
 
         [EnumMember(Value = "sun-synchronous")]
-        SunSynchronous
+        SunSynchronous,
+
+        [EnumMember(Value = "sub-orbital")]
+        SubOrbital
     }
 }
