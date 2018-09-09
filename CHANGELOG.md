@@ -1,3 +1,6 @@
+# Version 1.0.6 (09-09-2018)
+ * Add new orbit type (SO)
+
 # Version 1.0.5 (08-09-2018)
  * Add new orbit type (MEO)
  * Fix invalid data types in some models which caused deserialization errors
