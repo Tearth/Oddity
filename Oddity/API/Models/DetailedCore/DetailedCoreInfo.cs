@@ -18,7 +18,7 @@ namespace Oddity.API.Models.DetailedCore
         [JsonProperty("original_launch_unix")]
         public ulong? OriginalLaunchUnix { get; set; }
 
-        public List<string> Missions { get; set; }
+        public List<CoreMissionInfo> Missions { get; set; }
 
         [JsonProperty("rtls_attempt")]
         public bool? RtlsAttempt { get; set; }
