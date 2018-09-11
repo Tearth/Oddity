@@ -1,3 +1,6 @@
+# Version 1.0.7 (11-09-2018)
+ * Fix missions property in detailed cores and capsules
+
 # Version 1.0.6 (09-09-2018)
  * Add new orbit type (SO)
 
