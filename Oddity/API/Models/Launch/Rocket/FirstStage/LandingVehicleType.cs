@@ -17,6 +17,9 @@ namespace Oddity.API.Models.Launch.Rocket.FirstStage
         LZ2,
 
         [EnumMember(Value = "LZ-3")]
-        LZ3
+        LZ3,
+
+        [EnumMember(Value = "LZ-4")]
+        LZ4
     }
 }
