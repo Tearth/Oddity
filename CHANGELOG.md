@@ -1,3 +1,6 @@
+# Version 1.0.9 (20-12-2018)
+ * Fix deserialization errors (thanks martindevans)
+
 # Version 1.0.8 (23-09-2018)
  * Add new landing place
 

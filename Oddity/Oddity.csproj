@@ -7,15 +7,15 @@
     <RepositoryUrl>https://github.com/Tearth/Oddity</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Tearth/Oddity</PackageProjectUrl>
     <PackageTags>oddity spacex api wrapper dotnet .net csharp dotnetstandard .netstandard standard core framework</PackageTags>
-    <PackageReleaseNotes>* Add new landing place</PackageReleaseNotes>
+    <PackageReleaseNotes>* Fix deserialization errors</PackageReleaseNotes>
     <Description>SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project.</Description>
     <Copyright>Tearth 2018</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NeutralLanguage></NeutralLanguage>
-    <AssemblyVersion>1.0.8.0</AssemblyVersion>
-    <FileVersion>1.0.8.0</FileVersion>
-    <Version>1.0.8</Version>
+    <AssemblyVersion>1.0.9.0</AssemblyVersion>
+    <FileVersion>1.0.9.0</FileVersion>
+    <Version>1.0.9</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
