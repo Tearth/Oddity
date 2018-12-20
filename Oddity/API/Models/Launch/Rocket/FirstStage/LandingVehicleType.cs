@@ -10,6 +10,9 @@ namespace Oddity.API.Models.Launch.Rocket.FirstStage
         [EnumMember(Value = "JRTI")]
         JRTI,
 
+        [EnumMember(Value = "JRTI-1")]
+        JRTI_1,
+
         [EnumMember(Value = "LZ-1")]
         LZ1,
 
