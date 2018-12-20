@@ -11,6 +11,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         Heliocentric,
 
         [EnumMember(Value = "highly-elliptical")]
-        HighlyElliptical
+        HighlyElliptical,
+
+        [EnumMember(Value = "selenocentric")]
+        Selenocentric
     }
 }

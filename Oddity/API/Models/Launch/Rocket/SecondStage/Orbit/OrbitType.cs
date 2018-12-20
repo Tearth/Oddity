@@ -32,6 +32,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         SO,
 
         [EnumMember(Value = "ES-L1")]
-        ESL1
+        ESL1,
+
+        [EnumMember(Value = "TLI")]
+        TLI,
     }
 }
