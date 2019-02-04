@@ -26,6 +26,12 @@ namespace Oddity.API.Models.Launch
         [JsonProperty("launch_date_local")]
         public DateTime? LaunchDateLocal { get; set; }
 
+        [JsonProperty("is_tentative")]
+        public bool IsTentative { get; set; }
+
+        [JsonProperty("tentative_max_precision")]
+        public TentativeMaxPrecision? TentativeMaxPrecision { get; set; }
+
         public RocketInfo Rocket { get; set; }
         public ReuseInfo Reuse { get; set; }
         public TelemetryInfo Telemetry { get; set; }
