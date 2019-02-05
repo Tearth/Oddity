@@ -9,10 +9,10 @@ namespace Oddity.API.Models.Rocket.Stages
         public int Engines { get; set; }
 
         [JsonProperty("fuel_amount_tons")]
-        public float FuelAmountTons { get; set; }
+        public float? FuelAmountTons { get; set; }
 
         [JsonProperty("burn_time_sec")]
-        public int BurnTimeSeconds { get; set; }
+        public int? BurnTimeSeconds { get; set; }
 
         [JsonProperty("thrust_sea_level")]
         public ThrustInfo ThrustSeaLevel { get; set; }
