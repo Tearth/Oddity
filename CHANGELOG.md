@@ -1,3 +1,7 @@
+# Version 1.0.10 (05-02-2019)
+ * Fix deserialization errors (thanks martindevans)
+ * Remove unused core statuses
+
 # Version 1.0.9 (20-12-2018)
  * Fix deserialization errors (thanks martindevans)
 
