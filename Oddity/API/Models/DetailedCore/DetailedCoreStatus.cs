@@ -7,14 +7,11 @@ namespace Oddity.API.Models.DetailedCore
         [EnumMember(Value = "active")]
         Active,
 
-        [EnumMember(Value = "destroyed")]
-        Destroyed,
+        [EnumMember(Value = "lost")]
+        Lost,
 
-        [EnumMember(Value = "expended")]
-        Expended,
-
-        [EnumMember(Value = "retired")]
-        Retired,
+        [EnumMember(Value = "inactive")]
+        Inactive,
 
         [EnumMember(Value = "unknown")]
         Unknown
