@@ -26,6 +26,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         SemiSynchronous,
 
         [EnumMember(Value = "sub-orbital")]
-        SubOrbital
+        SubOrbital,
+
+        [EnumMember(Value = "highly-elliptical")]
+        HighlyElliptical,
     }
 }
