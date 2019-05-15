@@ -4,6 +4,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
 {
     public enum OrbitRegime
     {
+        [EnumMember(Value = "very-low-earth")]
+        VeryLowEarth,
+
         [EnumMember(Value = "low-earth")]
         LowEarth,
 

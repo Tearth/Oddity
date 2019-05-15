@@ -4,6 +4,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
 {
     public enum OrbitType
     {
+        [EnumMember(Value = "VLEO")]
+        VLEO,
+
         [EnumMember(Value = "PO")]
         PO,
 
