@@ -40,7 +40,7 @@ namespace OverviewApp
             var nextLaunch = oddity.Launches.GetNext().Execute();
 
             // Get data about all launches of Falcon 9 which has been launched to ISS and landed with success. Next, sort it ascending.
-            var launchWithFilters = oddity.Launches.GetAll().WithRocketName("Falcon 9").WithOrbit(OrbitType.ISS).WithLandSuccess(true).Ascending().Execute();
+            var launchWithFilters = oddity.Launches.GetAll().WithRocketName("Falcon 9").WithOrbit(OrbitType.ISS).Ascending().Execute();
 
             // Get all capsule types.
             var capsuleTypes = oddity.Capsules.GetAll().Execute();
