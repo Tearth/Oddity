@@ -13,6 +13,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         [EnumMember(Value = "LEO")]
         LEO,
 
+        [EnumMember(Value = "GEO")]
+        GEO,
+
         [EnumMember(Value = "ISS")]
         ISS,
 

@@ -10,6 +10,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
         [EnumMember(Value = "low-earth")]
         LowEarth,
 
+        [EnumMember(Value = "medium-earth")]
+        MediumEarth,
+
         [EnumMember(Value = "high-earth")]
         HighEarth,
 
