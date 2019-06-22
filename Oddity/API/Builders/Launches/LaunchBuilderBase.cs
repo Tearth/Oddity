@@ -349,6 +349,7 @@ namespace Oddity.API.Builders.Launches
             return (TBuilder)this;
         }
 
+        /*
         /// <summary>
         /// Filters launches by success land. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved success land filter.
@@ -359,7 +360,7 @@ namespace Oddity.API.Builders.Launches
         {
             AddFilter("land_success", landSuccess);
             return (TBuilder)this;
-        }
+        }*/
 
         /// <summary>
         /// Filters launches by landing type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
