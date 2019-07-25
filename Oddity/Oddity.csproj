@@ -14,9 +14,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NeutralLanguage></NeutralLanguage>
-    <AssemblyVersion>1.0.10.4</AssemblyVersion>
-    <FileVersion>1.0.10.4</FileVersion>
-    <Version>1.0.10.4</Version>
+    <AssemblyVersion>1.0.10.5</AssemblyVersion>
+    <FileVersion>1.0.10.5</FileVersion>
+    <Version>1.0.10.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
