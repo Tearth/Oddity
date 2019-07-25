@@ -20,14 +20,17 @@ namespace Oddity.API.Models.DetailedCore
 
         public List<CoreMissionInfo> Missions { get; set; }
 
-        [JsonProperty("rtls_attempt")]
-        public bool? RtlsAttempt { get; set; }
+        [JsonProperty("reuse_count")]
+        public uint? ReuseCount { get; set; }
+
+        [JsonProperty("rtls_attempts")]
+        public uint? RtlsAttempts { get; set; }
 
         [JsonProperty("rtls_landings")]
         public uint? RtlsLandings { get; set; }
 
-        [JsonProperty("asds_attempt")]
-        public bool? AsdsAttempt { get; set; }
+        [JsonProperty("asds_attempts")]
+        public uint? AsdsAttempts { get; set; }
 
         [JsonProperty("asds_landings")]
         public uint? AsdsLandings { get; set; }
