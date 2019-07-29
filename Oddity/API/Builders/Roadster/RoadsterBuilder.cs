@@ -27,7 +27,7 @@ namespace Oddity.API.Builders.Roadster
         protected override async Task<RoadsterInfo> ExecuteBuilder()
         {
             var link = BuildLink(RoadsterInfoEndpoint);
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }

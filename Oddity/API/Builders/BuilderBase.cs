@@ -55,7 +55,7 @@ namespace Oddity.API.Builders
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public async Task<TReturn> ExecuteAsync()
         {
-            return await ExecuteBuilder();
+            return await ExecuteBuilder().ConfigureAwait(false);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Oddity.API.Builders
         protected async Task<TReturn> SendRequestToApi(string link)
         {
             _builderDelegatesContainer.RequestSend(new RequestSendEventArgs(HttpClient.BaseAddress + link, _filters));
-            var response = await HttpClient.GetAsync(link);
+            var response = await HttpClient.GetAsync(link).ConfigureAwait(false);
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
@@ -159,7 +159,7 @@ namespace Oddity.API.Builders
                 throw new APIUnavailableException($"Status code: {(int)response.StatusCode}");
             }
 
-            var content = await response.Content.ReadAsStringAsync();
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             _builderDelegatesContainer.ResponseReceived(new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase));
 
             return DeserializeJson(content);

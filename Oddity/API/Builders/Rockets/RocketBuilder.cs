@@ -43,7 +43,7 @@ namespace Oddity.API.Builders.Rockets
                 link += $"/{_rocketType.ToString().ToLower()}";
             }
 
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }

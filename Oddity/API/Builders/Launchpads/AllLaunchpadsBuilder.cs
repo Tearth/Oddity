@@ -26,7 +26,7 @@ namespace Oddity.API.Builders.Launchpads
         protected override async Task<List<LaunchpadInfo>> ExecuteBuilder()
         {
             var link = BuildLink(LaunchpadInfoEndpoint);
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }

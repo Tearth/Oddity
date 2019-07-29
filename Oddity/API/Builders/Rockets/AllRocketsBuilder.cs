@@ -26,7 +26,7 @@ namespace Oddity.API.Builders.Rockets
         protected override async Task<List<RocketInfo>> ExecuteBuilder()
         {
             var link = BuildLink(RocketInfoEndpoint);
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }

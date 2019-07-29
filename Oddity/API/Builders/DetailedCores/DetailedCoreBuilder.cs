@@ -43,7 +43,7 @@ namespace Oddity.API.Builders.DetailedCores
                 link += $"/{_coreSerial.ToUpper()}";
             }
 
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }

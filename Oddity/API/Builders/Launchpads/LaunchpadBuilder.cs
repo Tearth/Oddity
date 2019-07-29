@@ -45,7 +45,7 @@ namespace Oddity.API.Builders.Launchpads
                 link += $"/{launchpadName.ToLower()}";
             }
 
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }

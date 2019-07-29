@@ -25,7 +25,7 @@ namespace Oddity.API.Builders.Company
         protected override async Task<CompanyInfo> ExecuteBuilder()
         {
             var link = BuildLink(CompanyInfoEndpoint);
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }

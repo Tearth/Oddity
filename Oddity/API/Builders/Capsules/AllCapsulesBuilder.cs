@@ -26,7 +26,7 @@ namespace Oddity.API.Builders.Capsules
         protected override async Task<List<CapsuleInfo>> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            return await SendRequestToApi(link);
+            return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }
 }
