@@ -1,3 +1,8 @@
+# Version 1.0.11 (30-07-2019)
+ * Remove filters that aren't present in API
+ * Fix potential deadlock when using sync version of methods
+ * Fix a lot of smaller issues
+
 # Version 1.0.10 (05-02-2019)
  * Fix deserialization errors (thanks martindevans)
  * Remove unused core statuses
