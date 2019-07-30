@@ -85,18 +85,6 @@ namespace Oddity.API.Builders.DetailedCores
         }
 
         /// <summary>
-        /// Filters launches by RTLS attempt. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved RTLS attempt filter.
-        /// </summary>
-        /// <param name="rtlsAttempt">The core RTLS (return to launch site) attempt.</param>
-        /// <returns>The all detailed cores builder.</returns>
-        public AllDetailedCoresBuilder WithRtlsAttempt(bool rtlsAttempt)
-        {
-            AddFilter("rtls_attempt", rtlsAttempt);
-            return this;
-        }
-
-        /// <summary>
         /// Filters launches by RTLS landing. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved RTLS landing filter.
         /// </summary>
@@ -105,18 +93,6 @@ namespace Oddity.API.Builders.DetailedCores
         public AllDetailedCoresBuilder WithRtlsLanding(int rtlsLandings)
         {
             AddFilter("rtls_landings", rtlsLandings);
-            return this;
-        }
-
-        /// <summary>
-        /// Filters launches by ASDS attempt. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved ASDS attempt filter.
-        /// </summary>
-        /// <param name="asdsAttempt">The core ASDS (autonomous spaceport drone ship) attempt.</param>
-        /// <returns>The all detailed cores builder.</returns>
-        public AllDetailedCoresBuilder WithAsdsAttempt(bool asdsAttempt)
-        {
-            AddFilter("asds_attempt", asdsAttempt);
             return this;
         }
 
