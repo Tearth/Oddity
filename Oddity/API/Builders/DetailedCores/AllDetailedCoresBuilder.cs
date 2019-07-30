@@ -80,7 +80,7 @@ namespace Oddity.API.Builders.DetailedCores
         /// <returns>The all detailed cores builder.</returns>
         public AllDetailedCoresBuilder WithMission(string mission)
         {
-            AddFilter("missions", mission);
+            AddFilter("mission", mission);
             return this;
         }
 

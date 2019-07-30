@@ -81,7 +81,7 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// <returns>The detailed capsules builder.</returns>
         public AllDetailedCapsulesBuilder WithMission(string mission)
         {
-            AddFilter("missions", mission);
+            AddFilter("mission", mission);
             return this;
         }
 
