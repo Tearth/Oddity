@@ -5,6 +5,7 @@
         LEO,
         GTO,
         Mars,
-        Pluto
+        Pluto,
+        Moon
     }
 }
