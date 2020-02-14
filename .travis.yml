@@ -1,0 +1,26 @@
+language: csharp
+dist: trusty
+mono: none
+dotnet: 2.0.0
+script:
+  - dotnet restore
+  - dotnet build -c Release
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    api_key: $GH_REPO_TOKEN
+    file_glob: true
+    file:
+      - "Oddity/bin/Release/Oddity.*.nupkg"
+    on:
+      tags: true
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    file_glob: true
+    script: dotnet nuget push "Oddity/bin/Release/Oddity.*.nupkg" -k $NUGET_KEY -s $NUGET_SOURCE
+    on:
+      tags: true
+      branch: master
+notifications:
+  email: false
