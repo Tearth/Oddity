@@ -13,7 +13,7 @@ namespace Oddity.API.Models.Rocket
         [EnumMember(Value = "falconheavy")]
         FalconHeavy,
 
-        [EnumMember(Value = "bfr")]
-        Bfr
+        [EnumMember(Value = "starship")]
+        Starship
     }
 }
