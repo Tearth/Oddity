@@ -4,6 +4,16 @@ mono: none
 dotnet: 2.0.0
 script:
   - dotnet restore
-  - dotnet build
+  - dotnet build -c Release
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    api_key: $GH_REPO_TOKEN
+    file_glob: true
+    file:
+      - "Oddity/bin/Release/Oddity.*.nupkg"
+    on:
+      tags: false
+      branch: travis
 notifications:
   email: false
