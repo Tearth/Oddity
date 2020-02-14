@@ -13,7 +13,14 @@ deploy:
     file:
       - "Oddity/bin/Release/Oddity.*.nupkg"
     on:
-      tags: false
-      branch: travis
+      tags: true
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    file_glob: true
+    script: dotnet nuget push "Oddity/bin/Release/Oddity.*.nupkg" -k $NUGET_KEY -s $NUGET_SOURCE
+    on:
+      tags: true
+      branch: master
 notifications:
   email: false
