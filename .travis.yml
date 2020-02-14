@@ -5,3 +5,5 @@ dotnet: 2.0.0
 script:
   - dotnet restore
   - dotnet build
+notifications:
+  email: false
