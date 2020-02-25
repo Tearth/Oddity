@@ -13,6 +13,11 @@ namespace Oddity
     public class OddityCore : IDisposable
     {
         /// <summary>
+        /// Gets the API information.
+        /// </summary>
+        public Api Api { get; }
+
+        /// <summary>
         /// Gets the company information.
         /// </summary>
         public Company Company { get; }
@@ -87,6 +92,7 @@ namespace Oddity
                 ResponseReceived = ResponseReceived
             };
 
+            Api = new Api(_httpClient, builderDelegatesContainer);
             Company = new Company(_httpClient, builderDelegatesContainer);
             Rockets = new Rockets(_httpClient, builderDelegatesContainer);
             Capsules = new Capsules(_httpClient, builderDelegatesContainer);

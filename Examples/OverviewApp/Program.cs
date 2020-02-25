@@ -18,6 +18,9 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
+            // Get API info
+            var api = oddity.Api.GetInfo().Execute();
+
             // Get company information.
             var company = oddity.Company.GetInfo().Execute();
 
