@@ -1,8 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders;
 using Oddity.API.Builders.Api;
-using Oddity.API.Builders.Capsules;
-using Oddity.API.Models.Capsule;
 
 namespace Oddity.API
 {
@@ -11,8 +9,8 @@ namespace Oddity.API
     /// </summary>
     public class Api
     {
-        private HttpClient _httpClient;
-        private BuilderDelegatesContainer _builderDelegatesContainer;
+        private readonly HttpClient _httpClient;
+        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Api"/> class.

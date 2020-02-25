@@ -72,7 +72,7 @@ namespace Oddity
         /// </summary>
         public event EventHandler<ResponseReceiveEventArgs> OnResponseReceive;
 
-        private HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OddityCore"/> class.

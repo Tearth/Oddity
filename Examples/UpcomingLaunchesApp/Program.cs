@@ -3,7 +3,7 @@ using System.Linq;
 using Newtonsoft.Json.Serialization;
 using Oddity;
 
-namespace UpcomingLaunchApp
+namespace UpcomingLaunchesApp
 {
     public class Program
     {

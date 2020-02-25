@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.API.Models.Roadster;
-using Oddity.API.Models.Rocket;
 
 namespace Oddity.API.Builders.Roadster
 {
