@@ -81,7 +81,7 @@ namespace Oddity
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
-            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"{ApiConfiguration.LibraryName}/{GetVersion()} ({ApiConfiguration.GitHubLink})");
+            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"{ApiConfiguration.LibraryName}/{GetLibraryVersion()} ({ApiConfiguration.GitHubLink})");
 
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
@@ -116,7 +116,7 @@ namespace Oddity
         /// Gets the current version of library.
         /// </summary>
         /// <returns>The library version.</returns>
-        public string GetVersion()
+        public string GetLibraryVersion()
         {
             return GetType().GetTypeInfo().Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
         }
