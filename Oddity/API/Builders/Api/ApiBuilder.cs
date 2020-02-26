@@ -5,14 +5,14 @@ using Oddity.API.Models.Api;
 namespace Oddity.API.Builders.Api
 {
     /// <summary>
-    /// Represents a set of methods to retrieve API information.
+    /// Represents a set of methods to retrieve information about API.
     /// </summary>
     public class ApiBuilder : BuilderBase<ApiInfo>
     {
         private const string ApiEndpoint = "";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Builders.Api.ApiBuilder"/> class.
+        /// Initializes a new instance of the <see cref="ApiBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
