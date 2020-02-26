@@ -1,35 +1,39 @@
+# Version 1.0.12 (26-02-2020)
+ * Added methods to retrieve information about API
+ * Cleaned up code
+
 # Version 1.0.11 (30-07-2019)
- * Remove filters that aren't present in API
- * Fix potential deadlock when using sync version of methods
- * Fix a lot of smaller issues
+ * Removed filters that aren't present in API
+ * Fixed potential deadlock when using sync version of methods
+ * Fixed a lot of smaller issues
 
 # Version 1.0.10 (05-02-2019)
- * Fix deserialization errors (thanks martindevans)
- * Remove unused core statuses
+ * Fixed deserialization errors (thanks martindevans)
+ * Removed unused core statuses
 
 # Version 1.0.9 (20-12-2018)
- * Fix deserialization errors (thanks martindevans)
+ * Fixed deserialization errors (thanks martindevans)
 
 # Version 1.0.8 (23-09-2018)
- * Add new landing place
+ * Added new landing place
 
 # Version 1.0.7 (11-09-2018)
- * Fix missions property in detailed cores and capsules
+ * Fixed missions property in detailed cores and capsules
 
 # Version 1.0.6 (09-09-2018)
- * Add new orbit type (SO)
+ * Added new orbit type (SO)
 
 # Version 1.0.5 (08-09-2018)
- * Add new orbit type (MEO)
- * Fix invalid data types in some models which caused deserialization errors
+ * Added new orbit type (MEO)
+ * Fixed invalid data types in some models which caused deserialization errors
 
 # Version 1.0.4 (24-08-2018)
- * Add a lot of new data to models
+ * Added a lot of new data to models
 
 # Version 1.0.3 (16-08-2018)
- * Add OnResponseReceive and OnRequestSend events
- * Add Roadster endpoint
- * Fix exception related with new landing zone (LZ-3)
+ * Added OnResponseReceive and OnRequestSend events
+ * Added Roadster endpoint
+ * Fixed exception related with new landing zone (LZ-3)
  * Some minor changes and fixes
 
 # Version 1.0.2 (02-06-2018)

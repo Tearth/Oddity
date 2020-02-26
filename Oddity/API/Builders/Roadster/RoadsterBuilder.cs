@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.API.Models.Roadster;
-using Oddity.API.Models.Rocket;
 
 namespace Oddity.API.Builders.Roadster
 {
     /// <summary>
-    /// Represents a set of methods to Roadster information and download them from API.
+    /// Represents a set of methods to retrieve information about the Tesla Roadster launched into the space.
     /// </summary>
     public class RoadsterBuilder : BuilderBase<RoadsterInfo>
     {

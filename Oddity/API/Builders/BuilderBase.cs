@@ -20,8 +20,8 @@ namespace Oddity.API.Builders
         /// </summary>
         protected HttpClient HttpClient { get; }
 
-        private BuilderDelegatesContainer _builderDelegatesContainer;
-        private Dictionary<string, string> _filters;
+        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
+        private readonly Dictionary<string, string> _filters;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BuilderBase{TReturn}"/> class.

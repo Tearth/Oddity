@@ -13,6 +13,11 @@ namespace Oddity
     public class OddityCore : IDisposable
     {
         /// <summary>
+        /// Gets the API information.
+        /// </summary>
+        public Api Api { get; }
+
+        /// <summary>
         /// Gets the company information.
         /// </summary>
         public Company Company { get; }
@@ -67,7 +72,7 @@ namespace Oddity
         /// </summary>
         public event EventHandler<ResponseReceiveEventArgs> OnResponseReceive;
 
-        private HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OddityCore"/> class.
@@ -76,7 +81,7 @@ namespace Oddity
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
-            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"{ApiConfiguration.LibraryName}/{GetVersion()} ({ApiConfiguration.GitHubLink})");
+            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"{ApiConfiguration.LibraryName}/{GetLibraryVersion()} ({ApiConfiguration.GitHubLink})");
 
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
@@ -87,6 +92,7 @@ namespace Oddity
                 ResponseReceived = ResponseReceived
             };
 
+            Api = new Api(_httpClient, builderDelegatesContainer);
             Company = new Company(_httpClient, builderDelegatesContainer);
             Rockets = new Rockets(_httpClient, builderDelegatesContainer);
             Capsules = new Capsules(_httpClient, builderDelegatesContainer);
@@ -110,7 +116,7 @@ namespace Oddity
         /// Gets the current version of library.
         /// </summary>
         /// <returns>The library version.</returns>
-        public string GetVersion()
+        public string GetLibraryVersion()
         {
             return GetType().GetTypeInfo().Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
         }

@@ -10,8 +10,8 @@ namespace Oddity.API
     /// </summary>
     public class Launchpads
     {
-        private HttpClient _httpClient;
-        private BuilderDelegatesContainer _builderDelegatesContainer;
+        private readonly HttpClient _httpClient;
+        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Launchpads"/> class.
