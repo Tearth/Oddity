@@ -5,8 +5,9 @@
 [![GitHub issues](https://img.shields.io/github/issues/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/issues)
 [![GitHub stars](https://img.shields.io/github/stars/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/Doxygen-gh--pages-blue)](https://tearth.github.io/Oddity/)
 
-.NET SpaceX API wrapper for https://github.com/r-spacex/SpaceX-API project, providing information about company, rockets and launches. To learn more, you can use directly documentation of the API (method names are very familiar with endpoints):
+.NET SpaceX API wrapper for https://github.com/r-spacex/SpaceX-API project, providing information about company, rockets and launches. To learn more, you can use [Doxygen](https://tearth.github.io/Oddity/) or directly documentation of the API (method names are very familiar with endpoints):
 
 https://docs.spacexdata.com/
 

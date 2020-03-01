@@ -2,10 +2,19 @@ language: csharp
 dist: trusty
 mono: none
 dotnet: 2.0.0
+before_install:
+  - sudo apt-get update && sudo apt install -y doxygen
 script:
   - dotnet restore
   - dotnet build -c Release
+  - doxygen Doxyfile
 deploy:
+  - provider: pages
+    skip_cleanup: true
+    local_dir: docs/html
+    github_token: $GH_REPO_TOKEN
+    on:
+      branch: develop
   - provider: releases
     skip_cleanup: true
     api_key: $GH_REPO_TOKEN
