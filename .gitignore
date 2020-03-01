@@ -329,6 +329,5 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 /TestApp
-/Documentation
 /cloc.exe
 /cloc.bat
