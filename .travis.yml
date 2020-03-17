@@ -8,6 +8,7 @@ script:
   - dotnet restore
   - dotnet build -c Release
   - doxygen Doxyfile
+  - touch docs/html/.nojekyll
 deploy:
   - provider: pages
     skip_cleanup: true
