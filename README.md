@@ -32,7 +32,7 @@ Library is build on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/
  * Universal Windows Platform 10.0 or higher
  
 **External dependencies:**
- * Newtonsoft.Json
+ * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 
 # Installation
  * download from NuGet: https://www.nuget.org/packages/Oddity/
