@@ -22,7 +22,7 @@ https://docs.spacexdata.com/
 Most of the endpoints contains a lot of filters which are applied on the API side to save bandwidth. Look at the example and [wiki](https://github.com/Tearth/Oddity/wiki) for more information.
 
 # Minimal requirements
-Library is build on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which contains support for:
+Library is built on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which contains support for:
  * .NET Framework 4.5 or higher
  * .NET Core 1.0 or higher
  * Mono 4.6 or higher
