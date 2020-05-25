@@ -47,6 +47,7 @@ or
 
 # Software using Oddity
  - [**InElonWeTrust**](https://github.com/Tearth/InElonWeTrust) - SpaceX Discord bot providing information about launches, notifications and other commands related to SpaceX and Elon Musk.
+ - [**Launchpad**](https://github.com/skyffx/Launchpad) - Get brief overview about SpaceX missions.
 
 # Example usage
 ```csharp
