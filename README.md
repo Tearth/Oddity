@@ -22,7 +22,7 @@ https://docs.spacexdata.com/
 Most of the endpoints contains a lot of filters which are applied on the API side to save bandwidth. Look at the example and [wiki](https://github.com/Tearth/Oddity/wiki) for more information.
 
 # Minimal requirements
-Library is build on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which contains support for:
+Library is built on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which contains support for:
  * .NET Framework 4.5 or higher
  * .NET Core 1.0 or higher
  * Mono 4.6 or higher
@@ -32,7 +32,7 @@ Library is build on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/
  * Universal Windows Platform 10.0 or higher
  
 **External dependencies:**
- * Newtonsoft.Json
+ * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 
 # Installation
  * download from NuGet: https://www.nuget.org/packages/Oddity/
@@ -47,6 +47,7 @@ or
 
 # Software using Oddity
  - [**InElonWeTrust**](https://github.com/Tearth/InElonWeTrust) - SpaceX Discord bot providing information about launches, notifications and other commands related to SpaceX and Elon Musk.
+ - [**Launchpad**](https://github.com/skyffx/Launchpad) - Get brief overview about SpaceX missions.
 
 # Example usage
 ```csharp

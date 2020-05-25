@@ -10,7 +10,7 @@
     <PackageReleaseNotes>* Added methods to retrieve information about API
 * Cleaned up code</PackageReleaseNotes>
     <Description>SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project.</Description>
-    <Copyright>Tearth 2019</Copyright>
+    <Copyright>Tearth 2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NeutralLanguage></NeutralLanguage>
