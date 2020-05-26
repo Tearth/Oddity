@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
 using Oddity.API.Builders;
@@ -9,7 +10,7 @@ namespace OverviewApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var oddity = new OddityCore();
 
@@ -18,44 +19,47 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
-            // Get API info
-            var api = oddity.Api.GetInfo().Execute();
-
             // Get company information
-            var company = oddity.Company.GetInfo().Execute();
+            var company = await oddity.Company.GetInfo().ExecuteAsync();
 
             // Get all history
-            var history = oddity.Company.GetHistory().Execute();
+            var history = await oddity.Company.GetHistory().ExecuteAsync();
 
             // Get history from the last two years and ordered descending
-            var historyWithFilter = oddity.Company.GetHistory().WithRange(DateTime.Now.AddYears(-2), DateTime.Now).Descending().Execute();
+            var historyWithFilter = await oddity.Company.GetHistory()
+                .WithRange(DateTime.Now.AddYears(-2), DateTime.Now)
+                .Descending()
+                .ExecuteAsync();
 
             // Get data about Falcon Heavy
-            var falconHeavy = oddity.Rockets.GetAbout(RocketId.FalconHeavy).Execute();
+            var falconHeavy = await oddity.Rockets.GetAbout(RocketId.FalconHeavy).ExecuteAsync();
 
             // Get list of all launchpads
-            var allLaunchpads = oddity.Launchpads.GetAll().Execute();
-
-            // Get all launches
-            var allLaunches = oddity.Launches.GetAll().Execute();
+            var allLaunchpads = await oddity.Launchpads.GetAll().ExecuteAsync();
 
             // Get information about the next launch
-            var nextLaunch = oddity.Launches.GetNext().Execute();
+            var nextLaunch = await oddity.Launches.GetNext().ExecuteAsync();
 
-            // Get data about all launches of Falcon 9 which has been launched to ISS and landed with success. Next, sort it ascending
-            var launchWithFilters = oddity.Launches.GetAll().WithRocketName("Falcon 9").WithOrbit(OrbitType.ISS).Ascending().Execute();
+            // Get data about all launches of Falcon 9 which has been launched to ISS. Next, sort it ascending
+            var launchWithFilters = await oddity.Launches.GetAll()
+                .WithRocketName("Falcon 9")
+                .WithOrbit(OrbitType.ISS)
+                .Ascending()
+                .ExecuteAsync();
 
             // Get all capsule types
-            var capsuleTypes = oddity.Capsules.GetAll().Execute();
+            var capsuleTypes = await oddity.Capsules.GetAll().ExecuteAsync();
 
             // Get capsule which has been launched 2015-04-14 at 20:10
-            var capsuleWithFilters = oddity.DetailedCapsules.GetAll().WithOriginalLaunch(new DateTime(2015, 4, 14, 20, 10, 0)).Execute();
+            var capsuleWithFilters = await oddity.DetailedCapsules.GetAll()
+                .WithOriginalLaunch(new DateTime(2015, 4, 14, 20, 10, 0))
+                .ExecuteAsync();
 
             // Get all cores
-            var allCores = oddity.DetailedCores.GetAll().Execute();
+            var allCores = await oddity.DetailedCores.GetAll().ExecuteAsync();
 
             // Get Roadster info
-            var roadster = oddity.Roadster.Get().Execute();
+            var roadster = await oddity.Roadster.Get().ExecuteAsync();
 
             Console.Read();
         }
