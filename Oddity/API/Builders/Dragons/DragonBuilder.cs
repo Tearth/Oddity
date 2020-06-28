@@ -9,7 +9,7 @@ namespace Oddity.API.Builders.Dragons
     /// </summary>
     public class DragonBuilder : BuilderBase<DragonInfo>
     {
-        private DraognId? _capsuleType;
+        private DragonId? _capsuleType;
         private const string DragonsEndpoint = "dragons";
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Oddity.API.Builders.Dragons
         /// </summary>
         /// <param name="type">The capsule type (Dragon1, Dragon2, etc).</param>
         /// <returns>The capsule information.</returns>
-        public DragonBuilder WithType(DraognId type)
+        public DragonBuilder WithType(DragonId type)
         {
             _capsuleType = type;
             return this;

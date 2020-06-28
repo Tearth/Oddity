@@ -31,7 +31,7 @@ namespace Oddity.API
         /// </summary>
         /// <param name="dragonType">The Dragon type.</param>
         /// <returns>The capsule builder.</returns>
-        public DragonBuilder GetAbout(DraognId dragonType)
+        public DragonBuilder GetAbout(DragonId dragonType)
         {
             return new DragonBuilder(_httpClient, _builderDelegatesContainer).WithType(dragonType);
         }

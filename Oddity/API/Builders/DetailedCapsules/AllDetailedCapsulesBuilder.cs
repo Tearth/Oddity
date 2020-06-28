@@ -43,7 +43,7 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// </summary>
         /// <param name="capsuleId">The capsule id (Dragon 1, Dragon 2 etc).</param>
         /// <returns>The detailed capsules builder.</returns>
-        public AllDetailedCapsulesBuilder WithCapsuleId(DraognId capsuleId)
+        public AllDetailedCapsulesBuilder WithCapsuleId(DragonId capsuleId)
         {
             AddFilter("capsule_id", capsuleId.GetEnumMemberAttributeValue(capsuleId));
             return this;

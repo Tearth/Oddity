@@ -10,7 +10,7 @@ namespace Oddity.API.Models.Dragon
 {
     public class DragonInfo
     {
-        public DraognId? Id { get; set; }
+        public DragonId? Id { get; set; }
 
         public string Name { get; set; }
         public bool? Active { get; set; }
