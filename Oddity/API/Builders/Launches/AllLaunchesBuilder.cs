@@ -10,7 +10,7 @@ namespace Oddity.API.Builders.Launches
     /// </summary>
     public class AllLaunchesBuilder : LaunchBuilderBase<AllLaunchesBuilder, List<LaunchInfo>>
     {
-        private const string LaunchpadInfoEndpoint = "launches/all";
+        private const string LaunchpadInfoEndpoint = "launches";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AllLaunchesBuilder"/> class.

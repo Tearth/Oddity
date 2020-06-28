@@ -9,10 +9,15 @@ namespace Oddity.API.Models.Launch.Rocket.FirstStage
 
         public uint? Flight { get; set; }
         public uint? Block { get; set; }
+        public bool? GridFins { get; set; }
+        public bool? Legs { get; set; }
         public bool? Reused { get; set; }
 
         [JsonProperty("land_success")]
         public bool? LandSuccess { get; set; }
+
+        [JsonProperty("landing_intent")]
+        public bool? LandingIntent { get; set; }
 
         [JsonProperty("landing_type")]
         public LandingType? LandingType { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Oddity.API.Models.Launch.Rocket;
 
@@ -12,7 +13,8 @@ namespace Oddity.API.Models.Launch
         [JsonProperty("mission_name")]
         public string MissionName { get; set; }
 
-        public bool? Upcoming { get; set; }
+        [JsonProperty("mission_id")]
+        public List<string> MissionId { get; set; }
 
         [JsonProperty("launch_year")]
         public uint? LaunchYear { get; set; }
@@ -27,13 +29,22 @@ namespace Oddity.API.Models.Launch
         public DateTime? LaunchDateLocal { get; set; }
 
         [JsonProperty("is_tentative")]
-        public bool IsTentative { get; set; }
+        public bool? IsTentative { get; set; }
 
         [JsonProperty("tentative_max_precision")]
         public TentativeMaxPrecision? TentativeMaxPrecision { get; set; }
 
+        [JsonProperty("tbd")]
+        public bool? ToBeDated { get; set; }
+
+        [JsonProperty("launch_window")]
+        public int? LaunchWindow { get; set; }
+
         public RocketInfo Rocket { get; set; }
-        public ReuseInfo Reuse { get; set; }
+
+        [JsonProperty("ships")]
+        public List<string> Ships { get; set; }
+
         public TelemetryInfo Telemetry { get; set; }
 
         [JsonProperty("launch_site")]
@@ -44,8 +55,14 @@ namespace Oddity.API.Models.Launch
 
         public LinksInfo Links { get; set; }
         public string Details { get; set; }
+        public bool? Upcoming { get; set; }
 
         [JsonProperty("static_fire_date_utc")]
         public DateTime? StaticFireDateUtc { get; set; }
+
+        [JsonProperty("static_fire_date_unix")]
+        public ulong? StaticFireDateUnix { get; set; }
+
+        public Dictionary<string, int> Timeline { get; set; }
     }
 }

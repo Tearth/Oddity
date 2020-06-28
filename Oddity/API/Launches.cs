@@ -24,6 +24,17 @@ namespace Oddity.API
         }
 
         /// <summary>
+        /// Gets information about the specified launch. This method returns only builder which doesn't retrieve data from API itself, so after apply
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
+        /// get the data from SpaceX API.
+        /// </summary>
+        /// <returns>The launch builder.</returns>
+        public LaunchBuilder Get(int launchId)
+        {
+            return new LaunchBuilder(_httpClient, _builderDelegatesContainer).WithId(launchId);
+        }
+
+        /// <summary>
         /// Gets information about all launches (past and upcoming). This method returns only builder which doesn't retrieve data from API itself, so after apply
         /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.

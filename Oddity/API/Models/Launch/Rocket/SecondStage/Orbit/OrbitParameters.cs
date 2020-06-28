@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
 {
@@ -29,5 +30,19 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage.Orbit
 
         [JsonProperty("lifespan_years")]
         public float? LifespanYears { get; set; }
+
+        public DateTime? Epoch { get; set; }
+
+        [JsonProperty("mean_motion")]
+        public float? MeanMotion { get; set; }
+
+        [JsonProperty("raan")]
+        public float? Raan { get; set; }
+
+        [JsonProperty("arg_of_pericenter")]
+        public float? ArgOfPericenter { get; set; }
+
+        [JsonProperty("mean_anomaly")]
+        public float? MeanAnomaly { get; set; }
     }
 }
