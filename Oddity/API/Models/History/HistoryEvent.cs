@@ -1,10 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Oddity.API.Models.Company
+namespace Oddity.API.Models.History
 {
     public class HistoryEvent
     {
+        public int Id { get; set; }
         public string Title { get; set; }
 
         [JsonProperty("event_date_utc")]

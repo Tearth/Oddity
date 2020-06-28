@@ -1,4 +1,4 @@
-﻿namespace Oddity.API.Models.Company
+﻿namespace Oddity.API.Models.History
 {
     public class EventLinks
     {

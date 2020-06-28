@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Models.Company;
+using Oddity.API.Models.History;
 
-namespace Oddity.API.Builders.Company
+namespace Oddity.API.Builders.History
 {
     /// <summary>
     /// Represents a set of methods to filter history events and download them from API.
     /// </summary>
     public class HistoryBuilder : BuilderBase<List<HistoryEvent>>
     {
-        private const string CompanyHistoryEndpoint = "info/history";
+        private const string CompanyHistoryEndpoint = "history";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HistoryBuilder"/> class.

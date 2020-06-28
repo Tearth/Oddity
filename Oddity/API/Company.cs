@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders;
 using Oddity.API.Builders.Company;
+using Oddity.API.Builders.History;
 
 namespace Oddity.API
 {
