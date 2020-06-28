@@ -23,6 +23,11 @@ namespace Oddity
         public Company Company { get; }
 
         /// <summary>
+        /// Gets the company history.
+        /// </summary>
+        public History History { get; }
+
+        /// <summary>
         /// Gets the rockets information.
         /// </summary>
         public Rockets Rockets { get; }
@@ -94,6 +99,7 @@ namespace Oddity
 
             Api = new Api(_httpClient, builderDelegatesContainer);
             Company = new Company(_httpClient, builderDelegatesContainer);
+            History = new History(_httpClient, builderDelegatesContainer);
             Rockets = new Rockets(_httpClient, builderDelegatesContainer);
             Capsules = new Capsules(_httpClient, builderDelegatesContainer);
             DetailedCapsules = new DetailedCapsules(_httpClient, builderDelegatesContainer);
