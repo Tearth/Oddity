@@ -28,9 +28,9 @@ namespace Oddity.API
         /// you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get the data from SpaceX API.
         /// </summary>
         /// <returns>The company history events builder.</returns>
-        public EventBuilder GetEvent()
+        public EventBuilder GetEvent(int eventId)
         {
-            return new EventBuilder(_httpClient, _builderDelegatesContainer);
+            return new EventBuilder(_httpClient, _builderDelegatesContainer).WithId(eventId);
         }
 
         /// <summary>

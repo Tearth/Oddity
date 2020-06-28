@@ -1,4 +1,4 @@
-﻿namespace Oddity.API.Models.Capsule.Thrusters
+﻿namespace Oddity.API.Models.Dragon.Thrusters
 {
     public enum ThrusterType
     {

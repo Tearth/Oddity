@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Models.Capsule;
 using Oddity.API.Models.DetailedCapsule;
+using Oddity.API.Models.Dragon;
 using Oddity.Helpers;
 
 namespace Oddity.API.Builders.DetailedCapsules

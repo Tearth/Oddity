@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Oddity.API.Models.Common;
 
-namespace Oddity.API.Models.Capsule.Thrusters
+namespace Oddity.API.Models.Dragon.Thrusters
 {
     public class ThrustersInfo
     {

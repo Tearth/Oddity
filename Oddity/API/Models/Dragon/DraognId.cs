@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Oddity.API.Models.Capsule
+namespace Oddity.API.Models.Dragon
 {
     public enum DraognId
     {

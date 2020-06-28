@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders;
 using Oddity.API.Builders.Dragons;
-using Oddity.API.Models.Capsule;
+using Oddity.API.Models.Dragon;
 
 namespace Oddity.API
 {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Oddity.API.Models.Common;
 
-namespace Oddity.API.Models.Capsule.Payload
+namespace Oddity.API.Models.Dragon.Payload
 {
     public class PressurizedCapsuleInfo
     {

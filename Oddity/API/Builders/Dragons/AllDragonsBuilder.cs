@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Models.Capsule;
+using Oddity.API.Models.Dragon;
 
 namespace Oddity.API.Builders.Dragons
 {

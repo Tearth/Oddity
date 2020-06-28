@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oddity.API.Models.Capsule.Payload
+namespace Oddity.API.Models.Dragon.Payload
 {
     public class CargoInfo
     {

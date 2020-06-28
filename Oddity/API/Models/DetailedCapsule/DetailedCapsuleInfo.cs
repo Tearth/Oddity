@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Oddity.API.Models.Capsule;
+using Oddity.API.Models.Dragon;
 
 namespace Oddity.API.Models.DetailedCapsule
 {

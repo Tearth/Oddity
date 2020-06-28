@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
-using Oddity.API.Models.Capsule.Heatshield;
-using Oddity.API.Models.Capsule.Payload;
-using Oddity.API.Models.Capsule.Thrusters;
 using Oddity.API.Models.Common;
+using Oddity.API.Models.Dragon.Heatshield;
+using Oddity.API.Models.Dragon.Payload;
+using Oddity.API.Models.Dragon.Thrusters;
 
-namespace Oddity.API.Models.Capsule
+namespace Oddity.API.Models.Dragon
 {
     public class DragonInfo
     {
@@ -22,6 +23,15 @@ namespace Oddity.API.Models.Capsule
 
         [JsonProperty("orbit_duration_yr")]
         public uint? OrbitDurationYears { get; set; }
+
+        [JsonProperty("dry_mass_kg")]
+        public float DryMassKg { get; set; }
+
+        [JsonProperty("dry_mass_lb")]
+        public float DryMassLb { get; set; }
+
+        [JsonProperty("first_flight")]
+        public DateTime FirstFlight { get; set; }
 
         [JsonProperty("heat_shield")]
         public HeatshieldInfo Heatshield { get; set; }
