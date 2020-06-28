@@ -35,7 +35,7 @@ namespace Oddity
         /// <summary>
         /// Gets the capsules information.
         /// </summary>
-        public Capsules Capsules { get; }
+        public Dragons Dragons { get; }
 
         /// <summary>
         /// Gets the detailed capsules information.
@@ -101,7 +101,7 @@ namespace Oddity
             Company = new Company(_httpClient, builderDelegatesContainer);
             History = new History(_httpClient, builderDelegatesContainer);
             Rockets = new Rockets(_httpClient, builderDelegatesContainer);
-            Capsules = new Capsules(_httpClient, builderDelegatesContainer);
+            Dragons = new Dragons(_httpClient, builderDelegatesContainer);
             DetailedCapsules = new DetailedCapsules(_httpClient, builderDelegatesContainer);
             DetailedCores = new DetailedCores(_httpClient, builderDelegatesContainer);
             Launchpads = new Launchpads(_httpClient, builderDelegatesContainer);

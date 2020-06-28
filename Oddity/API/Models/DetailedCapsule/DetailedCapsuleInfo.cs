@@ -11,7 +11,7 @@ namespace Oddity.API.Models.DetailedCapsule
         public string CapsuleSerial { get; set; }
 
         [JsonProperty("capsule_id")]
-        public CapsuleId? CapsuleId { get; set; }
+        public DraognId? CapsuleId { get; set; }
 
         public DetailedCapsuleStatus? Status { get; set; }
 

@@ -7,9 +7,9 @@ using Oddity.API.Models.Common;
 
 namespace Oddity.API.Models.Capsule
 {
-    public class CapsuleInfo
+    public class DragonInfo
     {
-        public CapsuleId? Id { get; set; }
+        public DraognId? Id { get; set; }
 
         public string Name { get; set; }
         public bool? Active { get; set; }
