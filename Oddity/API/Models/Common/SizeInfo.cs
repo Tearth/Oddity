@@ -2,7 +2,7 @@
 {
     public class SizeInfo
     {
-        public float? Meters { get; set; }
-        public float? Feet { get; set; }
+        public double? Meters { get; set; }
+        public double? Feet { get; set; }
     }
 }

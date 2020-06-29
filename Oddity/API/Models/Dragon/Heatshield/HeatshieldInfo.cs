@@ -7,7 +7,7 @@ namespace Oddity.API.Models.Dragon.Heatshield
         public string Material { get; set; }
 
         [JsonProperty("size_meters")]
-        public float? SizeMeters { get; set; }
+        public double? SizeMeters { get; set; }
 
         [JsonProperty("temp_degrees")]
         public uint? MaxTemperatureDegrees { get; set; }

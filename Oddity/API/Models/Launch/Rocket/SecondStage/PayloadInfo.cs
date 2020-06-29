@@ -21,10 +21,10 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage
         public string PayloadType { get; set; }
 
         [JsonProperty("payload_mass_kg")]
-        public float? PayloadMassKilograms { get; set; }
+        public double? PayloadMassKilograms { get; set; }
 
         [JsonProperty("payload_mass_lbs")]
-        public float? PayloadMassPounds { get; set; }
+        public double? PayloadMassPounds { get; set; }
 
         public OrbitType? Orbit { get; set; }
 

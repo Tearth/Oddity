@@ -5,9 +5,9 @@ namespace Oddity.API.Models.Common
     public class ThrustInfo
     {
         [JsonProperty("kn")]
-        public float? Kilonewtons { get; set; }
+        public double? Kilonewtons { get; set; }
 
         [JsonProperty("lbf")]
-        public float? PoundsForce { get; set; }
+        public double? PoundsForce { get; set; }
     }
 }
