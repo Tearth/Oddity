@@ -9,18 +9,18 @@ using Oddity.Helpers;
 namespace Oddity.API.Builders.Capsules
 {
     /// <summary>
-    /// Represents a set of methods to filter all capsules information and download them from API.
+    /// Represents a set of methods to filter all upcoming capsules information and download them from API.
     /// </summary>
-    public class AllCapsulesBuilder : CapsuleBuilderBase<AllCapsulesBuilder, List<CapsuleInfo>>
+    public class PastCapsulesBuilder : CapsuleBuilderBase<PastCapsulesBuilder, List<CapsuleInfo>>
     {
-        private const string CapsuleInfoEndpoint = "capsules";
+        private const string CapsuleInfoEndpoint = "capsules/past";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AllCapsulesBuilder"/> class.
+        /// Initializes a new instance of the <see cref="UpcomingCapsulesBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public AllCapsulesBuilder(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
+        public PastCapsulesBuilder(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
         {
 
         }

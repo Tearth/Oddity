@@ -45,5 +45,27 @@ namespace Oddity.API
         {
             return new AllCapsulesBuilder(_httpClient, _builderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets detailed information about upcoming capsules. This method returns only builder which doesn't retrieve data from API itself, so after apply
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
+        /// get the data from SpaceX API.
+        /// </summary>
+        /// <returns>The all capsules builder.</returns>
+        public UpcomingCapsulesBuilder GetUpcoming()
+        {
+            return new UpcomingCapsulesBuilder(_httpClient, _builderDelegatesContainer);
+        }
+
+        /// <summary>
+        /// Gets detailed information about past capsules. This method returns only builder which doesn't retrieve data from API itself, so after apply
+        /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
+        /// get the data from SpaceX API.
+        /// </summary>
+        /// <returns>The all capsules builder.</returns>
+        public PastCapsulesBuilder GetPast()
+        {
+            return new PastCapsulesBuilder(_httpClient, _builderDelegatesContainer);
+        }
     }
 }
