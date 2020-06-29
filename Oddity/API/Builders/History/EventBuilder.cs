@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Models.DetailedCapsule;
 using Oddity.API.Models.History;
 
 namespace Oddity.API.Builders.History

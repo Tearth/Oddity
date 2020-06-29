@@ -1,4 +1,4 @@
-﻿namespace Oddity.API.Models.DetailedCapsule
+﻿namespace Oddity.API.Models.Capsule
 {
     public class CapsuleMissionInfo
     {

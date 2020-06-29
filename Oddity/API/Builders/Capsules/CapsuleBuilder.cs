@@ -1,23 +1,23 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Oddity.API.Models.DetailedCapsule;
+using Oddity.API.Models.Capsule;
 
-namespace Oddity.API.Builders.DetailedCapsules
+namespace Oddity.API.Builders.Capsules
 {
     /// <summary>
-    /// Represents a set of methods to filter detailed capsule information and download them from API.
+    /// Represents a set of methods to filter capsule information and download them from API.
     /// </summary>
-    public class DetailedCapsuleBuilder : BuilderBase<DetailedCapsuleInfo>
+    public class CapsuleBuilder : BuilderBase<CapsuleInfo>
     {
         private string _capsuleSerial;
-        private const string CapsuleInfoEndpoint = "parts/caps";
+        private const string CapsuleInfoEndpoint = "capsules";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DetailedCapsuleBuilder"/> class.
+        /// Initializes a new instance of the <see cref="CapsuleBuilder"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public DetailedCapsuleBuilder(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
+        public CapsuleBuilder(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
         {
 
         }
@@ -28,14 +28,14 @@ namespace Oddity.API.Builders.DetailedCapsules
         /// </summary>
         /// <param name="capsuleSerial">The capsule serial (C101, C102, etc).</param>
         /// <returns>The capsule information.</returns>
-        public DetailedCapsuleBuilder WithSerial(string capsuleSerial)
+        public CapsuleBuilder WithSerial(string capsuleSerial)
         {
             _capsuleSerial = capsuleSerial;
             return this;
         }
 
         /// <inheritdoc />
-        protected override async Task<DetailedCapsuleInfo> ExecuteBuilder()
+        protected override async Task<CapsuleInfo> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
             if (_capsuleSerial != null)

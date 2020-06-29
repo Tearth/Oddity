@@ -1,23 +1,23 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders;
-using Oddity.API.Builders.DetailedCapsules;
+using Oddity.API.Builders.Capsules;
 
 namespace Oddity.API
 {
     /// <summary>
-    /// Represents a set of methods to get detailed capsules information.
+    /// Represents a set of methods to get capsules information.
     /// </summary>
-    public class DetailedCapsules
+    public class Capsules
     {
         private readonly HttpClient _httpClient;
         private readonly BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DetailedCapsules"/> class.
+        /// Initializes a new instance of the <see cref="Capsules"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public DetailedCapsules(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public Capsules(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
             _builderDelegatesContainer = builderDelegatesContainer;
@@ -30,9 +30,9 @@ namespace Oddity.API
         /// </summary>
         /// <param name="capsuleSerial">The capsule serial.</param>
         /// <returns>The capsule builder.</returns>
-        public DetailedCapsuleBuilder GetAbout(string capsuleSerial)
+        public CapsuleBuilder GetAbout(string capsuleSerial)
         {
-            return new DetailedCapsuleBuilder(_httpClient, _builderDelegatesContainer).WithSerial(capsuleSerial);
+            return new CapsuleBuilder(_httpClient, _builderDelegatesContainer).WithSerial(capsuleSerial);
         }
 
         /// <summary>
@@ -40,10 +40,10 @@ namespace Oddity.API
         /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
-        /// <returns>The all detailed capsules builder.</returns>
-        public AllDetailedCapsulesBuilder GetAll()
+        /// <returns>The all capsules builder.</returns>
+        public AllCapsulesBuilder GetAll()
         {
-            return new AllDetailedCapsulesBuilder(_httpClient, _builderDelegatesContainer);
+            return new AllCapsulesBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }

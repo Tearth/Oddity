@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Oddity.API.Models.DetailedCapsule
+namespace Oddity.API.Models.Capsule
 {
-    public enum DetailedCapsuleStatus
+    public enum CapsuleStatus
     {
         [EnumMember(Value = "active")]
         Active,
