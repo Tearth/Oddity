@@ -98,6 +98,30 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
+        /// Filters launches by local launch date. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved launch date filter.
+        /// </summary>
+        /// <param name="launchDateLocal">The local launch date.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLaunchDateLocal(DateTime launchDateLocal)
+        {
+            AddFilter("launch_date_local", launchDateLocal, DateFormatType.Long);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by "to be dated" flag. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved rocket id filter.
+        /// </summary>
+        /// <param name="toBeDated">"To be dated" flag.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithToBeDated(bool toBeDated)
+        {
+            AddFilter("tbd", toBeDated);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
         /// Filters launches by rocket id. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved rocket id filter.
         /// </summary>
@@ -146,6 +170,55 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
+        /// Filters launches by a landing success. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved core serial filter.
+        /// </summary>
+        /// <param name="landSuccess">Land success flag.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLandSuccess(bool landSuccess)
+        {
+            AddFilter("land_success", landSuccess);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by landing intention. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved core serial filter.
+        /// </summary>
+        /// <param name="landingIntent">Landing intention flag.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLandingIntent(bool landingIntent)
+        {
+            AddFilter("landing_intent", landingIntent);
+            return (TBuilder)this;
+        }
+
+
+        /// <summary>
+        /// Filters launches by landing type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved landing type filter.
+        /// </summary>
+        /// <param name="landingType">The landing type (ASDS, Ocean, etc).</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLandingType(LandingType landingType)
+        {
+            AddFilter("landing_type", landingType.GetEnumMemberAttributeValue(landingType));
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by landing vehicle. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved landing vehicle filter.
+        /// </summary>
+        /// <param name="landingVehicle">The landing vehicle (OCISLY, LZ1, etc).</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLandingVehicle(LandingVehicleType landingVehicle)
+        {
+            AddFilter("landing_vehicle", landingVehicle.GetEnumMemberAttributeValue(landingVehicle));
+            return (TBuilder)this;
+        }
+        
+        /// <summary>
         /// Filters launches by capsule serial. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved capsule serial filter.
         /// </summary>
@@ -182,6 +255,30 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
+        /// Filters launches by grid fins presence. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved block number filter.
+        /// </summary>
+        /// <param name="gridFins">Grid fins presence flag.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithGridFins(bool gridFins)
+        {
+            AddFilter("gridfins", gridFins);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by legs presence. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved block number filter.
+        /// </summary>
+        /// <param name="legs">Legs presence flag.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLegs(bool legs)
+        {
+            AddFilter("legs", legs);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
         /// Filters launches by core reuse. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved core reuse filter.
         /// </summary>
@@ -194,26 +291,14 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
-        /// Filters launches by first side core reuse. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved first side core reuse filter.
+        /// Filters launches by capsule reuse. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved capsule reuse filter.
         /// </summary>
-        /// <param name="sideCore1Reuse">The first side core reuse.</param>
+        /// <param name="capsuleReuse">The capsule reuse.</param>
         /// <returns>The launch builder.</returns>
-        public TBuilder WithSideCore1Reuse(bool sideCore1Reuse)
+        public TBuilder WithCapsuleReuse(bool capsuleReuse)
         {
-            AddFilter("side_core1_reuse", sideCore1Reuse);
-            return (TBuilder)this;
-        }
-
-        /// <summary>
-        /// Filters launches by second core reuse. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved second core reuse filter.
-        /// </summary>
-        /// <param name="sideCore2Reuse">The second side core reuse.</param>
-        /// <returns>The launch builder.</returns>
-        public TBuilder WithSideCore2Reuse(bool sideCore2Reuse)
-        {
-            AddFilter("side_core2_reuse", sideCore2Reuse);
+            AddFilter("capsule_reuse", capsuleReuse);
             return (TBuilder)this;
         }
 
@@ -225,19 +310,43 @@ namespace Oddity.API.Builders.Launches
         /// <returns>The launch builder.</returns>
         public TBuilder WithFairingsReuse(bool fairingsReuse)
         {
-            AddFilter("fairings_reuse", fairingsReuse);
+            AddFilter("fairings_reused", fairingsReuse);
             return (TBuilder)this;
         }
 
         /// <summary>
-        /// Filters launches by capsule reuse. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved capsule reuse filter.
+        /// Filters launches by fairings recovery attempt. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved fairings reuse filter.
         /// </summary>
-        /// <param name="capsuleReuse">The capsule reuse.</param>
+        /// <param name="fairingsRecoveryAttempt">Fairings recovery attempt flag.</param>
         /// <returns>The launch builder.</returns>
-        public TBuilder WithCapsuleReuse(bool capsuleReuse)
+        public TBuilder WithFairingsRecoveryAttempt(bool fairingsRecoveryAttempt)
         {
-            AddFilter("capsule_reuse", capsuleReuse);
+            AddFilter("fairings_recovery_attempt", fairingsRecoveryAttempt);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by fairings recovery result. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved fairings reuse filter.
+        /// </summary>
+        /// <param name="fairingsRecovered">Fairings recovery status flag.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithFairingsRecovered(bool fairingsRecovered)
+        {
+            AddFilter("fairings_recovered", fairingsRecovered);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by fairings ship name. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved fairings reuse filter.
+        /// </summary>
+        /// <param name="fairingsShip">Fairings ship name.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithFairingsShip(string fairingsShip)
+        {
+            AddFilter("fairings_ship", fairingsShip);
             return (TBuilder)this;
         }
 
@@ -264,19 +373,7 @@ namespace Oddity.API.Builders.Launches
             AddFilter("site_name", siteName);
             return (TBuilder)this;
         }
-
-        /// <summary>
-        /// Filters launches by long site name. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved long site name filter.
-        /// </summary>
-        /// <param name="longSiteName">The long launchpad name (Kennedy Space Center Historic Launch Complex 39A, etc).</param>
-        /// <returns>The launch builder.</returns>
-        public TBuilder WithLongSiteName(string longSiteName)
-        {
-            AddFilter("site_name_long", longSiteName);
-            return (TBuilder)this;
-        }
-
+        
         /// <summary>
         /// Filters launches by payload id. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved payload id filter.
@@ -290,6 +387,18 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
+        /// Filters launches by payload's NORAD ID. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved payload id filter.
+        /// </summary>
+        /// <param name="noradId">The payload NORAD ID.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithNoradId(int noradId)
+        {
+            AddFilter("norad_id", noradId);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
         /// Filters launches by customer name. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved customer name filter.
         /// </summary>
@@ -298,6 +407,30 @@ namespace Oddity.API.Builders.Launches
         public TBuilder WithCustomer(string customer)
         {
             AddFilter("customer", customer);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by customer's nationality. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved customer name filter.
+        /// </summary>
+        /// <param name="nationality">The payload's customer nationality.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithNationality(string nationality)
+        {
+            AddFilter("nationality", nationality);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by payload's manufacturer. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved customer name filter.
+        /// </summary>
+        /// <param name="manufacturer">The payload's manufacturer name.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithManufacturer(string manufacturer)
+        {
+            AddFilter("manufacturer", manufacturer);
             return (TBuilder)this;
         }
 
@@ -326,6 +459,162 @@ namespace Oddity.API.Builders.Launches
         }
 
         /// <summary>
+        /// Filters launches by reference system. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="referenceSystem">The reference system.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithReferenceSystem(string referenceSystem)
+        {
+            AddFilter("reference_system", referenceSystem);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit regime. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="regime">The orbit regime.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithRegime(string regime)
+        {
+            AddFilter("regime", regime);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit longitude. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="longitude">The orbit longitude.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLongitude(double longitude)
+        {
+            AddFilter("longitude", longitude);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit semi major axis. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="semiMajorAxis">The orbit semi major axis in kilometers.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithSemiMajorAxisKilometers(double semiMajorAxis)
+        {
+            AddFilter("semi_major_axis_km", semiMajorAxis);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit eccentricity. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="eccentricity">The orbit eccentricity.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithEccentricity(double eccentricity)
+        {
+            AddFilter("eccentricity", eccentricity);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit periapsis. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="periapsis">The orbit periapsis in kilometers.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithPeriapsisKilometers(double periapsis)
+        {
+            AddFilter("periapsis_km", periapsis);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit apoapsis. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="apoapsis">The orbit apoapsis in kilometers.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithApoapsisKilometers(double apoapsis)
+        {
+            AddFilter("apoapsis_km", apoapsis);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit inclination. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="inclination">The orbit inclination.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithInclinationDegrees(double inclination)
+        {
+            AddFilter("inclination_deg", inclination);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit period time. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="period">The orbit period time in minutes.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithPeriodMinutes(double period)
+        {
+            AddFilter("period_min", period);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit lifespan. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="lifespan">The orbit lifespan in years.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithLifespanYears(double lifespan)
+        {
+            AddFilter("lifespan_years", lifespan);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit epoch. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="epoch">The orbit epoch.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithEpoch(DateTime epoch)
+        {
+            AddFilter("epoch", epoch);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit mean motion. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="meanMotion">The orbit mean motion.</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithMeanMotion(double meanMotion)
+        {
+            AddFilter("mean_motion", meanMotion);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
+        /// Filters launches by orbit RAAN. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
+        /// to get result from the API. Every next call of this method will override previously saved orbit type filter.
+        /// </summary>
+        /// <param name="raan">The orbit RAAN (right ascension of the ascending node).</param>
+        /// <returns>The launch builder.</returns>
+        public TBuilder WithRaan(double raan)
+        {
+            AddFilter("raan", raan);
+            return (TBuilder)this;
+        }
+
+        /// <summary>
         /// Filters launches by launch success. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
         /// to get result from the API. Every next call of this method will override previously saved launch success filter.
         /// </summary>
@@ -334,42 +623,6 @@ namespace Oddity.API.Builders.Launches
         public TBuilder WithLaunchSuccess(bool launchSuccess)
         {
             AddFilter("launch_success", launchSuccess);
-            return (TBuilder)this;
-        }
-
-        /// <summary>
-        /// Filters launches by reused flag. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved reused flag filter.
-        /// </summary>
-        /// <param name="reused">The reused.</param>
-        /// <returns>The launch builder.</returns>
-        public TBuilder WithReused(bool reused)
-        {
-            AddFilter("reused", reused);
-            return (TBuilder)this;
-        }
-
-        /// <summary>
-        /// Filters launches by landing type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved landing type filter.
-        /// </summary>
-        /// <param name="landingType">The landing type (ASDS, Ocean, etc).</param>
-        /// <returns>The launch builder.</returns>
-        public TBuilder WithLandingType(LandingType landingType)
-        {
-            AddFilter("landing_type", landingType.GetEnumMemberAttributeValue(landingType));
-            return (TBuilder)this;
-        }
-
-        /// <summary>
-        /// Filters launches by landing vehicle. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/>
-        /// to get result from the API. Every next call of this method will override previously saved landing vehicle filter.
-        /// </summary>
-        /// <param name="landingVehicle">The landing vehicle (OCISLY, LZ1, etc).</param>
-        /// <returns>The launch builder.</returns>
-        public TBuilder WithLandingVehicle(LandingVehicleType landingVehicle)
-        {
-            AddFilter("landing_vehicle", landingVehicle.GetEnumMemberAttributeValue(landingVehicle));
             return (TBuilder)this;
         }
     }
