@@ -5,7 +5,7 @@ namespace Oddity.API.Models.Rocket.PayloadWeights
     public class PayloadWeightInfo
     {
         [JsonProperty("id")]
-        public PayloadType Type { get; set; }
+        public PayloadType? Type { get; set; }
 
         public string Name { get; set; }
 

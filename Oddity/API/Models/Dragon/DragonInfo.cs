@@ -25,10 +25,10 @@ namespace Oddity.API.Models.Dragon
         public uint? OrbitDurationYears { get; set; }
 
         [JsonProperty("dry_mass_kg")]
-        public float DryMassKilograms { get; set; }
+        public float? DryMassKilograms { get; set; }
 
         [JsonProperty("dry_mass_lb")]
-        public float DryMassPounds { get; set; }
+        public float? DryMassPounds { get; set; }
 
         [JsonProperty("first_flight")]
         public DateTime FirstFlight { get; set; }

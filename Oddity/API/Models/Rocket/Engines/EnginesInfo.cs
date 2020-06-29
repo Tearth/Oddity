@@ -6,7 +6,7 @@ namespace Oddity.API.Models.Rocket.Engines
     public class EnginesInfo
     {
         public uint? Number { get; set; }
-        public EngineType Type { get; set; }
+        public EngineType? Type { get; set; }
         public string Version { get; set; }
         public string Layout { get; set; }
 

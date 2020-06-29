@@ -5,8 +5,8 @@ namespace Oddity.API.Models.Rocket.Stages
 {
     public class FirstStageInfo
     {
-        public bool Reusable { get; set; }
-        public int Engines { get; set; }
+        public bool? Reusable { get; set; }
+        public int? Engines { get; set; }
 
         [JsonProperty("fuel_amount_tons")]
         public double? FuelAmountTons { get; set; }

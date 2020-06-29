@@ -3,6 +3,6 @@
     public class CoreMissionInfo
     {
         public string Name { get; set; }
-        public int Flight { get; set; }
+        public int? Flight { get; set; }
     }
 }

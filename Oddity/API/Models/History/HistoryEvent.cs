@@ -5,7 +5,7 @@ namespace Oddity.API.Models.History
 {
     public class HistoryEvent
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Title { get; set; }
 
         [JsonProperty("event_date_utc")]
