@@ -22,7 +22,7 @@ namespace Oddity.API.Builders.Capsules
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
         public AllCapsulesBuilder(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer) : base(httpClient, builderDelegatesContainer)
         {
-
+            
         }
 
         /// <inheritdoc />

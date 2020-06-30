@@ -1,23 +1,23 @@
 ﻿using System.Net.Http;
 using Oddity.API.Builders;
-using Oddity.API.Builders.DetailedCores;
+using Oddity.API.Builders.Cores;
 
 namespace Oddity.API
 {
     /// <summary>
-    /// Represents a set of methods to get detailed cores information.
+    /// Represents a set of methods to get cores information.
     /// </summary>
-    public class DetailedCores
+    public class Cores
     {
         private readonly HttpClient _httpClient;
         private readonly BuilderDelegatesContainer _builderDelegatesContainer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DetailedCores"/> class.
+        /// Initializes a new instance of the <see cref="Cores"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public DetailedCores(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public Cores(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             _httpClient = httpClient;
             _builderDelegatesContainer = builderDelegatesContainer;
@@ -30,9 +30,9 @@ namespace Oddity.API
         /// </summary>
         /// <param name="coreSerial">The core serial.</param>
         /// <returns>The capsule builder.</returns>
-        public DetailedCoreBuilder GetAbout(string coreSerial)
+        public CoreBuilder GetAbout(string coreSerial)
         {
-            return new DetailedCoreBuilder(_httpClient, _builderDelegatesContainer).WithSerial(coreSerial);
+            return new CoreBuilder(_httpClient, _builderDelegatesContainer).WithSerial(coreSerial);
         }
 
         /// <summary>
@@ -40,10 +40,10 @@ namespace Oddity.API
         /// all necessary filters you should call <see cref="BuilderBase{TReturn}.Execute"/> or <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to
         /// get the data from SpaceX API.
         /// </summary>
-        /// <returns>The all detailed core builder.</returns>
-        public AllDetailedCoresBuilder GetAll()
+        /// <returns>The all core builder.</returns>
+        public AllCoresBuilder GetAll()
         {
-            return new AllDetailedCoresBuilder(_httpClient, _builderDelegatesContainer);
+            return new AllCoresBuilder(_httpClient, _builderDelegatesContainer);
         }
     }
 }

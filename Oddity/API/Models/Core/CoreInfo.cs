@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.DetailedCore
 {
-    public class DetailedCoreInfo
+    public class CoreInfo
     {
         [JsonProperty("core_serial")]
         public string CoreSerial { get; set; }
 
         public uint? Block { get; set; }
-        public DetailedCoreStatus? Status { get; set; }
+        public CoreStatus? Status { get; set; }
 
         [JsonProperty("original_launch")]
         public DateTime? OriginalLaunch { get; set; }

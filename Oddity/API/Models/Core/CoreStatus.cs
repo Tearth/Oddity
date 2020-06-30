@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.DetailedCore
 {
-    public enum DetailedCoreStatus
+    public enum CoreStatus
     {
         [EnumMember(Value = "active")]
         Active,

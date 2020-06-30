@@ -43,9 +43,9 @@ namespace Oddity
         public Capsules Capsules { get; }
 
         /// <summary>
-        /// Gets the detailed core information.
+        /// Gets the core information.
         /// </summary>
-        public DetailedCores DetailedCores { get; }
+        public Cores Cores { get; }
 
         /// <summary>
         /// Gets the launchpads information.
@@ -103,7 +103,7 @@ namespace Oddity
             Rockets = new Rockets(_httpClient, builderDelegatesContainer);
             Dragons = new Dragons(_httpClient, builderDelegatesContainer);
             Capsules = new Capsules(_httpClient, builderDelegatesContainer);
-            DetailedCores = new DetailedCores(_httpClient, builderDelegatesContainer);
+            Cores = new Cores(_httpClient, builderDelegatesContainer);
             Launchpads = new Launchpads(_httpClient, builderDelegatesContainer);
             Launches = new Launches(_httpClient, builderDelegatesContainer);
             Roadster = new Roadster(_httpClient, builderDelegatesContainer);
