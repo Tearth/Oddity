@@ -28,6 +28,7 @@ namespace Oddity.API.Models.Company
 
         public ulong? Valuation { get; set; }
         public Headquarters Headquarters { get; set; }
+        public CompanyLinks Links { get; set; }
         public string Summary { get; set; }
     }
 }

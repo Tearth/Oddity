@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -75,6 +76,16 @@ namespace Oddity.API.Builders
         }
 
         /// <summary>
+        /// Adds or overrides filter with the specified name and double value.
+        /// </summary>
+        /// <param name="name">The filter name.</param>
+        /// <param name="value">The filter double value.</param>
+        protected void AddFilter(string name, double value)
+        {
+            _filters[name] = value.ToString(CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
         /// Adds or overrides filter with the specified name and string value.
         /// </summary>
         /// <param name="name">The filter name.</param>
@@ -92,6 +103,16 @@ namespace Oddity.API.Builders
         protected void AddFilter(string name, bool value)
         {
             _filters[name] = value.ToString().ToLower();
+        }
+
+        /// <summary>
+        /// Adds or overrides filter with the specified name and date value.
+        /// </summary>
+        /// <param name="name">The filter name.</param>
+        /// <param name="value">The filter date value.</param>
+        protected void AddFilter(string name, DateTime value)
+        {
+            _filters[name] = value.ToString("O");
         }
 
         /// <summary>

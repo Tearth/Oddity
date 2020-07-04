@@ -1,3 +1,11 @@
+# Version 1.0.13 (03-07-2020)
+ * Changed API version to v3
+ * Added new endpoints support for history, capsules and cores
+ * Added missing fields to the models
+ * Fixed models inconsistency
+
+WARNING: this is the last release for v2/v3 API version. The next one will be completely rewritten to support v4 within a month or two - it won't be compatible backward. More info: https://github.com/r-spacex/SpaceX-API/issues/380
+
 # Version 1.0.12 (26-02-2020)
  * Added methods to retrieve information about API
  * Cleaned up code

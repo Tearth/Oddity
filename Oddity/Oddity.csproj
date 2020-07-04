@@ -7,16 +7,20 @@
     <RepositoryUrl>https://github.com/Tearth/Oddity</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Tearth/Oddity</PackageProjectUrl>
     <PackageTags>oddity spacex api wrapper dotnet .net csharp dotnetstandard .netstandard standard core framework</PackageTags>
-    <PackageReleaseNotes>* Added methods to retrieve information about API
-* Cleaned up code</PackageReleaseNotes>
+    <PackageReleaseNotes>* Changed API version to v3
+* Added new endpoints support for history, capsules and cores
+* Added missing fields to the models
+* Fixed models inconsistency
+
+WARNING: this is the last release for v2/v3 API version. The next one will be completely rewritten to support v4 within a month or two - it won't be compatible backward. More info: https://github.com/r-spacex/SpaceX-API/issues/380</PackageReleaseNotes>
     <Description>SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project.</Description>
     <Copyright>Tearth 2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NeutralLanguage></NeutralLanguage>
-    <AssemblyVersion>1.0.12.0</AssemblyVersion>
-    <FileVersion>1.0.12.0</FileVersion>
-    <Version>1.0.12</Version>
+    <AssemblyVersion>1.0.13.0</AssemblyVersion>
+    <FileVersion>1.0.13.0</FileVersion>
+    <Version>1.0.13</Version>
     <ApplicationIcon></ApplicationIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Tearth/Oddity/develop/icon.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>

@@ -23,6 +23,11 @@ namespace Oddity
         public Company Company { get; }
 
         /// <summary>
+        /// Gets the company history.
+        /// </summary>
+        public History History { get; }
+
+        /// <summary>
         /// Gets the rockets information.
         /// </summary>
         public Rockets Rockets { get; }
@@ -30,17 +35,17 @@ namespace Oddity
         /// <summary>
         /// Gets the capsules information.
         /// </summary>
+        public Dragons Dragons { get; }
+
+        /// <summary>
+        /// Gets the capsules information.
+        /// </summary>
         public Capsules Capsules { get; }
 
         /// <summary>
-        /// Gets the detailed capsules information.
+        /// Gets the core information.
         /// </summary>
-        public DetailedCapsules DetailedCapsules { get; }
-
-        /// <summary>
-        /// Gets the detailed core information.
-        /// </summary>
-        public DetailedCores DetailedCores { get; }
+        public Cores Cores { get; }
 
         /// <summary>
         /// Gets the launchpads information.
@@ -94,10 +99,11 @@ namespace Oddity
 
             Api = new Api(_httpClient, builderDelegatesContainer);
             Company = new Company(_httpClient, builderDelegatesContainer);
+            History = new History(_httpClient, builderDelegatesContainer);
             Rockets = new Rockets(_httpClient, builderDelegatesContainer);
+            Dragons = new Dragons(_httpClient, builderDelegatesContainer);
             Capsules = new Capsules(_httpClient, builderDelegatesContainer);
-            DetailedCapsules = new DetailedCapsules(_httpClient, builderDelegatesContainer);
-            DetailedCores = new DetailedCores(_httpClient, builderDelegatesContainer);
+            Cores = new Cores(_httpClient, builderDelegatesContainer);
             Launchpads = new Launchpads(_httpClient, builderDelegatesContainer);
             Launches = new Launches(_httpClient, builderDelegatesContainer);
             Roadster = new Roadster(_httpClient, builderDelegatesContainer);

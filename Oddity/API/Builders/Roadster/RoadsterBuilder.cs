@@ -9,7 +9,7 @@ namespace Oddity.API.Builders.Roadster
     /// </summary>
     public class RoadsterBuilder : BuilderBase<RoadsterInfo>
     {
-        private const string RoadsterInfoEndpoint = "info/roadster";
+        private const string RoadsterInfoEndpoint = "roadster";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RoadsterBuilder"/> class.

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Launch
 {
@@ -31,5 +32,11 @@ namespace Oddity.API.Models.Launch
 
         [JsonProperty("video_link")]
         public string VideoLink { get; set; }
+
+        [JsonProperty("youtube_id")]
+        public string YoutubeId { get; set; }
+
+        [JsonProperty("flickr_images")]
+        public List<string> FlickrImages { get; set; }
     }
 }

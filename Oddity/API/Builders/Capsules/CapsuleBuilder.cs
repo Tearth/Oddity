@@ -9,7 +9,7 @@ namespace Oddity.API.Builders.Capsules
     /// </summary>
     public class CapsuleBuilder : BuilderBase<CapsuleInfo>
     {
-        private CapsuleId? _capsuleType;
+        private string _capsuleSerial;
         private const string CapsuleInfoEndpoint = "capsules";
 
         /// <summary>
@@ -23,14 +23,14 @@ namespace Oddity.API.Builders.Capsules
         }
 
         /// <summary>
-        /// Filters capsule information by the specified capsule type. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or
-        /// <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved capsule type filter.
+        /// Filters capsule information by the specified capsule serial. Note that you have to call <see cref="BuilderBase{TReturn}.Execute"/> or
+        /// <see cref="BuilderBase{TReturn}.ExecuteAsync"/> to get result from the API. Every next call of this method will override previously saved capsule serial filter.
         /// </summary>
-        /// <param name="type">The capsule type (Dragon1, Dragon2, etc).</param>
+        /// <param name="capsuleSerial">The capsule serial (C101, C102, etc).</param>
         /// <returns>The capsule information.</returns>
-        public CapsuleBuilder WithType(CapsuleId type)
+        public CapsuleBuilder WithSerial(string capsuleSerial)
         {
-            _capsuleType = type;
+            _capsuleSerial = capsuleSerial;
             return this;
         }
 
@@ -38,9 +38,9 @@ namespace Oddity.API.Builders.Capsules
         protected override async Task<CapsuleInfo> ExecuteBuilder()
         {
             var link = BuildLink(CapsuleInfoEndpoint);
-            if (_capsuleType.HasValue)
+            if (_capsuleSerial != null)
             {
-                link += $"/{_capsuleType.ToString().ToLower()}";
+                link += $"/{_capsuleSerial.ToUpper()}";
             }
 
             return await SendRequestToApi(link).ConfigureAwait(false);

@@ -9,7 +9,7 @@ namespace Oddity.API.Builders.Launches
     /// </summary>
     public class NextLaunchesBuilder : BuilderBase<LaunchInfo>
     {
-        private const string LaunchpadInfoEndpoint = "launches/next";
+        private const string LaunchesEndpoint = "launches/next";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NextLaunchesBuilder"/> class.
@@ -24,7 +24,7 @@ namespace Oddity.API.Builders.Launches
         /// <inheritdoc />
         protected override async Task<LaunchInfo> ExecuteBuilder()
         {
-            var link = BuildLink(LaunchpadInfoEndpoint);
+            var link = BuildLink(LaunchesEndpoint);
             return await SendRequestToApi(link).ConfigureAwait(false);
         }
     }

@@ -9,6 +9,9 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage
         [JsonProperty("payload_id")]
         public string PayloadId { get; set; }
 
+        [JsonProperty("norad_id")]
+        public List<string> NoradId { get; set; }
+
         public bool? Reused { get; set; }
         public List<string> Customers { get; set; }
         public string Nationality { get; set; }
@@ -18,10 +21,10 @@ namespace Oddity.API.Models.Launch.Rocket.SecondStage
         public string PayloadType { get; set; }
 
         [JsonProperty("payload_mass_kg")]
-        public float? PayloadMassKilograms { get; set; }
+        public double? PayloadMassKilograms { get; set; }
 
         [JsonProperty("payload_mass_lbs")]
-        public float? PayloadMassPounds { get; set; }
+        public double? PayloadMassPounds { get; set; }
 
         public OrbitType? Orbit { get; set; }
 

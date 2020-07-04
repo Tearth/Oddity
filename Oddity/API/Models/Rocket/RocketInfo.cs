@@ -11,7 +11,7 @@ namespace Oddity.API.Models.Rocket
 {
     public class RocketInfo
     {
-        public RocketId Id { get; set; }
+        public RocketId? Id { get; set; }
 
         public string Name { get; set; }
         public bool? Active { get; set; }

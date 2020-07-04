@@ -6,7 +6,7 @@ namespace Oddity.API.Models.Rocket.Engines
     public class EnginesInfo
     {
         public uint? Number { get; set; }
-        public EngineType Type { get; set; }
+        public EngineType? Type { get; set; }
         public string Version { get; set; }
         public string Layout { get; set; }
 
@@ -26,6 +26,6 @@ namespace Oddity.API.Models.Rocket.Engines
         public ThrustInfo ThrustVacuum { get; set; }
 
         [JsonProperty("thrust_to_weight")]
-        public float? ThrustToWeight { get; set; }
+        public double? ThrustToWeight { get; set; }
     }
 }

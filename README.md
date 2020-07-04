@@ -11,6 +11,8 @@
 
 https://docs.spacexdata.com/
 
+**WARNING: v1.0.13 is the last release for v2/v3 API version. The next one will be completely rewritten to support v4 within a month or two - it won't be compatible backward. More info: https://github.com/r-spacex/SpaceX-API/issues/380**
+
 **Available data overview:**
  * company data, history with most important events
  * detailed information about rockets (Falcon 1, Falcon 9, Falcon Heavy, BFR) and capsules (Dragon 1, Dragon 2, crew Dragon)

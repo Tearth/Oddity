@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Oddity.API.Models.Launch.Rocket.Fairings;
 using Oddity.API.Models.Launch.Rocket.FirstStage;
 using Oddity.API.Models.Launch.Rocket.SecondStage;
 using Oddity.API.Models.Rocket;
@@ -21,5 +22,7 @@ namespace Oddity.API.Models.Launch.Rocket
 
         [JsonProperty("second_stage")]
         public SecondStageInfo SecondStage { get; set; }
+
+        public FairingsRecoveryInfo Fairings { get; set; }
     }
 }

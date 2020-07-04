@@ -8,62 +8,62 @@ namespace Oddity.API.Models.Roadster
         public string Name { get; set; }
 
         [JsonProperty("launch_date_utc")]
-        public DateTime DateTimeUtc { get; set; }
+        public DateTime? DateTimeUtc { get; set; }
 
         [JsonProperty("launch_date_unix")]
-        public ulong DateTimeUnix { get; set; }
+        public ulong? DateTimeUnix { get; set; }
 
         [JsonProperty("launch_mass_kg")]
-        public uint LaunchMassKilograms { get; set; }
+        public uint? LaunchMassKilograms { get; set; }
 
         [JsonProperty("launch_mass_lbs")]
-        public uint LaunchMassPounds { get; set; }
+        public uint? LaunchMassPounds { get; set; }
 
         [JsonProperty("norad_id")]
-        public uint NoradId { get; set; }
+        public uint? NoradId { get; set; }
 
         [JsonProperty("epoch_jd")]
-        public float EpochJd { get; set; }
+        public double? EpochJd { get; set; }
 
         [JsonProperty("orbit_type")]
         public string OrbitType { get; set; }
 
         [JsonProperty("apoapsis_au")]
-        public float ApoapsisAu { get; set; }
+        public double? ApoapsisAu { get; set; }
 
         [JsonProperty("periapsis_au")]
-        public float PeriapsisAu { get; set; }
+        public double? PeriapsisAu { get; set; }
 
         [JsonProperty("semi_major_axis_au")]
-        public float SemiMajorAxisAu { get; set; }
+        public double? SemiMajorAxisAu { get; set; }
 
-        public float Eccentricity { get; set; }
-        public float Inclination { get; set; }
-        public float Longitude { get; set; }
+        public double? Eccentricity { get; set; }
+        public double? Inclination { get; set; }
+        public double? Longitude { get; set; }
 
         [JsonProperty("periapsis_arg")]
-        public float PeriapsisArg { get; set; }
+        public double? PeriapsisArg { get; set; }
 
         [JsonProperty("period_days")]
-        public float PeriodDays { get; set; }
+        public double? PeriodDays { get; set; }
 
         [JsonProperty("speed_kph")]
-        public float SpeedKph { get; set; }
+        public double? SpeedKph { get; set; }
 
         [JsonProperty("speed_mph")]
-        public float SpeedMph { get; set; }
+        public double? SpeedMph { get; set; }
 
         [JsonProperty("earth_distance_km")]
-        public float EarthDistanceKilometers { get; set; }
+        public double? EarthDistanceKilometers { get; set; }
 
         [JsonProperty("earth_distance_mi")]
-        public float EarthDistanceMiles { get; set; }
+        public double? EarthDistanceMiles { get; set; }
 
         [JsonProperty("mars_distance_km")]
-        public float MarsDistanceKilometers { get; set; }
+        public double? MarsDistanceKilometers { get; set; }
 
         [JsonProperty("mars_distance_mi")]
-        public float MarsDistanceMiles { get; set; }
+        public double? MarsDistanceMiles { get; set; }
 
         public string Wikipedia { get; set; }
         public string Details { get; set; }
