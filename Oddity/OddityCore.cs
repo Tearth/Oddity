@@ -2,13 +2,13 @@
 using System.Net.Http;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
-using Oddity.API;
 using Oddity.API.Builders;
+using Oddity.Configuration;
 
 namespace Oddity
 {
     /// <summary>
-    /// Represents an core of the library. Use it to retrieve data from the SpaceX API.
+    /// Represents an core of the library. Use it to retrieve data from the unofficial SpaceX API.
     /// </summary>
     public class OddityCore : IDisposable
     {
@@ -36,7 +36,7 @@ namespace Oddity
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
-            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"{ApiConfiguration.LibraryName}/{GetLibraryVersion()} ({ApiConfiguration.GitHubLink})");
+            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(GetUserAgent());
 
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
@@ -58,12 +58,22 @@ namespace Oddity
         }
 
         /// <summary>
-        /// Gets the current version of library.
+        /// Gets the current version of library saved in the assembly metadata.
         /// </summary>
         /// <returns>The library version.</returns>
         public string GetLibraryVersion()
         {
-            return GetType().GetTypeInfo().Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+            var assembly = GetType().GetTypeInfo().Assembly;
+            return assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+        }
+
+        /// <summary>
+        /// Gets the user agent that is send in every request to the API.
+        /// </summary>
+        /// <returns>User agent.</returns>
+        public string GetUserAgent()
+        {
+            return $"{LibraryConfiguration.LibraryName}/{GetLibraryVersion()} ({LibraryConfiguration.GitHubLink})";
         }
 
         /// <inheritdoc />
