@@ -14,19 +14,12 @@ namespace Oddity.API.Builders
         public string Url { get; }
 
         /// <summary>
-        /// Gets the dictionary of filters which has been applied.
-        /// </summary>
-        public Dictionary<string, string> Filters { get; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="RequestSendEventArgs"/> class.
         /// </summary>
         /// <param name="url">The URL which has been called to retrieve the specified data.</param>
-        /// <param name="filters">The dictionary of filters which has been applied.</param>
-        public RequestSendEventArgs(string url, Dictionary<string, string> filters)
+        public RequestSendEventArgs(string url)
         {
             Url = url;
-            Filters = filters;
         }
     }
 }
