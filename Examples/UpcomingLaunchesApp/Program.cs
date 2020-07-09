@@ -9,6 +9,7 @@ namespace UpcomingLaunchesApp
     {
         public static void Main(string[] args)
         {
+            /*
             var oddity = new OddityCore();
             oddity.OnDeserializationError += OddityOnOnDeserializationError;
 
@@ -16,8 +17,9 @@ namespace UpcomingLaunchesApp
             DisplayRestOfUpcomingLaunches(oddity);
 
             Console.Read();
+            */
         }
-
+        /*
         private static void DisplayNextLaunch(OddityCore oddity)
         {
             var nextLaunchData = oddity.Launches.GetNext().Execute();
@@ -49,5 +51,6 @@ namespace UpcomingLaunchesApp
             Console.WriteLine($"Error: {errorEventArgs.ErrorContext.Path}");
             errorEventArgs.ErrorContext.Handled = true;
         }
+        */
     }
 }
