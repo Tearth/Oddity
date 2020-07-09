@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
 using Oddity.API.Builders;
+using Oddity.API.Models.Roadster;
 using Oddity.Configuration;
 
 namespace Oddity
@@ -12,6 +13,8 @@ namespace Oddity
     /// </summary>
     public class OddityCore : IDisposable
     {
+        public SimpleBuilder<RoadsterInfo> Roadster { get; }
+
         /// <summary>
         /// Event triggered when an error occurred during JSON deserialization.
         /// </summary>
@@ -46,6 +49,8 @@ namespace Oddity
                 RequestSend = RequestSend,
                 ResponseReceived = ResponseReceived
             };
+
+            Roadster = new SimpleBuilder<RoadsterInfo>(_httpClient, "roadster", builderDelegatesContainer);
         }
 
         /// <summary>

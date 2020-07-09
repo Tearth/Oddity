@@ -17,6 +17,8 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
+            var roadster = await oddity.Roadster.ExecuteAsync();
+
             Console.Read();
         }
 
