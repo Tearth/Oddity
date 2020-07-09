@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
 using Oddity.API.Builders;
+using Oddity.API.Events;
 
 namespace OverviewApp
 {
@@ -17,14 +18,14 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
-            var roadster = await oddity.Roadster.ExecuteAsync();
+            var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
 
             Console.Read();
         }
 
         private static void OddityOnDeserializationError(object sender, ErrorEventArgs errorEventArgs)
         {
-            Console.WriteLine("Something went wrong.");
+            Console.WriteLine("Something went wrong");
 
             // We don't want to stop program, just leave problematic field as null
             errorEventArgs.ErrorContext.Handled = true;

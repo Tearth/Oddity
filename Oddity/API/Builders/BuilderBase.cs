@@ -1,7 +1,7 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Oddity.API.Events;
 using Oddity.API.Exceptions;
 
 namespace Oddity.API.Builders
@@ -9,28 +9,25 @@ namespace Oddity.API.Builders
     /// <summary>
     /// Represents an abstract base class for all builders.
     /// </summary>
+    /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
     public abstract class BuilderBase<TReturn>
     {
         protected readonly BuilderDelegatesContainer BuilderDelegatesContainer;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BuilderBase{TReturn}"/> class.
-        /// </summary>
-        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
         protected BuilderBase(BuilderDelegatesContainer builderDelegatesContainer)
         {
             BuilderDelegatesContainer = builderDelegatesContainer;
         }
 
         /// <summary>
-        /// Performs an request to the API with the specified parameters (if specified earlier).
+        /// Performs a request to the API and returns deserialized JSON.
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract TReturn Execute();
 
         /// <summary>
-        /// Performs an async request to the API with the specified parameters (if specified earlier).
+        /// Performs an async request to the API and returns deserialized JSON.
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Oddity.API.Builders
+namespace Oddity.API.Events
 {
     /// <summary>
     /// Contains OnRequestSend event arguments.
