@@ -13,56 +13,6 @@ namespace Oddity
     public class OddityCore : IDisposable
     {
         /// <summary>
-        /// Gets the API information.
-        /// </summary>
-        public Api Api { get; }
-
-        /// <summary>
-        /// Gets the company information.
-        /// </summary>
-        public Company Company { get; }
-
-        /// <summary>
-        /// Gets the company history.
-        /// </summary>
-        public History History { get; }
-
-        /// <summary>
-        /// Gets the rockets information.
-        /// </summary>
-        public Rockets Rockets { get; }
-
-        /// <summary>
-        /// Gets the capsules information.
-        /// </summary>
-        public Dragons Dragons { get; }
-
-        /// <summary>
-        /// Gets the capsules information.
-        /// </summary>
-        public Capsules Capsules { get; }
-
-        /// <summary>
-        /// Gets the core information.
-        /// </summary>
-        public Cores Cores { get; }
-
-        /// <summary>
-        /// Gets the launchpads information.
-        /// </summary>
-        public Launchpads Launchpads { get; }
-
-        /// <summary>
-        /// Gets the launches information.
-        /// </summary>
-        public Launches Launches { get; }
-
-        /// <summary>
-        /// Gets the Tesla Roadster information.
-        /// </summary>
-        public Roadster Roadster { get; }
-
-        /// <summary>
         /// Event triggered when an error occurred during JSON deserialization.
         /// </summary>
         public event EventHandler<ErrorEventArgs> OnDeserializationError;
@@ -96,17 +46,6 @@ namespace Oddity
                 RequestSend = RequestSend,
                 ResponseReceived = ResponseReceived
             };
-
-            Api = new Api(_httpClient, builderDelegatesContainer);
-            Company = new Company(_httpClient, builderDelegatesContainer);
-            History = new History(_httpClient, builderDelegatesContainer);
-            Rockets = new Rockets(_httpClient, builderDelegatesContainer);
-            Dragons = new Dragons(_httpClient, builderDelegatesContainer);
-            Capsules = new Capsules(_httpClient, builderDelegatesContainer);
-            Cores = new Cores(_httpClient, builderDelegatesContainer);
-            Launchpads = new Launchpads(_httpClient, builderDelegatesContainer);
-            Launches = new Launches(_httpClient, builderDelegatesContainer);
-            Roadster = new Roadster(_httpClient, builderDelegatesContainer);
         }
 
         /// <summary>

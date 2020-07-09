@@ -40,4 +40,8 @@ WARNING: this is the last release for v2/v3 API version. The next one will be co
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="API\Models\" />
+  </ItemGroup>
+
 </Project>
