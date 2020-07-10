@@ -14,6 +14,7 @@ namespace Oddity
     public class OddityCore : IDisposable
     {
         public CrewEndpoint CrewEndpoint { get; }
+        public LandpadsEndpoint LandpadsEndpoint { get; }
         public PayloadsEndpoint PayloadsEndpoint { get; }
         public RoadsterEndpoint RoadsterEndpoint { get; }
         public ShipsEndpoint ShipsEndpoint { get; }
@@ -55,6 +56,7 @@ namespace Oddity
             };
 
             CrewEndpoint = new CrewEndpoint(_httpClient, builderDelegatesContainer);
+            LandpadsEndpoint = new LandpadsEndpoint(_httpClient, builderDelegatesContainer);
             PayloadsEndpoint = new PayloadsEndpoint(_httpClient, builderDelegatesContainer);
             RoadsterEndpoint = new RoadsterEndpoint(_httpClient, builderDelegatesContainer);
             ShipsEndpoint = new ShipsEndpoint(_httpClient, builderDelegatesContainer);
