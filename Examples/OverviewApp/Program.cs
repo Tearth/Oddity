@@ -18,13 +18,16 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
+            var allCapsules = await oddity.CapsulesEndpoint.GetAll().ExecuteAsync();
+            var capsule = await oddity.CapsulesEndpoint.Get("5e9e2c5bf35918ed873b2664").ExecuteAsync();
+
             // var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
             // var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
 
             // var company = await oddity.CompanyEndpoint.Get().ExecuteAsync();
 
-            var allCores = await oddity.CoresEndpoint.GetAll().ExecuteAsync();
-            var core = await oddity.CoresEndpoint.Get("5e9e28a6f35918c0803b265c").ExecuteAsync();
+            // var allCores = await oddity.CoresEndpoint.GetAll().ExecuteAsync();
+            // var core = await oddity.CoresEndpoint.Get("5e9e28a6f35918c0803b265c").ExecuteAsync();
 
             // var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
             // var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();

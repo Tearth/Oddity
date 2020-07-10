@@ -13,6 +13,7 @@ namespace Oddity
     /// </summary>
     public class OddityCore : IDisposable
     {
+        public CapsulesEndpoint CapsulesEndpoint { get; }
         public CrewEndpoint CrewEndpoint { get; }
         public CompanyEndpoint CompanyEndpoint { get; }
         public CoresEndpoint CoresEndpoint { get; }
@@ -58,6 +59,7 @@ namespace Oddity
                 ResponseReceived = ResponseReceived
             };
 
+            CapsulesEndpoint = new CapsulesEndpoint(_httpClient, builderDelegatesContainer);
             CrewEndpoint = new CrewEndpoint(_httpClient, builderDelegatesContainer);
             CompanyEndpoint = new CompanyEndpoint(_httpClient, builderDelegatesContainer);
             CoresEndpoint = new CoresEndpoint(_httpClient, builderDelegatesContainer);
