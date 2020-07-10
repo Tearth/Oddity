@@ -18,8 +18,11 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
-            var allPayloads = await oddity.PayloadsEndpoint.GetAll().ExecuteAsync();
-            var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
+            var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
+            var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
+
+            // var allPayloads = await oddity.PayloadsEndpoint.GetAll().ExecuteAsync();
+            // var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
 
             // var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
 
