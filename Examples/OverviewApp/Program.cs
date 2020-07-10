@@ -21,8 +21,11 @@ namespace OverviewApp
             // var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
             // var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
 
-            var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
-            var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
+            // var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
+            // var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
+
+            var allLaunchpads = await oddity.LaunchpadsEndpoint.GetAll().ExecuteAsync();
+            var launchpad = await oddity.LaunchpadsEndpoint.Get("5e9e4502f509092b78566f87").ExecuteAsync();
 
             // var allPayloads = await oddity.PayloadsEndpoint.GetAll().ExecuteAsync();
             // var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
