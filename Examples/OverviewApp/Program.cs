@@ -18,13 +18,16 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
+            var allPayloads = await oddity.PayloadsEndpoint.GetAll().ExecuteAsync();
+            var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
+
             // var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
+
+            // var allShips = await oddity.ShipsEndpoint.GetAll().ExecuteAsync();
+            // var ship = await oddity.ShipsEndpoint.Get("5ea6ed2e080df4000697c90a").ExecuteAsync();
 
             // var allStarlinks = await oddity.StarlinkEndpoint.GetAll().ExecuteAsync();
             // var starlink = await oddity.StarlinkEndpoint.Get("5eed7716096e590006985825").ExecuteAsync();
-
-            var allShips = await oddity.ShipsEndpoint.GetAll().ExecuteAsync();
-            var ship = await oddity.ShipsEndpoint.Get("5ea6ed2e080df4000697c90a").ExecuteAsync();
 
             Console.Read();
         }

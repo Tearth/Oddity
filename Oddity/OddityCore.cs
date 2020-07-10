@@ -13,6 +13,7 @@ namespace Oddity
     /// </summary>
     public class OddityCore : IDisposable
     {
+        public PayloadsEndpoint PayloadsEndpoint { get; }
         public RoadsterEndpoint RoadsterEndpoint { get; }
         public ShipsEndpoint ShipsEndpoint { get; }
         public StarlinkEndpoint StarlinkEndpoint { get; }
@@ -52,6 +53,7 @@ namespace Oddity
                 ResponseReceived = ResponseReceived
             };
 
+            PayloadsEndpoint = new PayloadsEndpoint(_httpClient, builderDelegatesContainer);
             RoadsterEndpoint = new RoadsterEndpoint(_httpClient, builderDelegatesContainer);
             ShipsEndpoint = new ShipsEndpoint(_httpClient, builderDelegatesContainer);
             StarlinkEndpoint = new StarlinkEndpoint(_httpClient, builderDelegatesContainer);
