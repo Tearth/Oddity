@@ -18,8 +18,8 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
-            var allCapsules = await oddity.CapsulesEndpoint.GetAll().ExecuteAsync();
-            var capsule = await oddity.CapsulesEndpoint.Get("5e9e2c5bf35918ed873b2664").ExecuteAsync();
+            // var allCapsules = await oddity.CapsulesEndpoint.GetAll().ExecuteAsync();
+            // var capsule = await oddity.CapsulesEndpoint.Get("5e9e2c5bf35918ed873b2664").ExecuteAsync();
 
             // var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
             // var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
@@ -39,6 +39,9 @@ namespace OverviewApp
             // var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
 
             // var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
+
+            var allRockets = await oddity.RocketsEndpoint.GetAll().ExecuteAsync();
+            var rocket = await oddity.RocketsEndpoint.Get("5e9d0d95eda69974db09d1ed").ExecuteAsync();
 
             // var allShips = await oddity.ShipsEndpoint.GetAll().ExecuteAsync();
             // var ship = await oddity.ShipsEndpoint.Get("5ea6ed2e080df4000697c90a").ExecuteAsync();

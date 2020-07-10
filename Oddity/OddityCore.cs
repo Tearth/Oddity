@@ -21,6 +21,7 @@ namespace Oddity
         public LaunchpadsEndpoint LaunchpadsEndpoint { get; }
         public PayloadsEndpoint PayloadsEndpoint { get; }
         public RoadsterEndpoint RoadsterEndpoint { get; }
+        public RocketsEndpoint RocketsEndpoint { get; }
         public ShipsEndpoint ShipsEndpoint { get; }
         public StarlinkEndpoint StarlinkEndpoint { get; }
 
@@ -67,6 +68,7 @@ namespace Oddity
             LaunchpadsEndpoint = new LaunchpadsEndpoint(_httpClient, builderDelegatesContainer);
             PayloadsEndpoint = new PayloadsEndpoint(_httpClient, builderDelegatesContainer);
             RoadsterEndpoint = new RoadsterEndpoint(_httpClient, builderDelegatesContainer);
+            RocketsEndpoint = new RocketsEndpoint(_httpClient, builderDelegatesContainer);
             ShipsEndpoint = new ShipsEndpoint(_httpClient, builderDelegatesContainer);
             StarlinkEndpoint = new StarlinkEndpoint(_httpClient, builderDelegatesContainer);
         }
