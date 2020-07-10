@@ -18,7 +18,7 @@ namespace Oddity.API.Models.Payloads
         public DragonInfo Dragon { get; set; }
 
         [JsonProperty("norad_ids")]
-        public List<int> NoradIds { get; set; }
+        public List<uint> NoradIds { get; set; }
 
         public List<string> Nationalities { get; set; }
         public List<string> Manufacturers { get; set; }
@@ -55,7 +55,7 @@ namespace Oddity.API.Models.Payloads
         public double? PeriodMinutes { get; set; }
 
         [JsonProperty("lifespan_years")]
-        public int? LifespanYears { get; set; }
+        public uint? LifespanYears { get; set; }
 
         public DateTime? Epoch { get; set; }
 

@@ -17,19 +17,19 @@ namespace Oddity.API.Models.Ships
         public string Type { get; set; }
         public List<string> Roles { get; set; }
 
-        public int? Imo { get; set; }
-        public int? Mmsi { get; set; }
-        public int? Abs { get; set; }
-        public int? Class { get; set; }
+        public uint? Imo { get; set; }
+        public uint? Mmsi { get; set; }
+        public uint? Abs { get; set; }
+        public uint? Class { get; set; }
 
         [JsonProperty("mass_kg")]
-        public int? MassKilograms { get; set; }
+        public double? MassKilograms { get; set; }
 
         [JsonProperty("mass_lbs")]
-        public int? MassPounds { get; set; }
+        public double? MassPounds { get; set; }
 
         [JsonProperty("year_built")]
-        public int? YearBuilt { get; set; }
+        public uint? YearBuilt { get; set; }
 
         [JsonProperty("home_port")]
         public string HomePort { get; set; }

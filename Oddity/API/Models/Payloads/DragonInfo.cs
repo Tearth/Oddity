@@ -14,7 +14,7 @@ namespace Oddity.API.Models.Payloads
         public double? MassReturnedPounds { get; set; }
 
         [JsonProperty("flight_time_sec")]
-        public int? FlightTimeSeconds { get; set; }
+        public uint? FlightTimeSeconds { get; set; }
 
         public string Manifest { get; set; }
 

@@ -16,10 +16,10 @@ namespace Oddity.API.Models.Roadster
         public ulong? DateTimeUnix { get; set; }
 
         [JsonProperty("launch_mass_kg")]
-        public uint? LaunchMassKilograms { get; set; }
+        public double? LaunchMassKilograms { get; set; }
 
         [JsonProperty("launch_mass_lbs")]
-        public uint? LaunchMassPounds { get; set; }
+        public double? LaunchMassPounds { get; set; }
 
         [JsonProperty("norad_id")]
         public uint? NoradId { get; set; }

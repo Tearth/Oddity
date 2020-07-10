@@ -51,19 +51,19 @@ namespace Oddity.API.Models.Starlink
         public double? MeanAnomaly { get; set; }
 
         [JsonProperty("ephemeris_type")]
-        public int? EphemerisType { get; set; }
+        public uint? EphemerisType { get; set; }
 
         [JsonProperty("classification_type")]
         public string ClassificationType { get; set; }
 
         [JsonProperty("norad_cat_id")]
-        public int? NoradCatId { get; set; }
+        public uint? NoradCatId { get; set; }
 
         [JsonProperty("element_set_no")]
-        public int? NoradSetNo { get; set; }
+        public uint? NoradSetNo { get; set; }
 
         [JsonProperty("rev_at_epoch")]
-        public int? RevAtEpoch { get; set; }
+        public uint? RevAtEpoch { get; set; }
 
         public double? Bstar { get; set; }
 
@@ -97,11 +97,11 @@ namespace Oddity.API.Models.Starlink
         [JsonProperty("decay_date")]
         public DateTime? DecayDate { get; set; }
 
-        public int? Decayed { get; set; }
-        public int? File { get; set; }
+        public uint? Decayed { get; set; }
+        public uint? File { get; set; }
 
         [JsonProperty("gp_id")]
-        public int? GpId { get; set; }
+        public uint? GpId { get; set; }
 
         [JsonProperty("tle_line0")]
         public string TleLine0 { get; set; }
