@@ -7,7 +7,7 @@ using Oddity.API.Models.Payloads;
 namespace Oddity.API.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for Payloads endpoint.
+    /// Represents an entry point for /payloads endpoint.
     /// </summary>
     public class PayloadsEndpoint
     {

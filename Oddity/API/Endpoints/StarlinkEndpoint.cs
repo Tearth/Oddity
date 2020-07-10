@@ -7,7 +7,7 @@ using Oddity.API.Models.Starlink;
 namespace Oddity.API.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for Starlink endpoint.
+    /// Represents an entry point for /starlink endpoint.
     /// </summary>
     public class StarlinkEndpoint
     {

@@ -7,7 +7,7 @@ using Oddity.API.Models.Ships;
 namespace Oddity.API.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for Ships endpoint.
+    /// Represents an entry point for /ships endpoint.
     /// </summary>
     public class ShipsEndpoint
     {
@@ -36,7 +36,7 @@ namespace Oddity.API.Endpoints
         }
 
         /// <summary>
-        /// Gets data about all ships from the /starlink endpoint.
+        /// Gets data about all ships from the /ships endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<List<ShipInfo>> GetAll()

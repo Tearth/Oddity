@@ -9,7 +9,7 @@ using Oddity.API.Models.Payloads;
 namespace Oddity.API.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for Landpads endpoint.
+    /// Represents an entry point for /landpads endpoint.
     /// </summary>
     public class LandpadsEndpoint
     {
@@ -28,7 +28,7 @@ namespace Oddity.API.Endpoints
         }
 
         /// <summary>
-        /// Gets data about the specified landpad from the /crew/:id endpoint.
+        /// Gets data about the specified landpad from the /landpads/:id endpoint.
         /// </summary>
         /// <param name="id">ID of the specified payload.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>

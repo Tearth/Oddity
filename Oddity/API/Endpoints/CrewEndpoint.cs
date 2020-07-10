@@ -8,7 +8,7 @@ using Oddity.API.Models.Payloads;
 namespace Oddity.API.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for Crew endpoint.
+    /// Represents an entry point for /crew endpoint.
     /// </summary>
     public class CrewEndpoint
     {

@@ -6,7 +6,7 @@ using Oddity.API.Models.Roadster;
 namespace Oddity.API.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for Roadster endpoint.
+    /// Represents an entry point for /roadster endpoint.
     /// </summary>
     public class RoadsterEndpoint
     {
