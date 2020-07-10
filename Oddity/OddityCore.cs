@@ -14,6 +14,7 @@ namespace Oddity
     public class OddityCore : IDisposable
     {
         public RoadsterEndpoint RoadsterEndpoint { get; }
+        public StarlinkEndpoint StarlinkEndpoint { get; }
 
         /// <summary>
         /// Event triggered when an error occurred during JSON deserialization.
@@ -51,6 +52,7 @@ namespace Oddity
             };
 
             RoadsterEndpoint = new RoadsterEndpoint(_httpClient, builderDelegatesContainer);
+            StarlinkEndpoint = new StarlinkEndpoint(_httpClient, builderDelegatesContainer);
         }
 
         /// <summary>

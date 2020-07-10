@@ -14,6 +14,7 @@ namespace Oddity.API.Builders
     {
         private readonly HttpClient _httpClient;
         private readonly string _endpoint;
+        private readonly string _id;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleBuilder{TReturn}"/> class.
@@ -21,10 +22,25 @@ namespace Oddity.API.Builders
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, BuilderDelegatesContainer builderDelegates) : base(builderDelegates)
+        public SimpleBuilder(HttpClient httpClient, string endpoint, BuilderDelegatesContainer builderDelegates) 
+            : this(httpClient, endpoint, null, builderDelegates)
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleBuilder{TReturn}"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
+        /// <param name="id">The ID of the specified object to retrieve from API.</param>
+        /// <param name="builderDelegates">The builder delegates container.</param>
+        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, BuilderDelegatesContainer builderDelegates) 
+            : base(builderDelegates)
         {
             _httpClient = httpClient;
             _endpoint = endpoint;
+            _id = id;
         }
 
         /// <inheritdoc />
@@ -36,9 +52,10 @@ namespace Oddity.API.Builders
         /// <inheritdoc />
         public override async Task<TReturn> ExecuteAsync()
         {
-            BuilderDelegatesContainer.RequestSend(new RequestSendEventArgs(_httpClient.BaseAddress + _endpoint));
+            var link = $"{_endpoint}/{_id}";
+            BuilderDelegatesContainer.RequestSend(new RequestSendEventArgs(link));
 
-            var response = await _httpClient.GetAsync(_endpoint).ConfigureAwait(false);
+            var response = await _httpClient.GetAsync(link).ConfigureAwait(false);
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 if (response.StatusCode == HttpStatusCode.NoContent)
