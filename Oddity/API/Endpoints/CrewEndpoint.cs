@@ -29,7 +29,7 @@ namespace Oddity.API.Endpoints
         /// <summary>
         /// Gets data about the specified crew member from the /crew/:id endpoint.
         /// </summary>
-        /// <param name="id">ID of the specified payload.</param>
+        /// <param name="id">ID of the specified crew member.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CrewInfo> Get(string id)
         {

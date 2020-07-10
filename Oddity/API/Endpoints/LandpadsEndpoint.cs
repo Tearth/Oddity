@@ -30,7 +30,7 @@ namespace Oddity.API.Endpoints
         /// <summary>
         /// Gets data about the specified landpad from the /landpads/:id endpoint.
         /// </summary>
-        /// <param name="id">ID of the specified payload.</param>
+        /// <param name="id">ID of the specified landpad.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LandpadInfo> Get(string id)
         {
