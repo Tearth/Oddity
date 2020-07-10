@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Starlink
 {
-    public class SpaceTrack
+    public class SpaceTrackInfo
     {
         [JsonProperty("ccsds_omm_vers")]
         public string CcsdsOmmVers { get; set; }

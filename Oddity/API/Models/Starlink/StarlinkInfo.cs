@@ -10,6 +10,6 @@ namespace Oddity.API.Models.Starlink
         [JsonProperty("launch")]
         public string LaunchId { get; set; }
 
-        public SpaceTrack SpaceTrack { get; set; }
+        public SpaceTrackInfo SpaceTrack { get; set; }
     }
 }
