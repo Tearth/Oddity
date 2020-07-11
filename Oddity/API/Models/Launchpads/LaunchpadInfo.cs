@@ -6,7 +6,7 @@ namespace Oddity.API.Models.Launchpads
     public class LaunchpadInfo
     {
         public string Id { get; set; }
-        public string Status { get; set; }
+        public LaunchpadStatus? Status { get; set; }
         public string Name { get; set; }
 
         [JsonProperty("full_name")]

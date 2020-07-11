@@ -11,7 +11,7 @@ namespace Oddity.API.Models.Landspads
         [JsonProperty("full_name")]
         public string FullName { get; set; }
 
-        public string Status { get; set; }
+        public LandpadStatus? Status { get; set; }
         public string Type { get; set; }
         public string Locality { get; set; }
         public string Region { get; set; }

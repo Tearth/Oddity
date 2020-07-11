@@ -18,19 +18,19 @@ namespace OverviewApp
             oddity.OnRequestSend += Oddity_OnRequestSend;
             oddity.OnResponseReceive += OddityOnResponseReceive;
 
-            // var allCapsules = await oddity.CapsulesEndpoint.GetAll().ExecuteAsync();
-            // var capsule = await oddity.CapsulesEndpoint.Get("5e9e2c5bf35918ed873b2664").ExecuteAsync();
+            var allCapsules = await oddity.CapsulesEndpoint.GetAll().ExecuteAsync();
+            var capsule = await oddity.CapsulesEndpoint.Get("5e9e2c5bf35918ed873b2664").ExecuteAsync();
 
-            // var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
-            // var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
+            var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
+            var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
 
-            // var company = await oddity.CompanyEndpoint.Get().ExecuteAsync();
+            var company = await oddity.CompanyEndpoint.Get().ExecuteAsync();
 
-            // var allCores = await oddity.CoresEndpoint.GetAll().ExecuteAsync();
-            // var core = await oddity.CoresEndpoint.Get("5e9e28a6f35918c0803b265c").ExecuteAsync();
+            var allCores = await oddity.CoresEndpoint.GetAll().ExecuteAsync();
+            var core = await oddity.CoresEndpoint.Get("5e9e28a6f35918c0803b265c").ExecuteAsync();
 
-            // var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
-            // var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
+            var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
+            var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
 
             var allLaunches = await oddity.LaunchesEndpoint.GetAll().ExecuteAsync();
             var pastLaunches = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
@@ -39,22 +39,22 @@ namespace OverviewApp
             var nextLaunch = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
             var launch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b389").ExecuteAsync();
 
-            // var allLaunchpads = await oddity.LaunchpadsEndpoint.GetAll().ExecuteAsync();
-            // var launchpad = await oddity.LaunchpadsEndpoint.Get("5e9e4502f509092b78566f87").ExecuteAsync();
+            var allLaunchpads = await oddity.LaunchpadsEndpoint.GetAll().ExecuteAsync();
+            var launchpad = await oddity.LaunchpadsEndpoint.Get("5e9e4502f509092b78566f87").ExecuteAsync();
 
-            // var allPayloads = await oddity.PayloadsEndpoint.GetAll().ExecuteAsync();
-            // var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
+            var allPayloads = await oddity.PayloadsEndpoint.GetAll().ExecuteAsync();
+            var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
 
-            // var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
+            var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
 
-            // var allRockets = await oddity.RocketsEndpoint.GetAll().ExecuteAsync();
-            // var rocket = await oddity.RocketsEndpoint.Get("5e9d0d95eda69974db09d1ed").ExecuteAsync();
+            var allRockets = await oddity.RocketsEndpoint.GetAll().ExecuteAsync();
+            var rocket = await oddity.RocketsEndpoint.Get("5e9d0d95eda69974db09d1ed").ExecuteAsync();
 
-            // var allShips = await oddity.ShipsEndpoint.GetAll().ExecuteAsync();
-            // var ship = await oddity.ShipsEndpoint.Get("5ea6ed2e080df4000697c90a").ExecuteAsync();
+            var allShips = await oddity.ShipsEndpoint.GetAll().ExecuteAsync();
+            var ship = await oddity.ShipsEndpoint.Get("5ea6ed2e080df4000697c90a").ExecuteAsync();
 
-            // var allStarlinks = await oddity.StarlinkEndpoint.GetAll().ExecuteAsync();
-            // var starlink = await oddity.StarlinkEndpoint.Get("5eed7716096e590006985825").ExecuteAsync();
+            var allStarlinks = await oddity.StarlinkEndpoint.GetAll().ExecuteAsync();
+            var starlink = await oddity.StarlinkEndpoint.Get("5eed7716096e590006985825").ExecuteAsync();
 
             Console.Read();
         }

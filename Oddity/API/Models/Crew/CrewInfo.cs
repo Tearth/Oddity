@@ -13,6 +13,6 @@ namespace Oddity.API.Models.Crew
         [JsonProperty("launches")]
         public List<string> LaunchesId { get; set; }
 
-        public string Status { get; set; }
+        public CrewStatus? Status { get; set; }
     }
 }
