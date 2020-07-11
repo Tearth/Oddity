@@ -18,6 +18,7 @@ namespace Oddity
         public CompanyEndpoint CompanyEndpoint { get; }
         public CoresEndpoint CoresEndpoint { get; }
         public LandpadsEndpoint LandpadsEndpoint { get; }
+        public LaunchesEndpoint LaunchesEndpoint { get; }
         public LaunchpadsEndpoint LaunchpadsEndpoint { get; }
         public PayloadsEndpoint PayloadsEndpoint { get; }
         public RoadsterEndpoint RoadsterEndpoint { get; }
@@ -65,6 +66,7 @@ namespace Oddity
             CompanyEndpoint = new CompanyEndpoint(_httpClient, builderDelegatesContainer);
             CoresEndpoint = new CoresEndpoint(_httpClient, builderDelegatesContainer);
             LandpadsEndpoint = new LandpadsEndpoint(_httpClient, builderDelegatesContainer);
+            LaunchesEndpoint = new LaunchesEndpoint(_httpClient, builderDelegatesContainer);
             LaunchpadsEndpoint = new LaunchpadsEndpoint(_httpClient, builderDelegatesContainer);
             PayloadsEndpoint = new PayloadsEndpoint(_httpClient, builderDelegatesContainer);
             RoadsterEndpoint = new RoadsterEndpoint(_httpClient, builderDelegatesContainer);

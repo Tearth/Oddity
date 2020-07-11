@@ -32,6 +32,9 @@ namespace OverviewApp
             // var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
             // var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
 
+            var allLaunches = await oddity.LaunchesEndpoint.GetAll().ExecuteAsync();
+            var launch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b389").ExecuteAsync();
+
             // var allLaunchpads = await oddity.LaunchpadsEndpoint.GetAll().ExecuteAsync();
             // var launchpad = await oddity.LaunchpadsEndpoint.Get("5e9e4502f509092b78566f87").ExecuteAsync();
 
@@ -40,8 +43,8 @@ namespace OverviewApp
 
             // var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
 
-            var allRockets = await oddity.RocketsEndpoint.GetAll().ExecuteAsync();
-            var rocket = await oddity.RocketsEndpoint.Get("5e9d0d95eda69974db09d1ed").ExecuteAsync();
+            // var allRockets = await oddity.RocketsEndpoint.GetAll().ExecuteAsync();
+            // var rocket = await oddity.RocketsEndpoint.Get("5e9d0d95eda69974db09d1ed").ExecuteAsync();
 
             // var allShips = await oddity.ShipsEndpoint.GetAll().ExecuteAsync();
             // var ship = await oddity.ShipsEndpoint.Get("5ea6ed2e080df4000697c90a").ExecuteAsync();
