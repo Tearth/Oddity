@@ -11,20 +11,18 @@ namespace Oddity.API.Endpoints
     /// <summary>
     /// Represents an entry point for /landpads endpoint.
     /// </summary>
-    public class LandpadsEndpoint
+    public class LandpadsEndpoint : EndpointBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="LandpadsEndpoint"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public LandpadsEndpoint(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public LandpadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
+            : base(httpClient, context, builderDelegatesContainer)
         {
-            _httpClient = httpClient;
-            _builderDelegatesContainer = builderDelegatesContainer;
+
         }
 
         /// <summary>
@@ -34,7 +32,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LandpadInfo> Get(string id)
         {
-            return new SimpleBuilder<LandpadInfo>(_httpClient, "landpads", id, _builderDelegatesContainer);
+            return new SimpleBuilder<LandpadInfo>(HttpClient, "landpads", id, Context, BuilderDelegatesContainer);
         }
 
         /// <summary>
@@ -43,7 +41,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LandpadInfo> GetAll()
         {
-            return new ListBuilder<LandpadInfo>(_httpClient, "landpads", _builderDelegatesContainer);
+            return new ListBuilder<LandpadInfo>(HttpClient, "landpads", Context, BuilderDelegatesContainer);
         }
     }
 }

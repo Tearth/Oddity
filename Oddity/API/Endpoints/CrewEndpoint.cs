@@ -10,20 +10,18 @@ namespace Oddity.API.Endpoints
     /// <summary>
     /// Represents an entry point for /crew endpoint.
     /// </summary>
-    public class CrewEndpoint
+    public class CrewEndpoint : EndpointBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CrewEndpoint"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public CrewEndpoint(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public CrewEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
+            : base(httpClient, context, builderDelegatesContainer)
         {
-            _httpClient = httpClient;
-            _builderDelegatesContainer = builderDelegatesContainer;
+
         }
 
         /// <summary>
@@ -33,7 +31,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CrewInfo> Get(string id)
         {
-            return new SimpleBuilder<CrewInfo>(_httpClient, "crew", id, _builderDelegatesContainer);
+            return new SimpleBuilder<CrewInfo>(HttpClient, "crew", id, Context, BuilderDelegatesContainer);
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<CrewInfo> GetAll()
         {
-            return new ListBuilder<CrewInfo>(_httpClient, "crew", _builderDelegatesContainer);
+            return new ListBuilder<CrewInfo>(HttpClient, "crew", Context, BuilderDelegatesContainer);
         }
     }
 }

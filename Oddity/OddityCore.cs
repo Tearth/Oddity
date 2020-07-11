@@ -61,18 +61,18 @@ namespace Oddity
                 ResponseReceived = ResponseReceived
             };
 
-            CapsulesEndpoint = new CapsulesEndpoint(_httpClient, builderDelegatesContainer);
-            CrewEndpoint = new CrewEndpoint(_httpClient, builderDelegatesContainer);
-            CompanyEndpoint = new CompanyEndpoint(_httpClient, builderDelegatesContainer);
-            CoresEndpoint = new CoresEndpoint(_httpClient, builderDelegatesContainer);
-            LandpadsEndpoint = new LandpadsEndpoint(_httpClient, builderDelegatesContainer);
-            LaunchesEndpoint = new LaunchesEndpoint(_httpClient, builderDelegatesContainer);
-            LaunchpadsEndpoint = new LaunchpadsEndpoint(_httpClient, builderDelegatesContainer);
-            PayloadsEndpoint = new PayloadsEndpoint(_httpClient, builderDelegatesContainer);
-            RoadsterEndpoint = new RoadsterEndpoint(_httpClient, builderDelegatesContainer);
-            RocketsEndpoint = new RocketsEndpoint(_httpClient, builderDelegatesContainer);
-            ShipsEndpoint = new ShipsEndpoint(_httpClient, builderDelegatesContainer);
-            StarlinkEndpoint = new StarlinkEndpoint(_httpClient, builderDelegatesContainer);
+            CapsulesEndpoint = new CapsulesEndpoint(_httpClient, this, builderDelegatesContainer);
+            CrewEndpoint = new CrewEndpoint(_httpClient, this, builderDelegatesContainer);
+            CompanyEndpoint = new CompanyEndpoint(_httpClient, this, builderDelegatesContainer);
+            CoresEndpoint = new CoresEndpoint(_httpClient, this, builderDelegatesContainer);
+            LandpadsEndpoint = new LandpadsEndpoint(_httpClient, this, builderDelegatesContainer);
+            LaunchesEndpoint = new LaunchesEndpoint(_httpClient, this, builderDelegatesContainer);
+            LaunchpadsEndpoint = new LaunchpadsEndpoint(_httpClient, this, builderDelegatesContainer);
+            PayloadsEndpoint = new PayloadsEndpoint(_httpClient, this, builderDelegatesContainer);
+            RoadsterEndpoint = new RoadsterEndpoint(_httpClient, this, builderDelegatesContainer);
+            RocketsEndpoint = new RocketsEndpoint(_httpClient, this, builderDelegatesContainer);
+            ShipsEndpoint = new ShipsEndpoint(_httpClient, this, builderDelegatesContainer);
+            StarlinkEndpoint = new StarlinkEndpoint(_httpClient, this, builderDelegatesContainer);
         }
 
         /// <summary>

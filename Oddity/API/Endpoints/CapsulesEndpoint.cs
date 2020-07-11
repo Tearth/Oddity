@@ -10,20 +10,18 @@ namespace Oddity.API.Endpoints
     /// <summary>
     /// Represents an entry point for /capsules endpoint.
     /// </summary>
-    public class CapsulesEndpoint
+    public class CapsulesEndpoint : EndpointBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CapsulesEndpoint"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public CapsulesEndpoint(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public CapsulesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer) 
+            : base(httpClient, context, builderDelegatesContainer)
         {
-            _httpClient = httpClient;
-            _builderDelegatesContainer = builderDelegatesContainer;
+
         }
 
         /// <summary>
@@ -33,7 +31,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CapsuleInfo> Get(string id)
         {
-            return new SimpleBuilder<CapsuleInfo>(_httpClient, "capsules", id, _builderDelegatesContainer);
+            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, BuilderDelegatesContainer);
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<CapsuleInfo> GetAll()
         {
-            return new ListBuilder<CapsuleInfo>(_httpClient, "capsules", _builderDelegatesContainer);
+            return new ListBuilder<CapsuleInfo>(HttpClient, "capsules", Context, BuilderDelegatesContainer);
         }
     }
 }

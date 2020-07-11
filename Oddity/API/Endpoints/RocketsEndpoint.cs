@@ -10,20 +10,18 @@ namespace Oddity.API.Endpoints
     /// <summary>
     /// Represents an entry point for /rockets endpoint.
     /// </summary>
-    public class RocketsEndpoint
+    public class RocketsEndpoint : EndpointBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="RocketsEndpoint"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public RocketsEndpoint(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public RocketsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
+            : base(httpClient, context, builderDelegatesContainer)
         {
-            _httpClient = httpClient;
-            _builderDelegatesContainer = builderDelegatesContainer;
+
         }
 
         /// <summary>
@@ -33,7 +31,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<RocketInfo> Get(string id)
         {
-            return new SimpleBuilder<RocketInfo>(_httpClient, "rockets", id, _builderDelegatesContainer);
+            return new SimpleBuilder<RocketInfo>(HttpClient, "rockets", id, Context, BuilderDelegatesContainer);
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<RocketInfo> GetAll()
         {
-            return new ListBuilder<RocketInfo>(_httpClient, "rockets", _builderDelegatesContainer);
+            return new ListBuilder<RocketInfo>(HttpClient, "rockets", Context, BuilderDelegatesContainer);
         }
     }
 }

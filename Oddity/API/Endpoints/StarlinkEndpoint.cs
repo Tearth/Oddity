@@ -9,20 +9,18 @@ namespace Oddity.API.Endpoints
     /// <summary>
     /// Represents an entry point for /starlink endpoint.
     /// </summary>
-    public class StarlinkEndpoint
+    public class StarlinkEndpoint : EndpointBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StarlinkEndpoint"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public StarlinkEndpoint(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public StarlinkEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
+            : base(httpClient, context, builderDelegatesContainer)
         {
-            _httpClient = httpClient;
-            _builderDelegatesContainer = builderDelegatesContainer;
+
         }
 
         /// <summary>
@@ -32,7 +30,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<StarlinkInfo> Get(string id)
         {
-            return new SimpleBuilder<StarlinkInfo>(_httpClient, "starlink", id, _builderDelegatesContainer);
+            return new SimpleBuilder<StarlinkInfo>(HttpClient, "starlink", id, Context, BuilderDelegatesContainer);
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<StarlinkInfo> GetAll()
         {
-            return new ListBuilder<StarlinkInfo>(_httpClient, "starlink", _builderDelegatesContainer);
+            return new ListBuilder<StarlinkInfo>(HttpClient, "starlink", Context, BuilderDelegatesContainer);
         }
     }
 }

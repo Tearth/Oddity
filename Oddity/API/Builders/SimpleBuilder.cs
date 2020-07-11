@@ -15,15 +15,17 @@ namespace Oddity.API.Builders
     {
         private readonly string _endpoint;
         private readonly string _id;
+        private readonly OddityCore _context;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleBuilder{TReturn}"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, BuilderDelegatesContainer builderDelegates) 
-            : this(httpClient, endpoint, null, builderDelegates)
+        public SimpleBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegatesContainer builderDelegates) 
+            : this(httpClient, endpoint, null, context, builderDelegates)
         {
 
         }
@@ -34,12 +36,14 @@ namespace Oddity.API.Builders
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="id">The ID of the specified object to retrieve from API.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, BuilderDelegatesContainer builderDelegates) 
+        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, OddityCore context, BuilderDelegatesContainer builderDelegates) 
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;
             _id = id;
+            _context = context;
         }
 
         /// <inheritdoc />
@@ -53,7 +57,7 @@ namespace Oddity.API.Builders
         {
             var content = await GetResponseFromEndpoint($"{_endpoint}/{_id}");
             var deserializedObject = DeserializeJson(content);
-            deserializedObject.SetContext(null);
+            deserializedObject.SetContext(_context);
 
             return deserializedObject;
         }

@@ -9,20 +9,18 @@ namespace Oddity.API.Endpoints
     /// <summary>
     /// Represents an entry point for /company endpoint.
     /// </summary>
-    public class CompanyEndpoint
+    public class CompanyEndpoint : EndpointBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly BuilderDelegatesContainer _builderDelegatesContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CompanyEndpoint"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public CompanyEndpoint(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
+        public CompanyEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
+            : base(httpClient, context, builderDelegatesContainer)
         {
-            _httpClient = httpClient;
-            _builderDelegatesContainer = builderDelegatesContainer;
+
         }
 
         /// <summary>
@@ -31,7 +29,7 @@ namespace Oddity.API.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CompanyInfo> Get()
         {
-            return new SimpleBuilder<CompanyInfo>(_httpClient, "company", _builderDelegatesContainer);
+            return new SimpleBuilder<CompanyInfo>(HttpClient, "company", Context, BuilderDelegatesContainer);
         }
     }
 }
