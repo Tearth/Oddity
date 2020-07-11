@@ -38,7 +38,7 @@ namespace Oddity.API.Endpoints
         }
 
         /// <summary>
-        /// Gets data about crew from the /landpads endpoint.
+        /// Gets data about all landpads from the /landpads endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<List<LandpadInfo>> GetAll()

@@ -37,7 +37,7 @@ namespace Oddity.API.Endpoints
         }
 
         /// <summary>
-        /// Gets data about capsules from the /capsules endpoint.
+        /// Gets data about all capsules from the /capsules endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<List<CapsuleInfo>> GetAll()
