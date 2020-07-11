@@ -23,7 +23,7 @@ namespace OverviewApp
 
             var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
             var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
-            var crewLaunch = crewMember.Launches[0].Value;
+            var crewMemberLaunch = crewMember.Launches[0].Value;
 
             var company = await oddity.CompanyEndpoint.Get().ExecuteAsync();
 
@@ -43,16 +43,25 @@ namespace OverviewApp
             var upcomingLaunches = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
             var latestLaunch = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
             var nextLaunch = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
-            var launch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b388").ExecuteAsync();
-            var launchCore = launch.Cores[0].Core.Value;
-            var launchLandpad = launch.Cores[0].Landpad.Value;
-            //var launchFairingShips = launch.Fairings.Ships[0].Value;
-            var launchRocket = launch.Rocket.Value;
-            var launchCrew = launch.Crew[0].Value;
-            var launchShip = launch.Ships[0].Value;
-            var launchCapsule = launch.Capsules[0].Value;
-            var launchPayload = launch.Payloads[0].Value;
-            var launchLaunchpad = launch.Launchpad.Value;
+
+            var crewLaunch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b388").ExecuteAsync();
+            var crewLaunchCore = crewLaunch.Cores[0].Core.Value;
+            var crewLaunchLandpad = crewLaunch.Cores[0].Landpad.Value;
+            var crewLaunchRocket = crewLaunch.Rocket.Value;
+            var crewLaunchCrew = crewLaunch.Crew[0].Value;
+            var crewLaunchShip = crewLaunch.Ships[0].Value;
+            var crewLaunchCapsule = crewLaunch.Capsules[0].Value;
+            var crewLaunchPayload = crewLaunch.Payloads[0].Value;
+            var crewLaunchLaunchpad = crewLaunch.Launchpad.Value;
+
+            var commercialLaunch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b389").ExecuteAsync();
+            var commercialLaunchCore = commercialLaunch.Cores[0].Core.Value;
+            var commercialLaunchLandpad = commercialLaunch.Cores[0].Landpad.Value;
+            var commercialLaunchFairingShips = commercialLaunch.Fairings.Ships[0].Value;
+            var commercialLaunchRocket = commercialLaunch.Rocket.Value;
+            var commercialLaunchShip = commercialLaunch.Ships[0].Value;
+            var commercialLaunchPayload = commercialLaunch.Payloads[0].Value;
+            var commercialLaunchLaunchpad = commercialLaunch.Launchpad.Value;
 
             var allLaunchpads = await oddity.LaunchpadsEndpoint.GetAll().ExecuteAsync();
             var launchpad = await oddity.LaunchpadsEndpoint.Get("5e9e4502f509092b78566f87").ExecuteAsync();
