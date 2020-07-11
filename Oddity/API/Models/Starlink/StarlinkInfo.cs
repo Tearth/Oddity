@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using Oddity.API.Models.Launches;
 
 namespace Oddity.API.Models.Starlink
 {
@@ -8,7 +10,18 @@ namespace Oddity.API.Models.Starlink
         public string Version { get; set; }
 
         [JsonProperty("launch")]
-        public string LaunchId { get; set; }
+        public string LaunchId 
+        { 
+            get => _launchId;
+            set
+            {
+                _launchId = value;
+                Launch = new Lazy<LaunchInfo>(() => Context.LaunchesEndpoint.Get(_launchId).Execute());
+            }
+        }
+
+        public Lazy<LaunchInfo> Launch { get; set; }
+        private string _launchId;
 
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }

@@ -19,30 +19,53 @@ namespace OverviewApp
 
             var allCapsules = await oddity.CapsulesEndpoint.GetAll().ExecuteAsync();
             var capsule = await oddity.CapsulesEndpoint.Get("5e9e2c5bf35918ed873b2664").ExecuteAsync();
+            var capsuleLaunch = capsule.Launches[0].Value;
 
             var allCrew = await oddity.CrewEndpoint.GetAll().ExecuteAsync();
             var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
+            var crewLaunch = crewMember.Launches[0].Value;
 
             var company = await oddity.CompanyEndpoint.Get().ExecuteAsync();
 
             var allCores = await oddity.CoresEndpoint.GetAll().ExecuteAsync();
             var core = await oddity.CoresEndpoint.Get("5e9e28a6f35918c0803b265c").ExecuteAsync();
+            var coreLaunch1 = core.Launches[0].Value;
+            var coreLaunch2 = core.Launches[1].Value;
+            var coreLaunch3 = core.Launches[2].Value;
+            var coreLaunch4 = core.Launches[3].Value;
 
             var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
             var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
+            var landpadLaunch = landpad.Launches[0].Value;
 
             var allLaunches = await oddity.LaunchesEndpoint.GetAll().ExecuteAsync();
             var pastLaunches = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
             var upcomingLaunches = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
             var latestLaunch = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
             var nextLaunch = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
-            var launch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b389").ExecuteAsync();
+            var launch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b388").ExecuteAsync();
+            var launchCore = launch.Cores[0].Core.Value;
+            var launchLandpad = launch.Cores[0].Landpad.Value;
+            //var launchFairingShips = launch.Fairings.Ships[0].Value;
+            var launchRocket = launch.Rocket.Value;
+            var launchCrew = launch.Crew[0].Value;
+            var launchShip = launch.Ships[0].Value;
+            var launchCapsule = launch.Capsules[0].Value;
+            var launchPayload = launch.Payloads[0].Value;
+            var launchLaunchpad = launch.Launchpad.Value;
 
             var allLaunchpads = await oddity.LaunchpadsEndpoint.GetAll().ExecuteAsync();
             var launchpad = await oddity.LaunchpadsEndpoint.Get("5e9e4502f509092b78566f87").ExecuteAsync();
+            var launchpadLaunch1 = launchpad.Launches[0].Value;
+            var launchpadLaunch2 = launchpad.Launches[1].Value;
+            var launchpadLaunch3 = launchpad.Launches[2].Value;
+            var launchpadLaunch4 = launchpad.Launches[3].Value;
+            var launchpadRocket = launchpad.Rockets[0].Value;
 
             var allPayloads = await oddity.PayloadsEndpoint.GetAll().ExecuteAsync();
-            var payloads = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
+            var payload = await oddity.PayloadsEndpoint.Get("5eb0e4bbb6c3bb0006eeb1ed").ExecuteAsync();
+            var payloadLaunch = payload.Launch.Value;
+            var payloadCapsule = payload.Dragon.Capsule.Value;
 
             var roadster = await oddity.RoadsterEndpoint.Get().ExecuteAsync();
 
@@ -51,9 +74,14 @@ namespace OverviewApp
 
             var allShips = await oddity.ShipsEndpoint.GetAll().ExecuteAsync();
             var ship = await oddity.ShipsEndpoint.Get("5ea6ed2e080df4000697c90a").ExecuteAsync();
+            var shipLaunch1 = ship.Launches[0].Value;
+            var shipLaunch2 = ship.Launches[1].Value;
+            var shipLaunch3 = ship.Launches[2].Value;
+            var shipLaunch4 = ship.Launches[3].Value;
 
             var allStarlinks = await oddity.StarlinkEndpoint.GetAll().ExecuteAsync();
             var starlink = await oddity.StarlinkEndpoint.Get("5eed7716096e590006985825").ExecuteAsync();
+            var starlinkLaunch = starlink.Launch.Value;
 
             Console.Read();
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Oddity.API.Models.Launches;
 
 namespace Oddity.API.Models.Payloads
 {
@@ -12,7 +13,18 @@ namespace Oddity.API.Models.Payloads
         public bool? Reused { get; set; }
 
         [JsonProperty("launch")]
-        public string LaunchId { get; set; }
+        public string LaunchId
+        {
+            get => _launchId;
+            set
+            {
+                _launchId = value;
+                Launch = new Lazy<LaunchInfo>(() => Context.LaunchesEndpoint.Get(_launchId).Execute());
+            }
+        }
+
+        public Lazy<LaunchInfo> Launch { get; set; }
+        private string _launchId;
 
         public List<string> Customers { get; set; }
         public DragonInfo Dragon { get; set; }

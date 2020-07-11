@@ -1,11 +1,25 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using Oddity.API.Models.Capsules;
+using Oddity.API.Models.Launches;
 
 namespace Oddity.API.Models.Payloads
 {
     public class DragonInfo : ModelBase
     {
         [JsonProperty("capsule")]
-        public string CapsuleId { get; set; }
+        public string CapsuleId
+        {
+            get => _capsuleId;
+            set
+            {
+                _capsuleId = value;
+                Capsule = new Lazy<CapsuleInfo>(() => Context.CapsulesEndpoint.Get(_capsuleId).Execute());
+            }
+        }
+
+        public Lazy<CapsuleInfo> Capsule { get; set; }
+        private string _capsuleId;
 
         [JsonProperty("mass_returned_kg")]
         public double? MassReturnedKilograms { get; set; }
