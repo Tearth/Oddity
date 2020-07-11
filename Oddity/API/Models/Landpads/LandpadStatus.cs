@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oddity.API.Models.Landspads
+namespace Oddity.API.Models.Landpads
 {
     public enum LandpadStatus
     {

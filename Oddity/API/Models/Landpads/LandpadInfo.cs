@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Oddity.API.Models.Landspads
+namespace Oddity.API.Models.Landpads
 {
     public class LandpadInfo
     {

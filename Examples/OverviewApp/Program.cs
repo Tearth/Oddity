@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
-using Oddity.API.Builders;
 using Oddity.API.Events;
 
 namespace OverviewApp
