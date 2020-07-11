@@ -39,9 +39,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about all Starlink satellites from the /starlink endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<StarlinkInfo>> GetAll()
+        public ListBuilder<StarlinkInfo> GetAll()
         {
-            return new SimpleBuilder<List<StarlinkInfo>>(_httpClient, "starlink", _builderDelegatesContainer);
+            return new ListBuilder<StarlinkInfo>(_httpClient, "starlink", _builderDelegatesContainer);
         }
     }
 }

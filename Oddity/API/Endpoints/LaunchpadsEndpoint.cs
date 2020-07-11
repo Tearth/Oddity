@@ -39,9 +39,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about all launchpads from the /launchpads endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<LaunchpadInfo>> GetAll()
+        public ListBuilder<LaunchpadInfo> GetAll()
         {
-            return new SimpleBuilder<List<LaunchpadInfo>>(_httpClient, "launchpads", _builderDelegatesContainer);
+            return new ListBuilder<LaunchpadInfo>(_httpClient, "launchpads", _builderDelegatesContainer);
         }
     }
 }

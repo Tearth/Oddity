@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Oddity.API.Events;
@@ -12,10 +14,12 @@ namespace Oddity.API.Builders
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
     public abstract class BuilderBase<TReturn>
     {
+        protected readonly HttpClient HttpClient;
         protected readonly BuilderDelegatesContainer BuilderDelegatesContainer;
 
-        protected BuilderBase(BuilderDelegatesContainer builderDelegatesContainer)
+        protected BuilderBase(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
+            HttpClient = httpClient;
             BuilderDelegatesContainer = builderDelegatesContainer;
         }
 
@@ -32,6 +36,29 @@ namespace Oddity.API.Builders
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract Task<TReturn> ExecuteAsync();
+
+        protected async Task<string> GetResponseFromEndpoint(string link)
+        {
+            BuilderDelegatesContainer.RequestSend(new RequestSendEventArgs(link));
+
+            var response = await HttpClient.GetAsync(link).ConfigureAwait(false);
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                if (response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    return default;
+                }
+
+                throw new APIUnavailableException($"Status code: {(int)response.StatusCode}");
+            }
+
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var eventArgs = new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase);
+
+            BuilderDelegatesContainer.ResponseReceived(eventArgs);
+
+            return content;
+        }
 
         protected TReturn DeserializeJson(string content)
         {

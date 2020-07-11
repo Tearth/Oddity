@@ -39,9 +39,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about all ships from the /ships endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<ShipInfo>> GetAll()
+        public ListBuilder<ShipInfo> GetAll()
         {
-            return new SimpleBuilder<List<ShipInfo>>(_httpClient, "ships", _builderDelegatesContainer);
+            return new ListBuilder<ShipInfo>(_httpClient, "ships", _builderDelegatesContainer);
         }
     }
 }

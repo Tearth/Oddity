@@ -41,9 +41,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about all landpads from the /landpads endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<LandpadInfo>> GetAll()
+        public ListBuilder<LandpadInfo> GetAll()
         {
-            return new SimpleBuilder<List<LandpadInfo>>(_httpClient, "landpads", _builderDelegatesContainer);
+            return new ListBuilder<LandpadInfo>(_httpClient, "landpads", _builderDelegatesContainer);
         }
     }
 }

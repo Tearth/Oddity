@@ -39,9 +39,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about all cores from the /cores endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<CoreInfo>> GetAll()
+        public ListBuilder<CoreInfo> GetAll()
         {
-            return new SimpleBuilder<List<CoreInfo>>(_httpClient, "cores", _builderDelegatesContainer);
+            return new ListBuilder<CoreInfo>(_httpClient, "cores", _builderDelegatesContainer);
         }
     }
 }

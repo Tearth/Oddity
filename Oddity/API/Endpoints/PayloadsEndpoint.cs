@@ -39,9 +39,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about all payloads from the /payloads endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<PayloadInfo>> GetAll()
+        public ListBuilder<PayloadInfo> GetAll()
         {
-            return new SimpleBuilder<List<PayloadInfo>>(_httpClient, "payloads", _builderDelegatesContainer);
+            return new ListBuilder<PayloadInfo>(_httpClient, "payloads", _builderDelegatesContainer);
         }
     }
 }

@@ -60,27 +60,27 @@ namespace Oddity.API.Endpoints
         /// Gets data about all launches from the /launches endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<LaunchInfo>> GetAll()
+        public ListBuilder<LaunchInfo> GetAll()
         {
-            return new SimpleBuilder<List<LaunchInfo>>(_httpClient, "launches", _builderDelegatesContainer);
+            return new ListBuilder<LaunchInfo>(_httpClient, "launches", _builderDelegatesContainer);
         }
 
         /// <summary>
         /// Gets data about all past launches from the /launches endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<LaunchInfo>> GetPast()
+        public ListBuilder<LaunchInfo> GetPast()
         {
-            return new SimpleBuilder<List<LaunchInfo>>(_httpClient, "launches/past", _builderDelegatesContainer);
+            return new ListBuilder<LaunchInfo>(_httpClient, "launches/past", _builderDelegatesContainer);
         }
 
         /// <summary>
         /// Gets data about all upcoming launches from the /launches endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<LaunchInfo>> GetUpcoming()
+        public ListBuilder<LaunchInfo> GetUpcoming()
         {
-            return new SimpleBuilder<List<LaunchInfo>>(_httpClient, "launches/upcoming", _builderDelegatesContainer);
+            return new ListBuilder<LaunchInfo>(_httpClient, "launches/upcoming", _builderDelegatesContainer);
         }
     }
 }

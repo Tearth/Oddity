@@ -40,9 +40,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about all rockets from the /rockets endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<RocketInfo>> GetAll()
+        public ListBuilder<RocketInfo> GetAll()
         {
-            return new SimpleBuilder<List<RocketInfo>>(_httpClient, "rockets", _builderDelegatesContainer);
+            return new ListBuilder<RocketInfo>(_httpClient, "rockets", _builderDelegatesContainer);
         }
     }
 }

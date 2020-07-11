@@ -40,9 +40,9 @@ namespace Oddity.API.Endpoints
         /// Gets data about crew from the /crew endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<List<CrewInfo>> GetAll()
+        public ListBuilder<CrewInfo> GetAll()
         {
-            return new SimpleBuilder<List<CrewInfo>>(_httpClient, "crew", _builderDelegatesContainer);
+            return new ListBuilder<CrewInfo>(_httpClient, "crew", _builderDelegatesContainer);
         }
     }
 }
