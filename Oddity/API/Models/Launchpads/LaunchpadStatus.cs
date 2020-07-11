@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace Oddity.API.Models.Launchpads
 {
@@ -10,7 +10,7 @@ namespace Oddity.API.Models.Launchpads
         Retired,
         Lost,
 
-        [JsonProperty("under construction")]
+        [EnumMember(Value = "under construction")]
         UnderConstruction
     }
 }
