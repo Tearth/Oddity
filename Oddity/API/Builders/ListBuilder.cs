@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.API.Events;
 using Oddity.API.Exceptions;
+using Oddity.API.Models;
 
 namespace Oddity.API.Builders
 {
@@ -11,7 +12,7 @@ namespace Oddity.API.Builders
     /// Represents a list builder used to retrieve data (collection of objects) without any filters.
     /// </summary>
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
-    public class ListBuilder<TReturn> : BuilderBase<List<TReturn>>
+    public class ListBuilder<TReturn> : BuilderBase<List<TReturn>> where TReturn : ModelBase
     {
         private readonly string _endpoint;
         private readonly string _id;
@@ -52,7 +53,14 @@ namespace Oddity.API.Builders
         public override async Task<List<TReturn>> ExecuteAsync()
         {
             var content = await GetResponseFromEndpoint($"{_endpoint}/{_id}");
-            return DeserializeJson(content);
+            var deserializedObjectsList = DeserializeJson(content);
+
+            foreach (var deserializedObject in deserializedObjectsList)
+            {
+                deserializedObject.SetContext(null);
+            }
+
+            return deserializedObjectsList;
         }
     }
 }
