@@ -33,6 +33,10 @@ namespace OverviewApp
             // var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
 
             var allLaunches = await oddity.LaunchesEndpoint.GetAll().ExecuteAsync();
+            var pastLaunches = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
+            var upcomingLaunches = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
+            var latestLaunch = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
+            var nextLaunch = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
             var launch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b389").ExecuteAsync();
 
             // var allLaunchpads = await oddity.LaunchpadsEndpoint.GetAll().ExecuteAsync();

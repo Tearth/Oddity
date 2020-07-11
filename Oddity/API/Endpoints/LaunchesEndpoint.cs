@@ -40,12 +40,48 @@ namespace Oddity.API.Endpoints
         }
 
         /// <summary>
+        /// Gets data about the latest launch from the /launches/latest endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public SimpleBuilder<LaunchInfo> GetLatest()
+        {
+            return new SimpleBuilder<LaunchInfo>(_httpClient, "launches/latest", _builderDelegatesContainer);
+        }
+
+        /// <summary>
+        /// Gets data about the next launch from the /launches/latest endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public SimpleBuilder<LaunchInfo> GetNext()
+        {
+            return new SimpleBuilder<LaunchInfo>(_httpClient, "launches/next", _builderDelegatesContainer);
+        }
+
+        /// <summary>
         /// Gets data about all launches from the /launches endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<List<LaunchInfo>> GetAll()
         {
             return new SimpleBuilder<List<LaunchInfo>>(_httpClient, "launches", _builderDelegatesContainer);
+        }
+
+        /// <summary>
+        /// Gets data about all past launches from the /launches endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public SimpleBuilder<List<LaunchInfo>> GetPast()
+        {
+            return new SimpleBuilder<List<LaunchInfo>>(_httpClient, "launches/past", _builderDelegatesContainer);
+        }
+
+        /// <summary>
+        /// Gets data about all upcoming launches from the /launches endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public SimpleBuilder<List<LaunchInfo>> GetUpcoming()
+        {
+            return new SimpleBuilder<List<LaunchInfo>>(_httpClient, "launches/upcoming", _builderDelegatesContainer);
         }
     }
 }
