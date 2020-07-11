@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Launches
 {
-    public class LaunchLinks
+    public class LaunchLinks : ModelBase
     {
         public LaunchPatchInfo Patch { get; set; }
         public LaunchRedditInfo Reddit { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Common
 {
-    public class VolumeInfo
+    public class VolumeInfo : ModelBase
     {
         [JsonProperty("cubic_meters")]
         public double? CubicMeters { get; set; }

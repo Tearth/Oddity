@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Capsules
 {
-    public class CapsuleInfo
+    public class CapsuleInfo : ModelBase
     {
         public string Id { get; set; }
         public string Serial { get; set; }

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Landpads
 {
-    public class LandpadInfo
+    public class LandpadInfo : ModelBase
     {
         public string Id { get; set; }
         public string Name { get; set; }

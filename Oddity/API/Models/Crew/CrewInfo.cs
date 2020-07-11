@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Crew
 {
-    public class CrewInfo
+    public class CrewInfo : ModelBase
     {
         public string Id { get; set; }
         public string Name { get; set; }

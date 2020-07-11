@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Launchpads
 {
-    public class LaunchpadInfo
+    public class LaunchpadInfo : ModelBase
     {
         public string Id { get; set; }
         public LaunchpadStatus? Status { get; set; }

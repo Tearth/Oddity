@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Rockets
 {
-    public class IspInfo
+    public class IspInfo : ModelBase
     {
         [JsonProperty("sea_level")]
         public uint? SeaLevel { get; set; }

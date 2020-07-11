@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Rockets
 {
-    public class PotentialPayloadInfo
+    public class PotentialPayloadInfo : ModelBase
     {
         [JsonProperty("composite_fairing")]
         public FairingInfo Fairing { get; set; }

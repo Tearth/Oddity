@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Common
 {
-    public class MassInfo
+    public class MassInfo : ModelBase
     {
         [JsonProperty("kg")]
         public double? Kilograms { get; set; }

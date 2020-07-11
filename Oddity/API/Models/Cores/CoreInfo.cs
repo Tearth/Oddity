@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Cores
 {
-    public class CoreInfo
+    public class CoreInfo : ModelBase
     {
         public string Id { get; set; }
         public uint? Block { get; set; }

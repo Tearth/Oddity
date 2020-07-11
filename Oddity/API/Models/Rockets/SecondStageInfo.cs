@@ -3,7 +3,7 @@ using Oddity.API.Models.Common;
 
 namespace Oddity.API.Models.Rockets
 {
-    public class SecondStageInfo
+    public class SecondStageInfo : ModelBase
     {
         public ThrustInfo Thrust { get; set; }
         public PotentialPayloadInfo Payloads { get; set; }

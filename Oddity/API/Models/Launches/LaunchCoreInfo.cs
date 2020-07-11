@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Launches
 {
-    public class LaunchCoreInfo
+    public class LaunchCoreInfo : ModelBase
     {
         [JsonProperty("core")]
         public string CoreId { get; set; }

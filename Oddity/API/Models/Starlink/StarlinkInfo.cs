@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Starlink
 {
-    public class StarlinkInfo
+    public class StarlinkInfo : ModelBase
     {
         public string Id { get; set; }
         public string Version { get; set; }

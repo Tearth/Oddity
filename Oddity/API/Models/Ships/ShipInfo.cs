@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Ships
 {
-    public class ShipInfo
+    public class ShipInfo : ModelBase
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Common
 {
-    public class ThrustInfo
+    public class ThrustInfo : ModelBase
     {
         [JsonProperty("kN")]
         public double? Kilonewtons { get; set; }

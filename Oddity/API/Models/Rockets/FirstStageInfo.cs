@@ -3,7 +3,7 @@ using Oddity.API.Models.Common;
 
 namespace Oddity.API.Models.Rockets
 {
-    public class FirstStageInfo
+    public class FirstStageInfo : ModelBase
     {
         [JsonProperty("thrust_sea_level")]
         public ThrustInfo ThrustSeaLevel { get; set; }

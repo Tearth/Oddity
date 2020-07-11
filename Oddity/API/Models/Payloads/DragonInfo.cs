@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Payloads
 {
-    public class DragonInfo
+    public class DragonInfo : ModelBase
     {
         [JsonProperty("capsule")]
         public string CapsuleId { get; set; }

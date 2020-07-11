@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Launches
 {
-    public class LaunchInfo
+    public class LaunchInfo : ModelBase
     {
         public string Id { get; set; }
         public string Name { get; set; }

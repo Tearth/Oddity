@@ -3,7 +3,7 @@ using Oddity.API.Models.Common;
 
 namespace Oddity.API.Models.Rockets
 {
-    public class EnginesInfo
+    public class EnginesInfo : ModelBase
     {
         public IspInfo Isp { get; set; }
 

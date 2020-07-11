@@ -2,7 +2,7 @@
 
 namespace Oddity.API.Models.Company
 {
-    public class CompanyLinksInfo
+    public class CompanyLinksInfo : ModelBase
     {
         public string Website { get; set; }
         public string Flickr { get; set; }

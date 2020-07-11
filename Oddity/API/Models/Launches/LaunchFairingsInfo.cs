@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.API.Models.Launches
 {
-    public class LaunchFairingsInfo
+    public class LaunchFairingsInfo : ModelBase
     {
         public bool? Reused { get; set; }
 
