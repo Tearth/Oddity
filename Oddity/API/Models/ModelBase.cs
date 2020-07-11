@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace Oddity.API.Models
@@ -17,15 +19,15 @@ namespace Oddity.API.Models
         {
             foreach (var property in GetType().GetRuntimeProperties())
             {
-                var propertyTypeInfo = property.PropertyType.GetTypeInfo();
-                if (propertyTypeInfo.IsSubclassOf(typeof(ModelBase)))
+                if (property.GetValue(this) is ModelBase underlyingInstance)
                 {
-                    var underlyingInstance = property.GetMethod.Invoke(this, null);
-                    if (underlyingInstance != null)
+                    underlyingInstance.SetContext(context);
+                }
+                else if (property.GetValue(this) is IEnumerable<ModelBase> collection)
+                {
+                    foreach (var element in collection)
                     {
-                        var baseTypeInfo = propertyTypeInfo.BaseType.GetTypeInfo();
-                        var setContextMethod = baseTypeInfo.GetDeclaredMethod("SetContext");
-                        setContextMethod.Invoke(underlyingInstance, new object[] { context });
+                        element.SetContext(context);
                     }
                 }
             }
