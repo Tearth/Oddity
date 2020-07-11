@@ -8,6 +8,9 @@ namespace Oddity.API.Models.Cores
         public string Id { get; set; }
         public uint? Block { get; set; }
 
+        [JsonProperty("reuse_count")]
+        public uint? ReuseCount { get; set; }
+
         [JsonProperty("rtls_attempts")]
         public uint? RtlsAttempts { get; set; }
 

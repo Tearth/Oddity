@@ -35,7 +35,15 @@ namespace Oddity.API.Builders
 
         protected TReturn DeserializeJson(string content)
         {
-            var deserializationSettings = new JsonSerializerSettings { Error = JsonDeserializationError };
+            var deserializationSettings = new JsonSerializerSettings
+            {
+                Error = JsonDeserializationError,
+#if DEBUG
+                CheckAdditionalContent = true,
+                MissingMemberHandling = MissingMemberHandling.Error
+#endif
+            };
+
             return JsonConvert.DeserializeObject<TReturn>(content, deserializationSettings);
         }
 

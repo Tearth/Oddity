@@ -9,6 +9,7 @@ namespace Oddity.API.Models.Crew
         public string Name { get; set; }
         public string Agency { get; set; }
         public string Wikipedia { get; set; }
+        public string Image { get; set; }
 
         [JsonProperty("launches")]
         public List<string> LaunchesId { get; set; }

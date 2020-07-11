@@ -9,6 +9,9 @@ namespace Oddity.API.Models.Launches
         public string Id { get; set; }
         public string Name { get; set; }
 
+        [JsonProperty("flight_number")]
+        public uint? FlightNumber { get; set; }
+
         [JsonProperty("date_utc")]
         public DateTime? DateUtc { get; set; }
 
