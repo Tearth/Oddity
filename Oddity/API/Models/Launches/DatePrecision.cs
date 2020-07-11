@@ -2,7 +2,7 @@
 {
     public enum DatePrecision
     {
-        None,
+        Unknown,
         Hour,
         Day,
         Month,

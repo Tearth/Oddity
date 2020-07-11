@@ -27,6 +27,6 @@ namespace Oddity.API.Models.Cores
         public List<string> LaunchesId { get; set; }
 
         public string Serial { get; set; }
-        public string Status { get; set; }
+        public CoreStatus? Status { get; set; }
     }
 }
