@@ -7,6 +7,7 @@ using Oddity.API.Events;
 using Oddity.API.Exceptions;
 using Oddity.API.Models;
 using Oddity.API.Models.Query;
+using Oddity.API.Models.Query.Filters;
 
 namespace Oddity.API.Builders
 {
@@ -66,6 +67,20 @@ namespace Oddity.API.Builders
         public QueryBuilder<TReturn> WithFieldEqual<T>(string fieldName, T value)
         {
             _query.Filters.Add(fieldName, value);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a filter for the specified field which have to have an value within the specified range.
+        /// </summary>
+        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="from">Left side of the range.</param>
+        /// <param name="to">Right side of the range.</param>
+        /// <returns>Builder instance.</returns>
+        public QueryBuilder<TReturn> WithFieldBetween<T>(string fieldName, T from, T to)
+        {
+            _query.Filters.Add(fieldName, new BetweenFilter<T>(from, to));
             return this;
         }
     }
