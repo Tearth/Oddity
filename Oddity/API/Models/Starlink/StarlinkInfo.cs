@@ -20,7 +20,7 @@ namespace Oddity.API.Models.Starlink
             }
         }
 
-        public Lazy<LaunchInfo> Launch { get; set; }
+        public Lazy<LaunchInfo> Launch { get; private set; }
         private string _launchId;
 
         [JsonProperty("latitude")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Oddity.API.Models.Ships;
 
@@ -21,17 +22,11 @@ namespace Oddity.API.Models.Launches
             set
             {
                 _shipsId = value;
-
-                Ships = new List<Lazy<ShipInfo>>();
-                for (var i = 0; i < _shipsId.Count; i++)
-                {
-                    var index = i;
-                    Ships.Add(new Lazy<ShipInfo>(() => Context.ShipsEndpoint.Get(_shipsId[index]).Execute()));
-                }
+                Ships = _shipsId.Select(p => new Lazy<ShipInfo>(() => Context.ShipsEndpoint.Get(p).Execute())).ToList();
             }
         }
 
-        public List<Lazy<ShipInfo>> Ships { get; set; }
+        public List<Lazy<ShipInfo>> Ships { get; private set; }
         private List<string> _shipsId;
     }
 }

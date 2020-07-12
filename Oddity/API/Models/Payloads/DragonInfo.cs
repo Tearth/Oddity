@@ -18,7 +18,7 @@ namespace Oddity.API.Models.Payloads
             }
         }
 
-        public Lazy<CapsuleInfo> Capsule { get; set; }
+        public Lazy<CapsuleInfo> Capsule { get; private set; }
         private string _capsuleId;
 
         [JsonProperty("mass_returned_kg")]

@@ -18,7 +18,7 @@ namespace Oddity.API.Models.Launches
             }
         }
 
-        public Lazy<CoreInfo> Core { get; set; }
+        public Lazy<CoreInfo> Core { get; private set; }
         private string _coreId;
 
         public uint? Flight { get; set; }
@@ -46,7 +46,7 @@ namespace Oddity.API.Models.Launches
             }
         }
 
-        public Lazy<LandpadInfo> Landpad { get; set; }
+        public Lazy<LandpadInfo> Landpad { get; private set; }
         private string _landpadId;
     }
 }

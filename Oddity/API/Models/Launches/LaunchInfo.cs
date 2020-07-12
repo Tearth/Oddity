@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Oddity.API.Models.Capsules;
 using Oddity.API.Models.Crew;
@@ -58,7 +59,7 @@ namespace Oddity.API.Models.Launches
             }
         }
 
-        public Lazy<RocketInfo> Rocket { get; set; }
+        public Lazy<RocketInfo> Rocket { get; private set; }
         private string _rocketId;
 
         public bool? Success { get; set; }
@@ -73,17 +74,11 @@ namespace Oddity.API.Models.Launches
             set
             {
                 _crewId = value;
-
-                Crew = new List<Lazy<CrewInfo>>();
-                for (var i = 0; i < _crewId.Count; i++)
-                {
-                    var index = i;
-                    Crew.Add(new Lazy<CrewInfo>(() => Context.CrewEndpoint.Get(_crewId[index]).Execute()));
-                }
+                Crew = _crewId.Select(p => new Lazy<CrewInfo>(() => Context.CrewEndpoint.Get(p).Execute())).ToList();
             }
         }
 
-        public List<Lazy<CrewInfo>> Crew { get; set; }
+        public List<Lazy<CrewInfo>> Crew { get; private set; }
         private List<string> _crewId;
 
         [JsonProperty("ships")]
@@ -93,17 +88,11 @@ namespace Oddity.API.Models.Launches
             set
             {
                 _shipsId = value;
-
-                Ships = new List<Lazy<ShipInfo>>();
-                for (var i = 0; i < _shipsId.Count; i++)
-                {
-                    var index = i;
-                    Ships.Add(new Lazy<ShipInfo>(() => Context.ShipsEndpoint.Get(_shipsId[index]).Execute()));
-                }
+                Ships = _shipsId.Select(p => new Lazy<ShipInfo>(() => Context.ShipsEndpoint.Get(p).Execute())).ToList();
             }
         }
 
-        public List<Lazy<ShipInfo>> Ships { get; set; }
+        public List<Lazy<ShipInfo>> Ships { get; private set; }
         private List<string> _shipsId;
 
         [JsonProperty("capsules")]
@@ -113,17 +102,11 @@ namespace Oddity.API.Models.Launches
             set
             {
                 _capsulesId = value;
-
-                Capsules = new List<Lazy<CapsuleInfo>>();
-                for (var i = 0; i < _capsulesId.Count; i++)
-                {
-                    var index = i;
-                    Capsules.Add(new Lazy<CapsuleInfo>(() => Context.CapsulesEndpoint.Get(_capsulesId[index]).Execute()));
-                }
+                Capsules = _capsulesId.Select(p => new Lazy<CapsuleInfo>(() => Context.CapsulesEndpoint.Get(p).Execute())).ToList();
             }
         }
 
-        public List<Lazy<CapsuleInfo>> Capsules { get; set; }
+        public List<Lazy<CapsuleInfo>> Capsules { get; private set; }
         private List<string> _capsulesId;
 
         [JsonProperty("payloads")]
@@ -133,17 +116,11 @@ namespace Oddity.API.Models.Launches
             set
             {
                 _payloadsId = value;
-
-                Payloads = new List<Lazy<PayloadInfo>>();
-                for (var i = 0; i < _payloadsId.Count; i++)
-                {
-                    var index = i;
-                    Payloads.Add(new Lazy<PayloadInfo>(() => Context.PayloadsEndpoint.Get(_payloadsId[index]).Execute()));
-                }
+                Payloads = _payloadsId.Select(p => new Lazy<PayloadInfo>(() => Context.PayloadsEndpoint.Get(p).Execute())).ToList();
             }
         }
 
-        public List<Lazy<PayloadInfo>> Payloads { get; set; }
+        public List<Lazy<PayloadInfo>> Payloads { get; private set; }
         private List<string> _payloadsId;
 
         [JsonProperty("launchpad")]
@@ -157,7 +134,7 @@ namespace Oddity.API.Models.Launches
             }
         }
 
-        public Lazy<LaunchpadInfo> Launchpad { get; set; }
+        public Lazy<LaunchpadInfo> Launchpad { get; private set; }
         private string _launchpadId;
 
         [JsonProperty("auto_update")]

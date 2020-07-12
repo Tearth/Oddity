@@ -23,7 +23,7 @@ namespace Oddity.API.Models.Payloads
             }
         }
 
-        public Lazy<LaunchInfo> Launch { get; set; }
+        public Lazy<LaunchInfo> Launch { get; private set; }
         private string _launchId;
 
         public List<string> Customers { get; set; }

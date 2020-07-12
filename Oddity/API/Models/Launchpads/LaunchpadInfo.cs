@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Oddity.API.Models.Launches;
 using Oddity.API.Models.Rockets;
@@ -34,17 +35,11 @@ namespace Oddity.API.Models.Launchpads
             set
             {
                 _rocketsId = value;
-
-                Rockets = new List<Lazy<RocketInfo>>();
-                for (var i = 0; i < _rocketsId.Count; i++)
-                {
-                    var index = i;
-                    Rockets.Add(new Lazy<RocketInfo>(() => Context.RocketsEndpoint.Get(_rocketsId[index]).Execute()));
-                }
+                Rockets = _rocketsId.Select(p => new Lazy<RocketInfo>(() => Context.RocketsEndpoint.Get(p).Execute())).ToList();
             }
         }
 
-        public List<Lazy<RocketInfo>> Rockets { get; set; }
+        public List<Lazy<RocketInfo>> Rockets { get; private set; }
 
         private List<string> _rocketsId;
 
@@ -55,17 +50,11 @@ namespace Oddity.API.Models.Launchpads
             set
             {
                 _launchesId = value;
-
-                Launches = new List<Lazy<LaunchInfo>>();
-                for (var i = 0; i < _launchesId.Count; i++)
-                {
-                    var index = i;
-                    Launches.Add(new Lazy<LaunchInfo>(() => Context.LaunchesEndpoint.Get(_launchesId[index]).Execute()));
-                }
+                Launches = _launchesId.Select(p => new Lazy<LaunchInfo>(() => Context.LaunchesEndpoint.Get(p).Execute())).ToList();
             }
         }
 
-        public List<Lazy<LaunchInfo>> Launches { get; set; }
+        public List<Lazy<LaunchInfo>> Launches { get; private set; }
 
         private List<string> _launchesId;
     }
