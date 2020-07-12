@@ -5,22 +5,22 @@ namespace Oddity.API.Exceptions
     /// <summary>
     /// The exception that is thrown when SpaceX API is unavailable and data can't be loaded.
     /// </summary>
-    public class APIUnavailableException : Exception
+    public class ApiUnavailableException : Exception
     {
         /// <inheritdoc />
-        public APIUnavailableException()
+        public ApiUnavailableException()
         {
 
         }
 
         /// <inheritdoc />
-        public APIUnavailableException(string message) : base(message)
+        public ApiUnavailableException(string message) : base(message)
         {
 
         }
 
         /// <inheritdoc />
-        public APIUnavailableException(string message, Exception inner) : base(message, inner)
+        public ApiUnavailableException(string message, Exception inner) : base(message, inner)
         {
 
         }

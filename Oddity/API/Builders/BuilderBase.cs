@@ -28,14 +28,14 @@ namespace Oddity.API.Builders
         /// Performs a request to the API and returns deserialized JSON.
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
+        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract TReturn Execute();
 
         /// <summary>
         /// Performs an async request to the API and returns deserialized JSON.
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
-        /// <exception cref="APIUnavailableException">Thrown when SpaceX API is unavailable.</exception>
+        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract Task<TReturn> ExecuteAsync();
 
         protected async Task<string> GetResponseFromEndpoint(string link)
@@ -50,7 +50,7 @@ namespace Oddity.API.Builders
                     return default;
                 }
 
-                throw new APIUnavailableException($"Status code: {(int)response.StatusCode}");
+                throw new ApiUnavailableException($"Status code: {(int)response.StatusCode}");
             }
 
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
