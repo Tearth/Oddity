@@ -13,7 +13,9 @@ namespace Oddity.API.Models.Crew
         public string Agency { get; set; }
         public string Wikipedia { get; set; }
         public string Image { get; set; }
-        public CrewStatus? Status { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        public CrewStatus Status { get; set; }
 
         [JsonProperty("launches")]
         public List<string> LaunchesId

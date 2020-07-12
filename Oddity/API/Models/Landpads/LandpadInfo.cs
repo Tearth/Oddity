@@ -17,7 +17,9 @@ namespace Oddity.API.Models.Landpads
         public double? Longitude { get; set; }
         public string Wikipedia { get; set; }
         public string Details { get; set; }
-        public LandpadStatus? Status { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        public LandpadStatus Status { get; set; }
 
         [JsonProperty("full_name")]
         public string FullName { get; set; }

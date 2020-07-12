@@ -10,7 +10,9 @@ namespace Oddity.API.Models.Capsules
     {
         public string Id { get; set; }
         public string Serial { get; set; }
-        public CapsuleStatus? Status { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        public CapsuleStatus Status { get; set; }
 
         [JsonProperty("reuse_count")]
         public uint? ReuseCount { get; set; }

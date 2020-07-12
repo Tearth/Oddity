@@ -11,7 +11,9 @@ namespace Oddity.API.Models.Cores
         public string Id { get; set; }
         public string Serial { get; set; }
         public uint? Block { get; set; }
-        public CoreStatus? Status { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        public CoreStatus Status { get; set; }
 
         [JsonProperty("reuse_count")]
         public uint? ReuseCount { get; set; }
