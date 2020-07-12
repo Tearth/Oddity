@@ -5,15 +5,24 @@ namespace Oddity.API.Models.Starlink
 {
     public class SpaceTrackInfo : ModelBase
     {
+        public string Comment { get; set; }
+        public string Originator { get; set; }
+        public DateTime? Epoch { get; set; }
+        public double? Eccentricity { get; set; }
+        public double? Inclination { get; set; }
+        public double? Bstar { get; set; }
+        public double? Period { get; set; }
+        public double? Apoapsis { get; set; }
+        public double? Periapsis { get; set; }
+        public string Site { get; set; }
+        public uint? Decayed { get; set; }
+        public uint? File { get; set; }
+
         [JsonProperty("ccsds_omm_vers")]
         public string CcsdsOmmVers { get; set; }
 
-        public string Comment { get; set; }
-
         [JsonProperty("creation_date")]
         public DateTime? CreationDate { get; set; }
-
-        public string Originator { get; set; }
 
         [JsonProperty("object_name")]
         public string ObjectName { get; set; }
@@ -33,13 +42,8 @@ namespace Oddity.API.Models.Starlink
         [JsonProperty("mean_element_theory")]
         public string MeanElementTheory { get; set; }
 
-        public DateTime? Epoch { get; set; }
-
         [JsonProperty("mean_motion")]
         public double? MeanMotion { get; set; }
-
-        public double? Eccentricity { get; set; }
-        public double? Inclination { get; set; }
 
         [JsonProperty("ra_of_asc_node")]
         public double? RaOfAscNode { get; set; }
@@ -65,8 +69,6 @@ namespace Oddity.API.Models.Starlink
         [JsonProperty("rev_at_epoch")]
         public uint? RevAtEpoch { get; set; }
 
-        public double? Bstar { get; set; }
-
         [JsonProperty("mean_motion_dot")]
         public double? MeanMotionDot { get; set; }
 
@@ -75,10 +77,6 @@ namespace Oddity.API.Models.Starlink
 
         [JsonProperty("semimajor_axis")]
         public double? SemimajorAxis { get; set; }
-
-        public double? Period { get; set; }
-        public double? Apoapsis { get; set; }
-        public double? Periapsis { get; set; }
 
         [JsonProperty("object_type")]
         public string ObjectType { get; set; }
@@ -92,13 +90,8 @@ namespace Oddity.API.Models.Starlink
         [JsonProperty("launch_date")]
         public DateTime? LaunchDate { get; set; }
 
-        public string Site { get; set; }
-
         [JsonProperty("decay_date")]
         public DateTime? DecayDate { get; set; }
-
-        public uint? Decayed { get; set; }
-        public uint? File { get; set; }
 
         [JsonProperty("gp_id")]
         public uint? GpId { get; set; }

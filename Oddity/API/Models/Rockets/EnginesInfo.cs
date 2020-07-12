@@ -5,6 +5,11 @@ namespace Oddity.API.Models.Rockets
 {
     public class EnginesInfo : ModelBase
     {
+        public uint? Number { get; set; }
+        public string Type { get; set; }
+        public string Version { get; set; }
+        public string Layout { get; set; }
+
         public IspInfo Isp { get; set; }
 
         [JsonProperty("thrust_sea_level")]
@@ -12,11 +17,6 @@ namespace Oddity.API.Models.Rockets
 
         [JsonProperty("thrust_vacuum")]
         public ThrustInfo ThrustVacuum { get; set; }
-
-        public uint? Number { get; set; }
-        public string Type { get; set; }
-        public string Version { get; set; }
-        public string Layout { get; set; }
 
         [JsonProperty("engine_loss_max")]
         public uint? EngineLossMax { get; set; }

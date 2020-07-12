@@ -13,6 +13,7 @@ namespace Oddity.API.Models.Crew
         public string Agency { get; set; }
         public string Wikipedia { get; set; }
         public string Image { get; set; }
+        public CrewStatus? Status { get; set; }
 
         [JsonProperty("launches")]
         public List<string> LaunchesId
@@ -26,8 +27,7 @@ namespace Oddity.API.Models.Crew
         }
 
         public List<Lazy<LaunchInfo>> Launches { get; private set; }
-        private List<string> _launchesId;
 
-        public CrewStatus? Status { get; set; }
+        private List<string> _launchesId;
     }
 }

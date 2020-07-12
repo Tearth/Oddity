@@ -15,6 +15,14 @@ namespace Oddity.API.Models.Launches
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public bool? Upcoming { get; set; }
+        public bool? Success { get; set; }
+        public string Details { get; set; }
+
+        public List<LaunchCoreInfo> Cores { get; set; }
+        public LaunchLinks Links { get; set; }
+        public LaunchFairingsInfo Fairings { get; set; }
+        public List<string> Failures { get; set; }
 
         [JsonProperty("flight_number")]
         public uint? FlightNumber { get; set; }
@@ -31,8 +39,6 @@ namespace Oddity.API.Models.Launches
         [JsonProperty("date_precision")]
         public DatePrecision? DatePrecision { get; set; }
 
-        public bool? Upcoming { get; set; }
-
         [JsonProperty("static_fire_date_utc")]
         public DateTime? StaticFireDateUtc { get; set; }
 
@@ -48,6 +54,9 @@ namespace Oddity.API.Models.Launches
         [JsonProperty("window")]
         public ulong? Window { get; set; }
 
+        [JsonProperty("auto_update")]
+        public bool? AutoUpdate { get; set; }
+
         [JsonProperty("rocket")]
         public string RocketId
         {
@@ -58,14 +67,6 @@ namespace Oddity.API.Models.Launches
                 Rocket = new Lazy<RocketInfo>(() => Context.RocketsEndpoint.Get(_rocketId).Execute());
             }
         }
-
-        public Lazy<RocketInfo> Rocket { get; private set; }
-        private string _rocketId;
-
-        public bool? Success { get; set; }
-
-        public List<string> Failures { get; set; }
-        public string Details { get; set; }
 
         [JsonProperty("crew")]
         public List<string> CrewId
@@ -78,9 +79,6 @@ namespace Oddity.API.Models.Launches
             }
         }
 
-        public List<Lazy<CrewInfo>> Crew { get; private set; }
-        private List<string> _crewId;
-
         [JsonProperty("ships")]
         public List<string> ShipsId
         {
@@ -91,9 +89,6 @@ namespace Oddity.API.Models.Launches
                 Ships = _shipsId.Select(p => new Lazy<ShipInfo>(() => Context.ShipsEndpoint.Get(p).Execute())).ToList();
             }
         }
-
-        public List<Lazy<ShipInfo>> Ships { get; private set; }
-        private List<string> _shipsId;
 
         [JsonProperty("capsules")]
         public List<string> CapsulesId
@@ -106,9 +101,6 @@ namespace Oddity.API.Models.Launches
             }
         }
 
-        public List<Lazy<CapsuleInfo>> Capsules { get; private set; }
-        private List<string> _capsulesId;
-
         [JsonProperty("payloads")]
         public List<string> PayloadsId
         {
@@ -119,9 +111,6 @@ namespace Oddity.API.Models.Launches
                 Payloads = _payloadsId.Select(p => new Lazy<PayloadInfo>(() => Context.PayloadsEndpoint.Get(p).Execute())).ToList();
             }
         }
-
-        public List<Lazy<PayloadInfo>> Payloads { get; private set; }
-        private List<string> _payloadsId;
 
         [JsonProperty("launchpad")]
         public string LaunchpadId
@@ -134,14 +123,18 @@ namespace Oddity.API.Models.Launches
             }
         }
 
+        public Lazy<RocketInfo> Rocket { get; private set; }
+        public List<Lazy<CrewInfo>> Crew { get; private set; }
+        public List<Lazy<ShipInfo>> Ships { get; private set; }
+        public List<Lazy<CapsuleInfo>> Capsules { get; private set; }
+        public List<Lazy<PayloadInfo>> Payloads { get; private set; }
         public Lazy<LaunchpadInfo> Launchpad { get; private set; }
+
+        private string _rocketId;
+        private List<string> _crewId;
+        private List<string> _shipsId;
+        private List<string> _capsulesId;
+        private List<string> _payloadsId;
         private string _launchpadId;
-
-        [JsonProperty("auto_update")]
-        public bool? AutoUpdate { get; set; }
-
-        public List<LaunchCoreInfo> Cores { get; set; }
-        public LaunchLinks Links { get; set; }
-        public LaunchFairingsInfo Fairings { get; set; }
     }
 }

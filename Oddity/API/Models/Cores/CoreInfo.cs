@@ -10,6 +10,8 @@ namespace Oddity.API.Models.Cores
     {
         public string Id { get; set; }
         public uint? Block { get; set; }
+        public string Serial { get; set; }
+        public CoreStatus? Status { get; set; }
 
         [JsonProperty("reuse_count")]
         public uint? ReuseCount { get; set; }
@@ -41,9 +43,6 @@ namespace Oddity.API.Models.Cores
         }
 
         public List<Lazy<LaunchInfo>> Launches { get; private set; }
-
-        public string Serial { get; set; }
-        public CoreStatus? Status { get; set; }
 
         private List<string> _launchesId;
     }

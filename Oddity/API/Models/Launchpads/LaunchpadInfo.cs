@@ -10,17 +10,16 @@ namespace Oddity.API.Models.Launchpads
     public class LaunchpadInfo : ModelBase
     {
         public string Id { get; set; }
-        public LaunchpadStatus? Status { get; set; }
         public string Name { get; set; }
-
-        [JsonProperty("full_name")]
-        public string FullName { get; set; }
-
         public string Locality { get; set; }
         public string Region { get; set; }
         public string TimeZone { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+        public LaunchpadStatus? Status { get; set; }
+
+        [JsonProperty("full_name")]
+        public string FullName { get; set; }
 
         [JsonProperty("launch_attempts")]
         public uint? LaunchAttempts { get; set; }
@@ -39,10 +38,6 @@ namespace Oddity.API.Models.Launchpads
             }
         }
 
-        public List<Lazy<RocketInfo>> Rockets { get; private set; }
-
-        private List<string> _rocketsId;
-
         [JsonProperty("launches")]
         public List<string> LaunchesId
         {
@@ -54,8 +49,10 @@ namespace Oddity.API.Models.Launchpads
             }
         }
 
+        public List<Lazy<RocketInfo>> Rockets { get; private set; }
         public List<Lazy<LaunchInfo>> Launches { get; private set; }
 
+        private List<string> _rocketsId;
         private List<string> _launchesId;
     }
 }

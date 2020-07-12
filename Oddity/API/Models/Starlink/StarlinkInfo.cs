@@ -9,19 +9,7 @@ namespace Oddity.API.Models.Starlink
         public string Id { get; set; }
         public string Version { get; set; }
 
-        [JsonProperty("launch")]
-        public string LaunchId 
-        { 
-            get => _launchId;
-            set
-            {
-                _launchId = value;
-                Launch = new Lazy<LaunchInfo>(() => Context.LaunchesEndpoint.Get(_launchId).Execute());
-            }
-        }
-
-        public Lazy<LaunchInfo> Launch { get; private set; }
-        private string _launchId;
+        public SpaceTrackInfo SpaceTrack { get; set; }
 
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }
@@ -35,6 +23,19 @@ namespace Oddity.API.Models.Starlink
         [JsonProperty("velocity_kms")]
         public double? VelocityKilometersPerSecond { get; set; }
 
-        public SpaceTrackInfo SpaceTrack { get; set; }
+        [JsonProperty("launch")]
+        public string LaunchId 
+        { 
+            get => _launchId;
+            set
+            {
+                _launchId = value;
+                Launch = new Lazy<LaunchInfo>(() => Context.LaunchesEndpoint.Get(_launchId).Execute());
+            }
+        }
+
+        public Lazy<LaunchInfo> Launch { get; private set; }
+
+        private string _launchId;
     }
 }

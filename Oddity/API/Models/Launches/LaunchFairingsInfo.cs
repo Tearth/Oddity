@@ -9,11 +9,10 @@ namespace Oddity.API.Models.Launches
     public class LaunchFairingsInfo : ModelBase
     {
         public bool? Reused { get; set; }
+        public bool? Recovered { get; set; }
 
         [JsonProperty("recovery_attempt")]
         public bool? RecoveryAttempt { get; set; }
-
-        public bool? Recovered { get; set; }
 
         [JsonProperty("ships")]
         public List<string> ShipsId
@@ -27,6 +26,7 @@ namespace Oddity.API.Models.Launches
         }
 
         public List<Lazy<ShipInfo>> Ships { get; private set; }
+
         private List<string> _shipsId;
     }
 }

@@ -8,6 +8,12 @@ namespace Oddity.API.Models.Roadster
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public double? Eccentricity { get; set; }
+        public double? Inclination { get; set; }
+        public double? Longitude { get; set; }
+        public string Wikipedia { get; set; }
+        public string Video { get; set; }
+        public string Details { get; set; }
 
         [JsonProperty("launch_date_utc")]
         public DateTime? DateTimeUtc { get; set; }
@@ -39,10 +45,6 @@ namespace Oddity.API.Models.Roadster
         [JsonProperty("semi_major_axis_au")]
         public double? SemiMajorAxisAu { get; set; }
 
-        public double? Eccentricity { get; set; }
-        public double? Inclination { get; set; }
-        public double? Longitude { get; set; }
-
         [JsonProperty("periapsis_arg")]
         public double? PeriapsisArg { get; set; }
 
@@ -66,10 +68,6 @@ namespace Oddity.API.Models.Roadster
 
         [JsonProperty("mars_distance_mi")]
         public double? MarsDistanceMiles { get; set; }
-
-        public string Wikipedia { get; set; }
-        public string Video { get; set; }
-        public string Details { get; set; }
 
         [JsonProperty("flickr_images")]
         public List<string> FlickrImages { get; set; }
