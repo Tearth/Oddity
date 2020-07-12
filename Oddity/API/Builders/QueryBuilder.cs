@@ -19,7 +19,6 @@ namespace Oddity.API.Builders
     {
         private readonly string _endpoint;
         private readonly OddityCore _context;
-
         private readonly QueryModel _query;
 
         /// <summary>
@@ -67,6 +66,32 @@ namespace Oddity.API.Builders
         public QueryBuilder<TReturn> WithFieldEqual<T>(string fieldName, T value)
         {
             _query.Filters.Add(fieldName, value);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a filter for the specified field which have to have an value greater than specified.
+        /// </summary>
+        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="value">Max value of the field.</param>
+        /// <returns>Builder instance.</returns>
+        public QueryBuilder<TReturn> WithFieldGreaterThan<T>(string fieldName, T value)
+        {
+            _query.Filters.Add(fieldName, new GreaterThanFilter<T>(value));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a filter for the specified field which have to have an value less than specified.
+        /// </summary>
+        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="value">Min value of the field.</param>
+        /// <returns>Builder instance.</returns>
+        public QueryBuilder<TReturn> WithFieldLessThan<T>(string fieldName, T value)
+        {
+            _query.Filters.Add(fieldName, new LessThanFilter<T>(value));
             return this;
         }
 
