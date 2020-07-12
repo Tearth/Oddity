@@ -1,8 +1,6 @@
-﻿using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.API.Events;
-using Oddity.API.Exceptions;
 using Oddity.API.Models;
 
 namespace Oddity.API.Builders

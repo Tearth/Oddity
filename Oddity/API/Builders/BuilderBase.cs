@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Oddity.API.Events;
 using Oddity.API.Exceptions;
-using Oddity.API.Models;
 
 namespace Oddity.API.Builders
 {

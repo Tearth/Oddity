@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
+﻿using System.Net.Http;
 using Oddity.API.Builders;
 using Oddity.API.Events;
-using Oddity.API.Models.Payloads;
 using Oddity.API.Models.Rockets;
 
 namespace Oddity.API.Endpoints

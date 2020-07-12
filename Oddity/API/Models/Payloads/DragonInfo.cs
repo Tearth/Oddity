@@ -1,7 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Oddity.API.Models.Capsules;
-using Oddity.API.Models.Launches;
 
 namespace Oddity.API.Models.Payloads
 {
