@@ -1,10 +1,14 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Oddity.API.Events;
 using Oddity.API.Exceptions;
+using Oddity.API.Models;
+using Oddity.API.Models.Capsules;
+using Oddity.API.Models.Query;
 
 namespace Oddity.API.Builders
 {
@@ -42,6 +46,32 @@ namespace Oddity.API.Builders
             BuilderDelegatesContainer.RequestSend(new RequestSendEventArgs(link));
 
             var response = await HttpClient.GetAsync(link).ConfigureAwait(false);
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                if (response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    return default;
+                }
+
+                throw new ApiUnavailableException($"Status code: {(int)response.StatusCode}");
+            }
+
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var eventArgs = new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase);
+
+            BuilderDelegatesContainer.ResponseReceived(eventArgs);
+
+            return content;
+        }
+
+        protected async Task<string> GetResponseFromEndpoint(string link, QueryModel query)
+        {
+            BuilderDelegatesContainer.RequestSend(new RequestSendEventArgs(link));
+
+            var serializedQuery = JsonConvert.SerializeObject(query);
+            var httpContent = new StringContent(serializedQuery, Encoding.UTF8, "application/json");
+
+            var response = await HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 if (response.StatusCode == HttpStatusCode.NoContent)
