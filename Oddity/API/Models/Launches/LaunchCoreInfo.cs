@@ -7,20 +7,6 @@ namespace Oddity.API.Models.Launches
 {
     public class LaunchCoreInfo : ModelBase
     {
-        [JsonProperty("core")]
-        public string CoreId
-        {
-            get => _coreId;
-            set
-            {
-                _coreId = value;
-                Core = new Lazy<CoreInfo>(() => Context.CoresEndpoint.Get(_coreId).Execute());
-            }
-        }
-
-        public Lazy<CoreInfo> Core { get; private set; }
-        private string _coreId;
-
         public uint? Flight { get; set; }
         public bool? Gridfins { get; set; }
         public bool? Legs { get; set; }
@@ -35,6 +21,17 @@ namespace Oddity.API.Models.Launches
         [JsonProperty("landing_type")]
         public string LandingType { get; set; }
 
+        [JsonProperty("core")]
+        public string CoreId
+        {
+            get => _coreId;
+            set
+            {
+                _coreId = value;
+                Core = new Lazy<CoreInfo>(() => Context.CoresEndpoint.Get(_coreId).Execute());
+            }
+        }
+
         [JsonProperty("landpad")]
         public string LandpadId
         {
@@ -46,7 +43,10 @@ namespace Oddity.API.Models.Launches
             }
         }
 
+        public Lazy<CoreInfo> Core { get; private set; }
         public Lazy<LandpadInfo> Landpad { get; private set; }
+
+        private string _coreId;
         private string _landpadId;
     }
 }

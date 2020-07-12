@@ -29,6 +29,5 @@ namespace Oddity.API.Models.Company
 
         [JsonProperty("cto_propulsion")]
         public string CtoPropulsion { get; set; }
-
     }
 }
