@@ -66,10 +66,10 @@ namespace Oddity.API.Builders
 
         protected async Task<string> GetResponseFromEndpoint(string link, QueryModel query)
         {
-            BuilderDelegatesContainer.RequestSend(new RequestSendEventArgs(link));
-
             var serializedQuery = JsonConvert.SerializeObject(query);
             var httpContent = new StringContent(serializedQuery, Encoding.UTF8, "application/json");
+
+            BuilderDelegatesContainer.RequestSend(new RequestSendEventArgs(link, serializedQuery));
 
             var response = await HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
             if (response.StatusCode != HttpStatusCode.OK)
