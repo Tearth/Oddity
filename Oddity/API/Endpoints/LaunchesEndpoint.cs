@@ -76,5 +76,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<LaunchInfo>(HttpClient, "launches/upcoming", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all launches from the /launches/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<LaunchInfo> Query()
+        {
+            return new QueryBuilder<LaunchInfo>(HttpClient, "launches/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

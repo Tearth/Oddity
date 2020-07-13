@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<LandpadInfo>(HttpClient, "landpads", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all landpads from the /landpads/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<LandpadInfo> Query()
+        {
+            return new QueryBuilder<LandpadInfo>(HttpClient, "landpads/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

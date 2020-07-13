@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<ShipInfo>(HttpClient, "ships", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all ships from the /ships/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<ShipInfo> Query()
+        {
+            return new QueryBuilder<ShipInfo>(HttpClient, "ships/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

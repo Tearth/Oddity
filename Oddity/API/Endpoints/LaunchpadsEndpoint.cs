@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<LaunchpadInfo>(HttpClient, "launchpads", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all launchpads from the /launchpads/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<LaunchpadInfo> Query()
+        {
+            return new QueryBuilder<LaunchpadInfo>(HttpClient, "launchpads/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

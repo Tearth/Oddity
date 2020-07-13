@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<StarlinkInfo>(HttpClient, "starlink", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all Starlink satellites from the /starlink/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<StarlinkInfo> Query()
+        {
+            return new QueryBuilder<StarlinkInfo>(HttpClient, "starlink/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

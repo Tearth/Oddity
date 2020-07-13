@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<RocketInfo>(HttpClient, "rockets", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all rockets from the /rockets/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<RocketInfo> Query()
+        {
+            return new QueryBuilder<RocketInfo>(HttpClient, "rockets/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

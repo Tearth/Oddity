@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<CoreInfo>(HttpClient, "cores", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all cores from the /cores/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<CoreInfo> Query()
+        {
+            return new QueryBuilder<CoreInfo>(HttpClient, "cores/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

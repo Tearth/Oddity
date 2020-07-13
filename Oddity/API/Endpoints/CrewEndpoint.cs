@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<CrewInfo>(HttpClient, "crew", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about crew from the /crew/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<CrewInfo> Query()
+        {
+            return new QueryBuilder<CrewInfo>(HttpClient, "crew/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

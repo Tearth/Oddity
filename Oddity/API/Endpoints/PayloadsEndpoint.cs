@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<PayloadInfo>(HttpClient, "payloads", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all payloads from the /payloads/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<PayloadInfo> Query()
+        {
+            return new QueryBuilder<PayloadInfo>(HttpClient, "payloads/query", Context, BuilderDelegatesContainer);
+        }
     }
 }

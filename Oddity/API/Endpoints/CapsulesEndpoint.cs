@@ -40,5 +40,14 @@ namespace Oddity.API.Endpoints
         {
             return new ListBuilder<CapsuleInfo>(HttpClient, "capsules", Context, BuilderDelegatesContainer);
         }
+
+        /// <summary>
+        /// Gets filtered and paginated data about all capsules from the /capsules/query endpoint.
+        /// </summary>
+        /// <returns>Deserialized JSON returned from the API.</returns>
+        public QueryBuilder<CapsuleInfo> Query()
+        {
+            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, BuilderDelegatesContainer);
+        }
     }
 }
