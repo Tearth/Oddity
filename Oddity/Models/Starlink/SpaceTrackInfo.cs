@@ -5,104 +5,127 @@ namespace Oddity.Models.Starlink
 {
     public class SpaceTrackInfo : ModelBase
     {
-        public string Comment { get; set; }
-        public string Originator { get; set; }
-        public DateTime? Epoch { get; set; }
-        public double? Eccentricity { get; set; }
-        public double? Inclination { get; set; }
-        public double? Bstar { get; set; }
-        public double? Period { get; set; }
-        public double? Apoapsis { get; set; }
-        public double? Periapsis { get; set; }
-        public string Site { get; set; }
-        public uint? Decayed { get; set; }
-        public uint? File { get; set; }
-
-        [JsonProperty("ccsds_omm_vers")]
+        [JsonProperty("CCSDS_OMM_VERS")]
         public string CcsdsOmmVers { get; set; }
 
-        [JsonProperty("creation_date")]
+        [JsonProperty("COMMENT")]
+        public string Comment { get; set; }
+
+        [JsonProperty("CREATION_DATE")]
         public DateTime? CreationDate { get; set; }
 
-        [JsonProperty("object_name")]
+        [JsonProperty("ORIGINATOR")]
+        public string Originator { get; set; }
+
+        [JsonProperty("OBJECT_NAME")]
         public string ObjectName { get; set; }
 
-        [JsonProperty("object_id")]
+        [JsonProperty("OBJECT_ID")]
         public string ObjectId { get; set; }
 
-        [JsonProperty("center_name")]
+        [JsonProperty("CENTER_NAME")]
         public string CenterName { get; set; }
 
-        [JsonProperty("ref_frame")]
+        [JsonProperty("REF_FRAME")]
         public string RefFrame { get; set; }
 
-        [JsonProperty("time_system")]
+        [JsonProperty("TIME_SYSTEM")]
         public string TimeSystem { get; set; }
 
-        [JsonProperty("mean_element_theory")]
+        [JsonProperty("MEAN_ELEMENT_THEORY")]
         public string MeanElementTheory { get; set; }
 
-        [JsonProperty("mean_motion")]
+        [JsonProperty("EPOCH")]
+        public DateTime? Epoch { get; set; }
+
+        [JsonProperty("MEAN_MOTION")]
         public double? MeanMotion { get; set; }
 
-        [JsonProperty("ra_of_asc_node")]
+        [JsonProperty("ECCENTRICITY")]
+        public double? Eccentricity { get; set; }
+
+        [JsonProperty("INCLINATION")]
+        public double? Inclination { get; set; }
+
+        [JsonProperty("RA_OF_ASC_NODE")]
         public double? RaOfAscNode { get; set; }
 
-        [JsonProperty("arg_of_pericenter")]
+        [JsonProperty("ARG_OF_PERICENTER")]
         public double? ArgOfPericenter { get; set; }
 
-        [JsonProperty("mean_anomaly")]
+        [JsonProperty("MEAN_ANOMALY")]
         public double? MeanAnomaly { get; set; }
 
-        [JsonProperty("ephemeris_type")]
+        [JsonProperty("EPHEMERIS_TYPE")]
         public uint? EphemerisType { get; set; }
 
-        [JsonProperty("classification_type")]
+        [JsonProperty("CLASSIFICATION_TYPE")]
         public string ClassificationType { get; set; }
 
-        [JsonProperty("norad_cat_id")]
+        [JsonProperty("NORAD_CAT_ID")]
         public uint? NoradCatId { get; set; }
 
-        [JsonProperty("element_set_no")]
+        [JsonProperty("ELEMENT_SET_NO")]
         public uint? NoradSetNo { get; set; }
 
-        [JsonProperty("rev_at_epoch")]
+        [JsonProperty("REV_AT_EPOCH")]
         public uint? RevAtEpoch { get; set; }
 
-        [JsonProperty("mean_motion_dot")]
+        [JsonProperty("BSTAR")]
+        public double? Bstar { get; set; }
+
+        [JsonProperty("MEAN_MOTION_DOT")]
         public double? MeanMotionDot { get; set; }
 
-        [JsonProperty("mean_motion_ddot")]
+        [JsonProperty("MEAN_MOTION_DDOT")]
         public double? MeanMotionDdot { get; set; }
 
-        [JsonProperty("semimajor_axis")]
+        [JsonProperty("SEMIMAJOR_AXIS")]
         public double? SemimajorAxis { get; set; }
 
-        [JsonProperty("object_type")]
+        [JsonProperty("PERIOD")]
+        public double? Period { get; set; }
+
+        [JsonProperty("APOAPSIS")]
+        public double? Apoapsis { get; set; }
+
+        [JsonProperty("PERIAPSIS")]
+        public double? Periapsis { get; set; }
+
+        [JsonProperty("OBJECT_TYPE")]
         public string ObjectType { get; set; }
 
-        [JsonProperty("rcs_size")]
+        [JsonProperty("RCS_SIZE")]
         public string RcsSize { get; set; }
 
-        [JsonProperty("country_code")]
+        [JsonProperty("COUNTRY_CODE")]
         public string CountryCode { get; set; }
 
-        [JsonProperty("launch_date")]
+        [JsonProperty("LAUNCH_DATE")]
         public DateTime? LaunchDate { get; set; }
 
-        [JsonProperty("decay_date")]
+        [JsonProperty("SITE")]
+        public string Site { get; set; }
+
+        [JsonProperty("DECAY_DATE")]
         public DateTime? DecayDate { get; set; }
 
-        [JsonProperty("gp_id")]
+        [JsonProperty("DECAYED")]
+        public uint? Decayed { get; set; }
+
+        [JsonProperty("FILE")]
+        public uint? File { get; set; }
+
+        [JsonProperty("GP_ID")]
         public uint? GpId { get; set; }
 
-        [JsonProperty("tle_line0")]
+        [JsonProperty("TLE_LINE0")]
         public string TleLine0 { get; set; }
 
-        [JsonProperty("tle_line1")]
+        [JsonProperty("TLE_LINE1")]
         public string TleLine1 { get; set; }
 
-        [JsonProperty("tle_line2")]
+        [JsonProperty("TLE_LINE2")]
         public string TleLine2 { get; set; }
     }
 }

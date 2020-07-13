@@ -1,6 +1,8 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.Events;
+using Oddity.Helpers;
 using Oddity.Models;
 using Oddity.Models.Query;
 using Oddity.Models.Query.Filters;
@@ -56,12 +58,12 @@ namespace Oddity.Builders
         /// Adds a filter for the specified field which have to have an exact value.
         /// </summary>
         /// <typeparam name="T">Type of the field.</typeparam>
-        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Value of the field to match.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldEqual<T>(string fieldName, T value)
+        public QueryBuilder<TReturn> WithFieldEqual<T>(string fieldPath, T value)
         {
-            _query.Filters.Add(fieldName, value);
+            _query.Filters.Add(TranslateFieldPath(fieldPath), value);
             return this;
         }
 
@@ -69,12 +71,12 @@ namespace Oddity.Builders
         /// Adds a filter for the specified field which have to have an value greater than specified.
         /// </summary>
         /// <typeparam name="T">Type of the field.</typeparam>
-        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Max value of the field.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldGreaterThan<T>(string fieldName, T value)
+        public QueryBuilder<TReturn> WithFieldGreaterThan<T>(string fieldPath, T value)
         {
-            _query.Filters.Add(fieldName, new GreaterThanFilter<T>(value));
+            _query.Filters.Add(TranslateFieldPath(fieldPath), new GreaterThanFilter<T>(value));
             return this;
         }
 
@@ -82,12 +84,12 @@ namespace Oddity.Builders
         /// Adds a filter for the specified field which have to have an value less than specified.
         /// </summary>
         /// <typeparam name="T">Type of the field.</typeparam>
-        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Min value of the field.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldLessThan<T>(string fieldName, T value)
+        public QueryBuilder<TReturn> WithFieldLessThan<T>(string fieldPath, T value)
         {
-            _query.Filters.Add(fieldName, new LessThanFilter<T>(value));
+            _query.Filters.Add(TranslateFieldPath(fieldPath), new LessThanFilter<T>(value));
             return this;
         }
 
@@ -95,13 +97,13 @@ namespace Oddity.Builders
         /// Adds a filter for the specified field which have to have an value within the specified range.
         /// </summary>
         /// <typeparam name="T">Type of the field.</typeparam>
-        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="from">Left side of the range.</param>
         /// <param name="to">Right side of the range.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldBetween<T>(string fieldName, T from, T to)
+        public QueryBuilder<TReturn> WithFieldBetween<T>(string fieldPath, T from, T to)
         {
-            _query.Filters.Add(fieldName, new BetweenFilter<T>(from, to));
+            _query.Filters.Add(TranslateFieldPath(fieldPath), new BetweenFilter<T>(from, to));
             return this;
         }
 
@@ -109,13 +111,18 @@ namespace Oddity.Builders
         /// Adds a filter for the specified field which have to have an value same as one of the specified.
         /// </summary>
         /// <typeparam name="T">Type of the field.</typeparam>
-        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="values">Values which have to be matched.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldIn<T>(string fieldName, params T[] values)
+        public QueryBuilder<TReturn> WithFieldIn<T>(string fieldPath, params T[] values)
         {
-            _query.Filters.Add(fieldName, new InFilter<T>(values));
+            _query.Filters.Add(TranslateFieldPath(fieldPath), new InFilter<T>(values));
             return this;
+        }
+
+        private string TranslateFieldPath(string fieldPath)
+        {
+            return string.Join(".", fieldPath.Split('.').Select(ModelTranslator.Map));
         }
     }
 }

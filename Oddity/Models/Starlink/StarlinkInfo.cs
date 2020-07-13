@@ -9,6 +9,7 @@ namespace Oddity.Models.Starlink
         public string Id { get; set; }
         public string Version { get; set; }
 
+        [JsonProperty("spaceTrack")]
         public SpaceTrackInfo SpaceTrack { get; set; }
 
         [JsonProperty("latitude")]
