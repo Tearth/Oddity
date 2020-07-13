@@ -108,5 +108,18 @@ namespace Oddity.API.Builders
             _query.Filters.Add(fieldName, new BetweenFilter<T>(from, to));
             return this;
         }
+
+        /// <summary>
+        /// Adds a filter for the specified field which have to have an value same as one of the specified.
+        /// </summary>
+        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <param name="fieldName">Name of the field (naming convention same as in models).</param>
+        /// <param name="values">Values which have to be matched.</param>
+        /// <returns>Builder instance.</returns>
+        public QueryBuilder<TReturn> WithFieldIn<T>(string fieldName, params T[] values)
+        {
+            _query.Filters.Add(fieldName, new InFilter<T>(values));
+            return this;
+        }
     }
 }
