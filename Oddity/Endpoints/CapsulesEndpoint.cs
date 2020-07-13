@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CapsuleInfo> Get(string id)
         {
-            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, builderDelegates);
+            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<CapsuleInfo> GetAll()
         {
-            return new ListBuilder<CapsuleInfo>(HttpClient, "capsules", Context, builderDelegates);
+            return new ListBuilder<CapsuleInfo>(HttpClient, "capsules", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<CapsuleInfo> Query()
         {
-            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, builderDelegates);
+            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, BuilderDelegates);
         }
     }
 }

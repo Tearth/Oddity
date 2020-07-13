@@ -17,14 +17,14 @@ namespace Oddity.Builders
     public abstract class BuilderBase<TReturn>
     {
         protected readonly HttpClient HttpClient;
-        protected readonly BuilderDelegates builderDelegates;
+        protected readonly BuilderDelegates BuilderDelegates;
 
         private JsonSerializerSettings _serializationSettings;
 
         protected BuilderBase(HttpClient httpClient, BuilderDelegates builderDelegates)
         {
             HttpClient = httpClient;
-            builderDelegates = builderDelegates;
+            BuilderDelegates = builderDelegates;
 
             _serializationSettings = new JsonSerializerSettings
             {
@@ -56,7 +56,7 @@ namespace Oddity.Builders
 
         protected async Task<string> GetResponseFromEndpoint(string link)
         {
-            builderDelegates.RequestSend(new RequestSendEventArgs(link));
+            BuilderDelegates.RequestSend(new RequestSendEventArgs(link));
 
             var response = await HttpClient.GetAsync(link).ConfigureAwait(false);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -72,7 +72,7 @@ namespace Oddity.Builders
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var eventArgs = new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase);
 
-            builderDelegates.ResponseReceived(eventArgs);
+            BuilderDelegates.ResponseReceived(eventArgs);
 
             return content;
         }
@@ -82,7 +82,7 @@ namespace Oddity.Builders
             var serializedQuery = JsonConvert.SerializeObject(query);
             var httpContent = new StringContent(serializedQuery, Encoding.UTF8, "application/json");
 
-            builderDelegates.RequestSend(new RequestSendEventArgs(link, serializedQuery));
+            BuilderDelegates.RequestSend(new RequestSendEventArgs(link, serializedQuery));
 
             var response = await HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
             if (response.StatusCode != HttpStatusCode.OK)
@@ -98,7 +98,7 @@ namespace Oddity.Builders
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var eventArgs = new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase);
 
-            builderDelegates.ResponseReceived(eventArgs);
+            BuilderDelegates.ResponseReceived(eventArgs);
 
             return content;
         }
@@ -115,7 +115,7 @@ namespace Oddity.Builders
 
         private void JsonDeserializationError(object sender, ErrorEventArgs errorEventArgs)
         {
-            builderDelegates.DeserializationError(errorEventArgs);
+            BuilderDelegates.DeserializationError(errorEventArgs);
         }
     }
 }

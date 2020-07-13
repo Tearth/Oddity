@@ -28,7 +28,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CompanyInfo> Get()
         {
-            return new SimpleBuilder<CompanyInfo>(HttpClient, "company", Context, builderDelegates);
+            return new SimpleBuilder<CompanyInfo>(HttpClient, "company", Context, BuilderDelegates);
         }
     }
 }

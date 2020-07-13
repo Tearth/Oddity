@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CrewInfo> Get(string id)
         {
-            return new SimpleBuilder<CrewInfo>(HttpClient, "crew", id, Context, builderDelegates);
+            return new SimpleBuilder<CrewInfo>(HttpClient, "crew", id, Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<CrewInfo> GetAll()
         {
-            return new ListBuilder<CrewInfo>(HttpClient, "crew", Context, builderDelegates);
+            return new ListBuilder<CrewInfo>(HttpClient, "crew", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<CrewInfo> Query()
         {
-            return new QueryBuilder<CrewInfo>(HttpClient, "crew/query", Context, builderDelegates);
+            return new QueryBuilder<CrewInfo>(HttpClient, "crew/query", Context, BuilderDelegates);
         }
     }
 }

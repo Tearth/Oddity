@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CoreInfo> Get(string id)
         {
-            return new SimpleBuilder<CoreInfo>(HttpClient, "cores", id, Context, builderDelegates);
+            return new SimpleBuilder<CoreInfo>(HttpClient, "cores", id, Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<CoreInfo> GetAll()
         {
-            return new ListBuilder<CoreInfo>(HttpClient, "cores", Context, builderDelegates);
+            return new ListBuilder<CoreInfo>(HttpClient, "cores", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<CoreInfo> Query()
         {
-            return new QueryBuilder<CoreInfo>(HttpClient, "cores/query", Context, builderDelegates);
+            return new QueryBuilder<CoreInfo>(HttpClient, "cores/query", Context, BuilderDelegates);
         }
     }
 }

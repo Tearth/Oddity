@@ -28,7 +28,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<RoadsterInfo> Get()
         {
-            return new SimpleBuilder<RoadsterInfo>(HttpClient, "roadster", Context, builderDelegates);
+            return new SimpleBuilder<RoadsterInfo>(HttpClient, "roadster", Context, BuilderDelegates);
         }
     }
 }

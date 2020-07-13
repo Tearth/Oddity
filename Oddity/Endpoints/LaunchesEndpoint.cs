@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> Get(string id)
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches", id, Context, builderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches", id, Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> GetLatest()
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/latest", Context, builderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/latest", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> GetNext()
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/next", Context, builderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/next", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LaunchInfo> GetAll()
         {
-            return new ListBuilder<LaunchInfo>(HttpClient, "launches", Context, builderDelegates);
+            return new ListBuilder<LaunchInfo>(HttpClient, "launches", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LaunchInfo> GetPast()
         {
-            return new ListBuilder<LaunchInfo>(HttpClient, "launches/past", Context, builderDelegates);
+            return new ListBuilder<LaunchInfo>(HttpClient, "launches/past", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LaunchInfo> GetUpcoming()
         {
-            return new ListBuilder<LaunchInfo>(HttpClient, "launches/upcoming", Context, builderDelegates);
+            return new ListBuilder<LaunchInfo>(HttpClient, "launches/upcoming", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<LaunchInfo> Query()
         {
-            return new QueryBuilder<LaunchInfo>(HttpClient, "launches/query", Context, builderDelegates);
+            return new QueryBuilder<LaunchInfo>(HttpClient, "launches/query", Context, BuilderDelegates);
         }
     }
 }

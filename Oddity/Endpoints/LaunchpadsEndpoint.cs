@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchpadInfo> Get(string id)
         {
-            return new SimpleBuilder<LaunchpadInfo>(HttpClient, "launchpads", id, Context, builderDelegates);
+            return new SimpleBuilder<LaunchpadInfo>(HttpClient, "launchpads", id, Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LaunchpadInfo> GetAll()
         {
-            return new ListBuilder<LaunchpadInfo>(HttpClient, "launchpads", Context, builderDelegates);
+            return new ListBuilder<LaunchpadInfo>(HttpClient, "launchpads", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<LaunchpadInfo> Query()
         {
-            return new QueryBuilder<LaunchpadInfo>(HttpClient, "launchpads/query", Context, builderDelegates);
+            return new QueryBuilder<LaunchpadInfo>(HttpClient, "launchpads/query", Context, BuilderDelegates);
         }
     }
 }

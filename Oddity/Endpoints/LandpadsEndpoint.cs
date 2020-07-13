@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LandpadInfo> Get(string id)
         {
-            return new SimpleBuilder<LandpadInfo>(HttpClient, "landpads", id, Context, builderDelegates);
+            return new SimpleBuilder<LandpadInfo>(HttpClient, "landpads", id, Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LandpadInfo> GetAll()
         {
-            return new ListBuilder<LandpadInfo>(HttpClient, "landpads", Context, builderDelegates);
+            return new ListBuilder<LandpadInfo>(HttpClient, "landpads", Context, BuilderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<LandpadInfo> Query()
         {
-            return new QueryBuilder<LandpadInfo>(HttpClient, "landpads/query", Context, builderDelegates);
+            return new QueryBuilder<LandpadInfo>(HttpClient, "landpads/query", Context, BuilderDelegates);
         }
     }
 }

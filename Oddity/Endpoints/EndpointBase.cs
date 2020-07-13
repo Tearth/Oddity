@@ -7,7 +7,7 @@ namespace Oddity.Endpoints
     {
         protected readonly HttpClient HttpClient;
         protected readonly OddityCore Context;
-        protected readonly BuilderDelegates builderDelegates;
+        protected readonly BuilderDelegates BuilderDelegates;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EndpointBase"/> class.
@@ -19,7 +19,7 @@ namespace Oddity.Endpoints
         {
             HttpClient = httpClient;
             Context = context;
-            builderDelegates = builderDelegates;
+            BuilderDelegates = builderDelegates;
         }
     }
 }
