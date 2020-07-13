@@ -56,5 +56,37 @@ namespace Oddity.Models
 
             return true;
         }
+
+        public async Task<bool> GoToFirstPage()
+        {
+            Data.Clear();
+            _builder.WithPage(1);
+            await _builder.ExecuteAsync(this);
+
+            return true;
+        }
+
+        public async Task<bool> GoToLastPage()
+        {
+            Data.Clear();
+            _builder.WithPage(TotalPages);
+            await _builder.ExecuteAsync(this);
+
+            return true;
+        }
+
+        public async Task<bool> GoToPage(uint page)
+        {
+            if (page > TotalPages)
+            {
+                return false;
+            }
+
+            Data.Clear();
+            _builder.WithPage(page);
+            await _builder.ExecuteAsync(this);
+
+            return true;
+        }
     }
 }
