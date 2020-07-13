@@ -42,7 +42,7 @@ namespace Oddity.Endpoints
         }
 
         /// <summary>
-        /// Gets data about the next launch from the /launches/latest endpoint.
+        /// Gets data about the next launch from the /launches/next endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> GetNext()
@@ -60,7 +60,7 @@ namespace Oddity.Endpoints
         }
 
         /// <summary>
-        /// Gets data about all past launches from the /launches endpoint.
+        /// Gets data about all past launches from the /launches/past endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LaunchInfo> GetPast()
@@ -69,7 +69,7 @@ namespace Oddity.Endpoints
         }
 
         /// <summary>
-        /// Gets data about all upcoming launches from the /launches endpoint.
+        /// Gets data about all upcoming launches from the /launches/upcoming endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LaunchInfo> GetUpcoming()
