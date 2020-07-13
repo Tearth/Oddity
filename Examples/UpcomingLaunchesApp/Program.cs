@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
 
@@ -7,20 +8,20 @@ namespace UpcomingLaunchesApp
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var oddity = new OddityCore();
             oddity.OnDeserializationError += OddityOnOnDeserializationError;
 
-            DisplayNextLaunch(oddity);
-            DisplayRestOfUpcomingLaunches(oddity);
+            await DisplayNextLaunch(oddity);
+            await DisplayRestOfUpcomingLaunches(oddity);
 
             Console.Read();
         }
         
-        private static void DisplayNextLaunch(OddityCore oddity)
+        private static async Task DisplayNextLaunch(OddityCore oddity)
         {
-            var nextLaunchData = oddity.LaunchesEndpoint.GetNext().Execute();
+            var nextLaunchData = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
 
             Console.WriteLine("Next launch data:");
             Console.WriteLine("---------------------------------------------------------------------------");
@@ -32,9 +33,9 @@ namespace UpcomingLaunchesApp
             Console.WriteLine();
         }
 
-        private static void DisplayRestOfUpcomingLaunches(OddityCore oddity)
+        private static async Task DisplayRestOfUpcomingLaunches(OddityCore oddity)
         {
-            var upcomingLaunches = oddity.LaunchesEndpoint.GetUpcoming().Execute();
+            var upcomingLaunches = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
 
             Console.WriteLine("All upcoming launches:");
             Console.WriteLine("---------------------------------------------------------------------------");
