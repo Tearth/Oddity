@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
-using Oddity.API.Endpoints;
-using Oddity.API.Events;
 using Oddity.Configuration;
+using Oddity.Endpoints;
+using Oddity.Events;
 
 namespace Oddity
 {
