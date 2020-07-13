@@ -15,9 +15,9 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public PayloadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
-            : base(httpClient, context, builderDelegatesContainer)
+        /// <param name="builderDelegates">The builder delegates container.</param>
+        public PayloadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
+            : base(httpClient, context, builderDelegates)
         {
 
         }
@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<PayloadInfo> Get(string id)
         {
-            return new SimpleBuilder<PayloadInfo>(HttpClient, "payloads", id, Context, BuilderDelegatesContainer);
+            return new SimpleBuilder<PayloadInfo>(HttpClient, "payloads", id, Context, builderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<PayloadInfo> GetAll()
         {
-            return new ListBuilder<PayloadInfo>(HttpClient, "payloads", Context, BuilderDelegatesContainer);
+            return new ListBuilder<PayloadInfo>(HttpClient, "payloads", Context, builderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<PayloadInfo> Query()
         {
-            return new QueryBuilder<PayloadInfo>(HttpClient, "payloads/query", Context, BuilderDelegatesContainer);
+            return new QueryBuilder<PayloadInfo>(HttpClient, "payloads/query", Context, builderDelegates);
         }
     }
 }

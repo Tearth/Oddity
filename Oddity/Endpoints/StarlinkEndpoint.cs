@@ -15,9 +15,9 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public StarlinkEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
-            : base(httpClient, context, builderDelegatesContainer)
+        /// <param name="builderDelegates">The builder delegates container.</param>
+        public StarlinkEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
+            : base(httpClient, context, builderDelegates)
         {
 
         }
@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<StarlinkInfo> Get(string id)
         {
-            return new SimpleBuilder<StarlinkInfo>(HttpClient, "starlink", id, Context, BuilderDelegatesContainer);
+            return new SimpleBuilder<StarlinkInfo>(HttpClient, "starlink", id, Context, builderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<StarlinkInfo> GetAll()
         {
-            return new ListBuilder<StarlinkInfo>(HttpClient, "starlink", Context, BuilderDelegatesContainer);
+            return new ListBuilder<StarlinkInfo>(HttpClient, "starlink", Context, builderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<StarlinkInfo> Query()
         {
-            return new QueryBuilder<StarlinkInfo>(HttpClient, "starlink/query", Context, BuilderDelegatesContainer);
+            return new QueryBuilder<StarlinkInfo>(HttpClient, "starlink/query", Context, builderDelegates);
         }
     }
 }

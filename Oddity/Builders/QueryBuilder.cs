@@ -27,7 +27,7 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegatesContainer builderDelegates)
+        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;
@@ -43,7 +43,7 @@ namespace Oddity.Builders
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="query">The query model used to support the pagination.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, QueryModel query, BuilderDelegatesContainer builderDelegates) 
+        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, QueryModel query, BuilderDelegates builderDelegates) 
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;

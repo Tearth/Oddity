@@ -22,7 +22,7 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegatesContainer builderDelegates) 
+        public SimpleBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegates builderDelegates) 
             : this(httpClient, endpoint, null, context, builderDelegates)
         {
 
@@ -36,7 +36,7 @@ namespace Oddity.Builders
         /// <param name="id">The ID of the specified object to retrieve from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, OddityCore context, BuilderDelegatesContainer builderDelegates) 
+        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, OddityCore context, BuilderDelegates builderDelegates) 
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;

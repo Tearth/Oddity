@@ -15,9 +15,9 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        public CapsulesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer) 
-            : base(httpClient, context, builderDelegatesContainer)
+        /// <param name="builderDelegates">The builder delegates container.</param>
+        public CapsulesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates) 
+            : base(httpClient, context, builderDelegates)
         {
 
         }
@@ -29,7 +29,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CapsuleInfo> Get(string id)
         {
-            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, BuilderDelegatesContainer);
+            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, builderDelegates);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<CapsuleInfo> GetAll()
         {
-            return new ListBuilder<CapsuleInfo>(HttpClient, "capsules", Context, BuilderDelegatesContainer);
+            return new ListBuilder<CapsuleInfo>(HttpClient, "capsules", Context, builderDelegates);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<CapsuleInfo> Query()
         {
-            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, BuilderDelegatesContainer);
+            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, builderDelegates);
         }
     }
 }

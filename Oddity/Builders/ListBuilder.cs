@@ -22,7 +22,7 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public ListBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegatesContainer builderDelegates)
+        public ListBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;

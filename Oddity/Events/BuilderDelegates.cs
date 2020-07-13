@@ -9,7 +9,7 @@ namespace Oddity.Events
     /// <summary>
     /// Container for all delegates invoked during processing a request.
     /// </summary>
-    public class BuilderDelegatesContainer
+    public class BuilderDelegates
     {
         /// <summary>
         /// Delegate invoked when there was an error during JSON deserialization.

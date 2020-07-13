@@ -7,19 +7,19 @@ namespace Oddity.Endpoints
     {
         protected readonly HttpClient HttpClient;
         protected readonly OddityCore Context;
-        protected readonly BuilderDelegatesContainer BuilderDelegatesContainer;
+        protected readonly BuilderDelegates builderDelegates;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EndpointBase"/> class.
         /// </summary>
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="builderDelegatesContainer">The builder delegates container.</param>
-        protected EndpointBase(HttpClient httpClient, OddityCore context, BuilderDelegatesContainer builderDelegatesContainer)
+        /// <param name="builderDelegates">The builder delegates container.</param>
+        protected EndpointBase(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
         {
             HttpClient = httpClient;
             Context = context;
-            BuilderDelegatesContainer = builderDelegatesContainer;
+            builderDelegates = builderDelegates;
         }
     }
 }
