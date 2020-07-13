@@ -174,6 +174,19 @@ namespace Oddity.Builders
             return this;
         }
 
+        public QueryBuilder<TReturn> SortBy(string fieldPath, bool ascending = true)
+        {
+            if (_query.Options.Sort == null)
+            {
+                _query.Options.Sort = new Dictionary<string, SortMode>();
+            }
+
+            var sortMode = ascending ? SortMode.Ascending : SortMode.Descending;
+
+            _query.Options.Sort[TranslateFieldPath(fieldPath)] = sortMode;
+            return this;
+        }
+
         private string TranslateFieldPath(string fieldPath)
         {
             return string.Join(".", fieldPath.Split('.').Select(ModelTranslator.Map));
