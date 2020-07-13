@@ -168,6 +168,12 @@ namespace Oddity.Builders
             return this;
         }
 
+        public QueryBuilder<TReturn> WithOffset(uint offset)
+        {
+            _query.Options.Offset = offset;
+            return this;
+        }
+
         private string TranslateFieldPath(string fieldPath)
         {
             return string.Join(".", fieldPath.Split('.').Select(ModelTranslator.Map));
