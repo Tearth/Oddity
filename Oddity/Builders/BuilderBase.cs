@@ -19,10 +19,21 @@ namespace Oddity.Builders
         protected readonly HttpClient HttpClient;
         protected readonly BuilderDelegatesContainer BuilderDelegatesContainer;
 
+        private JsonSerializerSettings _serializationSettings;
+
         protected BuilderBase(HttpClient httpClient, BuilderDelegatesContainer builderDelegatesContainer)
         {
             HttpClient = httpClient;
             BuilderDelegatesContainer = builderDelegatesContainer;
+
+            _serializationSettings = new JsonSerializerSettings
+            {
+                Error = JsonDeserializationError,
+#if DEBUG
+                CheckAdditionalContent = true,
+                MissingMemberHandling = MissingMemberHandling.Error
+#endif
+            };
         }
 
         /// <summary>
@@ -32,12 +43,16 @@ namespace Oddity.Builders
         /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract TReturn Execute();
 
+        public abstract void Execute(TReturn model);
+
         /// <summary>
         /// Performs an async request to the API and returns deserialized JSON.
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract Task<TReturn> ExecuteAsync();
+
+        public abstract Task ExecuteAsync(TReturn model);
 
         protected async Task<string> GetResponseFromEndpoint(string link)
         {
@@ -90,16 +105,12 @@ namespace Oddity.Builders
 
         protected TReturn DeserializeJson(string content)
         {
-            var deserializationSettings = new JsonSerializerSettings
-            {
-                Error = JsonDeserializationError,
-#if DEBUG
-                CheckAdditionalContent = true,
-                MissingMemberHandling = MissingMemberHandling.Error
-#endif
-            };
+            return JsonConvert.DeserializeObject<TReturn>(content, _serializationSettings);
+        }
 
-            return JsonConvert.DeserializeObject<TReturn>(content, deserializationSettings);
+        protected void DeserializeJson(string content, TReturn model)
+        {
+            JsonConvert.PopulateObject(content, model, _serializationSettings);
         }
 
         private void JsonDeserializationError(object sender, ErrorEventArgs errorEventArgs)

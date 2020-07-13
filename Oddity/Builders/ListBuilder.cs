@@ -36,6 +36,12 @@ namespace Oddity.Builders
         }
 
         /// <inheritdoc />
+        public override void Execute(List<TReturn> model)
+        {
+            ExecuteAsync(model).GetAwaiter().GetResult();
+        }
+
+        /// <inheritdoc />
         public override async Task<List<TReturn>> ExecuteAsync()
         {
             var content = await GetResponseFromEndpoint($"{_endpoint}");
@@ -47,6 +53,18 @@ namespace Oddity.Builders
             }
 
             return deserializedObjectsList;
+        }
+
+        /// <inheritdoc />
+        public override async Task ExecuteAsync(List<TReturn> models)
+        {
+            var content = await GetResponseFromEndpoint($"{_endpoint}");
+            DeserializeJson(content, models);
+
+            foreach (var deserializedObject in models)
+            {
+                deserializedObject.SetContext(_context);
+            }
         }
     }
 }

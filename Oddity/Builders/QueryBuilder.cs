@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.Events;
@@ -26,12 +27,28 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegatesContainer builderDelegates) 
+        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegatesContainer builderDelegates)
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;
             _context = context;
             _query = new QueryModel();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryBuilder{TReturn}"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
+        /// <param name="query">The query model used to support the pagination.</param>
+        /// <param name="builderDelegates">The builder delegates container.</param>
+        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, QueryModel query, BuilderDelegatesContainer builderDelegates) 
+            : base(httpClient, builderDelegates)
+        {
+            _endpoint = endpoint;
+            _context = context;
+            _query = query;
         }
 
         /// <inheritdoc />
@@ -41,17 +58,36 @@ namespace Oddity.Builders
         }
 
         /// <inheritdoc />
+        public override void Execute(PaginatedModel<TReturn> model)
+        {
+            ExecuteAsync(model).GetAwaiter().GetResult();
+        }
+
+        /// <inheritdoc />
         public override async Task<PaginatedModel<TReturn>> ExecuteAsync()
         {
             var content = await GetResponseFromEndpoint($"{_endpoint}", _query);
-            var deserializedObjectsList = DeserializeJson(content);
+            var paginatedModel = DeserializeJson(content);
+            paginatedModel.SetBuilder(this);
 
-            foreach (var deserializedObject in deserializedObjectsList.Data)
+            foreach (var deserializedObject in paginatedModel.Data)
             {
                 deserializedObject.SetContext(_context);
             }
 
-            return deserializedObjectsList;
+            return paginatedModel;
+        }
+
+        /// <inheritdoc />
+        public override async Task ExecuteAsync(PaginatedModel<TReturn> paginatedModel)
+        {
+            var content = await GetResponseFromEndpoint($"{_endpoint}", _query);
+            DeserializeJson(content, paginatedModel);
+
+            foreach (var deserializedObject in paginatedModel.Data)
+            {
+                deserializedObject.SetContext(_context);
+            }
         }
 
         /// <summary>
@@ -117,6 +153,12 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithFieldIn<T>(string fieldPath, params T[] values)
         {
             _query.Filters.Add(TranslateFieldPath(fieldPath), new InFilter<T>(values));
+            return this;
+        }
+
+        public QueryBuilder<TReturn> WithPage(uint page)
+        {
+            _query.Options.Page = page;
             return this;
         }
 

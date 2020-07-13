@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Oddity.Builders;
+using Oddity.Models.Query;
 
 namespace Oddity.Models
 {
@@ -18,5 +21,40 @@ namespace Oddity.Models
 
         [JsonProperty("docs")]
         public List<T> Data { get; private set; }
+
+        private QueryBuilder<T> _builder;
+
+        public void SetBuilder(QueryBuilder<T> builder)
+        {
+            _builder = builder;
+        }
+
+        public async Task<bool> GoToNextPage()
+        {
+            if (NextPage == null)
+            {
+                return false;
+            }
+
+            Data.Clear();
+            _builder.WithPage(NextPage.Value);
+            await _builder.ExecuteAsync(this);
+
+            return true;
+        }
+
+        public async Task<bool> GoToPrevPage()
+        {
+            if (PrevPage == null)
+            {
+                return false;
+            }
+
+            Data.Clear();
+            _builder.WithPage(PrevPage.Value);
+            await _builder.ExecuteAsync(this);
+
+            return true;
+        }
     }
 }
