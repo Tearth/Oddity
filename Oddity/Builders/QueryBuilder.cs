@@ -162,6 +162,12 @@ namespace Oddity.Builders
             return this;
         }
 
+        public QueryBuilder<TReturn> WithLimit(uint limit)
+        {
+            _query.Options.Limit = limit;
+            return this;
+        }
+
         private string TranslateFieldPath(string fieldPath)
         {
             return string.Join(".", fieldPath.Split('.').Select(ModelTranslator.Map));
