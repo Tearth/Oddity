@@ -13,17 +13,64 @@ namespace Oddity
     /// </summary>
     public class OddityCore : IDisposable
     {
+        /// <summary>
+        /// Entry point of the /capsules endpoint.
+        /// </summary>
         public CapsulesEndpoint CapsulesEndpoint { get; }
-        public CrewEndpoint CrewEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /company endpoint.
+        /// </summary>
         public CompanyEndpoint CompanyEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /cores endpoint.
+        /// </summary>
         public CoresEndpoint CoresEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /crew endpoint.
+        /// </summary>
+        public CrewEndpoint CrewEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /landpads endpoint.
+        /// </summary>
         public LandpadsEndpoint LandpadsEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /launches endpoint.
+        /// </summary>
         public LaunchesEndpoint LaunchesEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /launchpads endpoint.
+        /// </summary>
         public LaunchpadsEndpoint LaunchpadsEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /payloads endpoint.
+        /// </summary>
         public PayloadsEndpoint PayloadsEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /roadster endpoint.
+        /// </summary>
         public RoadsterEndpoint RoadsterEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /rockets endpoint.
+        /// </summary>
         public RocketsEndpoint RocketsEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /ships endpoint.
+        /// </summary>
         public ShipsEndpoint ShipsEndpoint { get; }
+
+        /// <summary>
+        /// Entry point of the /starlink endpoint.
+        /// </summary>
         public StarlinkEndpoint StarlinkEndpoint { get; }
 
         /// <summary>
@@ -62,9 +109,9 @@ namespace Oddity
             };
 
             CapsulesEndpoint = new CapsulesEndpoint(_httpClient, this, builderDelegates);
-            CrewEndpoint = new CrewEndpoint(_httpClient, this, builderDelegates);
             CompanyEndpoint = new CompanyEndpoint(_httpClient, this, builderDelegates);
             CoresEndpoint = new CoresEndpoint(_httpClient, this, builderDelegates);
+            CrewEndpoint = new CrewEndpoint(_httpClient, this, builderDelegates);
             LandpadsEndpoint = new LandpadsEndpoint(_httpClient, this, builderDelegates);
             LaunchesEndpoint = new LaunchesEndpoint(_httpClient, this, builderDelegates);
             LaunchpadsEndpoint = new LaunchpadsEndpoint(_httpClient, this, builderDelegates);
