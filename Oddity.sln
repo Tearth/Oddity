@@ -14,10 +14,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F775217C-02FC-416C-BA91-365B4EF5C21B}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlinkApp", "Examples\StarlinkApp\StarlinkApp.csproj", "{9D5F6F6F-F11E-487F-AED3-47D367B85277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarlinkApp", "Examples\StarlinkApp\StarlinkApp.csproj", "{9D5F6F6F-F11E-487F-AED3-47D367B85277}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

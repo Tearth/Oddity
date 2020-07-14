@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
     <Authors>Tearth</Authors>
-    <PackageLicenseUrl>https://github.com/Tearth/Oddity/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Tearth/Oddity</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Tearth/Oddity</PackageProjectUrl>
     <PackageTags>oddity spacex api wrapper dotnet .net csharp dotnetstandard .netstandard standard core framework</PackageTags>
@@ -11,14 +10,15 @@
     <Description>SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project.</Description>
     <Copyright>Tearth 2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage></NeutralLanguage>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <Version>2.0.0</Version>
     <ApplicationIcon></ApplicationIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/Tearth/Oddity/develop/icon.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,6 +35,13 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
