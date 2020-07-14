@@ -163,6 +163,20 @@ namespace Oddity.Builders
             return this;
         }
 
+        public QueryBuilder<TReturn> SortBy<T>(Expression<Func<TReturn, T>> selector, bool ascending = true)
+        {
+            var fieldPath = GetPathFromExpression(selector);
+            if (_query.Options.Sort == null)
+            {
+                _query.Options.Sort = new Dictionary<string, SortMode>();
+            }
+
+            var sortMode = ascending ? SortMode.Ascending : SortMode.Descending;
+
+            _query.Options.Sort[fieldPath] = sortMode;
+            return this;
+        }
+
         // TODO: don't use with skip
         public QueryBuilder<TReturn> WithPage(uint page)
         {
@@ -185,33 +199,11 @@ namespace Oddity.Builders
             return this;
         }
 
-        public QueryBuilder<TReturn> SortBy(Expression<Func<TReturn, object>> selector, bool ascending = true)
-        {
-            var fieldPath = GetPathFromExpression(selector);
-            if (_query.Options.Sort == null)
-            {
-                _query.Options.Sort = new Dictionary<string, SortMode>();
-            }
-
-            var sortMode = ascending ? SortMode.Ascending : SortMode.Descending;
-
-            _query.Options.Sort[fieldPath] = sortMode;
-            return this;
-        }
-
         private string GetPathFromExpression<T>(Expression<Func<TReturn, T>> selector)
         {
-            MemberExpression memberExpression;
-            if (selector.Body is UnaryExpression unaryExpression)
-            {
-                memberExpression = (MemberExpression) unaryExpression.Operand;
-            }
-            else
-            {
-                memberExpression = (MemberExpression) selector.Body;
-            }
-
             var members = new List<string>();
+            var memberExpression = (MemberExpression) selector.Body;
+
             while (memberExpression != null)
             {
                 var customAttributes = memberExpression.Member.CustomAttributes;
