@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Oddity.Events;
-using Oddity.Helpers;
 using Oddity.Models;
 using Oddity.Models.Query;
 using Oddity.Models.Query.Filters;
@@ -102,7 +102,7 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithFieldEqual<T>(Expression<Func<TReturn, object>> selector, T value)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(TranslateFieldPath(fieldPath), value);
+            _query.Filters.Add(fieldPath, value);
             return this;
         }
 
@@ -116,7 +116,7 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithFieldGreaterThan<T>(Expression<Func<TReturn, object>> selector, T value)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(TranslateFieldPath(fieldPath), new GreaterThanFilter<T>(value));
+            _query.Filters.Add(fieldPath, new GreaterThanFilter<T>(value));
             return this;
         }
 
@@ -130,7 +130,7 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithFieldLessThan<T>(Expression<Func<TReturn, object>> selector, T value)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(TranslateFieldPath(fieldPath), new LessThanFilter<T>(value));
+            _query.Filters.Add(fieldPath, new LessThanFilter<T>(value));
             return this;
         }
 
@@ -145,7 +145,7 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithFieldBetween<T>(Expression<Func<TReturn, object>> selector, T from, T to)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(TranslateFieldPath(fieldPath), new BetweenFilter<T>(from, to));
+            _query.Filters.Add(fieldPath, new BetweenFilter<T>(from, to));
             return this;
         }
 
@@ -159,7 +159,7 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithFieldIn<T>(Expression<Func<TReturn, object>> selector, params T[] values)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(TranslateFieldPath(fieldPath), new InFilter<T>(values));
+            _query.Filters.Add(fieldPath, new InFilter<T>(values));
             return this;
         }
 
@@ -193,7 +193,7 @@ namespace Oddity.Builders
 
             var sortMode = ascending ? SortMode.Ascending : SortMode.Descending;
 
-            _query.Options.Sort[TranslateFieldPath(fieldPath)] = sortMode;
+            _query.Options.Sort[fieldPath] = sortMode;
             return this;
         }
 
@@ -205,16 +205,22 @@ namespace Oddity.Builders
 
             while (memberExpression != null)
             {
-                members.Insert(0, memberExpression.Member.Name);
+                var customAttributes = memberExpression.Member.CustomAttributes;
+                var jsonPropertyAttribute = customAttributes.FirstOrDefault(p => p.AttributeType == typeof(JsonPropertyAttribute));
+
+                if (jsonPropertyAttribute != null && jsonPropertyAttribute.ConstructorArguments.Count > 0)
+                {
+                    members.Insert(0, (string) jsonPropertyAttribute.ConstructorArguments[0].Value);
+                }
+                else
+                {
+                    members.Insert(0, memberExpression.Member.Name);
+                }
+
                 memberExpression = memberExpression.Expression as MemberExpression;
             }
 
             return string.Join(".", members);
-        }
-
-        private string TranslateFieldPath(string fieldPath)
-        {
-            return string.Join(".", fieldPath.Split('.').Select(ModelTranslator.Map));
         }
     }
 }

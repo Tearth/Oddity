@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
 using Oddity.Events;
-using Oddity.Helpers;
 
 namespace OverviewApp
 {
