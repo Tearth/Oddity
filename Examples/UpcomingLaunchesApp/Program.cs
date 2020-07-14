@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,11 +15,14 @@ namespace UpcomingLaunchesApp
         public static async Task Main(string[] args)
         {
             var oddity = new OddityCore();
+            var stopWatch = Stopwatch.StartNew();
+
             oddity.OnDeserializationError += OddityOnOnDeserializationError;
 
             await DisplayNextLaunch(oddity);
             await DisplayRestOfUpcomingLaunches(oddity);
 
+            Console.WriteLine($"Generated in {stopWatch.Elapsed.TotalSeconds:F1} seconds");
             Console.Read();
         }
         
@@ -43,11 +47,14 @@ namespace UpcomingLaunchesApp
 
             Console.WriteLine("All upcoming launches:");
             Console.WriteLine("---------------------------------------------------------------------------");
+
             foreach (var launch in upcomingLaunches)
             {
                 var formattedDate = GetFormattedDate(launch.DateUtc, launch.DatePrecision);
                 Console.WriteLine($"{launch.Name} ({formattedDate}) at {launch.Launchpad.Value.FullName}");
             }
+
+            Console.WriteLine();
         }
 
         private static string GetPayloadInfo(PayloadInfo payload)

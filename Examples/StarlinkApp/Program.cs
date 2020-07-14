@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
@@ -7,13 +8,15 @@ using Oddity.Models.Starlink;
 
 namespace StarlinkApp
 {
-    class Program
+    public class Program
     {
         private static uint SatellitesPerTable = 4;
 
-        static async Task Main(string[] args)
+        public static async Task Main()
         {
             var oddity = new OddityCore();
+            var stopWatch = Stopwatch.StartNew();
+
             oddity.OnDeserializationError += OddityOnOnDeserializationError;
 
             await DisplayWithHighestApoapsis(oddity, SatellitesPerTable);
@@ -21,6 +24,7 @@ namespace StarlinkApp
             await DisplayWithHighestSpeed(oddity, SatellitesPerTable);
             await DisplayWithLowestSpeed(oddity, SatellitesPerTable);
 
+            Console.WriteLine($"Generated in {stopWatch.Elapsed.TotalSeconds:F1} seconds");
             Console.Read();
         }
 
