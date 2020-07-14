@@ -99,7 +99,7 @@ namespace Oddity.Builders
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Value of the field to match.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldEqual<T>(Expression<Func<TReturn, object>> selector, T value)
+        public QueryBuilder<TReturn> WithFieldEqual<T>(Expression<Func<TReturn, T>> selector, T value)
         {
             var fieldPath = GetPathFromExpression(selector);
             _query.Filters.Add(fieldPath, value);
@@ -113,7 +113,7 @@ namespace Oddity.Builders
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Max value of the field.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldGreaterThan<T>(Expression<Func<TReturn, object>> selector, T value)
+        public QueryBuilder<TReturn> WithFieldGreaterThan<T>(Expression<Func<TReturn, T>> selector, T value)
         {
             var fieldPath = GetPathFromExpression(selector);
             _query.Filters.Add(fieldPath, new GreaterThanFilter<T>(value));
@@ -127,7 +127,7 @@ namespace Oddity.Builders
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Min value of the field.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldLessThan<T>(Expression<Func<TReturn, object>> selector, T value)
+        public QueryBuilder<TReturn> WithFieldLessThan<T>(Expression<Func<TReturn, T>> selector, T value)
         {
             var fieldPath = GetPathFromExpression(selector);
             _query.Filters.Add(fieldPath, new LessThanFilter<T>(value));
@@ -142,7 +142,7 @@ namespace Oddity.Builders
         /// <param name="from">Left side of the range.</param>
         /// <param name="to">Right side of the range.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldBetween<T>(Expression<Func<TReturn, object>> selector, T from, T to)
+        public QueryBuilder<TReturn> WithFieldBetween<T>(Expression<Func<TReturn, T>> selector, T from, T to)
         {
             var fieldPath = GetPathFromExpression(selector);
             _query.Filters.Add(fieldPath, new BetweenFilter<T>(from, to));
@@ -156,7 +156,7 @@ namespace Oddity.Builders
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="values">Values which have to be matched.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldIn<T>(Expression<Func<TReturn, object>> selector, params T[] values)
+        public QueryBuilder<TReturn> WithFieldIn<T>(Expression<Func<TReturn, T>> selector, params T[] values)
         {
             var fieldPath = GetPathFromExpression(selector);
             _query.Filters.Add(fieldPath, new InFilter<T>(values));
@@ -167,6 +167,7 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithPage(uint page)
         {
             _query.Options.Page = page;
+            _query.Options.Offset = null;
             return this;
         }
 
@@ -180,6 +181,7 @@ namespace Oddity.Builders
         public QueryBuilder<TReturn> WithOffset(uint offset)
         {
             _query.Options.Offset = offset;
+            _query.Options.Page = null;
             return this;
         }
 
@@ -197,12 +199,19 @@ namespace Oddity.Builders
             return this;
         }
 
-        private string GetPathFromExpression(Expression<Func<TReturn, object>> selector)
+        private string GetPathFromExpression<T>(Expression<Func<TReturn, T>> selector)
         {
-            var unaryExpression = (UnaryExpression)selector.Body;
-            var memberExpression = (MemberExpression)unaryExpression.Operand;
-            var members = new List<string>();
+            MemberExpression memberExpression;
+            if (selector.Body is UnaryExpression unaryExpression)
+            {
+                memberExpression = (MemberExpression) unaryExpression.Operand;
+            }
+            else
+            {
+                memberExpression = (MemberExpression) selector.Body;
+            }
 
+            var members = new List<string>();
             while (memberExpression != null)
             {
                 var customAttributes = memberExpression.Member.CustomAttributes;
