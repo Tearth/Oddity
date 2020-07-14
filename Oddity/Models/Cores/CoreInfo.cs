@@ -47,5 +47,10 @@ namespace Oddity.Models.Cores
         public List<Lazy<LaunchInfo>> Launches { get; private set; }
 
         private List<string> _launchesId;
+
+        public override string ToString()
+        {
+            return Serial;
+        }
     }
 }

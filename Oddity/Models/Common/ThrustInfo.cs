@@ -9,5 +9,10 @@ namespace Oddity.Models.Common
 
         [JsonProperty("lbf")]
         public double? PoundForce { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Kilonewtons} kn ({PoundForce} lbf)";
+        }
     }
 }

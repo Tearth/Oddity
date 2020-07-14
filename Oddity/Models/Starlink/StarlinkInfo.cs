@@ -38,5 +38,10 @@ namespace Oddity.Models.Starlink
         public Lazy<LaunchInfo> Launch { get; private set; }
 
         private string _launchId;
+
+        public override string ToString()
+        {
+            return SpaceTrack.ObjectName;
+        }
     }
 }

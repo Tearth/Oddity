@@ -76,5 +76,10 @@ namespace Oddity.Models.Payloads
         public Lazy<LaunchInfo> Launch { get; private set; }
 
         private string _launchId;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -9,5 +9,10 @@ namespace Oddity.Models.Common
 
         [JsonProperty("cubic_feet")]
         public double? CubicFeet { get; set; }
+
+        public override string ToString()
+        {
+            return $"{CubicFeet} m^3 ({CubicFeet} ft^3)";
+        }
     }
 }

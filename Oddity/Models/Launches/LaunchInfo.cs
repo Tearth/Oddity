@@ -136,5 +136,10 @@ namespace Oddity.Models.Launches
         private List<string> _capsulesId;
         private List<string> _payloadsId;
         private string _launchpadId;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

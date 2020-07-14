@@ -56,5 +56,10 @@ namespace Oddity.Models.Launchpads
 
         private List<string> _rocketsId;
         private List<string> _launchesId;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

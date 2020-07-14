@@ -31,5 +31,10 @@ namespace Oddity.Models.Crew
         public List<Lazy<LaunchInfo>> Launches { get; private set; }
 
         private List<string> _launchesId;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

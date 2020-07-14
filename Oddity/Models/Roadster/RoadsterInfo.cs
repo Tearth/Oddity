@@ -71,5 +71,10 @@ namespace Oddity.Models.Roadster
 
         [JsonProperty("flickr_images")]
         public List<string> FlickrImages { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

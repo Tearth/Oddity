@@ -9,5 +9,10 @@ namespace Oddity.Models.Common
 
         [JsonProperty("lb")]
         public double? Pounds { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Kilograms} kg ({Pounds} lb)";
+        }
     }
 }
