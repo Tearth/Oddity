@@ -31,7 +31,7 @@ namespace StarlinkApp
         private static async Task DisplayWithHighestApoapsis(OddityCore oddity, uint count)
         {
             var satellites = await oddity.StarlinkEndpoint.Query()
-                .SortBy("SpaceTrack.Apoapsis", false)
+                .SortBy(p => p.SpaceTrack.Apoapsis, false)
                 .WithLimit(count)
                 .ExecuteAsync();
 
@@ -41,7 +41,7 @@ namespace StarlinkApp
         private static async Task DisplayWithLowestPeriapsis(OddityCore oddity, uint count)
         {
             var satellites = await oddity.StarlinkEndpoint.Query()
-                .SortBy("SpaceTrack.Periapsis")
+                .SortBy(p => p.SpaceTrack.Periapsis)
                 .WithLimit(count)
                 .ExecuteAsync();
 
@@ -51,7 +51,7 @@ namespace StarlinkApp
         private static async Task DisplayWithHighestSpeed(OddityCore oddity, uint count)
         {
             var satellites = await oddity.StarlinkEndpoint.Query()
-                .SortBy("VelocityKilometersPerSecond", false)
+                .SortBy(p => p.VelocityKilometersPerSecond, false)
                 .WithLimit(count)
                 .ExecuteAsync();
 
@@ -61,8 +61,8 @@ namespace StarlinkApp
         private static async Task DisplayWithLowestSpeed(OddityCore oddity, uint count)
         {
             var satellites = await oddity.StarlinkEndpoint.Query()
-                .WithFieldGreaterThan("VelocityKilometersPerSecond", 0.0)
-                .SortBy("VelocityKilometersPerSecond")
+                .WithFieldGreaterThan(p => p.VelocityKilometersPerSecond, 0.0)
+                .SortBy(p => p.VelocityKilometersPerSecond)
                 .WithLimit(count)
                 .ExecuteAsync();
 

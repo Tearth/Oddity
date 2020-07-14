@@ -109,9 +109,9 @@ namespace OverviewApp
 
             // Test of the pagination
             var queryStarlink = await oddity.StarlinkEndpoint.Query()
-                .WithFieldGreaterThan("SpaceTrack.Apoapsis", 500)
+                .WithFieldGreaterThan(p => p.SpaceTrack.Apoapsis, 500)
                 .WithLimit(100)
-                .SortBy("SpaceTrack.Apoapsis", false)
+                .SortBy(p => p.SpaceTrack.Apoapsis, false)
                 .ExecuteAsync();
             await queryStarlink.GoToNextPage();
             await queryStarlink.GoToNextPage();
