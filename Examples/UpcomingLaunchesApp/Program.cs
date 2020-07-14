@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
+using Oddity.Models.Launches;
+using Oddity.Models.Payloads;
 
 namespace UpcomingLaunchesApp
 {
@@ -22,14 +25,15 @@ namespace UpcomingLaunchesApp
         private static async Task DisplayNextLaunch(OddityCore oddity)
         {
             var nextLaunchData = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
+            var formattedDate = GetFormattedDate(nextLaunchData.DateUtc, nextLaunchData.DatePrecision);
 
             Console.WriteLine("Next launch data:");
             Console.WriteLine("---------------------------------------------------------------------------");
             Console.WriteLine("Mission name     | " + nextLaunchData.Name);
             Console.WriteLine("Launchpad        | " + nextLaunchData.Launchpad.Value.FullName);
-            Console.WriteLine("Launch date UTC  | " + nextLaunchData.DateUtc);
+            Console.WriteLine("Launch date UTC  | " + formattedDate);
             Console.WriteLine("Rocket           | " + nextLaunchData.Rocket.Value.Name);
-            Console.WriteLine("Payloads         | " + string.Join(',', nextLaunchData.Payloads.Select(p => p.Value.Name)));
+            Console.WriteLine("Payloads         | " + string.Join(',', nextLaunchData.Payloads.Select(p => GetPayloadInfo(p.Value))));
             Console.WriteLine();
         }
 
@@ -41,7 +45,29 @@ namespace UpcomingLaunchesApp
             Console.WriteLine("---------------------------------------------------------------------------");
             foreach (var launch in upcomingLaunches)
             {
-                Console.WriteLine($"{launch.Name} ({launch.DateUtc}) at {launch.Launchpad.Value.FullName}");
+                var formattedDate = GetFormattedDate(launch.DateUtc, launch.DatePrecision);
+                Console.WriteLine($"{launch.Name} ({formattedDate}) at {launch.Launchpad.Value.FullName}");
+            }
+        }
+
+        private static string GetPayloadInfo(PayloadInfo payload)
+        {
+            return payload.MassKilograms.HasValue ? $"{payload.Name} ({payload.MassKilograms} kg)" : payload.Name;
+        }
+
+        private static string GetFormattedDate(DateTime? date, DatePrecision? precision)
+        {
+            if (date == null || precision == null)
+            {
+                return null;
+            }
+
+            switch (precision)
+            {
+                case DatePrecision.Hour: return date.Value.ToString("f", CultureInfo.InvariantCulture);
+                case DatePrecision.Day: return date.Value.ToString("D", CultureInfo.InvariantCulture);
+                case DatePrecision.Month: return date.Value.ToString("Y", CultureInfo.InvariantCulture);
+                default: return date.Value.ToString("yyyy", CultureInfo.InvariantCulture);
             }
         }
 
