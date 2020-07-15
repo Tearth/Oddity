@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Company;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class CompanyEndpoint : EndpointBase
     {
+        private CacheService<CompanyInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CompanyEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public CompanyEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<CompanyInfo>(60 * 60 * 24);
         }
 
         /// <summary>
@@ -28,7 +31,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CompanyInfo> Get()
         {
-            return new SimpleBuilder<CompanyInfo>(HttpClient, "company", Context, BuilderDelegates);
+            return new SimpleBuilder<CompanyInfo>(HttpClient, "company", Context, _cache, BuilderDelegates);
         }
     }
 }

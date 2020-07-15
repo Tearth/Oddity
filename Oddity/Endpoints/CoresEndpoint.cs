@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Cores;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class CoresEndpoint : EndpointBase
     {
+        private CacheService<CoreInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CoresEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public CoresEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<CoreInfo>(60 * 5);
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CoreInfo> Get(string id)
         {
-            return new SimpleBuilder<CoreInfo>(HttpClient, "cores", id, Context, BuilderDelegates);
+            return new SimpleBuilder<CoreInfo>(HttpClient, "cores", id, Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

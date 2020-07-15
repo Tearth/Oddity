@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Launches;
 
@@ -10,6 +11,10 @@ namespace Oddity.Endpoints
     /// </summary>
     public class LaunchesEndpoint : EndpointBase
     {
+        private CacheService<LaunchInfo> _cache;
+        private CacheService<LaunchInfo> _latestLaunchCache;
+        private CacheService<LaunchInfo> _nextLaunchCache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LaunchesEndpoint"/> class.
         /// </summary>
@@ -19,7 +24,9 @@ namespace Oddity.Endpoints
         public LaunchesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<LaunchInfo>(20);
+            _latestLaunchCache = new CacheService<LaunchInfo>(20);
+            _nextLaunchCache = new CacheService<LaunchInfo>(20);
         }
 
         /// <summary>
@@ -29,7 +36,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> Get(string id)
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches", id, Context, BuilderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches", id, Context, _cache, BuilderDelegates);
         }
 
         /// <summary>
@@ -38,7 +45,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> GetLatest()
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/latest", Context, BuilderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/latest", Context, _latestLaunchCache, BuilderDelegates);
         }
 
         /// <summary>
@@ -47,7 +54,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> GetNext()
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/next", Context, BuilderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/next", Context, _nextLaunchCache, BuilderDelegates);
         }
 
         /// <summary>

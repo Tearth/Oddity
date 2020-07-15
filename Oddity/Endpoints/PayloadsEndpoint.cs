@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Payloads;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class PayloadsEndpoint : EndpointBase
     {
+        private CacheService<PayloadInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PayloadsEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public PayloadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<PayloadInfo>(60 * 5);
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<PayloadInfo> Get(string id)
         {
-            return new SimpleBuilder<PayloadInfo>(HttpClient, "payloads", id, Context, BuilderDelegates);
+            return new SimpleBuilder<PayloadInfo>(HttpClient, "payloads", id, Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

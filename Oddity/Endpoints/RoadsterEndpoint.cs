@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Roadster;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class RoadsterEndpoint : EndpointBase
     {
+        private CacheService<RoadsterInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RoadsterEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public RoadsterEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<RoadsterInfo>(60 * 5);
         }
 
         /// <summary>
@@ -28,7 +31,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<RoadsterInfo> Get()
         {
-            return new SimpleBuilder<RoadsterInfo>(HttpClient, "roadster", Context, BuilderDelegates);
+            return new SimpleBuilder<RoadsterInfo>(HttpClient, "roadster", Context, _cache, BuilderDelegates);
         }
     }
 }

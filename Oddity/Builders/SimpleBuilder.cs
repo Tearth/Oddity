@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models;
 
@@ -14,6 +15,7 @@ namespace Oddity.Builders
         private readonly string _endpoint;
         private readonly string _id;
         private readonly OddityCore _context;
+        private readonly CacheService<TReturn> _cache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleBuilder{TReturn}"/> class.
@@ -22,8 +24,8 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegates builderDelegates) 
-            : this(httpClient, endpoint, null, context, builderDelegates)
+        public SimpleBuilder(HttpClient httpClient, string endpoint, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates) 
+            : this(httpClient, endpoint, null, context, cache, builderDelegates)
         {
 
         }
@@ -36,12 +38,13 @@ namespace Oddity.Builders
         /// <param name="id">The ID of the specified object to retrieve from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, OddityCore context, BuilderDelegates builderDelegates) 
+        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates) 
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;
             _id = id;
             _context = context;
+            _cache = cache;
         }
 
         /// <inheritdoc />
@@ -59,9 +62,16 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<TReturn> ExecuteAsync()
         {
+            if (_cache.GetIfAvailable(out TReturn data, _id))
+            {
+                return data;
+            }
+
             var content = await GetResponseFromEndpoint($"{_endpoint}/{_id}");
             var deserializedObject = DeserializeJson(content);
             deserializedObject.SetContext(_context);
+
+            _cache.Update(deserializedObject, _id);
 
             return deserializedObject;
         }

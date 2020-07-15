@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Ships;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class ShipsEndpoint : EndpointBase
     {
+        private CacheService<ShipInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ShipsEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public ShipsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<ShipInfo>(60 * 5);
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<ShipInfo> Get(string id)
         {
-            return new SimpleBuilder<ShipInfo>(HttpClient, "ships", id, Context, BuilderDelegates);
+            return new SimpleBuilder<ShipInfo>(HttpClient, "ships", id, Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

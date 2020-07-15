@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Landpads;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class LandpadsEndpoint : EndpointBase
     {
+        private CacheService<LandpadInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LandpadsEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public LandpadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<LandpadInfo>(60 * 5);
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LandpadInfo> Get(string id)
         {
-            return new SimpleBuilder<LandpadInfo>(HttpClient, "landpads", id, Context, BuilderDelegates);
+            return new SimpleBuilder<LandpadInfo>(HttpClient, "landpads", id, Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

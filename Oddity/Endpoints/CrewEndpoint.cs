@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Crew;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class CrewEndpoint : EndpointBase
     {
+        private CacheService<CrewInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CrewEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public CrewEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<CrewInfo>(60 * 5);
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CrewInfo> Get(string id)
         {
-            return new SimpleBuilder<CrewInfo>(HttpClient, "crew", id, Context, BuilderDelegates);
+            return new SimpleBuilder<CrewInfo>(HttpClient, "crew", id, Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

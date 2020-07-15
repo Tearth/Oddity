@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models.Capsules;
 
@@ -10,6 +11,8 @@ namespace Oddity.Endpoints
     /// </summary>
     public class CapsulesEndpoint : EndpointBase
     {
+        private CacheService<CapsuleInfo> _cache;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CapsulesEndpoint"/> class.
         /// </summary>
@@ -19,7 +22,7 @@ namespace Oddity.Endpoints
         public CapsulesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates) 
             : base(httpClient, context, builderDelegates)
         {
-
+            _cache = new CacheService<CapsuleInfo>(60 * 5);
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<CapsuleInfo> Get(string id)
         {
-            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, BuilderDelegates);
+            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, _cache, BuilderDelegates);
         }
 
         /// <summary>
