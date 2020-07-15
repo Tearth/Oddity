@@ -7,37 +7,37 @@ namespace Oddity.Cache
     {
         public int LifetimeSeconds { get; set; }
 
-        private Dictionary<string, T> _cachedData;
-        private DateTime _lastUpdate;
+        private Dictionary<string, CacheItem<T>> _cachedData;
 
         public CacheService(int lifetimeSeconds)
         {
             LifetimeSeconds = lifetimeSeconds;
 
-            _cachedData = new Dictionary<string, T>();
-            _lastUpdate = DateTime.MinValue;
+            _cachedData = new Dictionary<string, CacheItem<T>>();
         }
 
         public bool GetIfAvailable(out T data, string parameter)
         {
             parameter = parameter ?? "undefined";
 
-            if ((DateTime.Now - _lastUpdate).TotalSeconds >= LifetimeSeconds || !_cachedData.ContainsKey(parameter))
+            if (_cachedData.ContainsKey(parameter))
             {
-                data = default;
-                return false;
+                var item = _cachedData[parameter];
+                if ((DateTime.Now - item.UpdateTime).TotalSeconds < LifetimeSeconds)
+                {
+                    data = item.Data;
+                    return true;
+                }
             }
 
-            data = _cachedData[parameter];
-            return true;
+            data = default;
+            return false;
         }
 
         public void Update(T data, string parameter)
         {
             parameter = parameter ?? "undefined";
-
-            _cachedData[parameter] = data;
-            _lastUpdate = DateTime.Now;
+            _cachedData[parameter] = new CacheItem<T>(data, DateTime.Now);
         }
     }
 }
