@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
 using Oddity.Cache;
+using Oddity.Configuration;
 using Oddity.Events;
 using Oddity.Models.Ships;
 
@@ -22,7 +23,7 @@ namespace Oddity.Endpoints
         public ShipsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-            _cache = new CacheService<ShipInfo>(60 * 5);
+            _cache = new CacheService<ShipInfo>(LibraryConfiguration.MediumPriorityCacheLifetime);
         }
 
         /// <summary>

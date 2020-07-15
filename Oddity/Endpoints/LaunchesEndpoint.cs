@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
 using Oddity.Cache;
+using Oddity.Configuration;
 using Oddity.Events;
 using Oddity.Models.Launches;
 
@@ -24,9 +25,9 @@ namespace Oddity.Endpoints
         public LaunchesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-            _cache = new CacheService<LaunchInfo>(20);
-            _latestLaunchCache = new CacheService<LaunchInfo>(20);
-            _nextLaunchCache = new CacheService<LaunchInfo>(20);
+            _cache = new CacheService<LaunchInfo>(LibraryConfiguration.HighPriorityCacheLifetime);
+            _latestLaunchCache = new CacheService<LaunchInfo>(LibraryConfiguration.HighPriorityCacheLifetime);
+            _nextLaunchCache = new CacheService<LaunchInfo>(LibraryConfiguration.HighPriorityCacheLifetime);
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
 using Oddity.Cache;
+using Oddity.Configuration;
 using Oddity.Events;
 using Oddity.Models.Roadster;
 
@@ -22,7 +23,7 @@ namespace Oddity.Endpoints
         public RoadsterEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-            _cache = new CacheService<RoadsterInfo>(60 * 5);
+            _cache = new CacheService<RoadsterInfo>(LibraryConfiguration.MediumPriorityCacheLifetime);
         }
 
         /// <summary>

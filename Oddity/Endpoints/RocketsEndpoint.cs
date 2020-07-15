@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using Oddity.Builders;
 using Oddity.Cache;
+using Oddity.Configuration;
 using Oddity.Events;
 using Oddity.Models.Rockets;
 
@@ -22,7 +23,7 @@ namespace Oddity.Endpoints
         public RocketsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
             : base(httpClient, context, builderDelegates)
         {
-            _cache = new CacheService<RocketInfo>(60 * 60 * 24);
+            _cache = new CacheService<RocketInfo>(LibraryConfiguration.LowPriorityCacheLifetime);
         }
 
         /// <summary>

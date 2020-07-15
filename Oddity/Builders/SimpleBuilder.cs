@@ -62,7 +62,7 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<TReturn> ExecuteAsync()
         {
-            if (_cache.GetIfAvailable(out TReturn data, _id))
+            if (_context.CacheEnabled && _cache.GetIfAvailable(out TReturn data, _id))
             {
                 return data;
             }
@@ -71,7 +71,10 @@ namespace Oddity.Builders
             var deserializedObject = DeserializeJson(content);
             deserializedObject.SetContext(_context);
 
-            _cache.Update(deserializedObject, _id);
+            if (_context.CacheEnabled)
+            {
+                _cache.Update(deserializedObject, _id);
+            }
 
             return deserializedObject;
         }

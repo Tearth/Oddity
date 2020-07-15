@@ -13,6 +13,8 @@ namespace Oddity
     /// </summary>
     public class OddityCore : IDisposable
     {
+        public bool CacheEnabled { get; set; }
+
         /// <summary>
         /// Entry point of the /capsules endpoint.
         /// </summary>
@@ -90,11 +92,18 @@ namespace Oddity
 
         private readonly HttpClient _httpClient;
 
+        public OddityCore() : this(true)
+        {
+
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OddityCore"/> class.
         /// </summary>
-        public OddityCore()
+        public OddityCore(bool cacheEnabled)
         {
+            CacheEnabled = cacheEnabled;
+
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
             _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(GetUserAgent());
