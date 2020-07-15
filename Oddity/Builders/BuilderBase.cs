@@ -54,11 +54,21 @@ namespace Oddity.Builders
 
         public abstract Task ExecuteAsync(TReturn model);
 
-        protected async Task<string> GetResponseFromEndpoint(string link)
+        protected async Task<string> GetResponseFromEndpoint(string link, string postBody = null)
         {
-            BuilderDelegates.RequestSend(new RequestSendEventArgs(link));
+            BuilderDelegates.RequestSend(new RequestSendEventArgs(link, postBody));
 
-            var response = await HttpClient.GetAsync(link).ConfigureAwait(false);
+            HttpResponseMessage response;
+            if (postBody == null)
+            {
+                response = await HttpClient.GetAsync(link).ConfigureAwait(false);
+            }
+            else
+            {
+                var httpContent = new StringContent(postBody, Encoding.UTF8, "application/json");
+                response = await HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
+            }
+
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 if (response.StatusCode == HttpStatusCode.NoContent)
@@ -77,30 +87,9 @@ namespace Oddity.Builders
             return content;
         }
 
-        protected async Task<string> GetResponseFromEndpoint(string link, QueryModel query)
+        protected string SerializeJson(object model)
         {
-            var serializedQuery = JsonConvert.SerializeObject(query);
-            var httpContent = new StringContent(serializedQuery, Encoding.UTF8, "application/json");
-
-            BuilderDelegates.RequestSend(new RequestSendEventArgs(link, serializedQuery));
-
-            var response = await HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
-            if (response.StatusCode != HttpStatusCode.OK)
-            {
-                if (response.StatusCode == HttpStatusCode.NoContent)
-                {
-                    return default;
-                }
-
-                throw new ApiUnavailableException($"Status code: {(int)response.StatusCode}");
-            }
-
-            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var eventArgs = new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase);
-
-            BuilderDelegates.ResponseReceived(eventArgs);
-
-            return content;
+            return JsonConvert.SerializeObject(model);
         }
 
         protected TReturn DeserializeJson(string content)

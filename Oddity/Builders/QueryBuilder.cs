@@ -68,7 +68,8 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<PaginatedModel<TReturn>> ExecuteAsync()
         {
-            var content = await GetResponseFromEndpoint($"{_endpoint}", _query);
+            var serializedQuery = SerializeJson(_query);
+            var content = await GetResponseFromEndpoint($"{_endpoint}", serializedQuery);
             var paginatedModel = DeserializeJson(content);
             paginatedModel.SetBuilder(this);
 
@@ -83,7 +84,8 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task ExecuteAsync(PaginatedModel<TReturn> paginatedModel)
         {
-            var content = await GetResponseFromEndpoint($"{_endpoint}", _query);
+            var serializedQuery = SerializeJson(_query);
+            var content = await GetResponseFromEndpoint($"{_endpoint}", serializedQuery);
             DeserializeJson(content, paginatedModel);
 
             foreach (var deserializedObject in paginatedModel.Data)
@@ -95,11 +97,11 @@ namespace Oddity.Builders
         /// <summary>
         /// Adds a filter for the specified field which have to have an exact value.
         /// </summary>
-        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <typeparam name="TField">Type of the field.</typeparam>
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Value of the field to match.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldEqual<T>(Expression<Func<TReturn, T>> selector, T value)
+        public QueryBuilder<TReturn> WithFieldEqual<TField>(Expression<Func<TReturn, TField>> selector, TField value)
         {
             var fieldPath = GetPathFromExpression(selector);
             _query.Filters.Add(fieldPath, value);
@@ -109,61 +111,61 @@ namespace Oddity.Builders
         /// <summary>
         /// Adds a filter for the specified field which have to have an value greater than specified.
         /// </summary>
-        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <typeparam name="TField">Type of the field.</typeparam>
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Max value of the field.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldGreaterThan<T>(Expression<Func<TReturn, T>> selector, T value)
+        public QueryBuilder<TReturn> WithFieldGreaterThan<TField>(Expression<Func<TReturn, TField>> selector, TField value)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(fieldPath, new GreaterThanFilter<T>(value));
+            _query.Filters.Add(fieldPath, new GreaterThanFilter<TField>(value));
             return this;
         }
 
         /// <summary>
         /// Adds a filter for the specified field which have to have an value less than specified.
         /// </summary>
-        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <typeparam name="TField">Type of the field.</typeparam>
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="value">Min value of the field.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldLessThan<T>(Expression<Func<TReturn, T>> selector, T value)
+        public QueryBuilder<TReturn> WithFieldLessThan<TField>(Expression<Func<TReturn, TField>> selector, TField value)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(fieldPath, new LessThanFilter<T>(value));
+            _query.Filters.Add(fieldPath, new LessThanFilter<TField>(value));
             return this;
         }
 
         /// <summary>
         /// Adds a filter for the specified field which have to have an value within the specified range.
         /// </summary>
-        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <typeparam name="TField">Type of the field.</typeparam>
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="from">Left side of the range.</param>
         /// <param name="to">Right side of the range.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldBetween<T>(Expression<Func<TReturn, T>> selector, T from, T to)
+        public QueryBuilder<TReturn> WithFieldBetween<TField>(Expression<Func<TReturn, TField>> selector, TField from, TField to)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(fieldPath, new BetweenFilter<T>(from, to));
+            _query.Filters.Add(fieldPath, new BetweenFilter<TField>(from, to));
             return this;
         }
 
         /// <summary>
         /// Adds a filter for the specified field which have to have an value same as one of the specified.
         /// </summary>
-        /// <typeparam name="T">Type of the field.</typeparam>
+        /// <typeparam name="TField">Type of the field.</typeparam>
         /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
         /// <param name="values">Values which have to be matched.</param>
         /// <returns>Builder instance.</returns>
-        public QueryBuilder<TReturn> WithFieldIn<T>(Expression<Func<TReturn, T>> selector, params T[] values)
+        public QueryBuilder<TReturn> WithFieldIn<TField>(Expression<Func<TReturn, TField>> selector, params TField[] values)
         {
             var fieldPath = GetPathFromExpression(selector);
-            _query.Filters.Add(fieldPath, new InFilter<T>(values));
+            _query.Filters.Add(fieldPath, new InFilter<TField>(values));
             return this;
         }
 
-        public QueryBuilder<TReturn> SortBy<T>(Expression<Func<TReturn, T>> selector, bool ascending = true)
+        public QueryBuilder<TReturn> SortBy<TField>(Expression<Func<TReturn, TField>> selector, bool ascending = true)
         {
             var fieldPath = GetPathFromExpression(selector);
             if (_query.Options.Sort == null)
@@ -199,7 +201,7 @@ namespace Oddity.Builders
             return this;
         }
 
-        private string GetPathFromExpression<T>(Expression<Func<TReturn, T>> selector)
+        private string GetPathFromExpression<TField>(Expression<Func<TReturn, TField>> selector)
         {
             var members = new List<string>();
             var memberExpression = (MemberExpression) selector.Body;
