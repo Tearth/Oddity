@@ -60,9 +60,9 @@ namespace Oddity.Builders
         }
 
         /// <inheritdoc />
-        public override void Execute(PaginatedModel<TReturn> model)
+        public override bool Execute(PaginatedModel<TReturn> model)
         {
-            ExecuteAsync(model).GetAwaiter().GetResult();
+            return ExecuteAsync(model).GetAwaiter().GetResult();
         }
 
         /// <inheritdoc />
@@ -82,16 +82,23 @@ namespace Oddity.Builders
         }
 
         /// <inheritdoc />
-        public override async Task ExecuteAsync(PaginatedModel<TReturn> paginatedModel)
+        public override async Task<bool> ExecuteAsync(PaginatedModel<TReturn> paginatedModel)
         {
             var serializedQuery = SerializeJson(_query);
             var content = await GetResponseFromEndpoint($"{_endpoint}", serializedQuery);
+            if (content == null)
+            {
+                return false;
+            }
+
             DeserializeJson(content, paginatedModel);
 
             foreach (var deserializedObject in paginatedModel.Data)
             {
                 deserializedObject.SetContext(_context);
             }
+
+            return true;
         }
 
         /// <summary>

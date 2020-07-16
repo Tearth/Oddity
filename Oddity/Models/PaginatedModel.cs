@@ -38,9 +38,8 @@ namespace Oddity.Models
 
             Data.Clear();
             _builder.WithPage(NextPage.Value);
-            await _builder.ExecuteAsync(this);
 
-            return true;
+            return await _builder.ExecuteAsync(this);
         }
 
         public async Task<bool> GoToPrevPage()
@@ -52,27 +51,24 @@ namespace Oddity.Models
 
             Data.Clear();
             _builder.WithPage(PrevPage.Value);
-            await _builder.ExecuteAsync(this);
 
-            return true;
+            return await _builder.ExecuteAsync(this);
         }
 
         public async Task<bool> GoToFirstPage()
         {
             Data.Clear();
             _builder.WithPage(1);
-            await _builder.ExecuteAsync(this);
 
-            return true;
+            return await _builder.ExecuteAsync(this);
         }
 
         public async Task<bool> GoToLastPage()
         {
             Data.Clear();
             _builder.WithPage(TotalPages);
-            await _builder.ExecuteAsync(this);
 
-            return true;
+            return await _builder.ExecuteAsync(this);
         }
 
         public async Task<bool> GoToPage(uint page)
@@ -84,9 +80,8 @@ namespace Oddity.Models
 
             Data.Clear();
             _builder.WithPage(page);
-            await _builder.ExecuteAsync(this);
 
-            return true;
+            return await _builder.ExecuteAsync(this);
         }
     }
 }

@@ -43,16 +43,17 @@ namespace Oddity.Builders
         /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
         public abstract TReturn Execute();
 
-        public abstract void Execute(TReturn model);
+        public abstract bool Execute(TReturn model);
 
         /// <summary>
         /// Performs an async request to the API and returns deserialized JSON.
         /// </summary>
         /// <returns>The all capsules information or null/empty list if object is not available.</returns>
         /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
+        /// <exception cref="ApiBadRequestException">Thrown when SpaceX API received an invalid request.</exception>
         public abstract Task<TReturn> ExecuteAsync();
 
-        public abstract Task ExecuteAsync(TReturn model);
+        public abstract Task<bool> ExecuteAsync(TReturn model);
 
         protected async Task<string> GetResponseFromEndpoint(string link, string postBody = null)
         {
@@ -69,18 +70,23 @@ namespace Oddity.Builders
                 response = await HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
             }
 
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var eventArgs = new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase);
+
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                if (response.StatusCode == HttpStatusCode.NoContent)
+                if (response.StatusCode == HttpStatusCode.BadRequest)
                 {
-                    return default;
+                    if (content == "Not Found")
+                    {
+                        return null;
+                    }
+
+                    throw new ApiBadRequestException(content);
                 }
 
                 throw new ApiUnavailableException($"Status code: {(int)response.StatusCode}");
             }
-
-            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var eventArgs = new ResponseReceiveEventArgs(content, response.StatusCode, response.ReasonPhrase);
 
             BuilderDelegates.ResponseReceived(eventArgs);
 
