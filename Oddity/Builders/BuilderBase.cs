@@ -75,17 +75,21 @@ namespace Oddity.Builders
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                if (response.StatusCode == HttpStatusCode.BadRequest)
+                switch (response.StatusCode)
                 {
-                    if (content == "Not Found")
+                    case HttpStatusCode.NotFound:
                     {
                         return null;
                     }
-
-                    throw new ApiBadRequestException(content);
+                    case HttpStatusCode.BadRequest:
+                    {
+                        throw new ApiBadRequestException(content);
+                    }
+                    default:
+                    {
+                        throw new ApiUnavailableException($"Status code: {(int)response.StatusCode}");
+                    }
                 }
-
-                throw new ApiUnavailableException($"Status code: {(int)response.StatusCode}");
             }
 
             BuilderDelegates.ResponseReceived(eventArgs);
