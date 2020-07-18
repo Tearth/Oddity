@@ -44,10 +44,11 @@ namespace OverviewApp
             var landpadLaunch = landpad.Launches[0].Value;
 
             // Test of the /launches endpoint
+            var launch = await oddity.LaunchesEndpoint.Get("5eb87d44ffd86e000604b386").ExecuteAsync();
             var allLaunches = await oddity.LaunchesEndpoint.GetAll().ExecuteAsync();
             var pastLaunches = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
             var upcomingLaunches = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
-            var latestLaunch = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
+            var latestLaunch = await oddity.LaunchesEndpoint.GetLatest().ExecuteAsync();
             var nextLaunch = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
 
             // Test of the /crew endpoint
@@ -120,6 +121,14 @@ namespace OverviewApp
             await queryStarlink.GoToPrevPage();
             await queryStarlink.GoToLastPage();
             await queryStarlink.GoToFirstPage();
+
+            // Test of cache
+            var launchCached = await oddity.LaunchesEndpoint.Get("5eb87d44ffd86e000604b386").ExecuteAsync();
+            var allLaunchesCached = await oddity.LaunchesEndpoint.GetAll().ExecuteAsync();
+            var pastLaunchesCached = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
+            var upcomingLaunchesCached = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
+            var latestLaunchCached = await oddity.LaunchesEndpoint.GetLatest().ExecuteAsync();
+            var nextLaunchCached = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
 
             Console.Read();
         }
