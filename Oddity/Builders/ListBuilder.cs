@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Oddity.Cache;
-using Oddity.Events;
 using Oddity.Models;
 
 namespace Oddity.Builders

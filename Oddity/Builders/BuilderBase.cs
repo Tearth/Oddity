@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Oddity.Events;
 using Oddity.Exceptions;
-using Oddity.Models.Query;
 
 namespace Oddity.Builders
 {
@@ -18,7 +17,7 @@ namespace Oddity.Builders
     {
         protected readonly OddityCore Context;
 
-        private JsonSerializerSettings _serializationSettings;
+        private readonly JsonSerializerSettings _serializationSettings;
 
         protected BuilderBase(OddityCore context)
         {

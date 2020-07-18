@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Oddity.Builders;
-using Oddity.Models.Query;
 
 namespace Oddity.Models
 {

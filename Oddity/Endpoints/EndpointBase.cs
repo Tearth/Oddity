@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-using Oddity.Cache;
-using Oddity.Events;
+﻿using Oddity.Cache;
 using Oddity.Models;
 
 namespace Oddity.Endpoints

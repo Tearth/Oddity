@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Oddity.Cache;
-using Oddity.Events;
 using Oddity.Models;
 using Oddity.Models.Query;
 using Oddity.Models.Query.Filters;

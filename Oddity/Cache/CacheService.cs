@@ -8,8 +8,8 @@ namespace Oddity.Cache
     {
         public int LifetimeSeconds { get; set; }
 
-        private Dictionary<string, CacheItem<T>> _cachedData;
-        private Dictionary<string, CacheItem<List<T>>> _cachedLists;
+        private readonly Dictionary<string, CacheItem<T>> _cachedData;
+        private readonly Dictionary<string, CacheItem<List<T>>> _cachedLists;
 
         public CacheService(int lifetimeSeconds)
         {
