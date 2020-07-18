@@ -123,6 +123,9 @@ namespace OverviewApp
             await queryStarlink.GoToFirstPage();
 
             // Test of cache
+            var queryLaunch = await oddity.LaunchesEndpoint.Query().WithLimit(1).ExecuteAsync();
+            var queryLaunchCached = await oddity.LaunchesEndpoint.Get("5eb87cd9ffd86e000604b32a").ExecuteAsync();
+
             var launchCached = await oddity.LaunchesEndpoint.Get("5eb87d44ffd86e000604b386").ExecuteAsync();
             var allLaunchesCached = await oddity.LaunchesEndpoint.GetAll().ExecuteAsync();
             var pastLaunchesCached = await oddity.LaunchesEndpoint.GetPast().ExecuteAsync();
