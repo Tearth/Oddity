@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /company endpoint.
     /// </summary>
-    public class CompanyEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
+    public class CompanyEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CompanyEndpoint"/> class.

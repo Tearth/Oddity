@@ -11,7 +11,7 @@ namespace Oddity.Builders
     /// Represents a list builder used to retrieve data (collection of objects) without any filters.
     /// </summary>
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
-    public class ListBuilder<TReturn> : BuilderBase<List<TReturn>> where TReturn : ModelBase, IIdentifiable
+    public class ListBuilder<TReturn> : BuilderBase<List<TReturn>> where TReturn : ModelBase, IIdentifiable, new()
     {
         private readonly string _endpoint;
         private readonly CacheService<TReturn> _cache;
@@ -46,30 +46,21 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<List<TReturn>> ExecuteAsync()
         {
-            if (Context.CacheEnabled && _cache.GetListIfAvailable(out List<TReturn> list, _endpoint))
-            {
-                return list;
-            }
+            var model = new List<TReturn>();
+            await ExecuteAsync(model);
 
-            var content = await GetResponseFromEndpoint($"{_endpoint}");
-            var deserializedObjectsList = DeserializeJson(content);
-
-            foreach (var deserializedObject in deserializedObjectsList)
-            {
-                deserializedObject.SetContext(Context);
-            }
-
-            if (Context.CacheEnabled)
-            {
-                _cache.UpdateList(deserializedObjectsList, _endpoint);
-            }
-
-            return deserializedObjectsList;
+            return model;
         }
 
         /// <inheritdoc />
         public override async Task<bool> ExecuteAsync(List<TReturn> models)
         {
+            if (Context.CacheEnabled && _cache.GetListIfAvailable(out List<TReturn> list, _endpoint))
+            {
+                models.AddRange(list);
+                return true;
+            }
+
             var content = await GetResponseFromEndpoint($"{_endpoint}");
             if (content == null)
             {
@@ -81,6 +72,11 @@ namespace Oddity.Builders
             foreach (var deserializedObject in models)
             {
                 deserializedObject.SetContext(Context);
+            }
+
+            if (Context.CacheEnabled)
+            {
+                _cache.UpdateList(models, _endpoint);
             }
 
             return true;

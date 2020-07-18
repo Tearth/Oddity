@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /roadster endpoint.
     /// </summary>
-    public class RoadsterEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
+    public class RoadsterEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RoadsterEndpoint"/> class.

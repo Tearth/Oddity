@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /ships endpoint.
     /// </summary>
-    public class ShipsEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
+    public class ShipsEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ShipsEndpoint"/> class.

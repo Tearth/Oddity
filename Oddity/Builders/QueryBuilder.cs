@@ -17,7 +17,7 @@ namespace Oddity.Builders
     /// Represents a query builder used to retrieve data with filters specified by the user.
     /// </summary>
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
-    public class QueryBuilder<TReturn> : BuilderBase<PaginatedModel<TReturn>> where TReturn : ModelBase, IIdentifiable
+    public class QueryBuilder<TReturn> : BuilderBase<PaginatedModel<TReturn>> where TReturn : ModelBase, IIdentifiable, new()
     {
         private readonly string _endpoint;
         private readonly QueryModel _query;
@@ -37,59 +37,6 @@ namespace Oddity.Builders
             _endpoint = endpoint;
             _query = new QueryModel();
             _cache = cache;
-        }
-
-        /// <inheritdoc />
-        public override PaginatedModel<TReturn> Execute()
-        {
-            return ExecuteAsync().GetAwaiter().GetResult();
-        }
-
-        /// <inheritdoc />
-        public override bool Execute(PaginatedModel<TReturn> model)
-        {
-            return ExecuteAsync(model).GetAwaiter().GetResult();
-        }
-
-        /// <inheritdoc />
-        public override async Task<PaginatedModel<TReturn>> ExecuteAsync()
-        {
-            var serializedQuery = SerializeJson(_query);
-            var content = await GetResponseFromEndpoint($"{_endpoint}", serializedQuery);
-            var paginatedModel = DeserializeJson(content);
-            paginatedModel.SetBuilder(this);
-
-            foreach (var deserializedObject in paginatedModel.Data)
-            {
-                deserializedObject.SetContext(Context);
-            }
-
-            if (Context.CacheEnabled)
-            {
-                _cache.UpdateList(paginatedModel.Data, _endpoint);
-            }
-
-            return paginatedModel;
-        }
-
-        /// <inheritdoc />
-        public override async Task<bool> ExecuteAsync(PaginatedModel<TReturn> paginatedModel)
-        {
-            var serializedQuery = SerializeJson(_query);
-            var content = await GetResponseFromEndpoint($"{_endpoint}", serializedQuery);
-            if (content == null)
-            {
-                return false;
-            }
-
-            DeserializeJson(content, paginatedModel);
-
-            foreach (var deserializedObject in paginatedModel.Data)
-            {
-                deserializedObject.SetContext(Context);
-            }
-
-            return true;
         }
 
         /// <summary>
@@ -197,6 +144,47 @@ namespace Oddity.Builders
             _query.Options.Offset = offset;
             _query.Options.Page = null;
             return this;
+        }
+
+        /// <inheritdoc />
+        public override PaginatedModel<TReturn> Execute()
+        {
+            return ExecuteAsync().GetAwaiter().GetResult();
+        }
+
+        /// <inheritdoc />
+        public override bool Execute(PaginatedModel<TReturn> model)
+        {
+            return ExecuteAsync(model).GetAwaiter().GetResult();
+        }
+
+        /// <inheritdoc />
+        public override async Task<PaginatedModel<TReturn>> ExecuteAsync()
+        {
+            var model = new PaginatedModel<TReturn>();
+            await ExecuteAsync(model);
+
+            return model;
+        }
+
+        /// <inheritdoc />
+        public override async Task<bool> ExecuteAsync(PaginatedModel<TReturn> paginatedModel)
+        {
+            var serializedQuery = SerializeJson(_query);
+            var content = await GetResponseFromEndpoint($"{_endpoint}", serializedQuery);
+            if (content == null)
+            {
+                return false;
+            }
+
+            DeserializeJson(content, paginatedModel);
+
+            foreach (var deserializedObject in paginatedModel.Data)
+            {
+                deserializedObject.SetContext(Context);
+            }
+
+            return true;
         }
 
         private string GetPathFromExpression<TField>(Expression<Func<TReturn, TField>> selector)

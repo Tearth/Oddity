@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using Oddity.Cache;
 using Oddity.Events;
@@ -10,7 +12,7 @@ namespace Oddity.Builders
     /// Represents a simple builder used to retrieve data without any filters.
     /// </summary>
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
-    public class SimpleBuilder<TReturn> : BuilderBase<TReturn> where TReturn : ModelBase, IIdentifiable
+    public class SimpleBuilder<TReturn> : BuilderBase<TReturn> where TReturn : ModelBase, IIdentifiable, new()
     {
         private readonly string _endpoint;
         private readonly string _id;
@@ -62,31 +64,25 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<TReturn> ExecuteAsync()
         {
-            if (Context.CacheEnabled && _cache.GetIfAvailable(out TReturn data, _id ?? _endpoint))
-            {
-                return data;
-            }
+            var model = new TReturn();
+            await ExecuteAsync(model);
 
-            var content = await GetResponseFromEndpoint($"{_endpoint}/{_id}");
-            if (content == null)
-            {
-                return null;
-            }
-
-            var deserializedObject = DeserializeJson(content);
-            deserializedObject.SetContext(Context);
-
-            if (Context.CacheEnabled)
-            {
-                _cache.Update(deserializedObject, _id ?? _endpoint);
-            }
-
-            return deserializedObject;
+            return model;
         }
 
         /// <inheritdoc />
         public override async Task<bool> ExecuteAsync(TReturn model)
         {
+            if (Context.CacheEnabled && _cache.GetIfAvailable(out TReturn data, _id ?? _endpoint))
+            {
+                foreach (var property in data.GetType().GetRuntimeProperties().Where(p => p.CanWrite))
+                {
+                    property.SetValue(model, property.GetValue(data, null), null);
+                }
+
+                return true;
+            }
+
             var content = await GetResponseFromEndpoint($"{_endpoint}/{_id}");
             if (content == null)
             {
@@ -95,6 +91,11 @@ namespace Oddity.Builders
 
             DeserializeJson(content, model);
             model.SetContext(Context);
+
+            if (Context.CacheEnabled)
+            {
+                _cache.Update(model, _id ?? _endpoint);
+            }
 
             return true;
         }

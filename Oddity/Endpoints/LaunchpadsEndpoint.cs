@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /launchpads endpoint.
     /// </summary>
-    public class LaunchpadsEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
+    public class LaunchpadsEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LaunchpadsEndpoint"/> class.

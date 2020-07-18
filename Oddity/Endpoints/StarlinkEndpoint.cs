@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /starlink endpoint.
     /// </summary>
-    public class StarlinkEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
+    public class StarlinkEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="StarlinkEndpoint"/> class.

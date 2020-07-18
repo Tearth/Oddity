@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /capsules endpoint.
     /// </summary>
-    public class CapsulesEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
+    public class CapsulesEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CapsulesEndpoint"/> class.

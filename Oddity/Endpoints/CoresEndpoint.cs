@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /cores endpoint.
     /// </summary>
-    public class CoresEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
+    public class CoresEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CoresEndpoint"/> class.
