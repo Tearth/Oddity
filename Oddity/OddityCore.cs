@@ -5,6 +5,18 @@ using Newtonsoft.Json.Serialization;
 using Oddity.Configuration;
 using Oddity.Endpoints;
 using Oddity.Events;
+using Oddity.Models.Capsules;
+using Oddity.Models.Company;
+using Oddity.Models.Cores;
+using Oddity.Models.Crew;
+using Oddity.Models.Landpads;
+using Oddity.Models.Launches;
+using Oddity.Models.Launchpads;
+using Oddity.Models.Payloads;
+using Oddity.Models.Roadster;
+using Oddity.Models.Rockets;
+using Oddity.Models.Ships;
+using Oddity.Models.Starlink;
 
 namespace Oddity
 {
@@ -18,62 +30,62 @@ namespace Oddity
         /// <summary>
         /// Entry point of the /capsules endpoint.
         /// </summary>
-        public CapsulesEndpoint CapsulesEndpoint { get; }
+        public CapsulesEndpoint<CapsuleInfo> CapsulesEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /company endpoint.
         /// </summary>
-        public CompanyEndpoint CompanyEndpoint { get; }
+        public CompanyEndpoint<CompanyInfo> CompanyEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /cores endpoint.
         /// </summary>
-        public CoresEndpoint CoresEndpoint { get; }
+        public CoresEndpoint<CoreInfo> CoresEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /crew endpoint.
         /// </summary>
-        public CrewEndpoint CrewEndpoint { get; }
+        public CrewEndpoint<CrewInfo> CrewEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /landpads endpoint.
         /// </summary>
-        public LandpadsEndpoint LandpadsEndpoint { get; }
+        public LandpadsEndpoint<LandpadInfo> LandpadsEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /launches endpoint.
         /// </summary>
-        public LaunchesEndpoint LaunchesEndpoint { get; }
+        public LaunchesEndpoint<LaunchInfo> LaunchesEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /launchpads endpoint.
         /// </summary>
-        public LaunchpadsEndpoint LaunchpadsEndpoint { get; }
+        public LaunchpadsEndpoint<LaunchpadInfo> LaunchpadsEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /payloads endpoint.
         /// </summary>
-        public PayloadsEndpoint PayloadsEndpoint { get; }
+        public PayloadsEndpoint<PayloadInfo> PayloadsEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /roadster endpoint.
         /// </summary>
-        public RoadsterEndpoint RoadsterEndpoint { get; }
+        public RoadsterEndpoint<RoadsterInfo> RoadsterEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /rockets endpoint.
         /// </summary>
-        public RocketsEndpoint RocketsEndpoint { get; }
+        public RocketsEndpoint<RocketInfo> RocketsEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /ships endpoint.
         /// </summary>
-        public ShipsEndpoint ShipsEndpoint { get; }
+        public ShipsEndpoint<ShipInfo> ShipsEndpoint { get; }
 
         /// <summary>
         /// Entry point of the /starlink endpoint.
         /// </summary>
-        public StarlinkEndpoint StarlinkEndpoint { get; }
+        public StarlinkEndpoint<StarlinkInfo> StarlinkEndpoint { get; }
 
         /// <summary>
         /// Event triggered when an error occurred during JSON deserialization.
@@ -117,18 +129,18 @@ namespace Oddity
                 ResponseReceived = ResponseReceived
             };
 
-            CapsulesEndpoint = new CapsulesEndpoint(_httpClient, this, builderDelegates);
-            CompanyEndpoint = new CompanyEndpoint(_httpClient, this, builderDelegates);
-            CoresEndpoint = new CoresEndpoint(_httpClient, this, builderDelegates);
-            CrewEndpoint = new CrewEndpoint(_httpClient, this, builderDelegates);
-            LandpadsEndpoint = new LandpadsEndpoint(_httpClient, this, builderDelegates);
-            LaunchesEndpoint = new LaunchesEndpoint(_httpClient, this, builderDelegates);
-            LaunchpadsEndpoint = new LaunchpadsEndpoint(_httpClient, this, builderDelegates);
-            PayloadsEndpoint = new PayloadsEndpoint(_httpClient, this, builderDelegates);
-            RoadsterEndpoint = new RoadsterEndpoint(_httpClient, this, builderDelegates);
-            RocketsEndpoint = new RocketsEndpoint(_httpClient, this, builderDelegates);
-            ShipsEndpoint = new ShipsEndpoint(_httpClient, this, builderDelegates);
-            StarlinkEndpoint = new StarlinkEndpoint(_httpClient, this, builderDelegates);
+            CapsulesEndpoint = new CapsulesEndpoint<CapsuleInfo>(_httpClient, this, builderDelegates);
+            CompanyEndpoint = new CompanyEndpoint<CompanyInfo>(_httpClient, this, builderDelegates);
+            CoresEndpoint = new CoresEndpoint<CoreInfo>(_httpClient, this, builderDelegates);
+            CrewEndpoint = new CrewEndpoint<CrewInfo>(_httpClient, this, builderDelegates);
+            LandpadsEndpoint = new LandpadsEndpoint<LandpadInfo>(_httpClient, this, builderDelegates);
+            LaunchesEndpoint = new LaunchesEndpoint<LaunchInfo>(_httpClient, this, builderDelegates);
+            LaunchpadsEndpoint = new LaunchpadsEndpoint<LaunchpadInfo>(_httpClient, this, builderDelegates);
+            PayloadsEndpoint = new PayloadsEndpoint<PayloadInfo>(_httpClient, this, builderDelegates);
+            RoadsterEndpoint = new RoadsterEndpoint<RoadsterInfo>(_httpClient, this, builderDelegates);
+            RocketsEndpoint = new RocketsEndpoint<RocketInfo>(_httpClient, this, builderDelegates);
+            ShipsEndpoint = new ShipsEndpoint<ShipInfo>(_httpClient, this, builderDelegates);
+            StarlinkEndpoint = new StarlinkEndpoint<StarlinkInfo>(_httpClient, this, builderDelegates);
         }
 
         /// <summary>

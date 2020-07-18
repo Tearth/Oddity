@@ -3,6 +3,7 @@ using Oddity.Builders;
 using Oddity.Cache;
 using Oddity.Configuration;
 using Oddity.Events;
+using Oddity.Models;
 using Oddity.Models.Payloads;
 
 namespace Oddity.Endpoints
@@ -10,10 +11,8 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /payloads endpoint.
     /// </summary>
-    public class PayloadsEndpoint : EndpointBase
+    public class PayloadsEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
     {
-        private CacheService<PayloadInfo> _cache;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="PayloadsEndpoint"/> class.
         /// </summary>
@@ -21,9 +20,9 @@ namespace Oddity.Endpoints
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
         public PayloadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates)
+            : base(httpClient, context, builderDelegates, LibraryConfiguration.MediumPriorityCacheLifetime)
         {
-            _cache = new CacheService<PayloadInfo>(LibraryConfiguration.MediumPriorityCacheLifetime);
+
         }
 
         /// <summary>
@@ -31,27 +30,27 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="id">ID of the specified payload.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<PayloadInfo> Get(string id)
+        public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<PayloadInfo>(HttpClient, "payloads", id, Context, _cache, BuilderDelegates);
+            return new SimpleBuilder<T>(HttpClient, "payloads", id, Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets data about all payloads from the /payloads endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public ListBuilder<PayloadInfo> GetAll()
+        public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<PayloadInfo>(HttpClient, "payloads", Context, _cache, BuilderDelegates);
+            return new ListBuilder<T>(HttpClient, "payloads", Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets filtered and paginated data about all payloads from the /payloads/query endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public QueryBuilder<PayloadInfo> Query()
+        public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<PayloadInfo>(HttpClient, "payloads/query", Context, _cache, BuilderDelegates);
+            return new QueryBuilder<T>(HttpClient, "payloads/query", Context, Cache, BuilderDelegates);
         }
     }
 }

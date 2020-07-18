@@ -3,6 +3,7 @@ using Oddity.Builders;
 using Oddity.Cache;
 using Oddity.Configuration;
 using Oddity.Events;
+using Oddity.Models;
 using Oddity.Models.Starlink;
 
 namespace Oddity.Endpoints
@@ -10,10 +11,8 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /starlink endpoint.
     /// </summary>
-    public class StarlinkEndpoint : EndpointBase
+    public class StarlinkEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
     {
-        private CacheService<StarlinkInfo> _cache;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StarlinkEndpoint"/> class.
         /// </summary>
@@ -21,9 +20,9 @@ namespace Oddity.Endpoints
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
         public StarlinkEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates)
+            : base(httpClient, context, builderDelegates, LibraryConfiguration.MediumPriorityCacheLifetime)
         {
-            _cache = new CacheService<StarlinkInfo>(LibraryConfiguration.MediumPriorityCacheLifetime);
+
         }
 
         /// <summary>
@@ -31,27 +30,27 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="id">ID of the specified Starlink satellite.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<StarlinkInfo> Get(string id)
+        public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<StarlinkInfo>(HttpClient, "starlink", id, Context, _cache, BuilderDelegates);
+            return new SimpleBuilder<T>(HttpClient, "starlink", id, Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets data about all Starlink satellites from the /starlink endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public ListBuilder<StarlinkInfo> GetAll()
+        public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<StarlinkInfo>(HttpClient, "starlink", Context, _cache, BuilderDelegates);
+            return new ListBuilder<T>(HttpClient, "starlink", Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets filtered and paginated data about all Starlink satellites from the /starlink/query endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public QueryBuilder<StarlinkInfo> Query()
+        public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<StarlinkInfo>(HttpClient, "starlink/query", Context, _cache, BuilderDelegates);
+            return new QueryBuilder<T>(HttpClient, "starlink/query", Context, Cache, BuilderDelegates);
         }
     }
 }

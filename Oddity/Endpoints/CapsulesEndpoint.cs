@@ -3,6 +3,7 @@ using Oddity.Builders;
 using Oddity.Cache;
 using Oddity.Configuration;
 using Oddity.Events;
+using Oddity.Models;
 using Oddity.Models.Capsules;
 
 namespace Oddity.Endpoints
@@ -10,10 +11,8 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /capsules endpoint.
     /// </summary>
-    public class CapsulesEndpoint : EndpointBase
+    public class CapsulesEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
     {
-        private CacheService<CapsuleInfo> _cache;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CapsulesEndpoint"/> class.
         /// </summary>
@@ -21,9 +20,9 @@ namespace Oddity.Endpoints
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
         public CapsulesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates) 
-            : base(httpClient, context, builderDelegates)
+            : base(httpClient, context, builderDelegates, LibraryConfiguration.MediumPriorityCacheLifetime)
         {
-            _cache = new CacheService<CapsuleInfo>(LibraryConfiguration.MediumPriorityCacheLifetime);
+
         }
 
         /// <summary>
@@ -31,27 +30,27 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="id">ID of the specified capsule.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<CapsuleInfo> Get(string id)
+        public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<CapsuleInfo>(HttpClient, "capsules", id, Context, _cache, BuilderDelegates);
+            return new SimpleBuilder<T>(HttpClient, "capsules", id, Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets data about all capsules from the /capsules endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public ListBuilder<CapsuleInfo> GetAll()
+        public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<CapsuleInfo>(HttpClient, "capsules", Context, _cache, BuilderDelegates);
+            return new ListBuilder<T>(HttpClient, "capsules", Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets filtered and paginated data about all capsules from the /capsules/query endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public QueryBuilder<CapsuleInfo> Query()
+        public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, _cache, BuilderDelegates);
+            return new QueryBuilder<T>(HttpClient, "capsules/query", Context, Cache, BuilderDelegates);
         }
     }
 }

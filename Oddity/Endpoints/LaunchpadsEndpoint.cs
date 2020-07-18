@@ -3,6 +3,7 @@ using Oddity.Builders;
 using Oddity.Cache;
 using Oddity.Configuration;
 using Oddity.Events;
+using Oddity.Models;
 using Oddity.Models.Launchpads;
 
 namespace Oddity.Endpoints
@@ -10,10 +11,8 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /launchpads endpoint.
     /// </summary>
-    public class LaunchpadsEndpoint : EndpointBase
+    public class LaunchpadsEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
     {
-        private CacheService<LaunchpadInfo> _cache;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="LaunchpadsEndpoint"/> class.
         /// </summary>
@@ -21,9 +20,9 @@ namespace Oddity.Endpoints
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
         public LaunchpadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates)
+            : base(httpClient, context, builderDelegates, LibraryConfiguration.MediumPriorityCacheLifetime)
         {
-            _cache = new CacheService<LaunchpadInfo>(LibraryConfiguration.MediumPriorityCacheLifetime);
+
         }
 
         /// <summary>
@@ -31,27 +30,27 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="id">ID of the specified launchpad.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<LaunchpadInfo> Get(string id)
+        public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<LaunchpadInfo>(HttpClient, "launchpads", id, Context, _cache, BuilderDelegates);
+            return new SimpleBuilder<T>(HttpClient, "launchpads", id, Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets data about all launchpads from the /launchpads endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public ListBuilder<LaunchpadInfo> GetAll()
+        public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<LaunchpadInfo>(HttpClient, "launchpads", Context, _cache, BuilderDelegates);
+            return new ListBuilder<T>(HttpClient, "launchpads", Context, Cache, BuilderDelegates);
         }
 
         /// <summary>
         /// Gets filtered and paginated data about all launchpads from the /launchpads/query endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public QueryBuilder<LaunchpadInfo> Query()
+        public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<LaunchpadInfo>(HttpClient, "launchpads/query", Context, _cache, BuilderDelegates);
+            return new QueryBuilder<T>(HttpClient, "launchpads/query", Context, Cache, BuilderDelegates);
         }
     }
 }

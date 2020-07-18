@@ -3,6 +3,7 @@ using Oddity.Builders;
 using Oddity.Cache;
 using Oddity.Configuration;
 using Oddity.Events;
+using Oddity.Models;
 using Oddity.Models.Company;
 
 namespace Oddity.Endpoints
@@ -10,10 +11,8 @@ namespace Oddity.Endpoints
     /// <summary>
     /// Represents an entry point for /company endpoint.
     /// </summary>
-    public class CompanyEndpoint : EndpointBase
+    public class CompanyEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable
     {
-        private CacheService<CompanyInfo> _cache;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CompanyEndpoint"/> class.
         /// </summary>
@@ -21,18 +20,18 @@ namespace Oddity.Endpoints
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
         public CompanyEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates)
+            : base(httpClient, context, builderDelegates, LibraryConfiguration.LowPriorityCacheLifetime)
         {
-            _cache = new CacheService<CompanyInfo>(LibraryConfiguration.LowPriorityCacheLifetime);
+
         }
 
         /// <summary>
         /// Gets data about company from the /company endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<CompanyInfo> Get()
+        public SimpleBuilder<T> Get()
         {
-            return new SimpleBuilder<CompanyInfo>(HttpClient, "company", Context, _cache, BuilderDelegates);
+            return new SimpleBuilder<T>(HttpClient, "company", Context, Cache, BuilderDelegates);
         }
     }
 }
