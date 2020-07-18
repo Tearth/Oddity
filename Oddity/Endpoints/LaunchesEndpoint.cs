@@ -13,8 +13,6 @@ namespace Oddity.Endpoints
     public class LaunchesEndpoint : EndpointBase
     {
         private CacheService<LaunchInfo> _cache;
-        private CacheService<LaunchInfo> _latestLaunchCache;
-        private CacheService<LaunchInfo> _nextLaunchCache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LaunchesEndpoint"/> class.
@@ -26,8 +24,6 @@ namespace Oddity.Endpoints
             : base(httpClient, context, builderDelegates)
         {
             _cache = new CacheService<LaunchInfo>(LibraryConfiguration.HighPriorityCacheLifetime);
-            _latestLaunchCache = new CacheService<LaunchInfo>(LibraryConfiguration.HighPriorityCacheLifetime);
-            _nextLaunchCache = new CacheService<LaunchInfo>(LibraryConfiguration.HighPriorityCacheLifetime);
         }
 
         /// <summary>
@@ -46,7 +42,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> GetLatest()
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/latest", Context, _latestLaunchCache, BuilderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/latest", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>
@@ -55,7 +51,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<LaunchInfo> GetNext()
         {
-            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/next", Context, _nextLaunchCache, BuilderDelegates);
+            return new SimpleBuilder<LaunchInfo>(HttpClient, "launches/next", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

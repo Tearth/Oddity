@@ -21,8 +21,6 @@ namespace Oddity.Cache
 
         public bool GetIfAvailable(out T data, string parameter)
         {
-            parameter = parameter ?? "undefined";
-
             if (_cachedData.ContainsKey(parameter))
             {
                 var item = _cachedData[parameter];
@@ -55,7 +53,6 @@ namespace Oddity.Cache
 
         public void Update(T data, string parameter)
         {
-            parameter = parameter ?? "undefined";
             _cachedData[parameter] = new CacheItem<T>(data, DateTime.Now);
         }
 
