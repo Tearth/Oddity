@@ -51,7 +51,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<RocketInfo> Query()
         {
-            return new QueryBuilder<RocketInfo>(HttpClient, "rockets/query", Context, BuilderDelegates);
+            return new QueryBuilder<RocketInfo>(HttpClient, "rockets/query", Context, _cache, BuilderDelegates);
         }
     }
 }

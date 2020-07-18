@@ -51,7 +51,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<StarlinkInfo> Query()
         {
-            return new QueryBuilder<StarlinkInfo>(HttpClient, "starlink/query", Context, BuilderDelegates);
+            return new QueryBuilder<StarlinkInfo>(HttpClient, "starlink/query", Context, _cache, BuilderDelegates);
         }
     }
 }

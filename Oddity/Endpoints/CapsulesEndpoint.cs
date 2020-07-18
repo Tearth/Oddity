@@ -51,7 +51,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<CapsuleInfo> Query()
         {
-            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, BuilderDelegates);
+            return new QueryBuilder<CapsuleInfo>(HttpClient, "capsules/query", Context, _cache, BuilderDelegates);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<LaunchpadInfo> Query()
         {
-            return new QueryBuilder<LaunchpadInfo>(HttpClient, "launchpads/query", Context, BuilderDelegates);
+            return new QueryBuilder<LaunchpadInfo>(HttpClient, "launchpads/query", Context, _cache, BuilderDelegates);
         }
     }
 }

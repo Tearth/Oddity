@@ -51,7 +51,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<LandpadInfo> Query()
         {
-            return new QueryBuilder<LandpadInfo>(HttpClient, "landpads/query", Context, BuilderDelegates);
+            return new QueryBuilder<LandpadInfo>(HttpClient, "landpads/query", Context, _cache, BuilderDelegates);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<PayloadInfo> Query()
         {
-            return new QueryBuilder<PayloadInfo>(HttpClient, "payloads/query", Context, BuilderDelegates);
+            return new QueryBuilder<PayloadInfo>(HttpClient, "payloads/query", Context, _cache, BuilderDelegates);
         }
     }
 }

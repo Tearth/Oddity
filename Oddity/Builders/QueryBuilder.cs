@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models;
 using Oddity.Models.Query;
@@ -21,6 +22,7 @@ namespace Oddity.Builders
         private readonly string _endpoint;
         private readonly OddityCore _context;
         private readonly QueryModel _query;
+        private readonly CacheService<TReturn> _cache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryBuilder{TReturn}"/> class.
@@ -29,12 +31,13 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegates builderDelegates)
+        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates)
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;
             _context = context;
             _query = new QueryModel();
+            _cache = cache;
         }
 
         /// <summary>
@@ -76,6 +79,11 @@ namespace Oddity.Builders
             foreach (var deserializedObject in paginatedModel.Data)
             {
                 deserializedObject.SetContext(_context);
+            }
+
+            if (_context.CacheEnabled)
+            {
+                _cache.UpdateList(paginatedModel.Data, _endpoint);
             }
 
             return paginatedModel;
