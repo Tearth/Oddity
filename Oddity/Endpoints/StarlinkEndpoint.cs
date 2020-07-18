@@ -32,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<T>("starlink", id, Context, Cache);
+            return new SimpleBuilder<T>(Context, Cache, "starlink", id);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<T>("starlink", Context, Cache);
+            return new ListBuilder<T>(Context, Cache, "starlink");
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<T>("starlink/query", Context, Cache);
+            return new QueryBuilder<T>(Context, Cache, "starlink/query");
         }
     }
 }

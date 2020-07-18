@@ -19,11 +19,12 @@ namespace Oddity.Builders
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuilder{TReturn}"/> class.
         /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
+        /// <param name="cache"></param>
+        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
+        /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public ListBuilder(string endpoint, OddityCore context, CacheService<TReturn> cache)
+        public ListBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint)
             : base(context)
         {
             _endpoint = endpoint;

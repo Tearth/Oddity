@@ -31,7 +31,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> Get()
         {
-            return new SimpleBuilder<T>("roadster", Context, Cache);
+            return new SimpleBuilder<T>(Context, Cache, "roadster");
         }
     }
 }

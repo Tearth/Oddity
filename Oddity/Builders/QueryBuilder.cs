@@ -26,31 +26,17 @@ namespace Oddity.Builders
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryBuilder{TReturn}"/> class.
         /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
+        /// <param name="cache"></param>
+        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
+        /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(string endpoint, OddityCore context, CacheService<TReturn> cache)
+        public QueryBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint)
             : base(context)
         {
             _endpoint = endpoint;
             _query = new QueryModel();
             _cache = cache;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryBuilder{TReturn}"/> class.
-        /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
-        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="query">The query model used to support the pagination.</param>
-        /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(string endpoint, OddityCore context, QueryModel query) 
-            : base(context)
-        {
-            _endpoint = endpoint;
-            _query = query;
         }
 
         /// <inheritdoc />

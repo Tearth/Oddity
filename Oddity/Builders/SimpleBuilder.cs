@@ -19,12 +19,13 @@ namespace Oddity.Builders
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleBuilder{TReturn}"/> class.
         /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
+        /// <param name="cache"></param>
+        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
+        /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(string endpoint, OddityCore context, CacheService<TReturn> cache) 
-            : this(endpoint, null, context, cache)
+        public SimpleBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint) 
+            : this(context, cache, endpoint, null)
         {
 
         }
@@ -32,12 +33,13 @@ namespace Oddity.Builders
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleBuilder{TReturn}"/> class.
         /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
+        /// <param name="cache"></param>
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="id">The ID of the specified object to retrieve from API.</param>
-        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
+        /// <param name="httpClient">The HTTP client.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(string endpoint, string id, OddityCore context, CacheService<TReturn> cache) 
+        public SimpleBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint, string id) 
             : base(context)
         {
             _endpoint = endpoint;
