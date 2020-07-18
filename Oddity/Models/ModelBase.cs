@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Oddity.Models
@@ -11,6 +12,14 @@ namespace Oddity.Models
         {
             Context = context;
             SetContextInNestedObjects(context);
+        }
+
+        public void CopyTo(ModelBase target)
+        {
+            foreach (var property in GetType().GetRuntimeProperties().Where(p => p.CanWrite))
+            {
+                property.SetValue(target, property.GetValue(this, null), null);
+            }
         }
 
         private void SetContextInNestedObjects(OddityCore context)

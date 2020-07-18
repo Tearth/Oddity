@@ -73,13 +73,9 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<bool> ExecuteAsync(TReturn model)
         {
-            if (Context.CacheEnabled && _cache.GetIfAvailable(out TReturn data, _id ?? _endpoint))
+            if (Context.CacheEnabled && _cache.GetIfAvailable(out var data, _id ?? _endpoint))
             {
-                foreach (var property in data.GetType().GetRuntimeProperties().Where(p => p.CanWrite))
-                {
-                    property.SetValue(model, property.GetValue(data, null), null);
-                }
-
+                data.CopyTo(model);
                 return true;
             }
 

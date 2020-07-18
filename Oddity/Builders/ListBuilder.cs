@@ -55,7 +55,7 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<bool> ExecuteAsync(List<TReturn> models)
         {
-            if (Context.CacheEnabled && _cache.GetListIfAvailable(out List<TReturn> list, _endpoint))
+            if (Context.CacheEnabled && _cache.GetListIfAvailable(out var list, _endpoint))
             {
                 models.AddRange(list);
                 return true;
