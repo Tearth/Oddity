@@ -95,7 +95,7 @@ namespace Oddity
 
         public string UserAgent => $"{LibraryConfiguration.LibraryName}/{Version} ({LibraryConfiguration.GitHubLink})";
 
-        public string Version => GetType().GetTypeInfo()
+        public string Version => GetType().GetTypeInfo().Assembly
             .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
             .InformationalVersion;
 
