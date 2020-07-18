@@ -42,7 +42,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LandpadInfo> GetAll()
         {
-            return new ListBuilder<LandpadInfo>(HttpClient, "landpads", Context, BuilderDelegates);
+            return new ListBuilder<LandpadInfo>(HttpClient, "landpads", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

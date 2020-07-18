@@ -10,7 +10,7 @@ namespace Oddity.Builders
     /// Represents a simple builder used to retrieve data without any filters.
     /// </summary>
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
-    public class SimpleBuilder<TReturn> : BuilderBase<TReturn> where TReturn : ModelBase
+    public class SimpleBuilder<TReturn> : BuilderBase<TReturn> where TReturn : ModelBase, IIdentifiable
     {
         private readonly string _endpoint;
         private readonly string _id;

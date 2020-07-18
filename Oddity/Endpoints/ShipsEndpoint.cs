@@ -42,7 +42,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<ShipInfo> GetAll()
         {
-            return new ListBuilder<ShipInfo>(HttpClient, "ships", Context, BuilderDelegates);
+            return new ListBuilder<ShipInfo>(HttpClient, "ships", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

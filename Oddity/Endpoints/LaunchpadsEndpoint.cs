@@ -42,7 +42,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<LaunchpadInfo> GetAll()
         {
-            return new ListBuilder<LaunchpadInfo>(HttpClient, "launchpads", Context, BuilderDelegates);
+            return new ListBuilder<LaunchpadInfo>(HttpClient, "launchpads", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

@@ -42,7 +42,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<CoreInfo> GetAll()
         {
-            return new ListBuilder<CoreInfo>(HttpClient, "cores", Context, BuilderDelegates);
+            return new ListBuilder<CoreInfo>(HttpClient, "cores", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

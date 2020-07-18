@@ -42,7 +42,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<RocketInfo> GetAll()
         {
-            return new ListBuilder<RocketInfo>(HttpClient, "rockets", Context, BuilderDelegates);
+            return new ListBuilder<RocketInfo>(HttpClient, "rockets", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>

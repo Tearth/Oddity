@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Oddity.Cache;
 using Oddity.Events;
 using Oddity.Models;
 
@@ -10,10 +11,11 @@ namespace Oddity.Builders
     /// Represents a list builder used to retrieve data (collection of objects) without any filters.
     /// </summary>
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
-    public class ListBuilder<TReturn> : BuilderBase<List<TReturn>> where TReturn : ModelBase
+    public class ListBuilder<TReturn> : BuilderBase<List<TReturn>> where TReturn : ModelBase, IIdentifiable
     {
         private readonly string _endpoint;
         private readonly OddityCore _context;
+        private readonly CacheService<TReturn> _cache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuilder{TReturn}"/> class.
@@ -22,11 +24,12 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public ListBuilder(HttpClient httpClient, string endpoint, OddityCore context, BuilderDelegates builderDelegates)
+        public ListBuilder(HttpClient httpClient, string endpoint, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates)
             : base(httpClient, builderDelegates)
         {
             _endpoint = endpoint;
             _context = context;
+            _cache = cache;
         }
 
         /// <inheritdoc />
@@ -44,12 +47,22 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<List<TReturn>> ExecuteAsync()
         {
+            if (_context.CacheEnabled && _cache.GetListIfAvailable(out List<TReturn> list, _endpoint))
+            {
+                return list;
+            }
+
             var content = await GetResponseFromEndpoint($"{_endpoint}");
             var deserializedObjectsList = DeserializeJson(content);
 
             foreach (var deserializedObject in deserializedObjectsList)
             {
                 deserializedObject.SetContext(_context);
+            }
+
+            if (_context.CacheEnabled)
+            {
+                _cache.UpdateList(deserializedObjectsList, _endpoint);
             }
 
             return deserializedObjectsList;

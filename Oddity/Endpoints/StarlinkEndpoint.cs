@@ -42,7 +42,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<StarlinkInfo> GetAll()
         {
-            return new ListBuilder<StarlinkInfo>(HttpClient, "starlink", Context, BuilderDelegates);
+            return new ListBuilder<StarlinkInfo>(HttpClient, "starlink", Context, _cache, BuilderDelegates);
         }
 
         /// <summary>
