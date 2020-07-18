@@ -6,7 +6,7 @@ using Oddity.Models.Launches;
 
 namespace Oddity.Models.Ships
 {
-    public class ShipInfo : ModelBase
+    public class ShipInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }

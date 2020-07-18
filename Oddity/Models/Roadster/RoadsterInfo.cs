@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Oddity.Models.Roadster
 {
-    public class RoadsterInfo : ModelBase
+    public class RoadsterInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Oddity.Models.Company
 {
-    public class CompanyInfo : ModelBase
+    public class CompanyInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }

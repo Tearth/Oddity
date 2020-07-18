@@ -4,7 +4,7 @@ using Oddity.Models.Launches;
 
 namespace Oddity.Models.Starlink
 {
-    public class StarlinkInfo : ModelBase
+    public class StarlinkInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Version { get; set; }

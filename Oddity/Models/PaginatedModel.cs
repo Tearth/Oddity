@@ -6,7 +6,7 @@ using Oddity.Models.Query;
 
 namespace Oddity.Models
 {
-    public class PaginatedModel<T> where T : ModelBase
+    public class PaginatedModel<T> where T : ModelBase, IIdentifiable
     {
         public uint TotalDocs { get; set; }
         public uint Offset { get; set; }

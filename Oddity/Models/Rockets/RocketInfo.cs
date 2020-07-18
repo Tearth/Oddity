@@ -5,7 +5,7 @@ using Oddity.Models.Common;
 
 namespace Oddity.Models.Rockets
 {
-    public class RocketInfo : ModelBase
+    public class RocketInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }

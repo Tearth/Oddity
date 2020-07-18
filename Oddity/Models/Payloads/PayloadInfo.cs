@@ -5,7 +5,7 @@ using Oddity.Models.Launches;
 
 namespace Oddity.Models.Payloads
 {
-    public class PayloadInfo : ModelBase
+    public class PayloadInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }

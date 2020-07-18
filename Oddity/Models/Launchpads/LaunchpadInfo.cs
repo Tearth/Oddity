@@ -7,7 +7,7 @@ using Oddity.Models.Rockets;
 
 namespace Oddity.Models.Launchpads
 {
-    public class LaunchpadInfo : ModelBase
+    public class LaunchpadInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }

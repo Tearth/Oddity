@@ -6,7 +6,7 @@ using Oddity.Models.Launches;
 
 namespace Oddity.Models.Capsules
 {
-    public class CapsuleInfo : ModelBase
+    public class CapsuleInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Serial { get; set; }

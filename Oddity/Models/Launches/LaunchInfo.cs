@@ -11,7 +11,7 @@ using Oddity.Models.Ships;
 
 namespace Oddity.Models.Launches
 {
-    public class LaunchInfo : ModelBase
+    public class LaunchInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }

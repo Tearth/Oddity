@@ -6,7 +6,7 @@ using Oddity.Models.Launches;
 
 namespace Oddity.Models.Landpads
 {
-    public class LandpadInfo : ModelBase
+    public class LandpadInfo : ModelBase, IIdentifiable
     {
         public string Id { get; set; }
         public string Name { get; set; }
