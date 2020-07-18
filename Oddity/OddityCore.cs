@@ -87,6 +87,18 @@ namespace Oddity
         /// </summary>
         public StarlinkEndpoint<StarlinkInfo> StarlinkEndpoint { get; }
 
+        public TimeSpan Timeout
+        {
+            get => HttpClient.Timeout;
+            set => HttpClient.Timeout = value;
+        }
+
+        public string UserAgent => $"{LibraryConfiguration.LibraryName}/{Version} ({LibraryConfiguration.GitHubLink})";
+
+        public string Version => GetType().GetTypeInfo()
+            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+            .InformationalVersion;
+
         /// <summary>
         /// Event triggered when an error occurred during JSON deserialization.
         /// </summary>
@@ -114,9 +126,9 @@ namespace Oddity
 
             HttpClient = new HttpClient();
             HttpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
-            HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd(GetUserAgent());
+            HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd(UserAgent);
 
-            SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
+            Timeout = new TimeSpan(0, 0, ApiConfiguration.DefaultTimeoutSeconds);
 
             BuilderDelegates = new BuilderDelegates
             {
@@ -137,34 +149,6 @@ namespace Oddity
             RocketsEndpoint = new RocketsEndpoint<RocketInfo>(this);
             ShipsEndpoint = new ShipsEndpoint<ShipInfo>(this);
             StarlinkEndpoint = new StarlinkEndpoint<StarlinkInfo>(this);
-        }
-
-        /// <summary>
-        /// Sets the timeout for all API requests.
-        /// </summary>
-        /// <param name="timeoutSeconds">Timeout in seconds.</param>
-        public void SetTimeout(int timeoutSeconds)
-        {
-            HttpClient.Timeout = new TimeSpan(0, 0, 0, timeoutSeconds);
-        }
-
-        /// <summary>
-        /// Gets the current version of library saved in the assembly metadata.
-        /// </summary>
-        /// <returns>The library version.</returns>
-        public string GetLibraryVersion()
-        {
-            var assembly = GetType().GetTypeInfo().Assembly;
-            return assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-        }
-
-        /// <summary>
-        /// Gets the user agent that is send in every request to the API.
-        /// </summary>
-        /// <returns>User agent.</returns>
-        public string GetUserAgent()
-        {
-            return $"{LibraryConfiguration.LibraryName}/{GetLibraryVersion()} ({LibraryConfiguration.GitHubLink})";
         }
 
         /// <inheritdoc />
