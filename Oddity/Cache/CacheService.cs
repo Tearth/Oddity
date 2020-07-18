@@ -65,5 +65,11 @@ namespace Oddity.Cache
                 Update(item, item.Id);
             }
         }
+
+        public void Clear()
+        {
+            _cachedLists.Clear();
+            _cachedLists.Clear();
+        }
     }
 }

@@ -14,7 +14,6 @@ namespace Oddity.Builders
     {
         private readonly string _endpoint;
         private readonly string _id;
-        private readonly OddityCore _context;
         private readonly CacheService<TReturn> _cache;
 
         /// <summary>
@@ -24,8 +23,8 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates) 
-            : this(httpClient, endpoint, null, context, cache, builderDelegates)
+        public SimpleBuilder(string endpoint, OddityCore context, CacheService<TReturn> cache) 
+            : this(endpoint, null, context, cache)
         {
 
         }
@@ -38,12 +37,11 @@ namespace Oddity.Builders
         /// <param name="id">The ID of the specified object to retrieve from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public SimpleBuilder(HttpClient httpClient, string endpoint, string id, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates) 
-            : base(httpClient, builderDelegates)
+        public SimpleBuilder(string endpoint, string id, OddityCore context, CacheService<TReturn> cache) 
+            : base(context)
         {
             _endpoint = endpoint;
             _id = id;
-            _context = context;
             _cache = cache;
         }
 
@@ -62,7 +60,7 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<TReturn> ExecuteAsync()
         {
-            if (_context.CacheEnabled && _cache.GetIfAvailable(out TReturn data, _id ?? _endpoint))
+            if (Context.CacheEnabled && _cache.GetIfAvailable(out TReturn data, _id ?? _endpoint))
             {
                 return data;
             }
@@ -74,9 +72,9 @@ namespace Oddity.Builders
             }
 
             var deserializedObject = DeserializeJson(content);
-            deserializedObject.SetContext(_context);
+            deserializedObject.SetContext(Context);
 
-            if (_context.CacheEnabled)
+            if (Context.CacheEnabled)
             {
                 _cache.Update(deserializedObject, _id ?? _endpoint);
             }
@@ -94,7 +92,7 @@ namespace Oddity.Builders
             }
 
             DeserializeJson(content, model);
-            model.SetContext(_context);
+            model.SetContext(Context);
 
             return true;
         }

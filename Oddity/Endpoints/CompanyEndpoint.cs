@@ -19,8 +19,8 @@ namespace Oddity.Endpoints
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public CompanyEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates, LibraryConfiguration.LowPriorityCacheLifetime)
+        public CompanyEndpoint(OddityCore context)
+            : base(context, LibraryConfiguration.LowPriorityCacheLifetime)
         {
 
         }
@@ -31,7 +31,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> Get()
         {
-            return new SimpleBuilder<T>(HttpClient, "company", Context, Cache, BuilderDelegates);
+            return new SimpleBuilder<T>("company", Context, Cache);
         }
     }
 }

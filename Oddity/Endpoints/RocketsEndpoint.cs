@@ -19,8 +19,8 @@ namespace Oddity.Endpoints
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public RocketsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates, LibraryConfiguration.LowPriorityCacheLifetime)
+        public RocketsEndpoint(OddityCore context)
+            : base(context, LibraryConfiguration.LowPriorityCacheLifetime)
         {
 
         }
@@ -32,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<T>(HttpClient, "rockets", id, Context, Cache, BuilderDelegates);
+            return new SimpleBuilder<T>("rockets", id, Context, Cache);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<T>(HttpClient, "rockets", Context, Cache, BuilderDelegates);
+            return new ListBuilder<T>("rockets", Context, Cache);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<T>(HttpClient, "rockets/query", Context, Cache, BuilderDelegates);
+            return new QueryBuilder<T>("rockets/query", Context, Cache);
         }
     }
 }

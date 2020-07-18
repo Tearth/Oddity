@@ -102,45 +102,41 @@ namespace Oddity
         /// </summary>
         public event EventHandler<ResponseReceiveEventArgs> OnResponseReceive;
 
-        private readonly HttpClient _httpClient;
-
-        public OddityCore() : this(true)
-        {
-
-        }
+        protected internal readonly HttpClient HttpClient;
+        protected internal readonly BuilderDelegates BuilderDelegates;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OddityCore"/> class.
         /// </summary>
-        public OddityCore(bool cacheEnabled)
+        public OddityCore(bool cacheEnabled = true)
         {
             CacheEnabled = cacheEnabled;
 
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
-            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(GetUserAgent());
+            HttpClient = new HttpClient();
+            HttpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
+            HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd(GetUserAgent());
 
             SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
 
-            var builderDelegates = new BuilderDelegates
+            BuilderDelegates = new BuilderDelegates
             {
                 DeserializationError = DeserializationError,
                 RequestSend = RequestSend,
                 ResponseReceived = ResponseReceived
             };
 
-            CapsulesEndpoint = new CapsulesEndpoint<CapsuleInfo>(_httpClient, this, builderDelegates);
-            CompanyEndpoint = new CompanyEndpoint<CompanyInfo>(_httpClient, this, builderDelegates);
-            CoresEndpoint = new CoresEndpoint<CoreInfo>(_httpClient, this, builderDelegates);
-            CrewEndpoint = new CrewEndpoint<CrewInfo>(_httpClient, this, builderDelegates);
-            LandpadsEndpoint = new LandpadsEndpoint<LandpadInfo>(_httpClient, this, builderDelegates);
-            LaunchesEndpoint = new LaunchesEndpoint<LaunchInfo>(_httpClient, this, builderDelegates);
-            LaunchpadsEndpoint = new LaunchpadsEndpoint<LaunchpadInfo>(_httpClient, this, builderDelegates);
-            PayloadsEndpoint = new PayloadsEndpoint<PayloadInfo>(_httpClient, this, builderDelegates);
-            RoadsterEndpoint = new RoadsterEndpoint<RoadsterInfo>(_httpClient, this, builderDelegates);
-            RocketsEndpoint = new RocketsEndpoint<RocketInfo>(_httpClient, this, builderDelegates);
-            ShipsEndpoint = new ShipsEndpoint<ShipInfo>(_httpClient, this, builderDelegates);
-            StarlinkEndpoint = new StarlinkEndpoint<StarlinkInfo>(_httpClient, this, builderDelegates);
+            CapsulesEndpoint = new CapsulesEndpoint<CapsuleInfo>(this);
+            CompanyEndpoint = new CompanyEndpoint<CompanyInfo>(this);
+            CoresEndpoint = new CoresEndpoint<CoreInfo>(this);
+            CrewEndpoint = new CrewEndpoint<CrewInfo>(this);
+            LandpadsEndpoint = new LandpadsEndpoint<LandpadInfo>(this);
+            LaunchesEndpoint = new LaunchesEndpoint<LaunchInfo>(this);
+            LaunchpadsEndpoint = new LaunchpadsEndpoint<LaunchpadInfo>(this);
+            PayloadsEndpoint = new PayloadsEndpoint<PayloadInfo>(this);
+            RoadsterEndpoint = new RoadsterEndpoint<RoadsterInfo>(this);
+            RocketsEndpoint = new RocketsEndpoint<RocketInfo>(this);
+            ShipsEndpoint = new ShipsEndpoint<ShipInfo>(this);
+            StarlinkEndpoint = new StarlinkEndpoint<StarlinkInfo>(this);
         }
 
         /// <summary>
@@ -149,7 +145,7 @@ namespace Oddity
         /// <param name="timeoutSeconds">Timeout in seconds.</param>
         public void SetTimeout(int timeoutSeconds)
         {
-            _httpClient.Timeout = new TimeSpan(0, 0, 0, timeoutSeconds);
+            HttpClient.Timeout = new TimeSpan(0, 0, 0, timeoutSeconds);
         }
 
         /// <summary>
@@ -174,7 +170,7 @@ namespace Oddity
         /// <inheritdoc />
         public void Dispose()
         {
-            _httpClient?.Dispose();
+            HttpClient?.Dispose();
         }
 
         private void DeserializationError(ErrorEventArgs args)

@@ -19,8 +19,8 @@ namespace Oddity.Endpoints
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public LandpadsEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates, LibraryConfiguration.MediumPriorityCacheLifetime)
+        public LandpadsEndpoint(OddityCore context)
+            : base(context, LibraryConfiguration.MediumPriorityCacheLifetime)
         {
 
         }
@@ -32,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<T>(HttpClient, "landpads", id, Context, Cache, BuilderDelegates);
+            return new SimpleBuilder<T>("landpads", id, Context, Cache);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<T>(HttpClient, "landpads", Context, Cache, BuilderDelegates);
+            return new ListBuilder<T>("landpads", Context, Cache);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<T>(HttpClient, "landpads/query", Context, Cache, BuilderDelegates);
+            return new QueryBuilder<T>("landpads/query", Context, Cache);
         }
     }
 }

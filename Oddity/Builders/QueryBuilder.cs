@@ -20,7 +20,6 @@ namespace Oddity.Builders
     public class QueryBuilder<TReturn> : BuilderBase<PaginatedModel<TReturn>> where TReturn : ModelBase, IIdentifiable
     {
         private readonly string _endpoint;
-        private readonly OddityCore _context;
         private readonly QueryModel _query;
         private readonly CacheService<TReturn> _cache;
 
@@ -31,11 +30,10 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates)
-            : base(httpClient, builderDelegates)
+        public QueryBuilder(string endpoint, OddityCore context, CacheService<TReturn> cache)
+            : base(context)
         {
             _endpoint = endpoint;
-            _context = context;
             _query = new QueryModel();
             _cache = cache;
         }
@@ -48,11 +46,10 @@ namespace Oddity.Builders
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="query">The query model used to support the pagination.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(HttpClient httpClient, string endpoint, OddityCore context, QueryModel query, BuilderDelegates builderDelegates) 
-            : base(httpClient, builderDelegates)
+        public QueryBuilder(string endpoint, OddityCore context, QueryModel query) 
+            : base(context)
         {
             _endpoint = endpoint;
-            _context = context;
             _query = query;
         }
 
@@ -78,10 +75,10 @@ namespace Oddity.Builders
 
             foreach (var deserializedObject in paginatedModel.Data)
             {
-                deserializedObject.SetContext(_context);
+                deserializedObject.SetContext(Context);
             }
 
-            if (_context.CacheEnabled)
+            if (Context.CacheEnabled)
             {
                 _cache.UpdateList(paginatedModel.Data, _endpoint);
             }
@@ -103,7 +100,7 @@ namespace Oddity.Builders
 
             foreach (var deserializedObject in paginatedModel.Data)
             {
-                deserializedObject.SetContext(_context);
+                deserializedObject.SetContext(Context);
             }
 
             return true;

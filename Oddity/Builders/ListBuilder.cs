@@ -14,7 +14,6 @@ namespace Oddity.Builders
     public class ListBuilder<TReturn> : BuilderBase<List<TReturn>> where TReturn : ModelBase, IIdentifiable
     {
         private readonly string _endpoint;
-        private readonly OddityCore _context;
         private readonly CacheService<TReturn> _cache;
 
         /// <summary>
@@ -24,11 +23,10 @@ namespace Oddity.Builders
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public ListBuilder(HttpClient httpClient, string endpoint, OddityCore context, CacheService<TReturn> cache, BuilderDelegates builderDelegates)
-            : base(httpClient, builderDelegates)
+        public ListBuilder(string endpoint, OddityCore context, CacheService<TReturn> cache)
+            : base(context)
         {
             _endpoint = endpoint;
-            _context = context;
             _cache = cache;
         }
 
@@ -47,7 +45,7 @@ namespace Oddity.Builders
         /// <inheritdoc />
         public override async Task<List<TReturn>> ExecuteAsync()
         {
-            if (_context.CacheEnabled && _cache.GetListIfAvailable(out List<TReturn> list, _endpoint))
+            if (Context.CacheEnabled && _cache.GetListIfAvailable(out List<TReturn> list, _endpoint))
             {
                 return list;
             }
@@ -57,10 +55,10 @@ namespace Oddity.Builders
 
             foreach (var deserializedObject in deserializedObjectsList)
             {
-                deserializedObject.SetContext(_context);
+                deserializedObject.SetContext(Context);
             }
 
-            if (_context.CacheEnabled)
+            if (Context.CacheEnabled)
             {
                 _cache.UpdateList(deserializedObjectsList, _endpoint);
             }
@@ -81,7 +79,7 @@ namespace Oddity.Builders
 
             foreach (var deserializedObject in models)
             {
-                deserializedObject.SetContext(_context);
+                deserializedObject.SetContext(Context);
             }
 
             return true;

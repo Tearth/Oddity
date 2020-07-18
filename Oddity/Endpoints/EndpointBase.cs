@@ -7,9 +7,7 @@ namespace Oddity.Endpoints
 {
     public abstract class EndpointBase<T> where T : ModelBase, IIdentifiable
     {
-        protected readonly HttpClient HttpClient;
         protected readonly OddityCore Context;
-        protected readonly BuilderDelegates BuilderDelegates;
         protected readonly CacheService<T> Cache;
 
         /// <summary>
@@ -18,12 +16,15 @@ namespace Oddity.Endpoints
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        protected EndpointBase(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates, int cacheLifetime)
+        protected EndpointBase(OddityCore context, int cacheLifetime)
         {
-            HttpClient = httpClient;
             Context = context;
-            BuilderDelegates = builderDelegates;
             Cache = new CacheService<T>(cacheLifetime);
+        }
+
+        public void ClearCache()
+        {
+            Cache.Clear();
         }
     }
 }

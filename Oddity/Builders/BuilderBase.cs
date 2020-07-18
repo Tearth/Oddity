@@ -16,15 +16,13 @@ namespace Oddity.Builders
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
     public abstract class BuilderBase<TReturn>
     {
-        protected readonly HttpClient HttpClient;
-        protected readonly BuilderDelegates BuilderDelegates;
+        protected readonly OddityCore Context;
 
         private JsonSerializerSettings _serializationSettings;
 
-        protected BuilderBase(HttpClient httpClient, BuilderDelegates builderDelegates)
+        protected BuilderBase(OddityCore context)
         {
-            HttpClient = httpClient;
-            BuilderDelegates = builderDelegates;
+            Context = context;
 
             _serializationSettings = new JsonSerializerSettings
             {
@@ -57,17 +55,17 @@ namespace Oddity.Builders
 
         protected async Task<string> GetResponseFromEndpoint(string link, string postBody = null)
         {
-            BuilderDelegates.RequestSend(new RequestSendEventArgs(link, postBody));
+            Context.BuilderDelegates.RequestSend(new RequestSendEventArgs(link, postBody));
 
             HttpResponseMessage response;
             if (postBody == null)
             {
-                response = await HttpClient.GetAsync(link).ConfigureAwait(false);
+                response = await Context.HttpClient.GetAsync(link).ConfigureAwait(false);
             }
             else
             {
                 var httpContent = new StringContent(postBody, Encoding.UTF8, "application/json");
-                response = await HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
+                response = await Context.HttpClient.PostAsync(link, httpContent).ConfigureAwait(false);
             }
 
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -92,7 +90,7 @@ namespace Oddity.Builders
                 }
             }
 
-            BuilderDelegates.ResponseReceived(eventArgs);
+            Context.BuilderDelegates.ResponseReceived(eventArgs);
 
             return content;
         }
@@ -114,7 +112,7 @@ namespace Oddity.Builders
 
         private void JsonDeserializationError(object sender, ErrorEventArgs errorEventArgs)
         {
-            BuilderDelegates.DeserializationError(errorEventArgs);
+            Context.BuilderDelegates.DeserializationError(errorEventArgs);
         }
     }
 }

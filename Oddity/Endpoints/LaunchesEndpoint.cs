@@ -19,8 +19,8 @@ namespace Oddity.Endpoints
         /// <param name="httpClient">The HTTP client.</param>
         /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
         /// <param name="builderDelegates">The builder delegates container.</param>
-        public LaunchesEndpoint(HttpClient httpClient, OddityCore context, BuilderDelegates builderDelegates)
-            : base(httpClient, context, builderDelegates, LibraryConfiguration.HighPriorityCacheLifetime)
+        public LaunchesEndpoint(OddityCore context)
+            : base(context, LibraryConfiguration.HighPriorityCacheLifetime)
         {
 
         }
@@ -32,7 +32,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> Get(string id)
         {
-            return new SimpleBuilder<T>(HttpClient, "launches", id, Context, Cache, BuilderDelegates);
+            return new SimpleBuilder<T>("launches", id, Context, Cache);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> GetLatest()
         {
-            return new SimpleBuilder<T>(HttpClient, "launches/latest", Context, Cache, BuilderDelegates);
+            return new SimpleBuilder<T>("launches/latest", Context, Cache);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<T> GetNext()
         {
-            return new SimpleBuilder<T>(HttpClient, "launches/next", Context, Cache, BuilderDelegates);
+            return new SimpleBuilder<T>("launches/next", Context, Cache);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<T> GetAll()
         {
-            return new ListBuilder<T>(HttpClient, "launches", Context, Cache, BuilderDelegates);
+            return new ListBuilder<T>("launches", Context, Cache);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<T> GetPast()
         {
-            return new ListBuilder<T>(HttpClient, "launches/past", Context, Cache, BuilderDelegates);
+            return new ListBuilder<T>("launches/past", Context, Cache);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public ListBuilder<T> GetUpcoming()
         {
-            return new ListBuilder<T>(HttpClient, "launches/upcoming", Context, Cache, BuilderDelegates);
+            return new ListBuilder<T>("launches/upcoming", Context, Cache);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public QueryBuilder<T> Query()
         {
-            return new QueryBuilder<T>(HttpClient, "launches/query", Context, Cache, BuilderDelegates);
+            return new QueryBuilder<T>("launches/query", Context, Cache);
         }
     }
 }
