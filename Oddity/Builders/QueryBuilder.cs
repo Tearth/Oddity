@@ -182,8 +182,10 @@ namespace Oddity.Builders
             foreach (var deserializedObject in paginatedModel.Data)
             {
                 deserializedObject.SetContext(Context);
+                _cache.Update(deserializedObject, deserializedObject.Id);
             }
 
+            paginatedModel.SetBuilder(this);
             return true;
         }
 
