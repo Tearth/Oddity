@@ -2,6 +2,9 @@
 
 namespace Oddity.Exceptions
 {
+    /// <summary>
+    /// The exception that is thrown when SpaceX API has received invalid request which cannot be processed.
+    /// </summary>
     public class ApiBadRequestException : Exception
     {
         /// <inheritdoc />
