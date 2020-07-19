@@ -104,10 +104,15 @@ namespace Oddity.Cache
         /// <summary>
         /// Clears all cached data.
         /// </summary>
-        public void Clear()
+        /// <returns>Number of purged cached elements.</returns>
+        public int Clear()
         {
+            var count = _cachedData.Count + _cachedLists.Count;
+
+            _cachedData.Clear();
             _cachedLists.Clear();
-            _cachedLists.Clear();
+
+            return count;
         }
     }
 }

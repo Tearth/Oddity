@@ -26,9 +26,10 @@ namespace Oddity.Endpoints
         /// <summary>
         /// Clears all cached data.
         /// </summary>
-        public void ClearCache()
+        /// <returns>Number of purged cached elements.</returns>
+        public int ClearCache()
         {
-            Cache.Clear();
+            return Cache.Clear();
         }
     }
 }
