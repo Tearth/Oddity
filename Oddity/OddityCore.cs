@@ -28,73 +28,82 @@ namespace Oddity
         public bool CacheEnabled { get; set; }
 
         /// <summary>
-        /// Entry point of the /capsules endpoint.
+        /// Gets the entry point of the /capsules endpoint.
         /// </summary>
         public CapsulesEndpoint<CapsuleInfo> CapsulesEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /company endpoint.
+        /// Gets the entry point of the /company endpoint.
         /// </summary>
         public CompanyEndpoint<CompanyInfo> CompanyEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /cores endpoint.
+        /// Gets the entry point of the /cores endpoint.
         /// </summary>
         public CoresEndpoint<CoreInfo> CoresEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /crew endpoint.
+        /// Gets the entry point of the /crew endpoint.
         /// </summary>
         public CrewEndpoint<CrewInfo> CrewEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /landpads endpoint.
+        /// Gets the entry point of the /landpads endpoint.
         /// </summary>
         public LandpadsEndpoint<LandpadInfo> LandpadsEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /launches endpoint.
+        /// Gets the entry point of the /launches endpoint.
         /// </summary>
         public LaunchesEndpoint<LaunchInfo> LaunchesEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /launchpads endpoint.
+        /// Gets the entry point of the /launchpads endpoint.
         /// </summary>
         public LaunchpadsEndpoint<LaunchpadInfo> LaunchpadsEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /payloads endpoint.
+        /// Gets the entry point of the /payloads endpoint.
         /// </summary>
         public PayloadsEndpoint<PayloadInfo> PayloadsEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /roadster endpoint.
+        /// Gets the entry point of the /roadster endpoint.
         /// </summary>
         public RoadsterEndpoint<RoadsterInfo> RoadsterEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /rockets endpoint.
+        /// Gets the entry point of the /rockets endpoint.
         /// </summary>
         public RocketsEndpoint<RocketInfo> RocketsEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /ships endpoint.
+        /// Gets the entry point of the /ships endpoint.
         /// </summary>
         public ShipsEndpoint<ShipInfo> ShipsEndpoint { get; }
 
         /// <summary>
-        /// Entry point of the /starlink endpoint.
+        /// Gets the entry point of the /starlink endpoint.
         /// </summary>
         public StarlinkEndpoint<StarlinkInfo> StarlinkEndpoint { get; }
 
+        /// <summary>
+        /// Gets or sets the HTTP timeout when making requests to API.
+        /// </summary>
         public TimeSpan Timeout
         {
             get => HttpClient.Timeout;
             set => HttpClient.Timeout = value;
         }
 
+        /// <summary>
+        /// Gets the user agent used when making requests to API.
+        /// </summary>
         public string UserAgent => $"{LibraryConfiguration.LibraryName}/{Version} ({LibraryConfiguration.GitHubLink})";
 
+        /// <summary>
+        /// Gets the library version used in user agent when making requests to API.
+        /// </summary>
         public string Version => GetType().GetTypeInfo().Assembly
             .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
             .InformationalVersion;
