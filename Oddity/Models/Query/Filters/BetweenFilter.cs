@@ -2,15 +2,15 @@
 
 namespace Oddity.Models.Query.Filters
 {
-    public class BetweenFilter<T>
+    public class BetweenFilter<TData>
     {
         [JsonProperty("$gt")]
-        public T From { get; set; }
+        public TData From { get; set; }
 
         [JsonProperty("$lt")]
-        public T To { get; set; }
+        public TData To { get; set; }
 
-        public BetweenFilter(T from, T to)
+        public BetweenFilter(TData from, TData to)
         {
             From = from;
             To = to;

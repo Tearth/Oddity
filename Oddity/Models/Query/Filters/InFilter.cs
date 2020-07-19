@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 
 namespace Oddity.Models.Query.Filters
 {
-    public class InFilter<T>
+    public class InFilter<TData>
     {
         [JsonProperty("$in")]
-        public List<T> Values { get; set; }
+        public List<TData> Values { get; set; }
 
-        public InFilter(params T[] values)
+        public InFilter(params TData[] values)
         {
             Values = values.ToList();
         }

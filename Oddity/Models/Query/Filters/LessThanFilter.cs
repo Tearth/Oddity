@@ -2,12 +2,12 @@
 
 namespace Oddity.Models.Query.Filters
 {
-    public class LessThanFilter<T>
+    public class LessThanFilter<TData>
     {
         [JsonProperty("$lt")]
-        public T LessThanValue { get; set; }
+        public TData LessThanValue { get; set; }
 
-        public LessThanFilter(T lessThanValue)
+        public LessThanFilter(TData lessThanValue)
         {
             LessThanValue = lessThanValue;
         }

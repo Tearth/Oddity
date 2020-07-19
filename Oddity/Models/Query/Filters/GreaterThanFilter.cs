@@ -2,12 +2,12 @@
 
 namespace Oddity.Models.Query.Filters
 {
-    public class GreaterThanFilter<T>
+    public class GreaterThanFilter<TData>
     {
         [JsonProperty("$gt")]
-        public T GreaterThanValue { get; set; }
+        public TData GreaterThanValue { get; set; }
 
-        public GreaterThanFilter(T greaterThanValue)
+        public GreaterThanFilter(TData greaterThanValue)
         {
             GreaterThanValue = greaterThanValue;
         }
