@@ -4,16 +4,27 @@ using System.Reflection;
 
 namespace Oddity.Models
 {
+    /// <summary>
+    /// Represents an abstract class for all models.
+    /// </summary>
     public abstract class ModelBase
     {
         protected OddityCore Context { get; set; }
 
+        /// <summary>
+        /// Sets the Oddity context used in lazy properties.
+        /// </summary>
+        /// <param name="context">Oddity context.</param>
         public void SetContext(OddityCore context)
         {
             Context = context;
             SetContextInNestedObjects(context);
         }
 
+        /// <summary>
+        /// Makes a shallow copy of all properties into the target model (remember that it's filled, not instantiated again).
+        /// </summary>
+        /// <param name="target">Target model which will be filled.</param>
         public void CopyTo(ModelBase target)
         {
             foreach (var property in GetType().GetRuntimeProperties().Where(p => p.CanWrite))
