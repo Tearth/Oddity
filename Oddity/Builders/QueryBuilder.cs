@@ -17,31 +17,29 @@ namespace Oddity.Builders
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
     public class QueryBuilder<TReturn> : BuilderBase<PaginatedModel<TReturn>> where TReturn : ModelBase, IIdentifiable, new()
     {
+        private readonly CacheService<TReturn> _cache;
         private readonly string _endpoint;
         private readonly QueryModel _query;
-        private readonly CacheService<TReturn> _cache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryBuilder{TReturn}"/> class.
         /// </summary>
-        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="cache"></param>
+        /// <param name="context">The Oddity context used to interact with API.</param>
+        /// <param name="cache">Cache service used to speed up requests.</param>
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="builderDelegates">The builder delegates container.</param>
-        public QueryBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint)
-            : base(context)
+        public QueryBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint) : base(context)
         {
+            _cache = cache;
             _endpoint = endpoint;
             _query = new QueryModel();
-            _cache = cache;
         }
 
         /// <summary>
-        /// Adds a filter for the specified field which have to have an exact value.
+        /// Adds an "equal" filter for the specified field. API will return all models with a field
+        /// value equal to the specified in the parameter.
         /// </summary>
-        /// <typeparam name="TField">Type of the field.</typeparam>
-        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
+        /// <typeparam name="TField">Type of the property (JSON field).</typeparam>
+        /// <param name="selector">Property (JSON field) selector.</param>
         /// <param name="value">Value of the field to match.</param>
         /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithFieldEqual<TField>(Expression<Func<TReturn, TField>> selector, TField value)
@@ -52,11 +50,12 @@ namespace Oddity.Builders
         }
 
         /// <summary>
-        /// Adds a filter for the specified field which have to have an value greater than specified.
+        /// Adds a "greater than" filter for the specified field. API will return all models with a field
+        /// value greater than the specified in the parameter.
         /// </summary>
-        /// <typeparam name="TField">Type of the field.</typeparam>
-        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
-        /// <param name="value">Max value of the field.</param>
+        /// <typeparam name="TField">Type of the property (JSON field).</typeparam>
+        /// <param name="selector">Property (JSON field) selector.</param>
+        /// <param name="value">Value of the field to match.</param>
         /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithFieldGreaterThan<TField>(Expression<Func<TReturn, TField>> selector, TField value)
         {
@@ -66,11 +65,12 @@ namespace Oddity.Builders
         }
 
         /// <summary>
-        /// Adds a filter for the specified field which have to have an value less than specified.
+        /// Adds a "less than" filter for the specified field. API will return all models with a field
+        /// value less than the specified in the parameter.
         /// </summary>
-        /// <typeparam name="TField">Type of the field.</typeparam>
-        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
-        /// <param name="value">Min value of the field.</param>
+        /// <typeparam name="TField">Type of the property (JSON field).</typeparam>
+        /// <param name="selector">Property (JSON field) selector.</param>
+        /// <param name="value">Value of the field to match.</param>
         /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithFieldLessThan<TField>(Expression<Func<TReturn, TField>> selector, TField value)
         {
@@ -80,12 +80,13 @@ namespace Oddity.Builders
         }
 
         /// <summary>
-        /// Adds a filter for the specified field which have to have an value within the specified range.
+        /// Adds a "between" filter for the specified field. API will return all models with a field
+        /// value greater than the bounds specified in the parameters.
         /// </summary>
-        /// <typeparam name="TField">Type of the field.</typeparam>
-        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
-        /// <param name="from">Left side of the range.</param>
-        /// <param name="to">Right side of the range.</param>
+        /// <typeparam name="TField">Type of the property (JSON field).</typeparam>
+        /// <param name="selector">Property (JSON field) selector.</param>
+        /// <param name="from">Left bound of the value to match.</param>
+        /// <param name="to">Right bound of the value to match.</param>
         /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithFieldBetween<TField>(Expression<Func<TReturn, TField>> selector, TField from, TField to)
         {
@@ -95,11 +96,12 @@ namespace Oddity.Builders
         }
 
         /// <summary>
-        /// Adds a filter for the specified field which have to have an value same as one of the specified.
+        /// Adds an "in" filter for the specified field. API will return all models with a field
+        /// value containing one of the specified in the parameter.
         /// </summary>
-        /// <typeparam name="TField">Type of the field.</typeparam>
-        /// <param name="fieldPath">Name of the field (naming convention same as in models).</param>
-        /// <param name="values">Values which have to be matched.</param>
+        /// <typeparam name="TField">Type of the property (JSON field).</typeparam>
+        /// <param name="selector">Property (JSON field) selector.</param>
+        /// <param name="values">List of values to match.</param>
         /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithFieldIn<TField>(Expression<Func<TReturn, TField>> selector, params TField[] values)
         {
@@ -108,6 +110,14 @@ namespace Oddity.Builders
             return this;
         }
 
+
+        /// <summary>
+        /// Sorts result using the specified field and order (ascending/descending).
+        /// </summary>
+        /// <typeparam name="TField">Type of the property (JSON field).</typeparam>
+        /// <param name="selector">Property (JSON field) selector.</param>
+        /// <param name="ascending">Sort order (ascending/descending).</param>
+        /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> SortBy<TField>(Expression<Func<TReturn, TField>> selector, bool ascending = true)
         {
             var fieldPath = GetPathFromExpression(selector);
@@ -122,7 +132,12 @@ namespace Oddity.Builders
             return this;
         }
 
-        // TODO: don't use with skip
+        /// <summary>
+        /// Sets page number which will be returned from API. Don't use this method together with <see cref="WithOffset"/> (offset will
+        /// be set to null in this case).
+        /// </summary>
+        /// <param name="page">Selected page number (starting from 1).</param>
+        /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithPage(uint page)
         {
             _query.Options.Page = page;
@@ -130,13 +145,23 @@ namespace Oddity.Builders
             return this;
         }
 
+        /// <summary>
+        /// Sets how many elements should be returned from API in the single page.
+        /// </summary>
+        /// <param name="limit">Number of elements to return.</param>
+        /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithLimit(uint limit)
         {
             _query.Options.Limit = limit;
             return this;
         }
 
-        // TODO: don't use with page
+        /// <summary>
+        /// Sets page number which will be returned from API. Don't use this method together with <see cref="WithPage"/> (page will
+        /// be set to null in this case).
+        /// </summary>
+        /// <param name="offset">Number of elements to skip.</param>
+        /// <returns>Builder instance.</returns>
         public QueryBuilder<TReturn> WithOffset(uint offset)
         {
             _query.Options.Offset = offset;

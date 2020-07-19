@@ -11,22 +11,19 @@ namespace Oddity.Builders
     /// <typeparam name="TReturn">Type which will be returned after successful API request.</typeparam>
     public class ListBuilder<TReturn> : BuilderBase<List<TReturn>> where TReturn : ModelBase, IIdentifiable, new()
     {
-        private readonly string _endpoint;
         private readonly CacheService<TReturn> _cache;
+        private readonly string _endpoint;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ListBuilder{TReturn}"/> class.
         /// </summary>
-        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="cache"></param>
+        /// <param name="context">The Oddity context used to interact with API.</param>
+        /// <param name="cache">Cache service used to speed up requests.</param>
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="builderDelegates">The builder delegates container.</param>
-        public ListBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint)
-            : base(context)
+        public ListBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint) : base(context)
         {
-            _endpoint = endpoint;
             _cache = cache;
+            _endpoint = endpoint;
         }
 
         /// <inheritdoc />

@@ -34,22 +34,37 @@ namespace Oddity.Builders
         }
 
         /// <summary>
-        /// Performs a request to the API and returns deserialized JSON.
+        /// Performs an synchronous request to the API and returns deserialized JSON.
         /// </summary>
-        /// <returns>The all capsules information or null/empty list if object is not available.</returns>
-        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
+        /// <returns>The deserialized object retrieved from the API or null for non existing ID.</returns>
+        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable and can't process any request.</exception>
+        /// <exception cref="ApiBadRequestException">Thrown when SpaceX API received an invalid request which cannot be processed.</exception>
         public abstract TReturn Execute();
 
+        /// <summary>
+        /// Performs an synchronous request to the API and fills passed model in parameter with deserialized JSON.
+        /// </summary>
+        /// <param name="model">The model which will be filled with deserialized JSON.</param>
+        /// <returns>The flag indicating if the API request and model fill has been done with success or not.</returns>
+        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable and can't process any request.</exception>
+        /// <exception cref="ApiBadRequestException">Thrown when SpaceX API received an invalid request which cannot be processed.</exception>
         public abstract bool Execute(TReturn model);
 
         /// <summary>
-        /// Performs an async request to the API and returns deserialized JSON.
+        /// Performs an asynchronous request to the API and returns deserialized JSON.
         /// </summary>
-        /// <returns>The all capsules information or null/empty list if object is not available.</returns>
-        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable.</exception>
-        /// <exception cref="ApiBadRequestException">Thrown when SpaceX API received an invalid request.</exception>
+        /// <returns>The deserialized object retrieved from the API or null for non existing ID.</returns>
+        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable and can't process any request.</exception>
+        /// <exception cref="ApiBadRequestException">Thrown when SpaceX API received an invalid request which cannot be processed.</exception>
         public abstract Task<TReturn> ExecuteAsync();
 
+        /// <summary>
+        /// Performs an asynchronous request to the API and fills passed model in parameter with deserialized JSON.
+        /// </summary>
+        /// <param name="model">The model which will be filled with deserialized JSON.</param>
+        /// <returns>The flag indicating if the API request and model fill has been done with success or not.</returns>
+        /// <exception cref="ApiUnavailableException">Thrown when SpaceX API is unavailable and can't process any request.</exception>
+        /// <exception cref="ApiBadRequestException">Thrown when SpaceX API received an invalid request which cannot be processed.</exception>
         public abstract Task<bool> ExecuteAsync(TReturn model);
 
         protected async Task<string> GetResponseFromEndpoint(string link, string postBody = null)
