@@ -3,23 +3,29 @@ using Oddity.Models;
 
 namespace Oddity.Endpoints
 {
-    public abstract class EndpointBase<T> where T : ModelBase, IIdentifiable
+    /// <summary>
+    /// Represents a base class for all endpoints.
+    /// </summary>
+    /// <typeparam name="TData">Type of the data returned from API.</typeparam>
+    public abstract class EndpointBase<TData> where TData : ModelBase, IIdentifiable
     {
         protected readonly OddityCore Context;
-        protected readonly CacheService<T> Cache;
+        protected readonly CacheService<TData> Cache;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EndpointBase"/> class.
+        /// Initializes a new instance of the <see cref="EndpointBase{T}"/> class.
         /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="builderDelegates">The builder delegates container.</param>
+        /// <param name="context">The Oddity context used to interact with API.</param>
+        /// <param name="cacheLifetime">The builder delegates container.</param>
         protected EndpointBase(OddityCore context, int cacheLifetime)
         {
             Context = context;
-            Cache = new CacheService<T>(cacheLifetime);
+            Cache = new CacheService<TData>(cacheLifetime);
         }
 
+        /// <summary>
+        /// Clears all cached data.
+        /// </summary>
         public void ClearCache()
         {
             Cache.Clear();

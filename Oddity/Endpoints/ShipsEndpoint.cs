@@ -5,18 +5,16 @@ using Oddity.Models;
 namespace Oddity.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for /ships endpoint.
+    /// Represents an entry point of /ships endpoint.
     /// </summary>
-    public class ShipsEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
+    /// <typeparam name="TData">Type of the data returned from API.</typeparam>
+    public class ShipsEndpoint<TData> : EndpointBase<TData> where TData : ModelBase, IIdentifiable, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShipsEndpoint"/> class.
+        /// Initializes a new instance of the <see cref="ShipsEndpoint{T}"/> class.
         /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="builderDelegates">The builder delegates container.</param>
-        public ShipsEndpoint(OddityCore context)
-            : base(context, LibraryConfiguration.MediumPriorityCacheLifetime)
+        /// <param name="context">The Oddity context used to interact with API.</param>
+        public ShipsEndpoint(OddityCore context) : base(context, LibraryConfiguration.MediumPriorityCacheLifetime)
         {
 
         }
@@ -26,27 +24,27 @@ namespace Oddity.Endpoints
         /// </summary>
         /// <param name="id">ID of the specified ship.</param>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<T> Get(string id)
+        public SimpleBuilder<TData> Get(string id)
         {
-            return new SimpleBuilder<T>(Context, Cache, "ships", id);
+            return new SimpleBuilder<TData>(Context, Cache, "ships", id);
         }
 
         /// <summary>
         /// Gets data about all ships from the /ships endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public ListBuilder<T> GetAll()
+        public ListBuilder<TData> GetAll()
         {
-            return new ListBuilder<T>(Context, Cache, "ships");
+            return new ListBuilder<TData>(Context, Cache, "ships");
         }
 
         /// <summary>
         /// Gets filtered and paginated data about all ships from the /ships/query endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public QueryBuilder<T> Query()
+        public QueryBuilder<TData> Query()
         {
-            return new QueryBuilder<T>(Context, Cache, "ships/query");
+            return new QueryBuilder<TData>(Context, Cache, "ships/query");
         }
     }
 }

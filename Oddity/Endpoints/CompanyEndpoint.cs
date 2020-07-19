@@ -5,18 +5,16 @@ using Oddity.Models;
 namespace Oddity.Endpoints
 {
     /// <summary>
-    /// Represents an entry point for /company endpoint.
+    /// Represents an entry point of /company endpoint.
     /// </summary>
-    public class CompanyEndpoint<T> : EndpointBase<T> where T : ModelBase, IIdentifiable, new()
+    /// <typeparam name="TData">Type of the data returned from API.</typeparam>
+    public class CompanyEndpoint<TData> : EndpointBase<TData> where TData : ModelBase, IIdentifiable, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CompanyEndpoint"/> class.
+        /// Initializes a new instance of the <see cref="CompanyEndpoint{T}"/> class.
         /// </summary>
-        /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="context">The Oddity context which will be used for lazy properties in models.</param>
-        /// <param name="builderDelegates">The builder delegates container.</param>
-        public CompanyEndpoint(OddityCore context)
-            : base(context, LibraryConfiguration.LowPriorityCacheLifetime)
+        /// <param name="context">The Oddity context used to interact with API.</param>
+        public CompanyEndpoint(OddityCore context) : base(context, LibraryConfiguration.LowPriorityCacheLifetime)
         {
 
         }
@@ -25,9 +23,9 @@ namespace Oddity.Endpoints
         /// Gets data about company from the /company endpoint.
         /// </summary>
         /// <returns>Deserialized JSON returned from the API.</returns>
-        public SimpleBuilder<T> Get()
+        public SimpleBuilder<TData> Get()
         {
-            return new SimpleBuilder<T>(Context, Cache, "company");
+            return new SimpleBuilder<TData>(Context, Cache, "company");
         }
     }
 }
