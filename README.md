@@ -235,3 +235,6 @@ namespace OverviewApp
 
 # Why Oddity?
 https://www.youtube.com/watch?v=iYYRH4apXDo
+
+# Credits
+<div>Icon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
