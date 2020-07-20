@@ -107,6 +107,21 @@ namespace OverviewApp
             var crewMember = await oddity.CrewEndpoint.Get("5ebf1b7323a9a60006e03a7b").ExecuteAsync();
             var crewMemberLaunch = crewMember.Launches[0].Value;
 
+            // Test of the /crew endpoint
+            var crewLaunch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b388").ExecuteAsync();
+            var crewLaunchCore = crewLaunch.Cores[0].Core.Value;
+            var crewLaunchLandpad = crewLaunch.Cores[0].Landpad.Value;
+            var crewLaunchRocket = crewLaunch.Rocket.Value;
+            var crewLaunchCrew = crewLaunch.Crew[0].Value;
+            var crewLaunchShip = crewLaunch.Ships[0].Value;
+            var crewLaunchCapsule = crewLaunch.Capsules[0].Value;
+            var crewLaunchPayload = crewLaunch.Payloads[0].Value;
+            var crewLaunchLaunchpad = crewLaunch.Launchpad.Value;
+
+            // Test of the /dragons endpoint
+            var allDragons = await oddity.DragonsEndpoint.GetAll().ExecuteAsync();
+            var dragon = await oddity.DragonsEndpoint.Get("5e9d058759b1ff74a7ad5f8f").ExecuteAsync();
+
             // Test of the /landpads endpoint
             var allLandpads = await oddity.LandpadsEndpoint.GetAll().ExecuteAsync();
             var landpad = await oddity.LandpadsEndpoint.Get("5e9e3032383ecb90a834e7c8").ExecuteAsync();
@@ -119,17 +134,6 @@ namespace OverviewApp
             var upcomingLaunches = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
             var latestLaunch = await oddity.LaunchesEndpoint.GetLatest().ExecuteAsync();
             var nextLaunch = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
-
-            // Test of the /crew endpoint
-            var crewLaunch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b388").ExecuteAsync();
-            var crewLaunchCore = crewLaunch.Cores[0].Core.Value;
-            var crewLaunchLandpad = crewLaunch.Cores[0].Landpad.Value;
-            var crewLaunchRocket = crewLaunch.Rocket.Value;
-            var crewLaunchCrew = crewLaunch.Crew[0].Value;
-            var crewLaunchShip = crewLaunch.Ships[0].Value;
-            var crewLaunchCapsule = crewLaunch.Capsules[0].Value;
-            var crewLaunchPayload = crewLaunch.Payloads[0].Value;
-            var crewLaunchLaunchpad = crewLaunch.Launchpad.Value;
 
             // Test of the /launches endpoint
             var commercialLaunch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b389").ExecuteAsync();
