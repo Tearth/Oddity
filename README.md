@@ -1,4 +1,5 @@
-# Oddity
+[![Oddity logo](./logo.png)](https://github.com/Tearth/Oddity)
+
 [![GitHub release](https://img.shields.io/github/release/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/releases)
 [![Build](https://api.travis-ci.org/Tearth/Oddity.svg?branch=master)](https://travis-ci.org/Tearth/Oddity)
 [![NuGet downloads](https://img.shields.io/nuget/dt/Oddity.svg)](https://www.nuget.org/packages/Oddity/)
