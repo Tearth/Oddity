@@ -13,7 +13,7 @@ namespace Oddity.Endpoints
         protected readonly CacheService<TData> Cache;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EndpointBase{T}"/> class.
+        /// Initializes a new instance of the <see cref="EndpointBase{TData}"/> class.
         /// </summary>
         /// <param name="context">The Oddity context used to interact with API.</param>
         /// <param name="cacheLifetime">The builder delegates container.</param>

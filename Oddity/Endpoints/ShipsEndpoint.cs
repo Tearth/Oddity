@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     public class ShipsEndpoint<TData> : EndpointBase<TData> where TData : ModelBase, IIdentifiable, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShipsEndpoint{T}"/> class.
+        /// Initializes a new instance of the <see cref="ShipsEndpoint{TData}"/> class.
         /// </summary>
         /// <param name="context">The Oddity context used to interact with API.</param>
         public ShipsEndpoint(OddityCore context) : base(context, LibraryConfiguration.MediumPriorityCacheLifetime)

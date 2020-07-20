@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     public class RocketsEndpoint<TData> : EndpointBase<TData> where TData : ModelBase, IIdentifiable, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RocketsEndpoint{T}"/> class.
+        /// Initializes a new instance of the <see cref="RocketsEndpoint{TData}"/> class.
         /// </summary>
         /// <param name="context">The Oddity context used to interact with API.</param>
         public RocketsEndpoint(OddityCore context) : base(context, LibraryConfiguration.LowPriorityCacheLifetime)

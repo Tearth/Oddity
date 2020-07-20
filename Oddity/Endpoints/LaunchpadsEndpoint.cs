@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     public class LaunchpadsEndpoint<TData> : EndpointBase<TData> where TData : ModelBase, IIdentifiable, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LaunchpadsEndpoint{T}"/> class.
+        /// Initializes a new instance of the <see cref="LaunchpadsEndpoint{TData}"/> class.
         /// </summary>
         /// <param name="context">The Oddity context used to interact with API.</param>
         public LaunchpadsEndpoint(OddityCore context) : base(context, LibraryConfiguration.MediumPriorityCacheLifetime)

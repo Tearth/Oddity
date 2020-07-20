@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     public class RoadsterEndpoint<TData> : EndpointBase<TData> where TData : ModelBase, IIdentifiable, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RoadsterEndpoint{T}"/> class.
+        /// Initializes a new instance of the <see cref="RoadsterEndpoint{TData}"/> class.
         /// </summary>
         /// <param name="context">The Oddity context used to interact with API.</param>
         public RoadsterEndpoint(OddityCore context) : base(context, LibraryConfiguration.MediumPriorityCacheLifetime)

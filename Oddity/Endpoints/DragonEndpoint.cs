@@ -11,7 +11,7 @@ namespace Oddity.Endpoints
     public class DragonsEndpoint<TData> : EndpointBase<TData> where TData : ModelBase, IIdentifiable, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DragonsEndpoint{T}"/> class.
+        /// Initializes a new instance of the <see cref="DragonsEndpoint{TData}"/> class.
         /// </summary>
         /// <param name="context">The Oddity context used to interact with API.</param>
         public DragonsEndpoint(OddityCore context) : base(context, LibraryConfiguration.LowPriorityCacheLifetime)
