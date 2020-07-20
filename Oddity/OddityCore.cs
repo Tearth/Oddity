@@ -9,6 +9,7 @@ using Oddity.Models.Capsules;
 using Oddity.Models.Company;
 using Oddity.Models.Cores;
 using Oddity.Models.Crew;
+using Oddity.Models.Dragon;
 using Oddity.Models.Landpads;
 using Oddity.Models.Launches;
 using Oddity.Models.Launchpads;
@@ -46,6 +47,11 @@ namespace Oddity
         /// Gets the entry point of the /crew endpoint.
         /// </summary>
         public CrewEndpoint<CrewInfo> CrewEndpoint { get; }
+
+        /// <summary>
+        /// Gets the entry point of the /dragons endpoint.
+        /// </summary>
+        public DragonsEndpoint<DragonInfo> DragonsEndpoint { get; }
 
         /// <summary>
         /// Gets the entry point of the /landpads endpoint.
@@ -150,6 +156,7 @@ namespace Oddity
             CompanyEndpoint = new CompanyEndpoint<CompanyInfo>(this);
             CoresEndpoint = new CoresEndpoint<CoreInfo>(this);
             CrewEndpoint = new CrewEndpoint<CrewInfo>(this);
+            DragonsEndpoint = new DragonsEndpoint<DragonInfo>(this);
             LandpadsEndpoint = new LandpadsEndpoint<LandpadInfo>(this);
             LaunchesEndpoint = new LaunchesEndpoint<LaunchInfo>(this);
             LaunchpadsEndpoint = new LaunchpadsEndpoint<LaunchpadInfo>(this);

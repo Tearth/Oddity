@@ -62,6 +62,10 @@ namespace OverviewApp
             var crewLaunchPayload = crewLaunch.Payloads[0].Value;
             var crewLaunchLaunchpad = crewLaunch.Launchpad.Value;
 
+            // Test of the /dragons endpoint
+            var allDragons = await oddity.DragonsEndpoint.GetAll().ExecuteAsync();
+            var dragon = await oddity.DragonsEndpoint.Get("5e9d058759b1ff74a7ad5f8f").ExecuteAsync();
+
             // Test of the /launches endpoint
             var commercialLaunch = await oddity.LaunchesEndpoint.Get("5eb87d46ffd86e000604b389").ExecuteAsync();
             var commercialLaunchCore = commercialLaunch.Cores[0].Core.Value;
