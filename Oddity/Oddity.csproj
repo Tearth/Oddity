@@ -11,7 +11,7 @@
 * Add support for the new query system
 * Add lazy properties to the models
 * Add internal cache for received data</PackageReleaseNotes>
-    <Description>.NET wrapper for unofficial SpaceX API v4 (with full support for all endpoints and query subsystem), providing information about everyting related to the company.</Description>
+    <Description>.NET wrapper for unofficial SpaceX API v4 (with full support for all endpoints and query subsystem), providing information about everything related to the company.</Description>
     <Copyright>Tearth 2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
