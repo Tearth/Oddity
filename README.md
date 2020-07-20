@@ -33,9 +33,9 @@ To learn how to use this library, look at this set of examples:
 Feel free to make issues or pull request to improve library - Oddity v2 has been rewritten from scratch and it can potentially contain some bugs.
 
 # Features
- - **smart models** which allow us to retrieve linked models from API using lazy properties. No more manual picking objects using their IDs.
- - **support for query subsystem** - v4 API has introduced **[the new query system](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/queries.md)** (using **[mongoose-paginate](https://github.com/aravindnc/mongoose-paginate-v2)**) which allows user for more flexible queries. Oddity wraps it with the easy to use classes and provides the most important filters.
- - **internal cache** - this is the nice addition to the smart models and their lazy properties - it allows to reduce the time needed for making and processing API requests by caching deserialized objects for a period specified **[in the API docs](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/README.md#caching)**.
+ - **Smart models** - allow us to retrieve linked models from API using lazy properties. No more manual picking objects using their IDs.
+ - **Support for query subsystem** - v4 API has introduced **[the new query system](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/queries.md)** (using **[mongoose-paginate](https://github.com/aravindnc/mongoose-paginate-v2)**) which allows user for more flexible queries. Oddity wraps it with the easy to use classes and provides the most important filters.
+ - **Internal cache** - this is the nice addition to the smart models and their lazy properties - it allows to reduce the time needed for making and processing API requests by caching deserialized objects for a period specified **[in the API docs](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/README.md#caching)**.
 
 # Minimal requirements
 Library is built on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which contains support for:
