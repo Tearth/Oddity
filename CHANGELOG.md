@@ -1,3 +1,10 @@
+# Version 2.0.0 (20-07-2020)
+ * Total refactoring of the library (a lot of changed endpoints and models)
+ * Add support for v4 API version (incompatible backward)
+ * Add support for the new query system
+ * Add lazy properties to the models
+ * Add internal cache for received data
+
 # Version 1.0.13 (03-07-2020)
  * Changed API version to v3
  * Added new endpoints support for history, capsules and cores
