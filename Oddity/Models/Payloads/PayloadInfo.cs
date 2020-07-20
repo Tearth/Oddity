@@ -21,7 +21,7 @@ namespace Oddity.Models.Payloads
         public List<string> Customers { get; set; }
         public List<string> Nationalities { get; set; }
         public List<string> Manufacturers { get; set; }
-        public DragonInfo Dragon { get; set; }
+        public PayloadDragonInfo Dragon { get; set; }
 
         [JsonProperty("norad_ids")]
         public List<uint> NoradIds { get; set; }

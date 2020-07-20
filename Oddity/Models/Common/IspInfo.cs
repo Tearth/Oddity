@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oddity.Models.Rockets
+namespace Oddity.Models.Common
 {
     public class IspInfo : ModelBase
     {

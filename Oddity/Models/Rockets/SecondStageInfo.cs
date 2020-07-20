@@ -9,7 +9,7 @@ namespace Oddity.Models.Rockets
         public uint? Engines { get; set; }
 
         public ThrustInfo Thrust { get; set; }
-        public PotentialPayloadInfo Payloads { get; set; }
+        public RocketPotentialPayloadInfo Payloads { get; set; }
 
         [JsonProperty("fuel_amount_tons")]
         public uint? FuelAmountTons { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Oddity.Models.Starlink
+namespace Oddity.Models.Common
 {
     public class SpaceTrackInfo : ModelBase
     {

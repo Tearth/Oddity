@@ -3,7 +3,7 @@ using Oddity.Models.Common;
 
 namespace Oddity.Models.Rockets
 {
-    public class FirstStageInfo : ModelBase
+    public class RocketFirstStageInfo : ModelBase
     {
         public bool? Reusable { get; set; }
         public uint? Engines { get; set; }

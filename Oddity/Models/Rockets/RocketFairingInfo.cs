@@ -2,7 +2,7 @@
 
 namespace Oddity.Models.Rockets
 {
-    public class FairingInfo : ModelBase
+    public class RocketFairingInfo : ModelBase
     {
         public SizeInfo Height { get; set; }
         public SizeInfo Diameter { get; set; }

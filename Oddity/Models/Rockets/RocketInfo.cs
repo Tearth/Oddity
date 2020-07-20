@@ -21,7 +21,7 @@ namespace Oddity.Models.Rockets
         public SizeInfo Height { get; set; }
         public SizeInfo Diameter { get; set; }
         public MassInfo Mass { get; set; }
-        public EnginesInfo Engines { get; set; }
+        public RocketEnginesInfo Engines { get; set; }
 
         [JsonProperty("cost_per_launch")]
         public uint? CostPerLaunch { get; set; }
@@ -33,16 +33,16 @@ namespace Oddity.Models.Rockets
         public DateTime? FirstFlight { get; set; }
 
         [JsonProperty("first_stage")]
-        public FirstStageInfo FirstStage { get; set; }
+        public RocketFirstStageInfo FirstStage { get; set; }
 
         [JsonProperty("second_stage")]
         public SecondStageInfo SecondStage { get; set; }
 
         [JsonProperty("landing_legs")]
-        public LandingLegsInfo LandingLegs { get; set; }
+        public RocketLandingLegsInfo LandingLegs { get; set; }
 
         [JsonProperty("payload_weights")]
-        public List<PotentialPayloadWeightInfo> PayloadWeights { get; set; }
+        public List<RocketPotentialPayloadWeightInfo> PayloadWeights { get; set; }
 
         [JsonProperty("flickr_images")]
         public List<string> FlickrImages { get; set; }

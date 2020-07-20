@@ -2,7 +2,7 @@
 
 namespace Oddity.Models.Rockets
 {
-    public class PotentialPayloadWeightInfo : ModelBase
+    public class RocketPotentialPayloadWeightInfo : ModelBase
     {
         public string Id { get; set; }
         public string Name { get; set; }

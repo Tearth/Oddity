@@ -15,7 +15,7 @@ namespace Oddity.Models.Company
         public ulong? Valuation { get; set; }
         public string Summary { get; set; }
 
-        public HeadquartersInfo Headquarters { get; set; }
+        public CompanyHeadquartersInfo Headquarters { get; set; }
         public CompanyLinksInfo Links { get; set; }
 
         [JsonProperty("founded")]

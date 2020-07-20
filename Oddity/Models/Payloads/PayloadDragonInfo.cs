@@ -4,7 +4,7 @@ using Oddity.Models.Capsules;
 
 namespace Oddity.Models.Payloads
 {
-    public class DragonInfo : ModelBase
+    public class PayloadDragonInfo : ModelBase
     {
         public string Manifest { get; set; }
 

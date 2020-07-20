@@ -1,6 +1,6 @@
 ﻿namespace Oddity.Models.Company
 {
-    public class HeadquartersInfo : ModelBase
+    public class CompanyHeadquartersInfo : ModelBase
     {
         public string Address { get; set; }
         public string City { get; set; }

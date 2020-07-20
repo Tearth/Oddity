@@ -3,7 +3,7 @@ using Oddity.Models.Common;
 
 namespace Oddity.Models.Rockets
 {
-    public class EnginesInfo : ModelBase
+    public class RocketEnginesInfo : ModelBase
     {
         public uint? Number { get; set; }
         public string Type { get; set; }

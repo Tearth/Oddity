@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Oddity.Models.Common;
 using Oddity.Models.Launches;
 
 namespace Oddity.Models.Starlink
