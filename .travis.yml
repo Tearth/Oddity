@@ -28,7 +28,7 @@ deploy:
   - provider: script
     skip_cleanup: true
     file_glob: true
-    script: dotnet nuget push "Oddity/bin/Release/Oddity.*.nupkg" -k $NUGET_KEY -s $NUGET_SOURCE --no-symbols
+    script: dotnet nuget push "Oddity/bin/Release/Oddity.*.nupkg" -k $NUGET_KEY -s $NUGET_SOURCE --no-symbols true
     on:
       tags: true
       branch: master
