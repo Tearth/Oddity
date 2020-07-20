@@ -8,7 +8,7 @@
 [![GitHub license](https://img.shields.io/github/license/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/blob/master/LICENSE)
 [![Doxygen](https://img.shields.io/badge/Doxygen-gh--pages-blue)](https://tearth.github.io/Oddity/)
 
-.NET wrapper for **[unofficial SpaceX API v4](https://github.com/r-spacex/SpaceX-API)** (with full support for all endpoints and query subsystem), providing information about everyting related to the company. Thanks to this library, you can easily get any data without messing with HTTP requests, JSON deserializators or constructing query bodies. You can use the following endpoints:
+.NET wrapper for **[unofficial SpaceX API v4](https://github.com/r-spacex/SpaceX-API)** (with full support for all endpoints and query subsystem), providing information about everything related to the company. Thanks to this library, you can easily get any data without messing with HTTP requests, JSON deserializators or constructing query bodies. You can use the following endpoints:
 
  - **Capsules** - detailed information about Dragon capsules.
  - **Company** - detailed information about SpaceX as a company.
