@@ -3,41 +3,49 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
     <Authors>Tearth</Authors>
-    <PackageLicenseUrl>https://github.com/Tearth/Oddity/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Tearth/Oddity</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Tearth/Oddity</PackageProjectUrl>
     <PackageTags>oddity spacex api wrapper dotnet .net csharp dotnetstandard .netstandard standard core framework</PackageTags>
-    <PackageReleaseNotes>* Changed API version to v3
-* Added new endpoints support for history, capsules and cores
-* Added missing fields to the models
-* Fixed models inconsistency
-
-WARNING: this is the last release for v2/v3 API version. The next one will be completely rewritten to support v4 within a month or two - it won't be compatible backward. More info: https://github.com/r-spacex/SpaceX-API/issues/380</PackageReleaseNotes>
-    <Description>SpaceX API wrapper for .NET based on the https://github.com/r-spacex/SpaceX-API project.</Description>
+    <PackageReleaseNotes>* Total refactoring of the library (a lot of changed endpoints and models)
+* Add support for v4 API version (incompatible backward)
+* Add support for the new query system
+* Add lazy properties to the models
+* Add internal cache for received data</PackageReleaseNotes>
+    <Description>.NET wrapper for unofficial SpaceX API v4 (with full support for all endpoints and query subsystem), providing information about everyting related to the company.</Description>
     <Copyright>Tearth 2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NeutralLanguage></NeutralLanguage>
-    <AssemblyVersion>1.0.13.0</AssemblyVersion>
-    <FileVersion>1.0.13.0</FileVersion>
-    <Version>1.0.13</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
     <ApplicationIcon></ApplicationIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/Tearth/Oddity/develop/icon.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard1.1\Oddity.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard1.1\Oddity.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

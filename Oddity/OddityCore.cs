@@ -2,65 +2,117 @@
 using System.Net.Http;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
-using Oddity.API;
-using Oddity.API.Builders;
+using Oddity.Configuration;
+using Oddity.Endpoints;
+using Oddity.Events;
+using Oddity.Models.Capsules;
+using Oddity.Models.Company;
+using Oddity.Models.Cores;
+using Oddity.Models.Crew;
+using Oddity.Models.Dragon;
+using Oddity.Models.Landpads;
+using Oddity.Models.Launches;
+using Oddity.Models.Launchpads;
+using Oddity.Models.Payloads;
+using Oddity.Models.Roadster;
+using Oddity.Models.Rockets;
+using Oddity.Models.Ships;
+using Oddity.Models.Starlink;
 
 namespace Oddity
 {
     /// <summary>
-    /// Represents an core of the library. Use it to retrieve data from the SpaceX API.
+    /// Represents an core of the library. Use it to retrieve data from the unofficial SpaceX API.
     /// </summary>
     public class OddityCore : IDisposable
     {
-        /// <summary>
-        /// Gets the API information.
-        /// </summary>
-        public Api Api { get; }
+        public bool CacheEnabled { get; set; }
 
         /// <summary>
-        /// Gets the company information.
+        /// Gets the entry point of the /capsules endpoint.
         /// </summary>
-        public Company Company { get; }
+        public CapsulesEndpoint<CapsuleInfo> CapsulesEndpoint { get; }
 
         /// <summary>
-        /// Gets the company history.
+        /// Gets the entry point of the /company endpoint.
         /// </summary>
-        public History History { get; }
+        public CompanyEndpoint<CompanyInfo> CompanyEndpoint { get; }
 
         /// <summary>
-        /// Gets the rockets information.
+        /// Gets the entry point of the /cores endpoint.
         /// </summary>
-        public Rockets Rockets { get; }
+        public CoresEndpoint<CoreInfo> CoresEndpoint { get; }
 
         /// <summary>
-        /// Gets the capsules information.
+        /// Gets the entry point of the /crew endpoint.
         /// </summary>
-        public Dragons Dragons { get; }
+        public CrewEndpoint<CrewInfo> CrewEndpoint { get; }
 
         /// <summary>
-        /// Gets the capsules information.
+        /// Gets the entry point of the /dragons endpoint.
         /// </summary>
-        public Capsules Capsules { get; }
+        public DragonsEndpoint<DragonInfo> DragonsEndpoint { get; }
 
         /// <summary>
-        /// Gets the core information.
+        /// Gets the entry point of the /landpads endpoint.
         /// </summary>
-        public Cores Cores { get; }
+        public LandpadsEndpoint<LandpadInfo> LandpadsEndpoint { get; }
 
         /// <summary>
-        /// Gets the launchpads information.
+        /// Gets the entry point of the /launches endpoint.
         /// </summary>
-        public Launchpads Launchpads { get; }
+        public LaunchesEndpoint<LaunchInfo> LaunchesEndpoint { get; }
 
         /// <summary>
-        /// Gets the launches information.
+        /// Gets the entry point of the /launchpads endpoint.
         /// </summary>
-        public Launches Launches { get; }
+        public LaunchpadsEndpoint<LaunchpadInfo> LaunchpadsEndpoint { get; }
 
         /// <summary>
-        /// Gets the Tesla Roadster information.
+        /// Gets the entry point of the /payloads endpoint.
         /// </summary>
-        public Roadster Roadster { get; }
+        public PayloadsEndpoint<PayloadInfo> PayloadsEndpoint { get; }
+
+        /// <summary>
+        /// Gets the entry point of the /roadster endpoint.
+        /// </summary>
+        public RoadsterEndpoint<RoadsterInfo> RoadsterEndpoint { get; }
+
+        /// <summary>
+        /// Gets the entry point of the /rockets endpoint.
+        /// </summary>
+        public RocketsEndpoint<RocketInfo> RocketsEndpoint { get; }
+
+        /// <summary>
+        /// Gets the entry point of the /ships endpoint.
+        /// </summary>
+        public ShipsEndpoint<ShipInfo> ShipsEndpoint { get; }
+
+        /// <summary>
+        /// Gets the entry point of the /starlink endpoint.
+        /// </summary>
+        public StarlinkEndpoint<StarlinkInfo> StarlinkEndpoint { get; }
+
+        /// <summary>
+        /// Gets or sets the HTTP timeout when making requests to API.
+        /// </summary>
+        public TimeSpan Timeout
+        {
+            get => HttpClient.Timeout;
+            set => HttpClient.Timeout = value;
+        }
+
+        /// <summary>
+        /// Gets the user agent used when making requests to API.
+        /// </summary>
+        public string UserAgent => $"{LibraryConfiguration.LibraryName}/{Version} ({LibraryConfiguration.GitHubLink})";
+
+        /// <summary>
+        /// Gets the library version used in user agent when making requests to API.
+        /// </summary>
+        public string Version => GetType().GetTypeInfo().Assembly
+            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+            .InformationalVersion;
 
         /// <summary>
         /// Event triggered when an error occurred during JSON deserialization.
@@ -77,60 +129,48 @@ namespace Oddity
         /// </summary>
         public event EventHandler<ResponseReceiveEventArgs> OnResponseReceive;
 
-        private readonly HttpClient _httpClient;
+        protected internal readonly HttpClient HttpClient;
+        protected internal readonly BuilderDelegates BuilderDelegates;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OddityCore"/> class.
         /// </summary>
-        public OddityCore()
+        public OddityCore(bool cacheEnabled = true)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
-            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd($"{ApiConfiguration.LibraryName}/{GetLibraryVersion()} ({ApiConfiguration.GitHubLink})");
+            CacheEnabled = cacheEnabled;
 
-            SetTimeout(ApiConfiguration.DefaultTimeoutSeconds);
+            HttpClient = new HttpClient();
+            HttpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);
+            HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd(UserAgent);
 
-            var builderDelegatesContainer = new BuilderDelegatesContainer
+            Timeout = new TimeSpan(0, 0, ApiConfiguration.DefaultTimeoutSeconds);
+
+            BuilderDelegates = new BuilderDelegates
             {
                 DeserializationError = DeserializationError,
                 RequestSend = RequestSend,
                 ResponseReceived = ResponseReceived
             };
 
-            Api = new Api(_httpClient, builderDelegatesContainer);
-            Company = new Company(_httpClient, builderDelegatesContainer);
-            History = new History(_httpClient, builderDelegatesContainer);
-            Rockets = new Rockets(_httpClient, builderDelegatesContainer);
-            Dragons = new Dragons(_httpClient, builderDelegatesContainer);
-            Capsules = new Capsules(_httpClient, builderDelegatesContainer);
-            Cores = new Cores(_httpClient, builderDelegatesContainer);
-            Launchpads = new Launchpads(_httpClient, builderDelegatesContainer);
-            Launches = new Launches(_httpClient, builderDelegatesContainer);
-            Roadster = new Roadster(_httpClient, builderDelegatesContainer);
-        }
-
-        /// <summary>
-        /// Sets the timeout for all API requests.
-        /// </summary>
-        /// <param name="timeoutSeconds">Timeout in seconds.</param>
-        public void SetTimeout(int timeoutSeconds)
-        {
-            _httpClient.Timeout = new TimeSpan(0, 0, 0, timeoutSeconds);
-        }
-
-        /// <summary>
-        /// Gets the current version of library.
-        /// </summary>
-        /// <returns>The library version.</returns>
-        public string GetLibraryVersion()
-        {
-            return GetType().GetTypeInfo().Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+            CapsulesEndpoint = new CapsulesEndpoint<CapsuleInfo>(this);
+            CompanyEndpoint = new CompanyEndpoint<CompanyInfo>(this);
+            CoresEndpoint = new CoresEndpoint<CoreInfo>(this);
+            CrewEndpoint = new CrewEndpoint<CrewInfo>(this);
+            DragonsEndpoint = new DragonsEndpoint<DragonInfo>(this);
+            LandpadsEndpoint = new LandpadsEndpoint<LandpadInfo>(this);
+            LaunchesEndpoint = new LaunchesEndpoint<LaunchInfo>(this);
+            LaunchpadsEndpoint = new LaunchpadsEndpoint<LaunchpadInfo>(this);
+            PayloadsEndpoint = new PayloadsEndpoint<PayloadInfo>(this);
+            RoadsterEndpoint = new RoadsterEndpoint<RoadsterInfo>(this);
+            RocketsEndpoint = new RocketsEndpoint<RocketInfo>(this);
+            ShipsEndpoint = new ShipsEndpoint<ShipInfo>(this);
+            StarlinkEndpoint = new StarlinkEndpoint<StarlinkInfo>(this);
         }
 
         /// <inheritdoc />
         public void Dispose()
         {
-            _httpClient?.Dispose();
+            HttpClient?.Dispose();
         }
 
         private void DeserializationError(ErrorEventArgs args)

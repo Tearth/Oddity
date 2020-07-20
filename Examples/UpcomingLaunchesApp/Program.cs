@@ -1,46 +1,80 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Oddity;
+using Oddity.Models.Launches;
+using Oddity.Models.Payloads;
 
 namespace UpcomingLaunchesApp
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var oddity = new OddityCore();
+            var stopWatch = Stopwatch.StartNew();
+
             oddity.OnDeserializationError += OddityOnOnDeserializationError;
 
-            DisplayNextLaunch(oddity);
-            DisplayRestOfUpcomingLaunches(oddity);
+            await DisplayNextLaunch(oddity);
+            await DisplayRestOfUpcomingLaunches(oddity);
 
+            Console.WriteLine($"Generated in {stopWatch.Elapsed.TotalSeconds:F1} seconds");
             Console.Read();
         }
-
-        private static void DisplayNextLaunch(OddityCore oddity)
+        
+        private static async Task DisplayNextLaunch(OddityCore oddity)
         {
-            var nextLaunchData = oddity.Launches.GetNext().Execute();
+            var nextLaunchData = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
+            var formattedDate = GetFormattedDate(nextLaunchData.DateUtc, nextLaunchData.DatePrecision);
 
             Console.WriteLine("Next launch data:");
             Console.WriteLine("---------------------------------------------------------------------------");
-            Console.WriteLine("Mission name     | " + nextLaunchData.MissionName);
-            Console.WriteLine("Launchpad        | " + nextLaunchData.LaunchSite.SiteLongName);
-            Console.WriteLine("Launch date UTC  | " + nextLaunchData.LaunchDateUtc);
-            Console.WriteLine("Rocket           | " + nextLaunchData.Rocket.RocketName);
-            Console.WriteLine("Payloads         | " + string.Join(',', nextLaunchData.Rocket.SecondStage.Payloads.Select(p => p.PayloadId)));
+            Console.WriteLine("Mission name     | " + nextLaunchData.Name);
+            Console.WriteLine("Launchpad        | " + nextLaunchData.Launchpad.Value.FullName);
+            Console.WriteLine("Launch date UTC  | " + formattedDate);
+            Console.WriteLine("Rocket           | " + nextLaunchData.Rocket.Value.Name);
+            Console.WriteLine("Payloads         | " + string.Join(',', nextLaunchData.Payloads.Select(p => GetPayloadInfo(p.Value))));
             Console.WriteLine();
         }
 
-        private static void DisplayRestOfUpcomingLaunches(OddityCore oddity)
+        private static async Task DisplayRestOfUpcomingLaunches(OddityCore oddity)
         {
-            var upcomingLaunches = oddity.Launches.GetUpcoming().Execute();
+            var upcomingLaunches = await oddity.LaunchesEndpoint.GetUpcoming().ExecuteAsync();
 
             Console.WriteLine("All upcoming launches:");
             Console.WriteLine("---------------------------------------------------------------------------");
+
             foreach (var launch in upcomingLaunches)
             {
-                Console.WriteLine($"{launch.MissionName} ({launch.LaunchDateUtc}) at {launch.LaunchSite.SiteName}");
+                var formattedDate = GetFormattedDate(launch.DateUtc, launch.DatePrecision);
+                Console.WriteLine($"{launch.Name} ({formattedDate}) at {launch.Launchpad.Value.FullName}");
+            }
+
+            Console.WriteLine();
+        }
+
+        private static string GetPayloadInfo(PayloadInfo payload)
+        {
+            return payload.MassKilograms.HasValue ? $"{payload.Name} ({payload.MassKilograms} kg)" : payload.Name;
+        }
+
+        private static string GetFormattedDate(DateTime? date, DatePrecision? precision)
+        {
+            if (date == null || precision == null)
+            {
+                return null;
+            }
+
+            switch (precision)
+            {
+                case DatePrecision.Hour: return date.Value.ToString("f", CultureInfo.InvariantCulture);
+                case DatePrecision.Day: return date.Value.ToString("D", CultureInfo.InvariantCulture);
+                case DatePrecision.Month: return date.Value.ToString("Y", CultureInfo.InvariantCulture);
+                default: return date.Value.ToString("yyyy", CultureInfo.InvariantCulture);
             }
         }
 
