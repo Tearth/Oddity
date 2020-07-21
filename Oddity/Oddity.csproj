@@ -7,10 +7,10 @@
     <PackageProjectUrl>https://github.com/Tearth/Oddity</PackageProjectUrl>
     <PackageTags>oddity spacex api wrapper dotnet .net csharp dotnetstandard .netstandard standard core framework</PackageTags>
     <PackageReleaseNotes>* Total refactoring of the library (a lot of changed endpoints and models)
-* Add support for v4 API version (incompatible backward)
-* Add support for the new query system
-* Add lazy properties to the models
-* Add internal cache for received data</PackageReleaseNotes>
+* Added support for v4 API version (incompatible backward)
+* Added support for the new query system
+* Added lazy properties to the models
+* Added internal cache for received data</PackageReleaseNotes>
     <Description>.NET wrapper for unofficial SpaceX API v4 (with full support for all endpoints and query subsystem), providing information about everything related to the company.</Description>
     <Copyright>Tearth 2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
