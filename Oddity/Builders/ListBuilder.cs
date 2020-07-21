@@ -56,7 +56,7 @@ namespace Oddity.Builders
 
                 if (Context.StatisticsEnabled)
                 {
-                    Context.Statistics.CacheHits++;
+                    Context.Statistics.CacheHits += (uint)list.Count;
                 }
 
                 return true;
@@ -81,8 +81,7 @@ namespace Oddity.Builders
 
                 if (Context.StatisticsEnabled)
                 {
-                    // Number of models in list + list as one piece
-                    Context.Statistics.CacheUpdates += (uint)(models.Count + 1);
+                    Context.Statistics.CacheUpdates += (uint)models.Count;
                 }
             }
 

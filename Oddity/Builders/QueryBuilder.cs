@@ -214,8 +214,7 @@ namespace Oddity.Builders
 
             if (Context.CacheEnabled && Context.StatisticsEnabled)
             {
-                // Number of models in list + list as one piece
-                Context.Statistics.CacheUpdates += (uint) (paginatedModel.Data.Count + 1);
+                Context.Statistics.CacheUpdates += (uint)paginatedModel.Data.Count;
             }
 
             paginatedModel.SetBuilder(this);

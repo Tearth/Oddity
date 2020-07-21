@@ -70,7 +70,6 @@ namespace Oddity.Builders
         protected async Task<string> GetResponseFromEndpoint(string link, string postBody = null)
         {
             Context.BuilderDelegates.RequestSend(new RequestSendEventArgs(link, postBody));
-
             if (Context.StatisticsEnabled)
             {
                 Context.Statistics.RequestsMade++;
@@ -110,7 +109,6 @@ namespace Oddity.Builders
             }
 
             Context.BuilderDelegates.ResponseReceived(eventArgs);
-
             if (Context.StatisticsEnabled)
             {
                 Context.Statistics.ResponsesReceived++;
