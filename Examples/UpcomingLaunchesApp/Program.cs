@@ -37,7 +37,7 @@ namespace UpcomingLaunchesApp
             Console.WriteLine("Launchpad        | " + nextLaunchData.Launchpad.Value.FullName);
             Console.WriteLine("Launch date UTC  | " + formattedDate);
             Console.WriteLine("Rocket           | " + nextLaunchData.Rocket.Value.Name);
-            Console.WriteLine("Payloads         | " + string.Join(',', nextLaunchData.Payloads.Select(p => GetPayloadInfo(p.Value))));
+            Console.WriteLine("Payloads         | " + string.Join(", ", nextLaunchData.Payloads.Select(p => GetPayloadInfo(p.Value))));
             Console.WriteLine();
         }
 
