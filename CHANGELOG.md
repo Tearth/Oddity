@@ -1,9 +1,13 @@
+# Version 2.0.1 (21-07-2020)
+ * Added statistics
+ * Fixed a bug with invalid cache population in queries
+
 # Version 2.0.0 (20-07-2020)
  * Total refactoring of the library (a lot of changed endpoints and models)
- * Add support for v4 API version (incompatible backward)
- * Add support for the new query system
- * Add lazy properties to the models
- * Add internal cache for received data
+ * Added support for v4 API version (incompatible backward)
+ * Added support for the new query system
+ * Added lazy properties to the models
+ * Added internal cache for received data
 
 # Version 1.0.13 (03-07-2020)
  * Changed API version to v3

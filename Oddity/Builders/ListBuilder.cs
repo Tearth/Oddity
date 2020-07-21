@@ -53,6 +53,12 @@ namespace Oddity.Builders
             if (Context.CacheEnabled && _cache.GetListIfAvailable(out var list, _endpoint))
             {
                 models.AddRange(list);
+
+                if (Context.StatisticsEnabled)
+                {
+                    Context.Statistics.CacheHits += (uint)list.Count;
+                }
+
                 return true;
             }
 
@@ -72,6 +78,11 @@ namespace Oddity.Builders
             if (Context.CacheEnabled)
             {
                 _cache.UpdateList(models, _endpoint);
+
+                if (Context.StatisticsEnabled)
+                {
+                    Context.Statistics.CacheUpdates += (uint)models.Count;
+                }
             }
 
             return true;
