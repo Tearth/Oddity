@@ -1,3 +1,7 @@
+# Version 2.0.1 (21-07-2020)
+ * Add statistics
+ * Fix a bug with invalid cache population in queries
+
 # Version 2.0.0 (20-07-2020)
  * Total refactoring of the library (a lot of changed endpoints and models)
  * Add support for v4 API version (incompatible backward)
