@@ -5,6 +5,7 @@ using Newtonsoft.Json.Serialization;
 using Oddity.Configuration;
 using Oddity.Endpoints;
 using Oddity.Events;
+using Oddity.Models;
 using Oddity.Models.Capsules;
 using Oddity.Models.Company;
 using Oddity.Models.Cores;
@@ -26,7 +27,20 @@ namespace Oddity
     /// </summary>
     public class OddityCore : IDisposable
     {
+        /// <summary>
+        /// Gets or sets the flag indicating if the cache is enabled.
+        /// </summary>
         public bool CacheEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flag indicating if the statistics are enabled.
+        /// </summary>
+        public bool StatisticsEnabled { get; set; }
+
+        /// <summary>
+        /// Gets the container with statistics (will be updated only if <see cref="StatisticsEnabled"/> is set to true).
+        /// </summary>
+        public Statistics Statistics { get; }
 
         /// <summary>
         /// Gets the entry point of the /capsules endpoint.
@@ -135,9 +149,13 @@ namespace Oddity
         /// <summary>
         /// Initializes a new instance of the <see cref="OddityCore"/> class.
         /// </summary>
-        public OddityCore(bool cacheEnabled = true)
+        /// <param name="cacheEnabled">Flag indicating if the cache should be enabled.</param>
+        /// <param name="statisticsEnabled">Flag indicating if the statistics should be enabled.</param>
+        public OddityCore(bool cacheEnabled = true, bool statisticsEnabled = true)
         {
             CacheEnabled = cacheEnabled;
+            StatisticsEnabled = statisticsEnabled;
+            Statistics = new Statistics();
 
             HttpClient = new HttpClient();
             HttpClient.BaseAddress = new Uri(ApiConfiguration.ApiEndpoint);

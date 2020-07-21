@@ -66,6 +66,12 @@ namespace Oddity.Builders
             if (Context.CacheEnabled && _cache.GetIfAvailable(out var data, _id ?? _endpoint))
             {
                 data.CopyTo(model);
+
+                if (Context.StatisticsEnabled)
+                {
+                    Context.Statistics.CacheHits++;
+                }
+
                 return true;
             }
 
@@ -81,6 +87,11 @@ namespace Oddity.Builders
             if (Context.CacheEnabled)
             {
                 _cache.Update(model, _id ?? _endpoint);
+
+                if (Context.StatisticsEnabled)
+                {
+                    Context.Statistics.CacheUpdates++;
+                }
             }
 
             return true;

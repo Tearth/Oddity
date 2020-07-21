@@ -205,7 +205,17 @@ namespace Oddity.Builders
             foreach (var deserializedObject in paginatedModel.Data)
             {
                 deserializedObject.SetContext(Context);
-                _cache.Update(deserializedObject, deserializedObject.Id);
+
+                if (Context.CacheEnabled)
+                {
+                    _cache.Update(deserializedObject, deserializedObject.Id);
+                }
+            }
+
+            if (Context.CacheEnabled && Context.StatisticsEnabled)
+            {
+                // Number of models in list + list as one piece
+                Context.Statistics.CacheUpdates += (uint) (paginatedModel.Data.Count + 1);
             }
 
             paginatedModel.SetBuilder(this);

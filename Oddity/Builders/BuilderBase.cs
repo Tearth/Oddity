@@ -71,6 +71,11 @@ namespace Oddity.Builders
         {
             Context.BuilderDelegates.RequestSend(new RequestSendEventArgs(link, postBody));
 
+            if (Context.StatisticsEnabled)
+            {
+                Context.Statistics.RequestsMade++;
+            }
+
             HttpResponseMessage response;
             if (postBody == null)
             {
@@ -105,6 +110,11 @@ namespace Oddity.Builders
             }
 
             Context.BuilderDelegates.ResponseReceived(eventArgs);
+
+            if (Context.StatisticsEnabled)
+            {
+                Context.Statistics.ResponsesReceived++;
+            }
 
             return content;
         }
