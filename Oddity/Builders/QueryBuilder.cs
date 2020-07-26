@@ -237,7 +237,7 @@ namespace Oddity.Builders
                 }
                 else
                 {
-                    members.Insert(0, memberExpression.Member.Name);
+                    members.Insert(0, memberExpression.Member.Name.ToLower());
                 }
 
                 memberExpression = memberExpression.Expression as MemberExpression;
