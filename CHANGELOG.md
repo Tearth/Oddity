@@ -1,3 +1,6 @@
+# Version 2.0.2 (26-07-2020)
+ * Fixed a bug with invalid name translation when there was no JsonProperty attribute (thanks martindevans)
+
 # Version 2.0.1 (21-07-2020)
  * Added statistics
  * Fixed a bug with invalid cache population in queries
