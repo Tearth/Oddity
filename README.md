@@ -1,11 +1,11 @@
 [![Oddity logo](./logo.png)](https://github.com/Tearth/Oddity)
 
-[![GitHub release](https://img.shields.io/github/release/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/releases)
+[![NuGet](https://img.shields.io/nuget/v/Oddity.svg)](https://www.nuget.org/packages/Oddity/)
+[![Downloads](https://img.shields.io/nuget/dt/Oddity.svg)](https://www.nuget.org/packages/Oddity/)
 [![Build](https://api.travis-ci.org/Tearth/Oddity.svg?branch=master)](https://travis-ci.org/Tearth/Oddity)
-[![NuGet downloads](https://img.shields.io/nuget/dt/Oddity.svg)](https://www.nuget.org/packages/Oddity/)
-[![GitHub issues](https://img.shields.io/github/issues/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/issues)
-[![GitHub stars](https://img.shields.io/github/stars/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/stargazers)
-[![GitHub license](https://img.shields.io/github/license/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/blob/master/LICENSE)
+[![Issues](https://img.shields.io/github/issues/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/issues)
+[![Stars](https://img.shields.io/github/stars/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/stargazers)
+[![License](https://img.shields.io/github/license/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/blob/master/LICENSE)
 [![Doxygen](https://img.shields.io/badge/Doxygen-gh--pages-blue)](https://tearth.github.io/Oddity/)
 
 .NET wrapper for **[unofficial SpaceX API v4](https://github.com/r-spacex/SpaceX-API)** (with full support for all endpoints and query subsystem), providing information about everything related to the company. Thanks to this library, you can easily get any data without messing with HTTP requests, JSON deserializators or constructing query bodies. You can use the following endpoints:
@@ -37,6 +37,18 @@ Feel free to make issues or pull request to improve library - Oddity v2 has been
  - **Support for query subsystem** - v4 API has introduced **[the new query system](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/queries.md)** (using **[mongoose-paginate](https://github.com/aravindnc/mongoose-paginate-v2)**) which allows user for more flexible queries. Oddity wraps it with the easy to use classes and provides the most important filters.
  - **Internal cache** - this is the nice addition to the smart models and their lazy properties - it allows to reduce the time needed for making and processing API requests by caching deserialized objects for a period specified **[in the API docs](https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/README.md#caching)**.
 
+# Installation
+ * download from NuGet: **https://www.nuget.org/packages/Oddity/**
+
+or
+
+ * search "Oddity" in Package Manager
+
+or
+
+ * run `Install-Package Oddity` in the Package Manager Console
+
+
 # Minimal requirements
 Library is built on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which contains support for:
  * .NET Framework 4.5 or higher
@@ -49,17 +61,6 @@ Library is built on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/
  
 **External dependencies:**
  * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
-
-# Installation
- * download from NuGet: https://www.nuget.org/packages/Oddity/
-
-or
-
- * search "Oddity" in Package Manager
-
-or
-
- * run `Install-Package Oddity` in the Package Manager Console
 
 # Software using Oddity
  - [**InElonWeTrust**](https://github.com/Tearth/InElonWeTrust) - SpaceX Discord bot providing information about launches, notifications and other commands related to SpaceX and Elon Musk.
