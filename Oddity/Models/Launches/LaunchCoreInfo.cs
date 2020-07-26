@@ -28,7 +28,7 @@ namespace Oddity.Models.Launches
             set
             {
                 _coreId = value;
-                Core = new Lazy<CoreInfo>(() => Context.CoresEndpoint.Get(_coreId).Execute());
+                Core = new Lazy<CoreInfo>(() => _coreId == null ? null : Context.CoresEndpoint.Get(_coreId).Execute());
             }
         }
 
@@ -39,7 +39,7 @@ namespace Oddity.Models.Launches
             set
             {
                 _landpadId = value;
-                Landpad = new Lazy<LandpadInfo>(() => Context.LandpadsEndpoint.Get(_landpadId).Execute());
+                Landpad = new Lazy<LandpadInfo>(() => _landpadId == null ? null : Context.LandpadsEndpoint.Get(_landpadId).Execute());
             }
         }
 
