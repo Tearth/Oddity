@@ -8,11 +8,16 @@ namespace Oddity.Models.Cores
 {
     public class CoreInfo : ModelBase, IIdentifiable
     {
+        [JsonProperty("id")]
         public string Id { get; set; }
+
+        [JsonProperty("serial")]
         public string Serial { get; set; }
+
+        [JsonProperty("block")]
         public uint? Block { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Populate)]
         public CoreStatus Status { get; set; }
 
         [JsonProperty("reuse_count")]

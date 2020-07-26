@@ -39,6 +39,20 @@ namespace UpcomingLaunchesApp
             Console.WriteLine("Rocket           | " + nextLaunchData.Rocket.Value.Name);
             Console.WriteLine("Payloads         | " + string.Join(", ", nextLaunchData.Payloads.Select(p => GetPayloadInfo(p.Value))));
             Console.WriteLine();
+
+            var cores = await oddity.CoresEndpoint.Query().WithFieldEqual(a => a.Serial, nextLaunchData.Cores.First().Core.Value.Serial).ExecuteAsync();
+            if (cores.Data.Count != 1)
+                Console.WriteLine("Failed to find core!");
+            else
+            {
+                var core = cores.Data[0];
+                Console.WriteLine("Core:");
+                Console.WriteLine("---------------------------------------------------------------------------");
+                Console.WriteLine("Serial           | " + core.Serial);
+                Console.WriteLine("Resuse Count     | " + core.ReuseCount);
+            }
+
+            Console.WriteLine();
         }
 
         private static async Task DisplayRestOfUpcomingLaunches(OddityCore oddity)
