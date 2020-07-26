@@ -1,7 +1,7 @@
 [![Oddity logo](./logo.png)](https://github.com/Tearth/Oddity)
 
 [![NuGet](https://img.shields.io/nuget/v/Oddity.svg)](https://www.nuget.org/packages/Oddity/)
-[![NuGet downloads](https://img.shields.io/nuget/dt/Oddity.svg)](https://www.nuget.org/packages/Oddity/)
+[![Downloads](https://img.shields.io/nuget/dt/Oddity.svg)](https://www.nuget.org/packages/Oddity/)
 [![Build](https://api.travis-ci.org/Tearth/Oddity.svg?branch=master)](https://travis-ci.org/Tearth/Oddity)
 [![Issues](https://img.shields.io/github/issues/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/issues)
 [![Stars](https://img.shields.io/github/stars/Tearth/Oddity.svg)](https://github.com/Tearth/Oddity/stargazers)
