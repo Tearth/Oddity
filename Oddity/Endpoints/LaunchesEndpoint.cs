@@ -35,7 +35,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<TData> GetLatest()
         {
-            return new SimpleBuilder<TData>(Context, Cache, "launches/latest");
+            return new SimpleBuilder<TData>(Context, Cache, "launches/latest", "");
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<TData> GetNext()
         {
-            return new SimpleBuilder<TData>(Context, Cache, "launches/next");
+            return new SimpleBuilder<TData>(Context, Cache, "launches/next", "");
         }
 
         /// <summary>

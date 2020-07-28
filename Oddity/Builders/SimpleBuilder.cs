@@ -20,17 +20,6 @@ namespace Oddity.Builders
         /// <param name="context">The Oddity context used to interact with API.</param>
         /// <param name="cache">Cache service used to speed up requests.</param>
         /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
-        public SimpleBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint) : this(context, cache, endpoint, null)
-        {
-
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleBuilder{TReturn}"/> class.
-        /// </summary>
-        /// <param name="context">The Oddity context used to interact with API.</param>
-        /// <param name="cache">Cache service used to speed up requests.</param>
-        /// <param name="endpoint">The endpoint used in this instance to retrieve data from API.</param>
         /// <param name="id">The ID of the specified object to retrieve from API.</param>
         public SimpleBuilder(OddityCore context, CacheService<TReturn> cache, string endpoint, string id) : base(context)
         {
@@ -55,15 +44,24 @@ namespace Oddity.Builders
         public override async Task<TReturn> ExecuteAsync()
         {
             var model = new TReturn();
-            await ExecuteAsync(model);
+            if (await ExecuteAsync(model))
+            {
+                return model;
+            }
 
-            return model;
+            return null;
         }
 
         /// <inheritdoc />
         public override async Task<bool> ExecuteAsync(TReturn model)
         {
-            if (Context.CacheEnabled && _cache.GetIfAvailable(out var data, _id ?? _endpoint))
+            if (_id == null)
+            {
+                return false;
+            }
+
+            var cacheId = _id != "" ? _id : _endpoint;
+            if (Context.CacheEnabled && _cache.GetIfAvailable(out var data, cacheId))
             {
                 data.CopyTo(model);
 
@@ -86,7 +84,7 @@ namespace Oddity.Builders
 
             if (Context.CacheEnabled)
             {
-                _cache.Update(model, _id ?? _endpoint);
+                _cache.Update(model, cacheId);
 
                 if (Context.StatisticsEnabled)
                 {

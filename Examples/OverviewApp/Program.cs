@@ -137,6 +137,11 @@ namespace OverviewApp
             var latestLaunchCached = await oddity.LaunchesEndpoint.GetLatest().ExecuteAsync();
             var nextLaunchCached = await oddity.LaunchesEndpoint.GetNext().ExecuteAsync();
 
+            // Test of error cases
+            var invalidLaunch = await oddity.LaunchesEndpoint.Get("some_bad_id").ExecuteAsync();
+            var sparseLaunch = await oddity.LaunchesEndpoint.Get("5ed981d91f30554030d45c2a").ExecuteAsync();
+            var invalidLandpad = sparseLaunch.Cores[0].Landpad.Value;
+
             Console.Read();
         }
 
