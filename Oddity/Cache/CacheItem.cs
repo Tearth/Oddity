@@ -28,5 +28,11 @@ namespace Oddity.Cache
             Data = data;
             UpdateTime = updateTime;
         }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return $"Cached {Data}";
+        }
     }
 }
