@@ -25,7 +25,7 @@ namespace Oddity.Endpoints
         /// <returns>Deserialized JSON returned from the API.</returns>
         public SimpleBuilder<TData> Get()
         {
-            return new SimpleBuilder<TData>(Context, Cache, "company");
+            return new SimpleBuilder<TData>(Context, Cache, "company", "");
         }
     }
 }
