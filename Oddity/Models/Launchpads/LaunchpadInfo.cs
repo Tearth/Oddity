@@ -16,6 +16,7 @@ namespace Oddity.Models.Launchpads
         public string TimeZone { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+        public string Details { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public LaunchpadStatus Status { get; set; }

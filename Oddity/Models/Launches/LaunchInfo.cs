@@ -22,7 +22,7 @@ namespace Oddity.Models.Launches
         public List<LaunchCoreInfo> Cores { get; set; }
         public LaunchLinks Links { get; set; }
         public LaunchFairingsInfo Fairings { get; set; }
-        public List<string> Failures { get; set; }
+        public List<LaunchFailure> Failures { get; set; }
 
         [JsonProperty("flight_number")]
         public uint? FlightNumber { get; set; }
