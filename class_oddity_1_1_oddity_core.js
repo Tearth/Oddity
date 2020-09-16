@@ -1,0 +1,27 @@
+var class_oddity_1_1_oddity_core =
+[
+    [ "OddityCore", "class_oddity_1_1_oddity_core.html#a18689b093f6e3fa02f8eed130b77af43", null ],
+    [ "Dispose", "class_oddity_1_1_oddity_core.html#a0e9eaabfc673154d169f04403207c8e2", null ],
+    [ "UserAgent", "class_oddity_1_1_oddity_core.html#aa20aa15c49e6913423d640fd6984b823", null ],
+    [ "Version", "class_oddity_1_1_oddity_core.html#ad90cb50f4a30ce6ac561508393192a6b", null ],
+    [ "CacheEnabled", "class_oddity_1_1_oddity_core.html#a26f13eeb702d3236a590b328d207759d", null ],
+    [ "CapsulesEndpoint", "class_oddity_1_1_oddity_core.html#a5162dd806acfc7fb6520a696220860ac", null ],
+    [ "CompanyEndpoint", "class_oddity_1_1_oddity_core.html#a5d24676ebb972e3e6947f5c51da83930", null ],
+    [ "CoresEndpoint", "class_oddity_1_1_oddity_core.html#aebda89e116c0f8f0079e90ebdf5ee3a9", null ],
+    [ "CrewEndpoint", "class_oddity_1_1_oddity_core.html#a07ed8df33ee89ff1b8499cbd05ae74c6", null ],
+    [ "DragonsEndpoint", "class_oddity_1_1_oddity_core.html#afca407bba00176f84c68990d1144e005", null ],
+    [ "LandpadsEndpoint", "class_oddity_1_1_oddity_core.html#a6ad0812df01b586fe365df3fba46085f", null ],
+    [ "LaunchesEndpoint", "class_oddity_1_1_oddity_core.html#a15c69607850204a9234760738b4ff21f", null ],
+    [ "LaunchpadsEndpoint", "class_oddity_1_1_oddity_core.html#a4d2db8568a9d62ca45bcc2c603dc2751", null ],
+    [ "PayloadsEndpoint", "class_oddity_1_1_oddity_core.html#a7c97697f00cdf72b5622535f8a9a3e6c", null ],
+    [ "RoadsterEndpoint", "class_oddity_1_1_oddity_core.html#a65a29d2e9d05ad6744fb30ddc6753250", null ],
+    [ "RocketsEndpoint", "class_oddity_1_1_oddity_core.html#ad5f685193d05fa813f11815661ae4c81", null ],
+    [ "ShipsEndpoint", "class_oddity_1_1_oddity_core.html#a7e295bc53f84971fd956e3d1fe7f0211", null ],
+    [ "StarlinkEndpoint", "class_oddity_1_1_oddity_core.html#afee90bdd1a7dc761a3e68e80adc30e1e", null ],
+    [ "Statistics", "class_oddity_1_1_oddity_core.html#a150b11a5cd9c84ba7b46949a548f2406", null ],
+    [ "StatisticsEnabled", "class_oddity_1_1_oddity_core.html#aee2f8ec02ad2f450f99ff29938afae11", null ],
+    [ "Timeout", "class_oddity_1_1_oddity_core.html#a22d7667ee0f92c54239ca00e79c2e61d", null ],
+    [ "OnDeserializationError", "class_oddity_1_1_oddity_core.html#a0bf84188a3826362013780a0632f8aa4", null ],
+    [ "OnRequestSend", "class_oddity_1_1_oddity_core.html#a265031df72d1c303417cd3479223b316", null ],
+    [ "OnResponseReceive", "class_oddity_1_1_oddity_core.html#a508fe97e93349ceefa62774daae558c6", null ]
+];
