@@ -1,3 +1,7 @@
+# Version 2.0.4 (16-09-2020)
+ * Added "details" field in launchpad info
+ * Updated a "failures" field in launch info
+
 # Version 2.0.3 (28-07-2020)
  * Fixed a bug with lazy properties trying to fetch object with null ID (thanks martindevans)
  * Fixed a bug when the user was trying to get an object with an invalid ID
