@@ -62,10 +62,6 @@ Library is built on [.NET Standard 1.1](https://docs.microsoft.com/en-us/dotnet/
 **External dependencies:**
  * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 
-# Software using Oddity
- - [**InElonWeTrust**](https://github.com/Tearth/InElonWeTrust) - SpaceX Discord bot providing information about launches, notifications and other commands related to SpaceX and Elon Musk.
- - [**Launchpad**](https://github.com/skyffx/Launchpad) - Get brief overview about SpaceX missions.
-
 # Example usage
 ```csharp
 using System;
